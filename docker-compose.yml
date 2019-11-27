@@ -1,0 +1,8 @@
+version: '3'
+services: 
+
+  my-haproxy:
+    build: ./haproxy
+    container_name: my-haproxy
+    ports:
+      - "8888:8888" 
