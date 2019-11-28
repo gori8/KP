@@ -57,7 +57,7 @@ public class DemoApplication {
 	private void init() throws Exception {
 		RestTemplate rt=restTemplate();
 		String fooResourceUrl
-				= "https://localhost:8443/api/hello";
+				= "https://localhost:8888/test-api/cao";
 		ResponseEntity<String> response
 				= rt.getForEntity(fooResourceUrl,String.class);
 		System.out.println(response.getBody());

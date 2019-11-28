@@ -1,8 +1,63 @@
 version: '3'
-services: 
-
-  my-haproxy:
-    build: ./haproxy
-    container_name: my-haproxy
-    ports:
-      - "8888:8888" 
+services:
+    my-haproxy:
+        build: ./haproxy
+        container_name: my-haproxy
+        ports:
+            - "8888:8888" 
+    eureka1:
+        image: eureka1
+        container_name: eureka1
+        build:
+            context: ./eureka-service/docker/docker1
+            dockerfile: Dockerfile
+        ports:
+            - "8761:8761"
+    eureka2:
+        image: eureka2
+        container_name: eureka2
+        build:
+            context: ./eureka-service/docker/docker2
+            dockerfile: Dockerfile
+        ports:
+            - "8762:8761"
+    zuul:
+        image: zuul
+#        container_name: zuul
+        build:
+            context: ./zuul-service
+            dockerfile: Dockerfile
+#        ports:
+#            - "8771:8771"
+        volumes:
+            - ./kpks:/home/
+    test-api:
+        image: test-api
+        build:
+            context: ./test-api
+            dockerfile: Dockerfile
+    mysqlmaster:
+        image: mysql:5.7
+        environment:
+            - "MYSQL_ROOT_PASSWORD=root"
+        volumes:
+            - ./data/mysql-master:/var/lib/mysql/
+            - ./config/mysql-master:/etc/mysql/conf.d/
+    mysqlslave:
+        image: mysql:5.7
+        environment:
+            - "MYSQL_ROOT_PASSWORD=root"
+        volumes:
+            - ./data/mysql-slave:/var/lib/mysql/
+            - ./config/mysql-slave:/etc/mysql/conf.d/
+    mysqlconfigure:
+        image: mysql:5.7.15
+        environment:
+            - "MYSQL_SLAVE_PASSWORD=root"
+            - "MYSQL_MASTER_PASSWORD=root"
+            - "MYSQL_ROOT_PASSWORD=root"
+            - "MYSQL_REPLICATION_USER=repl"
+            - "MYSQL_REPLICATION_PASSWORD=repl"
+        volumes:
+            - ./mysql_connector.sh:/tmp/mysql_connector.sh
+        command: /bin/bash -x /tmp/mysql_connector.sh
