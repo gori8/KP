@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row ml-auto mr-auto mt-5">
+      <div class="col col-md-3"></div>
+      <div class="col col-md-6 mt-5">
+        <h1 class="text-center text-dark mb-5">Naučna centrala - demo</h1>
+        <table class="table text-center">
+          <th class="text-light bg-dark" colspan="2">
+            Banka
+          </th>
+          <tr>
+            <td>
+                <button type="submit" class="btn btn-success" (click)="bankaUspesna()">Banka (Uspešna transakcija)</button>
+            </td>
+            <td>
+                <button type="submit" class="btn btn-danger" (click)="bankaNeuspesna()">Banka (Neuspešna transakcija)</button>
+            </td>
+          </tr>
+          <tr><td colspan="2"></td></tr>
+          <th class="text-light bg-dark" colspan="2">
+            PayPal
+          </th>
+          <tr>
+            <td>
+                <button type="submit" class="btn btn-success" (click)="paypalUspesna()">PayPal (Uspešna transakcija)</button>
+            </td>
+            <td>
+                <button type="submit" class="btn btn-danger" (click)="paypalNeuspesna()">PayPal (Neuspešna transakcija)</button>
+            </td>
+          </tr>
+          <tr><td colspan="2"></td></tr>
+          <th class="text-light bg-dark" colspan="2">
+            Bit Coin
+          </th>
+          <tr>
+            <td>
+                <button type="submit" class="btn btn-success" (click)="bitcoinUspesna()">Bit Coin (Uspešna transakcija)</button>
+            </td>
+            <td>
+                <button type="submit" class="btn btn-danger" (click)="bitcoinNeuspesna()">Bit Coin (Neuspešna transakcija)</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="col col-md-3"></div>
+  </div>
+</div>    
+  
