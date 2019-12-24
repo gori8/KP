@@ -4,15 +4,27 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormaPlacanjaComponent } from './components/forma-placanja/forma-placanja.component';
+import { IzborPlacanjaComponent } from './components/izbor-placanja/izbor-placanja.component';
+import {HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NavbarComponent } from './navbar/navbar.component'
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormaPlacanjaComponent
+    FormaPlacanjaComponent,
+    IzborPlacanjaComponent,
+    NavbarComponent,
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
+   
   ],
   providers: [],
   bootstrap: [AppComponent]

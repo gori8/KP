@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { FormaPlacanjaComponent } from './components/forma-placanja/forma-placanja.component';
-
+import { IzborPlacanjaComponent } from './components/izbor-placanja/izbor-placanja.component';
 
 const routes: Routes = [
-  { path: '', component: FormaPlacanjaComponent },
+  { path: 'payment', component: FormaPlacanjaComponent },
+  { path: '', component: IzborPlacanjaComponent }
 ];
 
 @NgModule({
