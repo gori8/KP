@@ -80,6 +80,7 @@ public class InfoServiceImpl implements InfoService{
 
     @Override
     public List<PodaciORacunu> getSveRacuneJednogCasopisa(Long idCasopisa) {
+
         return podaciORacunuRepository.findAllByCasopis_Id(idCasopisa);
 
     }
