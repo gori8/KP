@@ -5,7 +5,7 @@
             <div class="col col-md-6 mt-3">
             
                 <!--FORM-->
-                <form>
+                <form #paymentForm="ngForm" ngNativeValidate (ngSubmit)="onSubmit(paymentForm)">
                     <!--IMAGE-->
                     <img class="img-logo" src="{{imageSource}}" *ngIf="imageSource!==undefined"/>
                     

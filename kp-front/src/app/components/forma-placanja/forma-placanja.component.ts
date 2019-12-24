@@ -61,4 +61,10 @@ export class FormaPlacanjaComponent implements OnInit {
     this.imageSource = this.forma.image;
   }
 
+
+  onSubmit(paymentForm){
+    if(paymentForm.valid===true){
+      console.log("Validna forma");
+    }
+  }
 }
