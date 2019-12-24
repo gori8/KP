@@ -18,10 +18,6 @@ public class InfoServiceImpl implements InfoService{
     @Autowired
     CasopisRepository casopisRepository;
 
-    @Autowired
-    PodaciORacunuRepository podaciORacunuRepository;
-
-
     @Override
     public Casopis addCasopis(CasopisDTO casopisDTO) {
 
@@ -54,34 +50,16 @@ public class InfoServiceImpl implements InfoService{
     }
 
     @Override
-    public PodaciORacunu addPodaciORacunu(PodaciORacunuDTO podaciORacunuDTO, Long id) {
+    public List<NacinPlacanjaDTO> getNacinePlacanjaZaCasopis(Long casopisId){
+        Casopis casopis = casopisRepository.findOneById(casopisId);
 
-        PodaciORacunu newRacun = new PodaciORacunu();
+        List<NacinPlacanjaDTO> ret = new ArrayList<NacinPlacanjaDTO>();
 
-        newRacun.setNacinPlacanja(podaciORacunuDTO.getNacinPlacanja());
-        newRacun.setBrojRacuna(podaciORacunuDTO.getBrojRacuna());
-        newRacun.setStanjeNaRacunu(podaciORacunuDTO.getStanjeNaRacunu());
-        newRacun.setCasopis(casopisRepository.findOneById(id));
+        for (NacinPlacanja np:casopis.getNacinPlacanjaList()) {
+            NacinPlacanjaDTO npDTO = new NacinPlacanjaDTO(np.getId(),np.getNacinPlacanja());
+            ret.add(npDTO);
+        }
 
-        return podaciORacunuRepository.save(newRacun);
-    }
-
-    @Override
-    public PodaciORacunu updatePodaciORacunu(PodaciORacunuDTO podaciORacunuDTO, Long id) {
-
-        PodaciORacunu updateRacun = podaciORacunuRepository.findOneById(id);
-
-        updateRacun.setNacinPlacanja(podaciORacunuDTO.getNacinPlacanja());
-        updateRacun.setBrojRacuna(podaciORacunuDTO.getBrojRacuna());
-        updateRacun.setStanjeNaRacunu(podaciORacunuDTO.getStanjeNaRacunu());
-
-        return podaciORacunuRepository.save(updateRacun);
-    }
-
-    @Override
-    public List<PodaciORacunu> getSveRacuneJednogCasopisa(Long idCasopisa) {
-
-        return podaciORacunuRepository.findAllByCasopis_Id(idCasopisa);
-
+        return ret;
     }
 }

@@ -22,15 +22,19 @@ public class Casopis {
     @Column(name = "autorPlaca", nullable = true)
     private Boolean autorPlaca;
 
-    @OneToMany(mappedBy = "casopis")
-    private List<PodaciORacunu> podaciORacunima = new ArrayList<PodaciORacunu>();
+    @ManyToMany
+    @JoinTable(
+            name = "casopic_nacin_placanja",
+            joinColumns = @JoinColumn(name = "casopis_id"),
+            inverseJoinColumns = @JoinColumn(name = "nacin_placanja_id"))
+    private List<NacinPlacanja> nacinPlacanjaList = new ArrayList<>();
 
-    public List<PodaciORacunu> getPodaciORacunima() {
-        return podaciORacunima;
+    public List<NacinPlacanja> getNacinPlacanjaList() {
+        return nacinPlacanjaList;
     }
 
-    public void setPodaciORacunima(List<PodaciORacunu> podaciORacunima) {
-        this.podaciORacunima = podaciORacunima;
+    public void setNacinPlacanjaList(List<NacinPlacanja> nacinPlacanjaList) {
+        this.nacinPlacanjaList = nacinPlacanjaList;
     }
 
     public Long getId() {

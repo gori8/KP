@@ -13,8 +13,6 @@ public class CasopisDTO {
     private Boolean autorPlaca;
     private Long glavniUrednik;
 
-    private List<PodaciORacunuDTO> podaciORacunima = new ArrayList<PodaciORacunuDTO>();
-
     public Long getId() {
         return id;
     }
@@ -55,13 +53,6 @@ public class CasopisDTO {
         this.glavniUrednik = glavniUrednik;
     }
 
-    public List<PodaciORacunuDTO> getListaPodatakaORacunima() {
-        return podaciORacunima;
-    }
-
-    public void setListaPodatakaORacunima(List<PodaciORacunuDTO> listaPodatakaORacunima) {
-        this.podaciORacunima = listaPodatakaORacunima;
-    }
 
 
     public CasopisDTO() {

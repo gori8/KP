@@ -1,6 +1,8 @@
 package com.example.userandpaymentinfo.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class NacinPlacanja {
@@ -12,6 +14,18 @@ public class NacinPlacanja {
 
     @Column(name = "nacinPlacanja", unique = true, nullable = false)
     private String nacinPlacanja;
+
+    @ManyToMany(mappedBy = "nacinPlacanjaList")
+    private
+    List<Casopis> casopisList = new ArrayList<>();
+
+    public List<Casopis> getCasopisList() {
+        return casopisList;
+    }
+
+    public void setCasopisList(List<Casopis> casopisList) {
+        this.casopisList = casopisList;
+    }
 
     public Long getId() {
         return id;
