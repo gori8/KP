@@ -19,30 +19,11 @@ public class Casopis {
     @Column(name = "issn", unique = true, nullable = false)
     private String issn;
 
-    @Column(name = "autorPlaca", nullable = false)
+    @Column(name = "autorPlaca", nullable = true)
     private Boolean autorPlaca;
-
-    @Column(name = "glavniUrednik", nullable = true)
-    private Long glavniUrednik;
 
     @OneToMany(mappedBy = "casopis")
     private List<PodaciORacunu> podaciORacunima = new ArrayList<PodaciORacunu>();
-
-    @OneToMany(mappedBy = "casopis")
-    private List<Recenzent> listaRecenzenata = new ArrayList<Recenzent>();
-
-    @OneToMany(mappedBy = "casopis")
-    private List<Urednik> listaUrednika = new ArrayList<Urednik>();
-
-    @ManyToMany(cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
-    })
-    @JoinTable(name = "casopis_oblast",
-            joinColumns = @JoinColumn(name = "casopis_id"),
-            inverseJoinColumns = @JoinColumn(name = "oblast_id")
-    )
-    private List<NaucnaOblast> naucneOblasti = new ArrayList<NaucnaOblast>();
 
     public List<PodaciORacunu> getPodaciORacunima() {
         return podaciORacunima;
@@ -50,30 +31,6 @@ public class Casopis {
 
     public void setPodaciORacunima(List<PodaciORacunu> podaciORacunima) {
         this.podaciORacunima = podaciORacunima;
-    }
-
-    public List<Recenzent> getListaRecenzenata() {
-        return listaRecenzenata;
-    }
-
-    public void setListaRecenzenata(List<Recenzent> listaRecenzenata) {
-        this.listaRecenzenata = listaRecenzenata;
-    }
-
-    public List<Urednik> getListaUrednika() {
-        return listaUrednika;
-    }
-
-    public void setListaUrednika(List<Urednik> listaUrednika) {
-        this.listaUrednika = listaUrednika;
-    }
-
-    public List<NaucnaOblast> getNaucneOblasti() {
-        return naucneOblasti;
-    }
-
-    public void setNaucneOblasti(List<NaucnaOblast> naucneOblasti) {
-        this.naucneOblasti = naucneOblasti;
     }
 
     public Long getId() {
@@ -106,14 +63,6 @@ public class Casopis {
 
     public void setAutorPlaca(Boolean autorPlaca) {
         this.autorPlaca = autorPlaca;
-    }
-
-    public Long getGlavniUrednik() {
-        return glavniUrednik;
-    }
-
-    public void setGlavniUrednik(Long glavniUrednik) {
-        this.glavniUrednik = glavniUrednik;
     }
 
 

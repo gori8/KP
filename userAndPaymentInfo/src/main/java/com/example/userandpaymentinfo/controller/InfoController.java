@@ -2,10 +2,8 @@ package com.example.userandpaymentinfo.controller;
 
 import com.example.userandpaymentinfo.dto.CasopisDTO;
 import com.example.userandpaymentinfo.dto.PodaciORacunuDTO;
-import com.example.userandpaymentinfo.dto.UrednikDTO;
 import com.example.userandpaymentinfo.model.Casopis;
 import com.example.userandpaymentinfo.model.PodaciORacunu;
-import com.example.userandpaymentinfo.model.Urednik;
 import com.example.userandpaymentinfo.service.InfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,27 +19,6 @@ public class InfoController {
 
     @Autowired
     InfoService infoService;
-
-    @RequestMapping(value = "/editor", method = RequestMethod.GET)
-    public ResponseEntity<List<Urednik>> getAllUrednici() {
-
-        return new ResponseEntity<List<Urednik>>(infoService.getAllUrednik(), HttpStatus.OK);
-
-    }
-
-    @RequestMapping(value = "/editor", method = RequestMethod.POST)
-    public ResponseEntity<Urednik> addUrednik(@RequestBody UrednikDTO urednikDTO) {
-
-        return new ResponseEntity<Urednik>(infoService.addUrednik(urednikDTO), HttpStatus.OK);
-
-    }
-
-    @RequestMapping(value = "/editor/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Urednik> updateUrednik(@RequestBody UrednikDTO urednikDTO, @PathVariable("id") Long id) {
-
-        return new ResponseEntity<Urednik>(infoService.updateUrednik(urednikDTO), HttpStatus.OK);
-
-    }
 
     @RequestMapping(value = "/journal", method = RequestMethod.GET)
     public ResponseEntity<List<Casopis>> getAllCasopisi() {
