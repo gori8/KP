@@ -1,12 +1,11 @@
-package com.example.userandpaymentinfo.model;
+package com.example.demo.model;
 
-import com.example.userandpaymentinfo.converters.BrojRacunaConverter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
 @Entity
-public class PodaciORacunu {
+public class PodaciORacunuKupca {
 
     @Id
     @Column(name = "id")
@@ -16,23 +15,22 @@ public class PodaciORacunu {
     @Column(name = "nacinPlacanja", unique = false, nullable = false)
     private String nacinPlacanja;
 
-    @Convert(converter = BrojRacunaConverter.class)
-    @Column(name = "brojRacuna", unique = true, nullable = false)
+    @Column(name = "brojRacuna", unique = false, nullable = false)
     private String brojRacuna;
 
     @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Casopis casopis;
+    private Kupac kupac;
 
-    @Column(name = "cenaZaPretplatu", nullable = true)
-    private int cenaZaPretplatu;
+    @Column(name = "stanjeNaRacunu", nullable = true)
+    private int stanjeNaRacunu;
 
-    public int getCenaZaPretplatu() {
-        return cenaZaPretplatu;
+    public int getStanjeNaRacunu() {
+        return stanjeNaRacunu;
     }
 
-    public void setCenaZaPretplatu(int cenaZaPretplatu) {
-        this.cenaZaPretplatu = cenaZaPretplatu;
+    public void setStanjeNaRacunu(int stanjeNaRacunu) {
+        this.stanjeNaRacunu = stanjeNaRacunu;
     }
 
     public Long getId() {
@@ -59,14 +57,14 @@ public class PodaciORacunu {
         this.brojRacuna = brojRacuna;
     }
 
-    public Casopis getCasopis() {
-        return casopis;
+    public Kupac getKupac() {
+        return kupac;
     }
 
-    public void setCasopis(Casopis casopis) {
-        this.casopis = casopis;
+    public void setKupac(Kupac kupac) {
+        this.kupac = kupac;
     }
 
-    public PodaciORacunu() {
+    public PodaciORacunuKupca() {
     }
 }
