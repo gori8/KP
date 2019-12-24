@@ -1,5 +1,6 @@
 package com.example.userandpaymentinfo.model;
 
+import com.example.userandpaymentinfo.converters.BrojRacunaConverter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -15,7 +16,8 @@ public class PodaciORacunu {
     @Column(name = "nacinPlacanja", unique = false, nullable = false)
     private String nacinPlacanja;
 
-    @Column(name = "brojRacuna", unique = false, nullable = false)
+    @Convert(converter = BrojRacunaConverter.class)
+    @Column(name = "brojRacuna", unique = true, nullable = false)
     private String brojRacuna;
 
     @JsonIgnore
