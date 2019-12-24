@@ -13,10 +13,7 @@ public class CasopisDTO {
     private Boolean autorPlaca;
     private Long glavniUrednik;
 
-    private List<NaucnaOblastDTO> naucneOblasti = new ArrayList<NaucnaOblastDTO>();
     private List<PodaciORacunuDTO> podaciORacunima = new ArrayList<PodaciORacunuDTO>();
-    private List<RecenzentDTO> listaRecenzenata = new ArrayList<RecenzentDTO>();
-    private List<UrednikDTO> listaUrednika = new ArrayList<UrednikDTO>();
 
     public Long getId() {
         return id;
@@ -58,14 +55,6 @@ public class CasopisDTO {
         this.glavniUrednik = glavniUrednik;
     }
 
-    public List<NaucnaOblastDTO> getListaNaucnihOblasti() {
-        return naucneOblasti;
-    }
-
-    public void setListaNaucnihOblasti(List<NaucnaOblastDTO> listaNaucnihOblasti) {
-        this.naucneOblasti = listaNaucnihOblasti;
-    }
-
     public List<PodaciORacunuDTO> getListaPodatakaORacunima() {
         return podaciORacunima;
     }
@@ -74,21 +63,6 @@ public class CasopisDTO {
         this.podaciORacunima = listaPodatakaORacunima;
     }
 
-    public List<RecenzentDTO> getListaRecenzenata() {
-        return listaRecenzenata;
-    }
-
-    public void setListaRecenzenata(List<RecenzentDTO> listaRecenzenata) {
-        this.listaRecenzenata = listaRecenzenata;
-    }
-
-    public List<UrednikDTO> getListaUrednika() {
-        return listaUrednika;
-    }
-
-    public void setListaUrednika(List<UrednikDTO> listaUrednika) {
-        this.listaUrednika = listaUrednika;
-    }
 
     public CasopisDTO() {
     }

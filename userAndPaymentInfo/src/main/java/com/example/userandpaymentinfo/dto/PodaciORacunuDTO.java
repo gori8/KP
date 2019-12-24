@@ -6,14 +6,14 @@ public class PodaciORacunuDTO {
     private String nacinPlacanja;
     private String brojRacuna;
     private Long casopisId;
-    private int cenaZaPretplatu;
+    private double stanjeNaRacunu;
 
-    public int getCenaZaPretplatu() {
-        return cenaZaPretplatu;
+    public double getStanjeNaRacunu() {
+        return stanjeNaRacunu;
     }
 
-    public void setCenaZaPretplatu(int cenaZaPretplatu) {
-        this.cenaZaPretplatu = cenaZaPretplatu;
+    public void setStanjeNaRacunu(double stanjeNaRacunu) {
+        this.stanjeNaRacunu = stanjeNaRacunu;
     }
 
     public Long getId() {
