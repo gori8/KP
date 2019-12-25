@@ -8,7 +8,7 @@ import  *  as  data  from  '../../../json/config.json';
 })
 export class FormaPlacanjaComponent implements OnInit {
 
-  constructor() { }
+  constructor() {}
 
   forma=null;
   button="Submit";
@@ -19,11 +19,17 @@ export class FormaPlacanjaComponent implements OnInit {
       cols:[]
     }
   ]
+  scripts=[];
 
   ngOnInit() {
+
     this.forma = (data as any).default;
 
+    this.scripts = this.forma.script;
+
+    console.log(this.scripts);
     
+
     for(let field of this.forma.form){
 
       if(field.validation===undefined){
@@ -60,7 +66,6 @@ export class FormaPlacanjaComponent implements OnInit {
     
     this.imageSource = this.forma.image;
   }
-
 
   onSubmit(paymentForm){
     if(paymentForm.valid===true){

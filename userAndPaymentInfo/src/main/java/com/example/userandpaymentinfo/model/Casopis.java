@@ -1,6 +1,8 @@
 package com.example.userandpaymentinfo.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,10 +21,8 @@ public class Casopis {
     @Column(name = "issn", unique = true, nullable = false)
     private String issn;
 
-    @Column(name = "autorPlaca", nullable = true)
-    private Boolean autorPlaca;
-
     @ManyToMany
+    @JsonIgnore
     @JoinTable(
             name = "casopic_nacin_placanja",
             joinColumns = @JoinColumn(name = "casopis_id"),
@@ -60,15 +60,6 @@ public class Casopis {
     public void setIssn(String issn) {
         this.issn = issn;
     }
-
-    public Boolean getAutorPlaca() {
-        return autorPlaca;
-    }
-
-    public void setAutorPlaca(Boolean autorPlaca) {
-        this.autorPlaca = autorPlaca;
-    }
-
 
     public Casopis() {
     }

@@ -28,9 +28,9 @@ public class InfoController {
     }
 
     @RequestMapping(value = "/journal", method = RequestMethod.POST)
-    public ResponseEntity<Casopis> addCasopis(@RequestBody CasopisDTO casopisDTO) {
+    public ResponseEntity<Casopis> editCasopis(@RequestBody CasopisDTO casopisDTO) throws Exception {
 
-        return new ResponseEntity<Casopis>(infoService.addCasopis(casopisDTO), HttpStatus.OK);
+        return new ResponseEntity<Casopis>(infoService.editCasopis(casopisDTO), HttpStatus.OK);
 
     }
 

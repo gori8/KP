@@ -18,14 +18,34 @@ public class InfoServiceImpl implements InfoService{
     @Autowired
     CasopisRepository casopisRepository;
 
+    @Autowired
+    NacinPlacanjaRepository nacinPlacanjaRepository;
+
     @Override
-    public Casopis addCasopis(CasopisDTO casopisDTO) {
+    public Casopis editCasopis(CasopisDTO casopisDTO) throws Exception {
 
-    Casopis newCasopis = new Casopis();
+    Casopis newCasopis = casopisRepository.findOneByIssn(casopisDTO.getIssn());
 
-    newCasopis.setNaziv(casopisDTO.getNaziv());
-    newCasopis.setIssn(casopisDTO.getIssn());
-    newCasopis.setAutorPlaca(casopisDTO.getAutorPlaca());
+    NacinPlacanja np = null;
+
+    if(newCasopis == null){
+        newCasopis = new Casopis();
+        newCasopis.setNaziv(casopisDTO.getNaziv());
+        newCasopis.setIssn(casopisDTO.getIssn());
+    }
+    else{
+        np = nacinPlacanjaRepository.findByIdIfInCasopis(casopisDTO.getNacinPlacanjaId(),newCasopis.getId());
+    }
+
+    if(np == null){
+        np = nacinPlacanjaRepository.getOne(casopisDTO.getNacinPlacanjaId());
+        newCasopis.getNacinPlacanjaList().add(np);
+        np.getCasopisList().add(newCasopis);
+
+        nacinPlacanjaRepository.save(np);
+    }else{
+        throw new Exception();
+    }
 
     return casopisRepository.save(newCasopis);
 
@@ -38,7 +58,6 @@ public class InfoServiceImpl implements InfoService{
 
         updateCasopis.setNaziv(casopisDTO.getNaziv());
         updateCasopis.setIssn(casopisDTO.getIssn());
-        updateCasopis.setAutorPlaca(casopisDTO.getAutorPlaca());
 
         return casopisRepository.save(updateCasopis);
 

@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface CasopisRepository extends JpaRepository<Casopis, Long> {
 
     Casopis findOneById(Long id);
+    Casopis findOneByIssn(String issn);
 }

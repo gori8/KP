@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface InfoService {
 
-    public Casopis addCasopis(CasopisDTO casopisDTO);
+    public Casopis editCasopis(CasopisDTO casopisDTO) throws Exception;
     public Casopis updateCasopis(CasopisDTO casopisDTO);
     public List<Casopis> getAllCasopisi();
     public List<NacinPlacanjaDTO> getNacinePlacanjaZaCasopis(Long casopisId);

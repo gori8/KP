@@ -2,6 +2,8 @@ package com.example.userandpaymentinfo.dto;
 
 
 
+import com.example.userandpaymentinfo.model.NacinPlacanja;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,8 +12,15 @@ public class CasopisDTO {
     private Long id;
     private String naziv;
     private String issn;
-    private Boolean autorPlaca;
-    private Long glavniUrednik;
+    private Long nacinPlacanjaId;
+
+    public Long getNacinPlacanjaId() {
+        return nacinPlacanjaId;
+    }
+
+    public void setNacinPlacanjaId(Long nacinPlacanjaId) {
+        this.nacinPlacanjaId = nacinPlacanjaId;
+    }
 
     public Long getId() {
         return id;
@@ -37,24 +46,13 @@ public class CasopisDTO {
         this.issn = issn;
     }
 
-    public Boolean getAutorPlaca() {
-        return autorPlaca;
-    }
-
-    public void setAutorPlaca(Boolean autorPlaca) {
-        this.autorPlaca = autorPlaca;
-    }
-
-    public Long getGlavniUrednik() {
-        return glavniUrednik;
-    }
-
-    public void setGlavniUrednik(Long glavniUrednik) {
-        this.glavniUrednik = glavniUrednik;
-    }
-
-
 
     public CasopisDTO() {
+    }
+
+    public CasopisDTO(Long id, String naziv, String issn) {
+        this.id = id;
+        this.naziv = naziv;
+        this.issn = issn;
     }
 }
