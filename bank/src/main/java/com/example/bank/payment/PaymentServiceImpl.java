@@ -163,6 +163,6 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     private String generateRedirectUrl(String code) {
-        return String.format(PAYMENT_URL_F, properties.getUrl(), code);
+        return String.format(PAYMENT_URL_F, "banka", code);
     }
 }
