@@ -135,7 +135,7 @@ public class PaymentServiceImpl implements PaymentService {
             e.printStackTrace();
         }
 
-        return ret;
+        return "http://localhost:4300/banka/card" + ret;
     }
 
 
