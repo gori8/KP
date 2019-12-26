@@ -8,4 +8,5 @@ public interface PaymentService {
 
     List<Payment> findAll();
     PaymentResponse handleKpRequest(PaymentRequest kpRequestDto);
+    String useCardData(CardDataDto cardDataDto, String url);
 }

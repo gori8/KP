@@ -76,10 +76,45 @@ public class PaymentServiceImpl implements PaymentService {
         System.out.println(response.getBody());
 
 
+
         return null;
     }
 
+    @Override
+    public String useCardData(CardDataDto cardDataDto, String url) {
 
+        RestTemplate restTemplate = new RestTemplate();
+        String fooResourceUrl
+                = "http://localhost:8091/payment/" + url;
+
+        ObjectMapper mapper = new ObjectMapper();
+        MappingClassCard mc = new MappingClassCard();
+
+        mc.setPan(cardDataDto.getPan());
+        mc.setHolderName(cardDataDto.getHolderName());
+        mc.setSecurityCode(cardDataDto.getSecurityCode());
+        mc.setValidTo(cardDataDto.getValidTo());
+
+        String json="";
+
+        try {
+            json = mapper.writeValueAsString(mc);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        HttpEntity<String> entity = new HttpEntity<String>(json, headers);
+
+        ResponseEntity<String> response
+                = restTemplate.postForEntity(fooResourceUrl,entity,String.class);
+        System.out.println(response.getBody());
+
+
+        return null;
+    }
 
 
 }

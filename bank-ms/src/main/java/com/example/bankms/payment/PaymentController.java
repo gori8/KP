@@ -5,10 +5,9 @@ import com.example.bankms.account.AccountService;
 import com.example.bankms.account.AccountServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RestController
 @RequestMapping("/payment")
@@ -28,5 +27,10 @@ public class PaymentController {
     public PaymentResponse paymentRequest(@RequestBody PaymentRequest kpRequestDto) {
 
         return paymentService.handleKpRequest(kpRequestDto);
+    }
+
+    @RequestMapping(value = "/{url}", method = RequestMethod.POST)
+    public Map<String, String> useCardData(@RequestBody CardDataDto cardDataDto, @PathVariable String url) {
+        return Map.of("url", paymentService.useCardData(cardDataDto, url));
     }
 }
