@@ -7,5 +7,5 @@ import java.util.List;
 public interface PaymentService {
 
     List<Payment> findAll();
-    PaymentResponse handleKpRequest(PaymentRequest kpRequestDto);
+    String handleKpRequest(PaymentRequest kpRequestDto);
 }
