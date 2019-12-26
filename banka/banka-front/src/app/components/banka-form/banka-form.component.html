@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row ml-auto mr-auto mt-5">
+        <div class="col col-md-3"></div>
+        <div class="col col-md-6 mt-5">
+        
+            <!--FORM-->
+            <form class="form-card mt-3" #paymentForm="ngForm" ngNativeValidate (ngSubmit)="onSubmit(paymentForm)">
+                <!--IMAGE-->
+                <div class="form-group col">
+                    <img class="img-logo mt-2" src="/assets/img/credit-cards.svg"/>
+                </div>
+                
+                <!--HEADER-->
+                <div class="form-group col">
+                    <h2 class="mb-3 text-light">Plaćanje kreditnom karticom</h2>
+                </div>
+
+                <!--INPUTS-->
+                <div class="form-group col">       
+                    <label class="text-light" for="pan">Broj kreditne kartice: </label>
+                    <input name="pan" [(ngModel)]="formModel.pan" id="pan" type="text" class="form-control" pattern="[0-9]{16}" required/>
+                </div>
+                <div class="form-group col">       
+                    <label class="text-light" for="holderName">Ime vlasnika kartice: </label>
+                    <input name="holderName" [(ngModel)]="formModel.holderName" id="holderName" type="text" class="form-control" required/>
+                </div>
+                <div class="form-group col">       
+                    <label class="text-light" for="securityCode">CVC: </label>
+                    <input name="securityCode" [(ngModel)]="formModel.securityCode" id="securityCode" type="text" class="form-control" pattern="[0-9]{3}" required/>
+                </div>
+                <div class="form-group col">       
+                    <label class="text-light" for="validTo">Datum isteka kartice: </label>
+                    <input name="validTo" [(ngModel)]="formModel.validTo" id="validTo" type="date" class="form-control" required/>
+                </div>
+                
+                <!--RESET BUTTON-->
+                <div class="form-group col"> 
+                    <input class="btn btn-secondary" type="reset" value="Resetuj formu">
+                </div>
+                <!--SUBMIT BUTTON-->
+                <div class="form-group col">
+                    <button type="submit" class="btn btn-success mb-3" >Izvrši uplatu</button>
+                </div>
+            </form>
+        </div>
+        <div class="col col-md-3"></div>
+    </div>
+</div>    
+
+

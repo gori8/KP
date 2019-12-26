@@ -1,9 +1,4 @@
 {
-    "script":[
-        "https://www.paypalobjects.com/api/checkout.js",
-        "../../../json/fun.js"
-
-    ],
     "form":[
         {
             "id":"paypal-button",
@@ -153,7 +148,10 @@
             "col":0
         }
     ],
-    "button":"Završi",
+    "button":{
+        "name":"Završi",
+        "uri":""
+    },
     "header":"Visa card",
     "image":"assets/img/visa-card.png"
 }

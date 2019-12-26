@@ -13,7 +13,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/payment")
-//@CrossOrigin("http://localhost:3000")
+@CrossOrigin("*")
 public class PaymentController {
     private final Logger logger = LoggerFactory.getLogger(PaymentController.class);
 

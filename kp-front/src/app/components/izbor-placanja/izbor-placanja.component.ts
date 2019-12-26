@@ -19,7 +19,24 @@ export class IzborPlacanjaComponent implements OnInit {
   }
 
   submitPaymetMethod(){
-    this.router.navigate([`payment`]);
+
+    for(let np of this.naciniPlacanja){
+      if(np.value == this.selectedPaymentMethod){
+        this.endpoints.callSelectedMicroservice(np.url).subscribe(
+          res => {
+              console.log(res);
+              
+              window.location.href = `http://localhost:4300/${res}`;
+          },
+          err => {
+            console.log(err);
+            
+            alert("An error has occured while usgin url "+np.url);
+          }
+        )
+        break;
+      }
+    }
   }
 
   public getNacinePlacanjaZaCasopis(){
