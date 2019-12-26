@@ -125,7 +125,17 @@ public class PaymentServiceImpl implements PaymentService {
         System.out.println(response.getBody());
 
 
-        return null;
+        JSONObject actualObj=null;
+        String ret = "";
+
+        try {
+            actualObj = new JSONObject(response.getBody());
+            ret = actualObj.getString("url");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return ret;
     }
 
 

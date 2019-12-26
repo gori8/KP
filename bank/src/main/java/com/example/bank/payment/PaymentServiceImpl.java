@@ -19,7 +19,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 @Service
 public class PaymentServiceImpl implements PaymentService {
-    private static final String PAYMENT_URL_F = "%s/payment/%s";
+    private static final String PAYMENT_URL_F = "%s/card/%s";
 
     private final Logger LOGGER = LoggerFactory.getLogger(PaymentServiceImpl.class);
     public static final String NOT_FOUND = "notFound";
@@ -163,6 +163,6 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     private String generateRedirectUrl(String code) {
-        return String.format(PAYMENT_URL_F, "http://localhost:8092", code);
+        return String.format(PAYMENT_URL_F, "http://localhost:4300/banka", code);
     }
 }

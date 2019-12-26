@@ -24,9 +24,8 @@ export class IzborPlacanjaComponent implements OnInit {
       if(np.value == this.selectedPaymentMethod){
         this.endpoints.callSelectedMicroservice(np.url).subscribe(
           res => {
-              console.log(res);
-              
-              window.location.href = `http://localhost:4300/${res}`;
+              //console.log(res);
+              window.location.href = res;
           },
           err => {
             console.log(err);

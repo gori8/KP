@@ -30,7 +30,7 @@ public class PaymentController {
     }
 
     @RequestMapping(value = "/{url}", method = RequestMethod.POST)
-    public Map<String, String> useCardData(@RequestBody CardDataDto cardDataDto, @PathVariable String url) {
-        return Map.of("url", paymentService.useCardData(cardDataDto, url));
+    public ResponseEntity<String> useCardData(@RequestBody CardDataDto cardDataDto, @PathVariable String url) {
+        return new ResponseEntity<String>("\""+paymentService.useCardData(cardDataDto, url)+"\"", HttpStatus.OK);
     }
 }
