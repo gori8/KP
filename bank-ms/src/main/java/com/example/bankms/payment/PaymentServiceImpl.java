@@ -55,9 +55,9 @@ public class PaymentServiceImpl implements PaymentService {
 
         MappingClass mc = new MappingClass();
         mc.setAmount(kpRequestDto.getAmount());
-        mc.setErrorUrl("");
-        mc.setFailedUrl("");
-        mc.setSuccessUrl("");
+        mc.setErrorUrl("https://www.facebook.com/");
+        mc.setFailedUrl("https://github.com/");
+        mc.setSuccessUrl("https://www.youtube.com/");
         Client cl = clientRepository.findByCasopisId(kpRequestDto.getCasopisId());
         mc.setMerchantId(cl.getMerchantId());
 
@@ -88,7 +88,7 @@ public class PaymentServiceImpl implements PaymentService {
             e.printStackTrace();
         }
 
-        return ret;
+        return "http://localhost:4300/" + ret;
 
     }
 
@@ -135,7 +135,7 @@ public class PaymentServiceImpl implements PaymentService {
             e.printStackTrace();
         }
 
-        return "http://localhost:4300/banka/card" + ret;
+        return ret;
     }
 
 
