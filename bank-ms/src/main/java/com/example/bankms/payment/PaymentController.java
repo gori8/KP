@@ -8,7 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 @RestController
-@RequestMapping("/payment")
+@RequestMapping("/api/bankms")
 @CrossOrigin("*")
 public class PaymentController {
 
