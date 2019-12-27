@@ -24,17 +24,12 @@ public class Client {
     @Column(name = "merchantId", unique = false, nullable = false)
     private String merchantId;
 
-    @Column(name = "casopisId", unique = false, nullable = false)
-    private Long casopisId;
+    @Column(name = "casopisUuid", unique = false, nullable = false)
+    private String casopisUuid;
 
     @Size(max = 100)
     @Column(name = "merchantPassword", unique = false, nullable = false)
     private String merchantPassword;
-
-    @JsonIgnore
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "account_id", referencedColumnName = "id", unique = true)
-    private Account account;
 
     public Long getId() {
         return id;
@@ -44,12 +39,12 @@ public class Client {
         this.id = id;
     }
 
-    public Long getCasopisId() {
-        return casopisId;
+    public String getCasopisUuid() {
+        return casopisUuid;
     }
 
-    public void setCasopisId(Long casopisId) {
-        this.casopisId = casopisId;
+    public void setCasopisUuid(String casopisUuid) {
+        this.casopisUuid = casopisUuid;
     }
 
     public String getFirstName() {
@@ -82,14 +77,6 @@ public class Client {
 
     public void setMerchantPassword(String merchantPassword) {
         this.merchantPassword = merchantPassword;
-    }
-
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
     }
 
     public Client() {

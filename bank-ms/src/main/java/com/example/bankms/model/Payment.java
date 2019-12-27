@@ -17,14 +17,14 @@ public class Payment {
     @Column(name = "url", unique = false, nullable = false)
     private String url;
 
-    @Column(name = "casopisId", unique = false, nullable = false)
-    private Long casopisId;
+    @Column(name = "casopisUuid", unique = false, nullable = false)
+    private String casopisUuid;
 
     @Column(name = "placeno", unique = false, nullable = false)
     private Boolean placeno;
 
-    public Long getCasopisId() {
-        return casopisId;
+    public String getCasopisUuid() {
+        return casopisUuid;
     }
 
     public Boolean getPlaceno() {
@@ -35,8 +35,8 @@ public class Payment {
         this.placeno = placeno;
     }
 
-    public void setCasopisId(Long casopisId) {
-        this.casopisId = casopisId;
+    public void setCasopisUuid(String casopisUuid) {
+        this.casopisUuid = casopisUuid;
     }
 
     public Long getId() {

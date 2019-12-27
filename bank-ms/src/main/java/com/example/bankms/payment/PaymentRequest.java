@@ -4,15 +4,15 @@ import java.math.BigDecimal;
 
 public class PaymentRequest {
 
-    private Long casopisId;
+    private String casopisUuid;
     private BigDecimal amount;
 
-    public Long getCasopisId() {
-        return casopisId;
+    public String getCasopisUuid() {
+        return casopisUuid;
     }
 
-    public void setCasopisId(Long casopisId) {
-        this.casopisId = casopisId;
+    public void setCasopisUuid(String casopisUuid) {
+        this.casopisUuid = casopisUuid;
     }
 
     public BigDecimal getAmount() {

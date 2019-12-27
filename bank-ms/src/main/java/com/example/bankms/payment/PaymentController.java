@@ -1,8 +1,6 @@
 package com.example.bankms.payment;
 
 
-import com.example.bankms.account.AccountService;
-import com.example.bankms.account.AccountServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -16,11 +14,9 @@ public class PaymentController {
 
     private final PaymentService paymentService;
 
-    private final AccountService accountService;
 
-    public PaymentController(PaymentServiceImpl paymentService, AccountServiceImpl accountService) {
+    public PaymentController(PaymentServiceImpl paymentService) {
         this.paymentService = paymentService;
-        this.accountService = accountService;
     }
 
     @PostMapping

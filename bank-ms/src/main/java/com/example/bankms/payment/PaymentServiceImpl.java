@@ -58,7 +58,7 @@ public class PaymentServiceImpl implements PaymentService {
         mc.setErrorUrl("https://www.facebook.com/");
         mc.setFailedUrl("https://github.com/");
         mc.setSuccessUrl("https://www.youtube.com/");
-        Client cl = clientRepository.findByCasopisId(kpRequestDto.getCasopisId());
+        Client cl = clientRepository.findByCasopisUuid(kpRequestDto.getCasopisUuid());
         mc.setMerchantId(cl.getMerchantId());
 
         String json="";
@@ -89,7 +89,7 @@ public class PaymentServiceImpl implements PaymentService {
             e.printStackTrace();
         }
 
-        payment.setCasopisId(kpRequestDto.getCasopisId());
+        payment.setCasopisUuid(kpRequestDto.getCasopisUuid());
         payment.setAmount(kpRequestDto.getAmount());
         payment.setPlaceno(false);
 
