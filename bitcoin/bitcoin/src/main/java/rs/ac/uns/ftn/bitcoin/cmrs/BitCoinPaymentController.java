@@ -17,6 +17,10 @@ public class BitCoinPaymentController {
     @Autowired
     BitCoinPaymentService bitCoinPaymentService;
 
+    @RequestMapping(method = RequestMethod.GET)
+    public ResponseEntity<String> getFrontAppUrl(){
+        return new ResponseEntity<>("\"http://localhost:4400\"",HttpStatus.OK);
+    }
 
     @RequestMapping(value = "/prepare",method = RequestMethod.POST)
     public ResponseEntity<String> postPreparePayment(@RequestBody PreparePaymentRequest request) {
