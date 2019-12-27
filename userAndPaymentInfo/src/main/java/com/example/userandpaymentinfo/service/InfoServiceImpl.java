@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 
 @Service
@@ -24,7 +25,8 @@ public class InfoServiceImpl implements InfoService{
     @Override
     public Casopis editCasopis(CasopisDTO casopisDTO) throws Exception {
 
-    Casopis newCasopis = casopisRepository.findOneByIssn(casopisDTO.getIssn());
+    Casopis newCasopis = null;
+    newCasopis = casopisRepository.findOneByIssn(casopisDTO.getIssn());
 
     NacinPlacanja np = null;
 
@@ -32,6 +34,7 @@ public class InfoServiceImpl implements InfoService{
         newCasopis = new Casopis();
         newCasopis.setNaziv(casopisDTO.getNaziv());
         newCasopis.setIssn(casopisDTO.getIssn());
+        newCasopis.setUuid(UUID.randomUUID().toString());
     }
     else{
         np = nacinPlacanjaRepository.findByIdIfInCasopis(casopisDTO.getNacinPlacanjaId(),newCasopis.getId());

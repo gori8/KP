@@ -21,6 +21,9 @@ public class Casopis {
     @Column(name = "issn", unique = true, nullable = false)
     private String issn;
 
+    @Column(name = "uuid", unique = true, nullable = false)
+    private String uuid;
+
     @ManyToMany
     @JsonIgnore
     @JoinTable(
@@ -35,6 +38,14 @@ public class Casopis {
 
     public void setNacinPlacanjaList(List<NacinPlacanja> nacinPlacanjaList) {
         this.nacinPlacanjaList = nacinPlacanjaList;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
     public Long getId() {
