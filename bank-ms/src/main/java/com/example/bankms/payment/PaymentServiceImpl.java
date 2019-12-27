@@ -16,6 +16,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Service
@@ -58,7 +59,7 @@ public class PaymentServiceImpl implements PaymentService {
         mc.setErrorUrl("https://www.facebook.com/");
         mc.setFailedUrl("https://github.com/");
         mc.setSuccessUrl("https://www.youtube.com/");
-        Client cl = clientRepository.findByCasopisUuid(kpRequestDto.getCasopisUuid());
+        Client cl = clientRepository.findByCasopisUuid(UUID.fromString(kpRequestDto.getCasopisUuid()));
         mc.setMerchantId(cl.getMerchantId());
 
         String json="";
@@ -89,7 +90,7 @@ public class PaymentServiceImpl implements PaymentService {
             e.printStackTrace();
         }
 
-        payment.setCasopisUuid(kpRequestDto.getCasopisUuid());
+        payment.setCasopisUuid(UUID.fromString(kpRequestDto.getCasopisUuid()));
         payment.setAmount(kpRequestDto.getAmount());
         payment.setPlaceno(false);
 

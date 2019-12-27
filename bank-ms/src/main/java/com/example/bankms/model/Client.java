@@ -1,10 +1,12 @@
 package com.example.bankms.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 
 import javax.validation.constraints.Size;
+import java.util.UUID;
 
 
 @Entity
@@ -25,7 +27,8 @@ public class Client {
     private String merchantId;
 
     @Column(name = "casopisUuid", unique = false, nullable = false)
-    private String casopisUuid;
+    @Type(type="org.hibernate.type.UUIDCharType")
+    private UUID casopisUuid;
 
     @Size(max = 100)
     @Column(name = "merchantPassword", unique = false, nullable = false)
@@ -39,11 +42,11 @@ public class Client {
         this.id = id;
     }
 
-    public String getCasopisUuid() {
+    public UUID getCasopisUuid() {
         return casopisUuid;
     }
 
-    public void setCasopisUuid(String casopisUuid) {
+    public void setCasopisUuid(UUID casopisUuid) {
         this.casopisUuid = casopisUuid;
     }
 

@@ -1,8 +1,11 @@
 package com.example.bankms.model;
 
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.UUID;
 
 @Entity
 public class Payment {
@@ -18,12 +21,13 @@ public class Payment {
     private String url;
 
     @Column(name = "casopisUuid", unique = false, nullable = false)
-    private String casopisUuid;
+    @Type(type="org.hibernate.type.UUIDCharType")
+    private UUID casopisUuid;
 
     @Column(name = "placeno", unique = false, nullable = false)
     private Boolean placeno;
 
-    public String getCasopisUuid() {
+    public UUID getCasopisUuid() {
         return casopisUuid;
     }
 
@@ -35,7 +39,7 @@ public class Payment {
         this.placeno = placeno;
     }
 
-    public void setCasopisUuid(String casopisUuid) {
+    public void setCasopisUuid(UUID casopisUuid) {
         this.casopisUuid = casopisUuid;
     }
 
