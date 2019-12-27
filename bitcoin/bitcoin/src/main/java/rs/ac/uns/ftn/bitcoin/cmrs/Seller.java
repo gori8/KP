@@ -18,7 +18,7 @@ public class Seller {
 
     private String token;
 
-    @org.hibernate.annotations.Type(type="org.hibernate.type.UUIDBinaryType")
+    @org.hibernate.annotations.Type(type="org.hibernate.type.UUIDCharType")
     private UUID uuid;
 
 

@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 const BASE_URL_USER_AND_PAYMENT = "http://localhost:8090/api";
+const BASE_MICROSERVICE_URL = "http://localhost:8093";
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +18,9 @@ export class EndpointsService {
     return this.http.get(`${BASE_URL_USER_AND_PAYMENT}/payment/${casopisId}`);
   }
 
-  callSelectedMicroservice(url): Observable<any>{
+  callSelectedMicroservice(url,uuid): Observable<any>{
     
-    return this.http.post(`http://localhost:8092${url}`,{casopisId:1,amount:2000}, {
+    return this.http.post(`${BASE_MICROSERVICE_URL}${url}`,{casopisId:uuid,amount:2000}, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'responseType': 'text'

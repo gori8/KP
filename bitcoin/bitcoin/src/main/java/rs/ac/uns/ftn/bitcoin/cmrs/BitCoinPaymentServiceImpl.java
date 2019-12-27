@@ -19,8 +19,8 @@ public class BitCoinPaymentServiceImpl implements BitCoinPaymentService{
 
     private static final String TEST_ORDER = "Testing order";
     private static final String BITCOIN = "BTC";
-    private static final String SUCCESS_URL = "http://localhost:8091/api/bitcoin/payment/success/";
-    private static final String CANCEL_URL = "http://localhost:8091/api/bitcoin/payment/cancel/";
+    private static final String SUCCESS_URL = "http://localhost:8093/api/bitcoin/payment/success/";
+    private static final String CANCEL_URL = "http://localhost:8093/api/bitcoin/payment/cancel/";
 
 
 

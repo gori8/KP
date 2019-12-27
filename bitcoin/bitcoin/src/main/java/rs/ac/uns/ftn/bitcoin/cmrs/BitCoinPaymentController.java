@@ -12,12 +12,13 @@ import rs.ac.uns.ftn.bitcoin.utils.BitCoinPaymentUtils;
 
 @RestController
 @RequestMapping("/api/bitcoin")
+@CrossOrigin(origins = "*")
 public class BitCoinPaymentController {
 
     @Autowired
     BitCoinPaymentService bitCoinPaymentService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<String> getFrontAppUrl(){
         return new ResponseEntity<>("\"http://localhost:4400\"",HttpStatus.OK);
     }
