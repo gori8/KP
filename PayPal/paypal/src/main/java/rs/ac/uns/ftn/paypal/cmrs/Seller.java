@@ -12,6 +12,7 @@ public class Seller {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @org.hibernate.annotations.Type(type="org.hibernate.type.UUIDBinaryType")
     @Column(name = "casopisID", unique = true, nullable = false)
     private Long casopisID;
 

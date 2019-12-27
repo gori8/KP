@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.UUID;
 
 @Entity
 @Data
@@ -15,8 +16,10 @@ public class Seller {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String email;
-
     private String token;
+
+    @org.hibernate.annotations.Type(type="org.hibernate.type.UUIDBinaryType")
+    private UUID uuid;
+
 
 }

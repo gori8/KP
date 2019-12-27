@@ -17,6 +17,7 @@ import rs.ac.uns.ftn.paypal.utils.MyPaymentUtils;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class PaymentServiceImpl implements PaymentService{
@@ -39,7 +40,7 @@ public class PaymentServiceImpl implements PaymentService{
     @Override
     public CreatePaymentResponse createPayment(CreatePaymentRequest request) {
 
-        Seller seller = sellerRepository.findByCasopisID(request.getCasopisID());
+        Seller seller = sellerRepository.findByCasopisID(UUID.fromString(request.getCasopisID()));
 
         MyPayment myPayment=new MyPayment();
 
@@ -86,7 +87,6 @@ public class PaymentServiceImpl implements PaymentService{
 
     @Override
     public String executePayment(ExecutePaymentRequest request) {
-        System.out.println("USAAOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
         String paymentId = request.getPaymentID();
         String payerId = request.getPayerID();
         MyPayment myPayment = myPaymentRepository.findByPaymentId(paymentId);

@@ -6,6 +6,8 @@ import rs.ac.uns.ftn.bitcoin.dto.CoinGateRequest;
 import rs.ac.uns.ftn.bitcoin.dto.CoinGateResponse;
 import rs.ac.uns.ftn.bitcoin.dto.PreparePaymentRequest;
 
+import java.util.UUID;
+
 @Service
 public class BitCoinPaymentServiceImpl implements BitCoinPaymentService{
 
@@ -27,7 +29,7 @@ public class BitCoinPaymentServiceImpl implements BitCoinPaymentService{
 
         CoinGateRequest coinGateRequest = new CoinGateRequest();
 
-        Seller seller = sellerRepository.findByEmail(request.getEmail());
+        Seller seller = sellerRepository.findByUuid(UUID.fromString(request.getUuid()));
 
         BitCoinPayment savedPayment = bitCoinPaymentRepository.save(new BitCoinPayment());
 

@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class CreatePaymentRequest {
 
-    private Long casopisID;
+    private String casopisID;
 
     private String email;
 
