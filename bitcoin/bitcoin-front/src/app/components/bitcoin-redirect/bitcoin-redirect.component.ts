@@ -13,10 +13,7 @@ export class BitcoinRedirectComponent implements OnInit {
 
   ngOnInit() {
 
-    var transaction = this.activatedRoute.snapshot.paramMap.get('transaction');
-    var response = this.activatedRoute.snapshot.paramMap.get('response');
-
-    this.endpoints.callMicroservice(transaction,response).subscribe(
+    this.endpoints.callMicroservice().subscribe(
       res => {
           window.location.href = res;
       },

@@ -19,7 +19,7 @@ public class BitCoinPaymentController {
 
 
     @RequestMapping(value = "/prepare",method = RequestMethod.POST)
-    public ResponseEntity<PaymentUrlDTO> postPreparePayment(@RequestBody PreparePaymentRequest request) {
+    public ResponseEntity<String> postPreparePayment(@RequestBody PreparePaymentRequest request) {
 
         PaymentUrlDTO paymentUrlDto = new PaymentUrlDTO();
 
@@ -34,7 +34,7 @@ public class BitCoinPaymentController {
 
         paymentUrlDto.setPaymentUrl(paymentUrl);
 
-        return new ResponseEntity<>(paymentUrlDto, HttpStatus.OK);
+        return new ResponseEntity<>("\""+paymentUrlDto.getPaymentUrl()+"\"",HttpStatus.OK);
     }
 
     @GetMapping("/payment/cancel/{paymentId}")

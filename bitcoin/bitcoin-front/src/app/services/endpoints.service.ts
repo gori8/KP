@@ -11,12 +11,7 @@ export class EndpointsService {
 
   constructor(private http: HttpClient) { }
 
-  callMicroservice(transaction, response): Observable<any>{
-    return this.http.post(`${BASE_URL}/bitcoin/${transaction}/${response}`, {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'responseType': 'text'
-      })
-    });
+  callMicroservice(): Observable<any>{
+    return this.http.get(`${BASE_URL}/api/bitcoin/prepare`);
   }
 }

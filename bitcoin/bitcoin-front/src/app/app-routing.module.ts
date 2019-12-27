@@ -4,7 +4,7 @@ import { BitcoinRedirectComponent } from './components/bitcoin-redirect/bitcoin-
 
 
 const routes: Routes = [
-  { path:"bitcoin/:transaction/:response", component: BitcoinRedirectComponent }
+  { path:"bitcoin", component: BitcoinRedirectComponent }
 ];
 
 @NgModule({
