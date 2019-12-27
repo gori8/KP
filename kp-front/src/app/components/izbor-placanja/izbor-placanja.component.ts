@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { EndpointsService } from 'src/app/services/endpoints.service';
 
 @Component({
@@ -9,13 +9,19 @@ import { EndpointsService } from 'src/app/services/endpoints.service';
 })
 export class IzborPlacanjaComponent implements OnInit {
 
-  constructor(private router: Router, private endpoints: EndpointsService) { }
+  constructor(private router: Router, private endpoints: EndpointsService,private activatedRoute: ActivatedRoute) { }
 
   naciniPlacanja = [];
   selectedPaymentMethod = null;
+  uuid="";
 
   ngOnInit() {
+
+    this.uuid = this.activatedRoute.snapshot.paramMap.get('uuid');
+    console.log(this.uuid);
+
     this.getNacinePlacanjaZaCasopis();
+    
   }
 
   submitPaymetMethod(){
@@ -39,7 +45,7 @@ export class IzborPlacanjaComponent implements OnInit {
   }
 
   public getNacinePlacanjaZaCasopis(){
-    this.endpoints.getNacinePlacanjaZaCasopis(1).subscribe(
+    this.endpoints.getNacinePlacanjaZaCasopis(this.uuid).subscribe(
       res => {
         this.naciniPlacanja = res;
         this.selectedPaymentMethod = res[0].value;

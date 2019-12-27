@@ -2,6 +2,8 @@ package com.example.userandpaymentinfo.controller;
 
 import com.example.userandpaymentinfo.dto.CasopisDTO;
 import com.example.userandpaymentinfo.dto.NacinPlacanjaDTO;
+import com.example.userandpaymentinfo.dto.RedirectUrlDTO;
+import com.example.userandpaymentinfo.dto.UrlDTO;
 import com.example.userandpaymentinfo.model.Casopis;
 import com.example.userandpaymentinfo.service.InfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,9 +44,15 @@ public class InfoController {
     }
 
     @RequestMapping(value = "/payment/{casopisId}", method = RequestMethod.GET)
-    public ResponseEntity<List<NacinPlacanjaDTO>> getNacinePlacanjaZaCasopis(@PathVariable("casopisId") Long casopisId) {
+    public ResponseEntity<List<NacinPlacanjaDTO>> getNacinePlacanjaZaCasopis(@PathVariable("casopisId") String casopisId) {
 
         return new ResponseEntity<List<NacinPlacanjaDTO>>(infoService.getNacinePlacanjaZaCasopis(casopisId), HttpStatus.OK);
 
+    }
+
+    @RequestMapping(value = "/url", method = RequestMethod.POST)
+    public ResponseEntity<UrlDTO> getUrl(@RequestBody RedirectUrlDTO redirectUrlDTO) {
+
+        return new ResponseEntity<>(infoService.getUrl(redirectUrlDTO),HttpStatus.OK);
     }
 }

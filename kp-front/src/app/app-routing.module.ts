@@ -5,7 +5,7 @@ import { IzborPlacanjaComponent } from './components/izbor-placanja/izbor-placan
 
 const routes: Routes = [
   { path: 'payment', component: FormaPlacanjaComponent },
-  { path: '', component: IzborPlacanjaComponent }
+  { path: ':uuid', component: IzborPlacanjaComponent }
 ];
 
 @NgModule({

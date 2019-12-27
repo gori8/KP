@@ -16,6 +16,8 @@ import java.util.UUID;
 @Service
 public class InfoServiceImpl implements InfoService{
 
+    private static final String frontUrl = "http://localhost:4200";
+
     @Autowired
     CasopisRepository casopisRepository;
 
@@ -34,7 +36,7 @@ public class InfoServiceImpl implements InfoService{
         newCasopis = new Casopis();
         newCasopis.setNaziv(casopisDTO.getNaziv());
         newCasopis.setIssn(casopisDTO.getIssn());
-        newCasopis.setUuid(UUID.randomUUID().toString());
+        newCasopis.setUuid(UUID.randomUUID());
     }
     else{
         np = nacinPlacanjaRepository.findByIdIfInCasopis(casopisDTO.getNacinPlacanjaId(),newCasopis.getId());
@@ -72,8 +74,9 @@ public class InfoServiceImpl implements InfoService{
     }
 
     @Override
-    public List<NacinPlacanjaDTO> getNacinePlacanjaZaCasopis(Long casopisId){
-        Casopis casopis = casopisRepository.findOneById(casopisId);
+    public List<NacinPlacanjaDTO> getNacinePlacanjaZaCasopis(String casopisId){
+        UUID uuid = UUID.fromString(casopisId);
+        Casopis casopis = casopisRepository.findOneByUuid(uuid);
 
         List<NacinPlacanjaDTO> ret = new ArrayList<NacinPlacanjaDTO>();
 
@@ -83,5 +86,20 @@ public class InfoServiceImpl implements InfoService{
         }
 
         return ret;
+    }
+
+    @Override
+    public UrlDTO getUrl(RedirectUrlDTO redirectUrlDTO){
+        UUID uuid = UUID.fromString(redirectUrlDTO.getId());
+        System.out.println(redirectUrlDTO.getId());
+        Casopis c = casopisRepository.findOneByUuid(uuid);
+
+        c.setRedirectUrl(redirectUrlDTO.getRedirectUrl());
+
+        casopisRepository.save(c);
+
+        UrlDTO url = new UrlDTO(frontUrl);
+
+        return url;
     }
 }

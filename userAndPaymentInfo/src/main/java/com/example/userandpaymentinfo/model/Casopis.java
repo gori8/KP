@@ -2,10 +2,12 @@ package com.example.userandpaymentinfo.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 public class Casopis {
@@ -22,7 +24,11 @@ public class Casopis {
     private String issn;
 
     @Column(name = "uuid", unique = true, nullable = false)
-    private String uuid;
+    @Type(type="org.hibernate.type.UUIDCharType")
+    private UUID uuid;
+
+    @Column(name = "redirectUrl", unique = false, nullable = false)
+    private String redirectUrl;
 
     @ManyToMany
     @JsonIgnore
@@ -40,11 +46,11 @@ public class Casopis {
         this.nacinPlacanjaList = nacinPlacanjaList;
     }
 
-    public String getUuid() {
+    public UUID getUuid() {
         return uuid;
     }
 
-    public void setUuid(String uuid) {
+    public void setUuid(UUID uuid) {
         this.uuid = uuid;
     }
 
@@ -70,6 +76,14 @@ public class Casopis {
 
     public void setIssn(String issn) {
         this.issn = issn;
+    }
+
+    public String getRedirectUrl() {
+        return redirectUrl;
+    }
+
+    public void setRedirectUrl(String redirectUrl) {
+        this.redirectUrl = redirectUrl;
     }
 
     public Casopis() {
