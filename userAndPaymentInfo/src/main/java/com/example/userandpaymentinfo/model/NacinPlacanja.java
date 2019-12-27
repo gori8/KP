@@ -1,10 +1,13 @@
 package com.example.userandpaymentinfo.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Data
 public class NacinPlacanja {
 
     @Id
@@ -22,38 +25,4 @@ public class NacinPlacanja {
     private
     List<Casopis> casopisList = new ArrayList<>();
 
-    public List<Casopis> getCasopisList() {
-        return casopisList;
-    }
-
-    public void setCasopisList(List<Casopis> casopisList) {
-        this.casopisList = casopisList;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNacinPlacanja() {
-        return nacinPlacanja;
-    }
-
-    public void setNacinPlacanja(String nacinPlacanja) {
-        this.nacinPlacanja = nacinPlacanja;
-    }
-
-    public NacinPlacanja() {
-    }
 }

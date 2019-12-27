@@ -1,6 +1,7 @@
 package com.example.bankms.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -10,6 +11,7 @@ import java.util.UUID;
 
 
 @Entity
+@Data
 public class Client {
 
     @Id
@@ -27,61 +29,12 @@ public class Client {
     private String merchantId;
 
     @Column(name = "casopisUuid", unique = false, nullable = false)
-    @Type(type="org.hibernate.type.UUIDCharType")
+    @Type(type="org.hibernate.type.UUIDBinaryType")
     private UUID casopisUuid;
 
     @Size(max = 100)
     @Column(name = "merchantPassword", unique = false, nullable = false)
     private String merchantPassword;
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public UUID getCasopisUuid() {
-        return casopisUuid;
-    }
-
-    public void setCasopisUuid(UUID casopisUuid) {
-        this.casopisUuid = casopisUuid;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getMerchantId() {
-        return merchantId;
-    }
-
-    public void setMerchantId(String merchantId) {
-        this.merchantId = merchantId;
-    }
-
-    public String getMerchantPassword() {
-        return merchantPassword;
-    }
-
-    public void setMerchantPassword(String merchantPassword) {
-        this.merchantPassword = merchantPassword;
-    }
-
-    public Client() {
-    }
 }

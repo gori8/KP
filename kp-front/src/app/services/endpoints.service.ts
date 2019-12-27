@@ -15,12 +15,12 @@ export class EndpointsService {
 
   getNacinePlacanjaZaCasopis(casopisId): Observable<any>{
 
-    return this.http.get(`${BASE_URL_USER_AND_PAYMENT}/payment/${casopisId}`);
+    return this.http.get(`${BASE_URL_USER_AND_PAYMENT}/method/${casopisId}`);
   }
 
   callSelectedMicroservice(url,uuid): Observable<any>{
     
-    return this.http.post(`${BASE_MICROSERVICE_URL}${url}`,{casopisId:uuid,amount:2000}, {
+    return this.http.post(`${url}`,{casopisId:uuid}, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'responseType': 'text'

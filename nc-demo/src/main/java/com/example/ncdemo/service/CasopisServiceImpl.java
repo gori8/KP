@@ -87,6 +87,6 @@ public class CasopisServiceImpl implements CasopisService {
             e.printStackTrace();
         }
 
-        return ret+"/"+uapId;
+        return ret;
     }
 }

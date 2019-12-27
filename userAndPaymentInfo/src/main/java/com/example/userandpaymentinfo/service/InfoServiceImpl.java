@@ -98,8 +98,18 @@ public class InfoServiceImpl implements InfoService{
 
         casopisRepository.save(c);
 
-        UrlDTO url = new UrlDTO(frontUrl);
+        UrlDTO url = new UrlDTO(frontUrl+"/"+uuid.toString());
 
         return url;
+    }
+
+    @Override
+    public AmountAndUrlDTO getAmountAndUrl(String id) {
+        UUID uuid = UUID.fromString(id);
+        Casopis casopis=casopisRepository.findOneByUuid(uuid);
+        AmountAndUrlDTO dto=new AmountAndUrlDTO();
+        dto.setAmount(casopis.getAmount());
+        dto.setRedirectUrl(casopis.getRedirectUrl());
+        return dto;
     }
 }
