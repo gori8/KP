@@ -65,9 +65,9 @@ public class PaymentServiceImpl implements PaymentService {
 
         MappingClass mc = new MappingClass();
         mc.setAmount(resp.getBody().getAmount());
-        mc.setErrorUrl(resp.getBody().getRedirectUrl() + "/error");
-        mc.setFailedUrl(resp.getBody().getRedirectUrl() + "/failed");
-        mc.setSuccessUrl(resp.getBody().getRedirectUrl() + "/success");
+        mc.setErrorUrl(resp.getBody().getRedirectUrl() + "/false");
+        mc.setFailedUrl(resp.getBody().getRedirectUrl() + "/false");
+        mc.setSuccessUrl(resp.getBody().getRedirectUrl() + "/true");
         Client cl = clientRepository.findByCasopisUuid(UUID.fromString(kpRequestDto.getCasopisUuid()));
         mc.setMerchantId(cl.getMerchantId());
 

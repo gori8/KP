@@ -50,13 +50,20 @@ public class PaymentServiceImpl implements PaymentService {
         Payment payment = new Payment();
         Payment savedPayment = new Payment();
 
+        LOGGER.info("Processing request from Bank Microservice");
+
         ExternalBankPaymentResponse response = new ExternalBankPaymentResponse();
 
+        LOGGER.info("Finding client that will receive payment");
         Client client = clientService.findByMerchantId(kpRequestDto.getMerchantId());
 
         if (client == null) {
+            LOGGER.error("Client with provided merchant id does not exists");
             response.setUrl(NOT_FOUND);
         } else {
+            LOGGER.info("Client with provided merchant id was found");
+
+            LOGGER.info("Creating payment");
             payment.setUrl(generateTimeStamp());
             payment.setAmount(kpRequestDto.getAmount());
             payment.setMerchant(client.getAccount());
@@ -65,10 +72,15 @@ public class PaymentServiceImpl implements PaymentService {
             payment.setErrorUrl(kpRequestDto.getErrorUrl());
 
             savedPayment = paymentRepository.save(payment);
+            LOGGER.info("Payment saved in bank database");
         }
+
+        LOGGER.info("Generating response for Bank Microservice with payment url");
 
         response.setUrl(generateRedirectUrl(savedPayment.getUrl()));
         response.setId(savedPayment.getId());
+
+        LOGGER.info("Generated response: " + response.toString());
 
         return response;
     }
@@ -81,13 +93,18 @@ public class PaymentServiceImpl implements PaymentService {
 
         List<String> list = new ArrayList<String>();
 
+        LOGGER.info("Creating transaction");
+
         Transaction transaction = new Transaction();
         String redirectUrl;
 
+        LOGGER.info("Finding payment on provided url..");
         Payment payment = paymentRepository.findByUrl(url);
         System.out.println(payment.getAmount().toString() + payment.getMerchant() + payment.getUrl() + payment.getId() + payment.getSuccessUrl());
 
         if (payment == null) {
+            LOGGER.error("Could not find payment on provided url: " + url);
+            LOGGER.info("Returning error-url to Bank Microservice");
             transaction.setValid(false);
             transaction.setAmount(BigDecimal.valueOf(0));
             transactionService.save(transaction);
@@ -97,11 +114,16 @@ public class PaymentServiceImpl implements PaymentService {
             return list;
         }
 
+        LOGGER.info("Finding Card by provided pan number..");
+
         Card card = cardService.findByPan(cardDataDto.getPan());
         System.out.println("PAN:    " + cardDataDto.getPan());
         System.out.println("CARD:   " + card);
 
         if (card == null) {
+            LOGGER.error("Could not find card by provided pan number: " + cardDataDto.getPan());
+            LOGGER.info("Returning error-url to Bank Microservice");
+
             transaction.setValid(false);
             transaction.setAmount(BigDecimal.valueOf(0));
             transaction.setRecipient(payment.getMerchant());
@@ -113,6 +135,8 @@ public class PaymentServiceImpl implements PaymentService {
         }
 
         if (!card.getSecurityCode().toString().equals(cardDataDto.getSecurityCode().toString())) {
+            LOGGER.error("Provided Security Code do not match for provided Card.");
+            LOGGER.info("Returning error-url to Bank Microservice");
             transaction.setValid(false);
             transaction.setAmount(BigDecimal.valueOf(0));
             transaction.setRecipient(payment.getMerchant());
@@ -124,6 +148,8 @@ public class PaymentServiceImpl implements PaymentService {
         }
 
         if(!card.getValidTo().toString().equals(cardDataDto.getValidTo().toString())) {
+            LOGGER.error("Provided Valid to Date do not match for provided Card.");
+            LOGGER.info("Returning error-url to Bank Microservice");
             transaction.setValid(false);
             transaction.setAmount(BigDecimal.valueOf(0));
             transaction.setRecipient(payment.getMerchant());
@@ -134,6 +160,8 @@ public class PaymentServiceImpl implements PaymentService {
             return list;
         }
 
+        LOGGER.info("Provided Card Data is valid.");
+
         transaction.setRecipient(payment.getMerchant());
         transaction.setPayer(card.getAccount());
         transaction.setAmount(payment.getAmount());
@@ -141,11 +169,14 @@ public class PaymentServiceImpl implements PaymentService {
         Account merchant = payment.getMerchant();
         Account account = card.getAccount();
 
+        LOGGER.info("Checking if there is enough foundings for payment..");
         if (account.getAmount().compareTo(payment.getAmount()) < 0) {
+            LOGGER.error("There is not enough money on Card.");
             transaction.setValid(false);
             redirectUrl = payment.getFailedUrl();
 
         } else {
+            LOGGER.info("Payment can be executed");
             redirectUrl = payment.getSuccessUrl();
 
             account.setAmount(account.getAmount().subtract(payment.getAmount()));
@@ -157,6 +188,7 @@ public class PaymentServiceImpl implements PaymentService {
             transaction.setValid(true);
         }
         transactionService.save(transaction);
+        LOGGER.info("Transaction is saved in Bank's Database.");
 
         list.add(redirectUrl);
         list.add("true");
