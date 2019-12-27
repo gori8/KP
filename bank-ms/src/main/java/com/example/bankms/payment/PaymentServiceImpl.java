@@ -42,6 +42,15 @@ public class PaymentServiceImpl implements PaymentService {
     @Override
     public String handleKpRequest(PaymentRequest kpRequestDto) {
 
+
+        RestTemplate restTemplate1 = new RestTemplate();
+        String fooResourceUrl1
+                = "http://localhost:8090/api/amountandurl/" + kpRequestDto.getCasopisUuid();
+
+        ResponseEntity<AmountAndUrlDTO> resp
+                = restTemplate1.getForEntity(fooResourceUrl1, AmountAndUrlDTO.class);
+
+
         Payment payment = new Payment();
         Payment savedPayment;
 
@@ -55,10 +64,10 @@ public class PaymentServiceImpl implements PaymentService {
         ObjectMapper mapper = new ObjectMapper();
 
         MappingClass mc = new MappingClass();
-        mc.setAmount(kpRequestDto.getAmount());
-        mc.setErrorUrl("https://www.facebook.com/");
-        mc.setFailedUrl("https://github.com/");
-        mc.setSuccessUrl("https://www.youtube.com/");
+        mc.setAmount(resp.getBody().getAmount());
+        mc.setErrorUrl(resp.getBody().getRedirectUrl() + "/error");
+        mc.setFailedUrl(resp.getBody().getRedirectUrl() + "/failed");
+        mc.setSuccessUrl(resp.getBody().getRedirectUrl() + "/success");
         Client cl = clientRepository.findByCasopisUuid(UUID.fromString(kpRequestDto.getCasopisUuid()));
         mc.setMerchantId(cl.getMerchantId());
 
@@ -91,7 +100,7 @@ public class PaymentServiceImpl implements PaymentService {
         }
 
         payment.setCasopisUuid(UUID.fromString(kpRequestDto.getCasopisUuid()));
-        payment.setAmount(kpRequestDto.getAmount());
+        payment.setAmount(resp.getBody().getAmount());
         payment.setPlaceno(false);
 
         savedPayment = paymentRepository.save(payment);
