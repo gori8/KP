@@ -166,7 +166,16 @@ public class PaymentServiceImpl implements PaymentService {
 
         savedPayment = paymentRepository.save(payment);
 
-        return ret;
+
+        RestTemplate restTemplatePost = new RestTemplate();
+        String postResourceUrl = ret;
+        JSONObject obj=null;
+
+        ResponseEntity<String> frontUrl
+                = restTemplatePost.postForEntity(postResourceUrl,obj,String.class);
+
+
+        return frontUrl.getBody();
     }
 
 
