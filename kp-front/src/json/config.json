@@ -1,9 +1,5 @@
 {
-    "script":[
-        "https://www.paypal.com/sdk/js?client-id=sb",
-        "../../../json/fun.js"
 
-    ],
     "form":[
         {
             "id":"paypal-button",
@@ -153,7 +149,10 @@
             "col":0
         }
     ],
-    "button":"Završi",
+    "button":{
+        "name":"Završi",
+        "uri":""
+    },
     "header":"Visa card",
     "image":"assets/img/visa-card.png"
 }

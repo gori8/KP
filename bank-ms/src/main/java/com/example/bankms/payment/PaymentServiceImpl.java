@@ -8,10 +8,13 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.configurationprocessor.json.JSONException;
+import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -36,7 +39,7 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     @Override
-    public PaymentResponse handleKpRequest(PaymentRequest kpRequestDto) {
+    public String handleKpRequest(PaymentRequest kpRequestDto) {
 
         Payment payment = new Payment();
         Payment savedPayment;
@@ -52,11 +55,57 @@ public class PaymentServiceImpl implements PaymentService {
 
         MappingClass mc = new MappingClass();
         mc.setAmount(kpRequestDto.getAmount());
-        mc.setErrorUrl("");
-        mc.setFailedUrl("");
-        mc.setSuccessUrl("");
+        mc.setErrorUrl("https://www.facebook.com/");
+        mc.setFailedUrl("https://github.com/");
+        mc.setSuccessUrl("https://www.youtube.com/");
         Client cl = clientRepository.findByCasopisId(kpRequestDto.getCasopisId());
         mc.setMerchantId(cl.getMerchantId());
+
+        String json="";
+
+        try {
+            json = mapper.writeValueAsString(mc);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        HttpEntity<String> entity = new HttpEntity<String>(json, headers);
+
+        ResponseEntity<String> response
+                = restTemplate.postForEntity(fooResourceUrl,entity,String.class);
+        //System.out.println(response.getBody());
+
+        JSONObject actualObj=null;
+        String ret = "";
+
+        try {
+            actualObj = new JSONObject(response.getBody());
+            ret = actualObj.getString("url");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return "http://localhost:4300/" + ret;
+
+    }
+
+    @Override
+    public String useCardData(CardDataDto cardDataDto, String url) {
+
+        RestTemplate restTemplate = new RestTemplate();
+        String fooResourceUrl
+                = "http://localhost:8091/payment/" + url;
+
+        ObjectMapper mapper = new ObjectMapper();
+        MappingClassCard mc = new MappingClassCard();
+
+        mc.setPan(cardDataDto.getPan());
+        mc.setHolderName(cardDataDto.getHolderName());
+        mc.setSecurityCode(cardDataDto.getSecurityCode());
+        mc.setValidTo(cardDataDto.getValidTo());
 
         String json="";
 
@@ -76,10 +125,18 @@ public class PaymentServiceImpl implements PaymentService {
         System.out.println(response.getBody());
 
 
-        return null;
+        JSONObject actualObj=null;
+        String ret = "";
+
+        try {
+            actualObj = new JSONObject(response.getBody());
+            ret = actualObj.getString("url");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return ret;
     }
-
-
 
 
 }

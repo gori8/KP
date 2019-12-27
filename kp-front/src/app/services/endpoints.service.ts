@@ -16,4 +16,14 @@ export class EndpointsService {
 
     return this.http.get(`${BASE_URL_USER_AND_PAYMENT}/payment/${casopisId}`);
   }
+
+  callSelectedMicroservice(url): Observable<any>{
+    
+    return this.http.post(`http://localhost:8092${url}`,{casopisId:1,amount:2000}, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'responseType': 'text'
+      })
+    });
+  }
 }

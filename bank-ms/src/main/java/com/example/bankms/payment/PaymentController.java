@@ -3,16 +3,15 @@ package com.example.bankms.payment;
 
 import com.example.bankms.account.AccountService;
 import com.example.bankms.account.AccountServiceImpl;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 @RestController
 @RequestMapping("/payment")
-//@CrossOrigin("http://localhost:3000")
+@CrossOrigin("*")
 public class PaymentController {
 
     private final PaymentService paymentService;
@@ -25,8 +24,13 @@ public class PaymentController {
     }
 
     @PostMapping
-    public PaymentResponse paymentRequest(@RequestBody PaymentRequest kpRequestDto) {
+    public ResponseEntity<String> paymentRequest(@RequestBody PaymentRequest kpRequestDto) {
 
-        return paymentService.handleKpRequest(kpRequestDto);
+        return new ResponseEntity<String>("\""+paymentService.handleKpRequest(kpRequestDto)+"\"", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/{url}", method = RequestMethod.POST)
+    public ResponseEntity<String> useCardData(@RequestBody CardDataDto cardDataDto, @PathVariable String url) {
+        return new ResponseEntity<String>("\""+paymentService.useCardData(cardDataDto, url)+"\"", HttpStatus.OK);
     }
 }

@@ -75,7 +75,7 @@ public class InfoServiceImpl implements InfoService{
         List<NacinPlacanjaDTO> ret = new ArrayList<NacinPlacanjaDTO>();
 
         for (NacinPlacanja np:casopis.getNacinPlacanjaList()) {
-            NacinPlacanjaDTO npDTO = new NacinPlacanjaDTO(np.getId(),np.getNacinPlacanja());
+            NacinPlacanjaDTO npDTO = new NacinPlacanjaDTO(np.getId(),np.getNacinPlacanja(),np.getUrl());
             ret.add(npDTO);
         }
 

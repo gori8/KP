@@ -56,8 +56,8 @@ export class FormaPlacanjaComponent implements OnInit {
       });
     }
 
-    if(this.forma.button !== undefined){
-      this.button = this.forma.button;
+    if(this.forma.button !== undefined && this.forma.button.name !== undefined){
+      this.button = this.forma.button.name;
     }
 
     if(this.forma.header !== undefined){

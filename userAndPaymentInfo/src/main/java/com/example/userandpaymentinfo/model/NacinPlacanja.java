@@ -15,6 +15,9 @@ public class NacinPlacanja {
     @Column(name = "nacinPlacanja", unique = true, nullable = false)
     private String nacinPlacanja;
 
+    @Column(name = "url", unique = true, nullable = false)
+    private String url;
+
     @ManyToMany(mappedBy = "nacinPlacanjaList")
     private
     List<Casopis> casopisList = new ArrayList<>();
@@ -25,6 +28,14 @@ public class NacinPlacanja {
 
     public void setCasopisList(List<Casopis> casopisList) {
         this.casopisList = casopisList;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public Long getId() {
