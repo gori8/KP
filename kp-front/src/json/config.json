@@ -1,6 +1,6 @@
 {
     "script":[
-        "https://www.paypalobjects.com/api/checkout.js",
+        "https://www.paypal.com/sdk/js?client-id=sb",
         "../../../json/fun.js"
 
     ],
