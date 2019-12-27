@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -41,6 +42,7 @@ public class PaymentController {
 
     @RequestMapping(value = "/{url}", method = RequestMethod.POST)
     public Map<String, String> postCardData(@RequestBody CardDataDto cardDataDto, @PathVariable String url) {
-        return Map.of("url", paymentService.submitCardData(cardDataDto, url));
+        List<String> lista = paymentService.submitCardData(cardDataDto, url);
+        return Map.of("url", lista.iterator().next(), "placeno", lista.get(1));
     }
 }

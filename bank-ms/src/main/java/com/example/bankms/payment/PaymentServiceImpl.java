@@ -84,9 +84,16 @@ public class PaymentServiceImpl implements PaymentService {
         try {
             actualObj = new JSONObject(response.getBody());
             ret = actualObj.getString("url");
+            payment.setUrl(ret);
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        payment.setCasopisId(kpRequestDto.getCasopisId());
+        payment.setAmount(kpRequestDto.getAmount());
+        payment.setPlaceno(false);
+
+        savedPayment = paymentRepository.save(payment);
 
         return "http://localhost:4300/" + ret;
 
@@ -127,13 +134,27 @@ public class PaymentServiceImpl implements PaymentService {
 
         JSONObject actualObj=null;
         String ret = "";
+        String ret1 = "";
+
 
         try {
             actualObj = new JSONObject(response.getBody());
             ret = actualObj.getString("url");
+            ret1 = actualObj.getString("placeno");
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        Payment payment = paymentRepository.findOneByUrl("banka/card/" + url);
+        Payment savedPayment = new Payment();
+
+        if(ret1.equals("true")) {
+            payment.setPlaceno(true);
+        } else {
+            payment.setPlaceno(false);
+        }
+
+        savedPayment = paymentRepository.save(payment);
 
         return ret;
     }

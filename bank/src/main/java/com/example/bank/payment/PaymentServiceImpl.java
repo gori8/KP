@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -73,10 +74,12 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     @Override
-    public String submitCardData(CardDataDto cardDataDto, String url) {
+    public List<String> submitCardData(CardDataDto cardDataDto, String url) {
 
         System.out.println(cardDataDto.getPan() + cardDataDto.getHolderName() + cardDataDto.getSecurityCode() + cardDataDto.getValidTo());
         System.out.println(url);
+
+        List<String> list = new ArrayList<String>();
 
         Transaction transaction = new Transaction();
         String redirectUrl;
@@ -89,7 +92,9 @@ public class PaymentServiceImpl implements PaymentService {
             transaction.setAmount(BigDecimal.valueOf(0));
             transactionService.save(transaction);
 
-            return payment.getErrorUrl();
+            list.add(payment.getErrorUrl());
+            list.add("false");
+            return list;
         }
 
         Card card = cardService.findByPan(cardDataDto.getPan());
@@ -101,7 +106,10 @@ public class PaymentServiceImpl implements PaymentService {
             transaction.setAmount(BigDecimal.valueOf(0));
             transaction.setRecipient(payment.getMerchant());
             transactionService.save(transaction);
-            return payment.getErrorUrl();
+
+            list.add(payment.getErrorUrl());
+            list.add("false");
+            return list;
         }
 
         if (!card.getSecurityCode().toString().equals(cardDataDto.getSecurityCode().toString())) {
@@ -109,7 +117,10 @@ public class PaymentServiceImpl implements PaymentService {
             transaction.setAmount(BigDecimal.valueOf(0));
             transaction.setRecipient(payment.getMerchant());
             transactionService.save(transaction);
-            return payment.getErrorUrl();
+
+            list.add(payment.getErrorUrl());
+            list.add("false");
+            return list;
         }
 
         if(!card.getValidTo().toString().equals(cardDataDto.getValidTo().toString())) {
@@ -117,7 +128,10 @@ public class PaymentServiceImpl implements PaymentService {
             transaction.setAmount(BigDecimal.valueOf(0));
             transaction.setRecipient(payment.getMerchant());
             transactionService.save(transaction);
-            return payment.getErrorUrl();
+
+            list.add(payment.getErrorUrl());
+            list.add("false");
+            return list;
         }
 
         transaction.setRecipient(payment.getMerchant());
@@ -144,8 +158,9 @@ public class PaymentServiceImpl implements PaymentService {
         }
         transactionService.save(transaction);
 
-
-        return redirectUrl;
+        list.add(redirectUrl);
+        list.add("true");
+        return list;
     }
 
     @Override

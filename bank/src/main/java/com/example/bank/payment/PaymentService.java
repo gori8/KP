@@ -13,6 +13,6 @@ public interface PaymentService {
 
     ExternalBankPaymentResponse handleKpRequest(ExternalBankPaymentRequest kpRequestDto);
 
-    String submitCardData(CardDataDto cardDataDto, String url);
+    List<String> submitCardData(CardDataDto cardDataDto, String url);
 
 }

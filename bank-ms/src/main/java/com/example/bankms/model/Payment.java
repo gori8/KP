@@ -20,8 +20,19 @@ public class Payment {
     @Column(name = "casopisId", unique = false, nullable = false)
     private Long casopisId;
 
+    @Column(name = "placeno", unique = false, nullable = false)
+    private Boolean placeno;
+
     public Long getCasopisId() {
         return casopisId;
+    }
+
+    public Boolean getPlaceno() {
+        return placeno;
+    }
+
+    public void setPlaceno(Boolean placeno) {
+        this.placeno = placeno;
     }
 
     public void setCasopisId(Long casopisId) {
