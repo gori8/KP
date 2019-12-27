@@ -21,5 +21,4 @@ public class Seller {
     @org.hibernate.annotations.Type(type="org.hibernate.type.UUIDCharType")
     private UUID uuid;
 
-
 }

@@ -29,7 +29,7 @@ public class Client {
     private String merchantId;
 
     @Column(name = "casopisUuid", unique = false, nullable = false)
-    @Type(type="org.hibernate.type.UUIDBinaryType")
+    @Type(type="org.hibernate.type.UUIDCharType")
     private UUID casopisUuid;
 
     @Size(max = 100)

@@ -10,9 +10,6 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class PreparePaymentRequest {
 
-    private String uuid;
+    private String casopisUuid;
 
-    private BigDecimal amount;
-
-    private String redirectUrl;
 }

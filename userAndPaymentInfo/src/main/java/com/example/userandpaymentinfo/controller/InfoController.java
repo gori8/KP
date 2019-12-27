@@ -40,7 +40,7 @@ public class InfoController {
 
     }
 
-    @RequestMapping(value = "/methods/{casopisId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/method/{casopisId}", method = RequestMethod.GET)
     public ResponseEntity<List<NacinPlacanjaDTO>> getNacinePlacanjaZaCasopis(@PathVariable("casopisId") String casopisId) {
 
         return new ResponseEntity<List<NacinPlacanjaDTO>>(infoService.getNacinePlacanjaZaCasopis(casopisId), HttpStatus.OK);

@@ -27,7 +27,7 @@ public class Casopis {
     private String issn;
 
     @Column(name = "uuid", unique = true, nullable = false)
-    @Type(type="org.hibernate.type.UUIDBinaryType")
+    @Type(type="org.hibernate.type.UUIDCharType")
     private UUID uuid;
 
     @Column(name = "redirectUrl", unique = false, nullable = false)

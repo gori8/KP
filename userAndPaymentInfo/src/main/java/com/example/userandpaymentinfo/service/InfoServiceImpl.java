@@ -93,7 +93,7 @@ public class InfoServiceImpl implements InfoService{
         UUID uuid = UUID.fromString(redirectUrlDTO.getId());
         System.out.println(redirectUrlDTO.getId());
         Casopis c = casopisRepository.findOneByUuid(uuid);
-
+        System.out.println(redirectUrlDTO.getId());
         c.setRedirectUrl(redirectUrlDTO.getRedirectUrl());
 
         casopisRepository.save(c);
