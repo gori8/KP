@@ -6,7 +6,7 @@ import { TransactionCompleteComponent } from './components/transaction-complete/
 
 const routes: Routes = [
   { path:'', component: KupovinaComponent },
-  { path:'casopis/:uuid/:success', component: TransactionCompleteComponent }
+  { path:'casopis/:uuid', component: TransactionCompleteComponent }
 ];
 
 @NgModule({
