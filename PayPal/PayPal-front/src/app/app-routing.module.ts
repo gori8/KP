@@ -4,7 +4,7 @@ import { PaypalComponentComponent } from './paypal-component/paypal-component.co
 
 
 const routes: Routes = [
-  { path: '', component: PaypalComponentComponent }
+  { path: ':uuid', component: PaypalComponentComponent }
 ];
 
 

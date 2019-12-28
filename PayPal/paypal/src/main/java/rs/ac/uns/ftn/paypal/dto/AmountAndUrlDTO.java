@@ -11,8 +11,7 @@ import java.math.BigDecimal;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreatePaymentRequest {
-
-    private String casopisUuid;
-
+public class AmountAndUrlDTO {
+    BigDecimal amount;
+    String redirectUrl;
 }
