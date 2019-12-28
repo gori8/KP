@@ -23,7 +23,7 @@ public class NCController {
     }
 
     @RequestMapping(value = "/casopis/{id}", method = RequestMethod.GET)
-    public ResponseEntity<CasopisDTO> getCasopis(@PathVariable Long id) {
+    public ResponseEntity<CasopisDTO> getCasopis(@PathVariable String id) {
         return new ResponseEntity<CasopisDTO>(casopisService.getCasopis(id), HttpStatus.OK);
     }
 
@@ -32,5 +32,11 @@ public class NCController {
 
         String url = casopisService.getRedirectUrl(uapId);
         return new ResponseEntity<>("\""+url+"\"",HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/casopis/{uuid}/{success}", method = RequestMethod.POST)
+    public ResponseEntity<String> changePayed(@PathVariable("uuid")String uuid, @PathVariable("success")Boolean success) {
+
+        return new ResponseEntity<>(casopisService.changePayed(uuid,success),HttpStatus.OK);
     }
 }
