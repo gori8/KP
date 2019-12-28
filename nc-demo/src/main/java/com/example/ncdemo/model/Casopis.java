@@ -18,7 +18,7 @@ public class Casopis {
     private String naziv;
 
     @Column(name = "userAndPaymentId", unique = true, nullable = false)
-    @Type(type="org.hibernate.type.UUIDBinaryType")
+    @Type(type="org.hibernate.type.UUIDCharType")
     private UUID userAndPaymentId;
 
     @Column(name = "placen", unique = false, nullable = false)

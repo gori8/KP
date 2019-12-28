@@ -37,6 +37,8 @@ public class InfoServiceImpl implements InfoService{
         newCasopis.setNaziv(casopisDTO.getNaziv());
         newCasopis.setIssn(casopisDTO.getIssn());
         newCasopis.setUuid(UUID.randomUUID());
+        newCasopis.setRedirectUrl(casopisDTO.getRedirectUrl());
+        newCasopis.setAmount(casopisDTO.getAmount());
     }
     else{
         np = nacinPlacanjaRepository.findByIdIfInCasopis(casopisDTO.getNacinPlacanjaId(),newCasopis.getId());
@@ -63,6 +65,8 @@ public class InfoServiceImpl implements InfoService{
 
         updateCasopis.setNaziv(casopisDTO.getNaziv());
         updateCasopis.setIssn(casopisDTO.getIssn());
+        updateCasopis.setAmount(casopisDTO.getAmount());
+        updateCasopis.setRedirectUrl(casopisDTO.getRedirectUrl());
 
         return casopisRepository.save(updateCasopis);
 
@@ -93,7 +97,7 @@ public class InfoServiceImpl implements InfoService{
         UUID uuid = UUID.fromString(redirectUrlDTO.getId());
         System.out.println(redirectUrlDTO.getId());
         Casopis c = casopisRepository.findOneByUuid(uuid);
-
+        System.out.println(redirectUrlDTO.getId());
         c.setRedirectUrl(redirectUrlDTO.getRedirectUrl());
 
         casopisRepository.save(c);

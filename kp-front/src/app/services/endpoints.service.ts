@@ -20,7 +20,7 @@ export class EndpointsService {
 
   callSelectedMicroservice(url,uuid): Observable<any>{
     
-    return this.http.post(`${url}`,{casopisId:uuid}, {
+    return this.http.post(`${url}`,{casopisUuid:uuid}, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'responseType': 'text'

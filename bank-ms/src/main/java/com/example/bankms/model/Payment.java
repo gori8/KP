@@ -23,7 +23,7 @@ public class Payment {
     private String url;
 
     @Column(name = "casopisUuid", unique = false, nullable = false)
-    @Type(type="org.hibernate.type.UUIDBinaryType")
+    @Type(type="org.hibernate.type.UUIDCharType")
     private UUID casopisUuid;
 
     @Column(name = "placeno", unique = false, nullable = false)

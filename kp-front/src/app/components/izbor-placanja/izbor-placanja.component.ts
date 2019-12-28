@@ -48,7 +48,9 @@ export class IzborPlacanjaComponent implements OnInit {
     this.endpoints.getNacinePlacanjaZaCasopis(this.uuid).subscribe(
       res => {
         this.naciniPlacanja = res;
-        this.selectedPaymentMethod = res[0].value;
+        if(res[0] !== undefined){
+          this.selectedPaymentMethod = res[0].value;
+        }
       },
       err => {
         alert("An error has occured while getting payment methods")
