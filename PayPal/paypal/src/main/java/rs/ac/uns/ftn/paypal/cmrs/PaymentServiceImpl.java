@@ -7,7 +7,12 @@ import com.paypal.base.rest.PayPalRESTException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 import rs.ac.uns.ftn.paypal.dto.*;
 import rs.ac.uns.ftn.paypal.utils.MyPaymentUtils;
 
@@ -128,10 +133,10 @@ public class PaymentServiceImpl implements PaymentService{
         } catch (PayPalRESTException e) {
             myPayment.setSuccessful(false);
             myPaymentRepository.save(myPayment);
-            return "\""+myPayment.getRedirectUrl()+"/false\"";
+            return notifyNc(myPayment.getRedirectUrl()+"/false");
         }
 
-        return "\""+myPayment.getRedirectUrl()+"/true\"";
+        return notifyNc(myPayment.getRedirectUrl()+"/true");
     }
 
     @Override
@@ -143,7 +148,16 @@ public class PaymentServiceImpl implements PaymentService{
     }
 
 
+    @Autowired
+    RestTemplate restTemplate;
 
+    private String notifyNc(String url){
+        HttpHeaders headers=new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity entity=new HttpEntity("",headers);
+        ResponseEntity<String> redirectUrl=restTemplate.postForEntity(url,entity,String.class);
+        return "\""+redirectUrl.getBody()+"\"";
+    }
 
 
 }
