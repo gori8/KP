@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --port 4200 --ssl true --ssl-cert /home/antolovic/KP_SEP/KP/ssl/front.crt --ssl-key /home/antolovic/KP_SEP/KP/ssl/front.key",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-const BASE_URL_USER_AND_PAYMENT = "http://localhost:8090/api";
-const BASE_MICROSERVICE_URL = "http://localhost:8093";
+const BASE_URL_USER_AND_PAYMENT = "https://localhost:8771/userandpayment/api";
+const BASE_MICROSERVICE_URL = "https://localhost:8093";
 
 @Injectable({
   providedIn: 'root'
