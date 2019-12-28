@@ -100,15 +100,15 @@ public class CasopisServiceImpl implements CasopisService {
             Casopis casopis = casopisRepository.findOneByUuid(realUuid);
 
             if (casopis == null) {
-                return ncFront + uuid + "/false";
+                return ncFront + uuid;
             }
 
             casopis.setPlacen(true);
             casopisRepository.save(casopis);
 
-            return ncFront + uuid + "/true";
+            return ncFront + uuid;
         }else{
-            return ncFront + uuid + "/false";
+            return ncFront + uuid;
         }
     }
 }
