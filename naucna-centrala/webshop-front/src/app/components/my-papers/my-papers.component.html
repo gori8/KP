@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row mt-5">
+    <h2 class="text-primary mb-5">Moji časopisi:</h2>
+  </div>
+  <div class="row ml-auto mr-auto">
+    <div class="col col-md-3 mb-5 mr-5" *ngFor="let c of casopisi">
+      <div class="card bg-dark text-light" style="height: 30rem;width: 18rem;">
+        <div class="text-center">
+          <img src="assets/img/paper.png" class="card-img-top mt-4"  style="height: 8rem;width:8rem">
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">{{c.naziv}}</h3>
+          <table class="table text-light">
+            <tr>
+              <td>ISSN: </td>
+              <td>{{c.issn}}</td>
+            </tr>
+            <tr>
+              <td>Članarina: </td>
+              <td>{{c.clanarina}} $</td>
+            </tr>
+            <tr>
+              <td>Ko plaća članarinu: </td>
+              <td>{{c.komeSeNaplacuje}}</td>
+            </tr>
+            <tr>
+              <td>Aktiviran/Vidljiv: </td>
+              <td *ngIf="c.aktiviran==true">Da</td>
+              <td *ngIf="c.aktiviran==false">Ne</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

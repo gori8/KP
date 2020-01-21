@@ -1,0 +1,58 @@
+<div class="darkbackground"> 
+  <div class="container">
+      <div class="row ml-auto mr-auto">
+          <div class="col col-md-3"></div>
+          <div class="col col-md-6 mt-3">
+          
+              <!--FORM-->
+              <form #newPaperForm="ngForm" ngNativeValidate (ngSubmit)="onSubmit(newPaperForm)">
+                <h2 class="mb-3 text-light mt-3">Dodavanje urednika i recenzenata</h2>
+                  
+                <div class="card mt-5">
+                  <div class="card-header">
+                    Urednici
+                  </div>
+                  <div class="card-body">
+                    <button class="btn btn-success mb-3 mr-1" type="button" (click)="addUrednik()"><i class="fa fa-plus"></i></button>
+                    <button *ngIf="urednici.length > 0" class="btn btn-danger mb-3" type="button" (click)="removeUrednik()"><i class="fa fa-minus"></i></button>
+                    <button *ngIf="urednici.length == 0" class="btn btn-danger mb-3" type="button" disabled><i class="fa fa-minus"></i></button>
+                    <div class="form-group" *ngFor="let u of urednici; let i = index">
+                      <label class="text-dark">Urednik {{i+1}}</label>
+                      <select name="urednik{{i}}" [(ngModel)]="body.urednici[i]" class="form-control" required>
+                        <option *ngFor="let item of uredniciList" value="{{item}}">
+                          {{item}}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card mt-3">
+                  <div class="card-header">
+                    Recenzenti
+                  </div>
+                  <div class="card-body">
+                    <button class="btn btn-success mb-3 mr-1" type="button" (click)="addRecenzent()"><i class="fa fa-plus"></i></button>
+                    <button *ngIf="recenzenti.length > 2" class="btn btn-danger mb-3" type="button" (click)="removeRecenzent()"><i class="fa fa-minus"></i></button>
+                    <button *ngIf="recenzenti.length == 2" class="btn btn-danger mb-3" type="button" disabled><i class="fa fa-minus"></i></button>
+                    <div class="form-group" *ngFor="let r of recenzenti; let i = index">
+                      <label class="text-dark">Recenzent {{i+1}}</label>
+                      <select name="recenzent{{i}}" [(ngModel)]="body.recenzenti[i]" class="form-control" required>
+                        <option *ngFor="let item of recenzentiList" value="{{item}}">
+                          {{item}}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <!--BUTTON-->
+                <button type="submit" [hidden]="hidden" class="btn btn-primary mt-3 mb-4" >Potvrdi</button>
+                <div [hidden]="!hidden" class="lds-roller mt-3"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+              </form>
+
+          </div>
+          <div class="col col-md-3"></div>
+      </div>
+  </div>    
+</div>

@@ -26,7 +26,7 @@ export class PaypalComponentComponent implements OnInit {
       payment: function(data, actions) {
         console.log(uuid);
         // 2. Make a request to your server
-        return fetch('http://localhost:8094/api/paypal',{
+        return fetch('http://192.168.43.161:8771/paypal/api/paypal',{
           method:'post',
           body:JSON.stringify({
             casopisUuid:uuid,
@@ -53,7 +53,7 @@ export class PaypalComponentComponent implements OnInit {
       // 1. Add an onAuthorize callback
       onAuthorize: function(data, actions) {
         // 2. Make a request to your server
-        return fetch('http://localhost:8094/api/paypal/execute',{ 
+        return fetch('http://192.168.43.161:8771/paypal/api/paypal/execute',{ 
           method:'post',
           body:JSON.stringify({
               paymentID: data.paymentID,

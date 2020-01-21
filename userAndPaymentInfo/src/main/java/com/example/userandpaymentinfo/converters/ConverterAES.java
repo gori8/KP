@@ -13,7 +13,7 @@ import java.nio.ByteBuffer;
 import java.security.*;
 import java.security.cert.CertificateException;
 
-public class BrojRacunaConverter implements AttributeConverter<String, String> {
+public class ConverterAES implements AttributeConverter<String, String> {
 
     @Override
     public String convertToDatabaseColumn(String attribute) {

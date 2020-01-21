@@ -1,0 +1,84 @@
+<div class="darkbackground"> 
+  <div class="container">
+      <div class="row ml-auto mr-auto">
+          <div class="col col-md-3"></div>
+          <div class="col col-md-6 mt-3">
+          
+              <!--FORM-->
+              <form #regForm="ngForm" ngNativeValidate (ngSubmit)="onSubmit(regForm)">
+                  <h2 class="mb-3 text-light mt-3">Registracija</h2>
+                  
+                  <div class="form-group">
+                      <label class="text-light" for="ime">Ime</label>
+                      <input name="ime" [(ngModel)]="formModel[0].fieldValue" id="ime" type="text" class="form-control" required/>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label class="text-light" for="prezime">Prezime</label>
+                    <input name="prezime" [(ngModel)]="formModel[1].fieldValue" id="prezime" type="text" class="form-control" required/>
+                  </div>
+              
+                  <div class="form-group">
+                    <label class="text-light" for="grad">Grad</label>
+                    <input name="grad" [(ngModel)]="formModel[2].fieldValue" id="grad" type="text" class="form-control" required/>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label class="text-light" for="drzava">Drzava</label>
+                    <input name="drzava" [(ngModel)]="formModel[3].fieldValue" id="drzava" type="text" class="form-control" required/>
+                  </div>
+                
+                  <div class="form-group">
+                    <label class="text-light" for="titula">Titula</label>
+                    <input name="titula" [(ngModel)]="formModel[4].fieldValue" id="titula" type="text" class="form-control"/>
+                  </div>
+              
+                  <div class="form-group">
+                    <label class="text-light" for="email">Email</label>
+                    <input name="email" [(ngModel)]="formModel[5].fieldValue" id="email" type="email" class="form-control" required/>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="text-light" for="username">Korisničko ime</label>
+                    <input name="username" [(ngModel)]="formModel[6].fieldValue" id="username" type="text" class="form-control" required/>
+                </div>
+                
+                <div class="form-group">
+                  <label class="text-light" for="password">Lozinka</label>
+                  <input name="password" [(ngModel)]="formModel[7].fieldValue" id="password" type="password" class="form-control" required/>
+                </div>
+            
+                <div class="form-group">
+                  <label class="text-light" for="recenzent">Registrujem se kao recenzent</label>
+                  <input name="recenzent" [(ngModel)]="formModel[8].fieldValue" id="recenzent" type="checkbox" class="form-control"/>
+                </div>
+
+                <div class="card">
+                  <div class="card-header">
+                    Naučne oblasti
+                  </div>
+                  <div class="card-body">
+                    <button class="btn btn-success mb-3 mr-1" type="button" (click)="addOblast()"><i class="fa fa-plus"></i></button>
+                    <button *ngIf="oblasti.length > 1" class="btn btn-danger mb-3" type="button" (click)="removeOblast()"><i class="fa fa-minus"></i></button>
+                    <button *ngIf="oblasti.length == 1" class="btn btn-danger mb-3" type="button" disabled><i class="fa fa-minus"></i></button>
+                    <div class="form-group" *ngFor="let o of oblasti; let i = index">
+                      <label class="text-dark" for="recenzent">{{o}}</label>
+                      <select name="naucnaOblast{{i}}" [(ngModel)]="formModel[i+9].fieldValue" class="form-control" required>
+                        <option *ngFor="let item of listaOblasti" value="{{item.id}}">
+                          {{item.naziv}}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <!--BUTTON-->
+                <button type="submit" [hidden]="hidden" class="btn btn-primary mt-3 mb-4" >Potvrdi</button>
+                <div [hidden]="!hidden" class="lds-roller mt-3"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+              </form>
+
+          </div>
+          <div class="col col-md-3"></div>
+      </div>
+  </div>    
+</div>

@@ -1,7 +1,7 @@
 package com.example.userandpaymentinfo.controller;
 
 import com.example.userandpaymentinfo.dto.*;
-import com.example.userandpaymentinfo.model.Casopis;
+import com.example.userandpaymentinfo.model.Item;
 import com.example.userandpaymentinfo.service.InfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,23 +20,23 @@ public class InfoController {
     InfoService infoService;
 
     @RequestMapping(value = "/journal", method = RequestMethod.GET)
-    public ResponseEntity<List<Casopis>> getAllCasopisi() {
+    public ResponseEntity<List<Item>> getAllCasopisi() {
 
-        return new ResponseEntity<List<Casopis>>(infoService.getAllCasopisi(), HttpStatus.OK);
+        return new ResponseEntity<List<Item>>(infoService.getAllCasopisi(), HttpStatus.OK);
 
     }
 
     @RequestMapping(value = "/journal", method = RequestMethod.POST)
-    public ResponseEntity<Casopis> editCasopis(@RequestBody CasopisDTO casopisDTO) throws Exception {
+    public ResponseEntity<Item> editCasopis(@RequestBody CasopisDTO casopisDTO) throws Exception {
 
-        return new ResponseEntity<Casopis>(infoService.editCasopis(casopisDTO), HttpStatus.OK);
+        return new ResponseEntity<Item>(infoService.editCasopis(casopisDTO), HttpStatus.OK);
 
     }
 
     @RequestMapping(value = "/journal/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Casopis> updateCasopis(@RequestBody CasopisDTO casopisDTO, @PathVariable("id") Long id) {
+    public ResponseEntity<Item> updateCasopis(@RequestBody CasopisDTO casopisDTO, @PathVariable("id") Long id) {
 
-        return new ResponseEntity<Casopis>(infoService.updateCasopis(casopisDTO), HttpStatus.OK);
+        return new ResponseEntity<Item>(infoService.updateCasopis(casopisDTO), HttpStatus.OK);
 
     }
 
@@ -56,5 +56,11 @@ public class InfoController {
     @RequestMapping(value = "/amountandurl/{id}", method = RequestMethod.GET)
     public ResponseEntity<AmountAndUrlDTO> getUrl(@PathVariable("id") String id) {
         return new ResponseEntity<>(infoService.getAmountAndUrl(id),HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/links", method = RequestMethod.POST)
+    public ResponseEntity<ReturnLinksDTO> createLinks(@RequestBody CreateLinksDTO dto) {
+
+        return new ResponseEntity<>(infoService.createLinks(dto),HttpStatus.OK);
     }
 }
