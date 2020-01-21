@@ -4,11 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import rs.ac.uns.ftn.bitcoin.dto.CoinGateRequest;
-import rs.ac.uns.ftn.bitcoin.dto.CoinGateResponse;
-import rs.ac.uns.ftn.bitcoin.dto.PaymentUrlDTO;
-import rs.ac.uns.ftn.bitcoin.dto.PreparePaymentRequest;
+import rs.ac.uns.ftn.bitcoin.dto.*;
 import rs.ac.uns.ftn.bitcoin.utils.BitCoinPaymentUtils;
+
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/bitcoin")
@@ -39,6 +38,11 @@ public class BitCoinPaymentController {
 
     @GetMapping("/payment/cancel/{paymentId}")
     public ResponseEntity<?> getPaymentCanceled(@PathVariable Long paymentId) {
+        UUID sellerUuid=bitCoinPaymentService.getSellerUUID(paymentId);
+
+        AmountAndUrlDTO amountAndUrlDTO=bitCoinPaymentService.getAmountAndRedirectUrl(sellerUuid.toString());
+
+        String url = bitCoinPaymentService.notifyNc(amountAndUrlDTO.getRedirectUrl()+"/false");
 
         BitCoinPayment payment = bitCoinPaymentService.getById(paymentId);
 
@@ -57,6 +61,12 @@ public class BitCoinPaymentController {
 
     @GetMapping("/payment/success/{paymentId}")
     public ResponseEntity<?> getPaymentSuccess(@PathVariable Long paymentId) {
+
+        UUID sellerUuid=bitCoinPaymentService.getSellerUUID(paymentId);
+
+        AmountAndUrlDTO amountAndUrlDTO=bitCoinPaymentService.getAmountAndRedirectUrl(sellerUuid.toString());
+
+        String url = bitCoinPaymentService.notifyNc(amountAndUrlDTO.getRedirectUrl()+"/true");
 
         BitCoinPayment payment = bitCoinPaymentService.getById(paymentId);
 

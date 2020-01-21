@@ -13,8 +13,15 @@ import rs.ac.uns.ftn.paypal.dto.ExecutePaymentRequest;
 @CrossOrigin("*")
 public class PaymentController {
 
+    private static final String FRONTAPP_URL="http://localhost:4400/";
+
     @Autowired
     PaymentService paymentService;
+
+    @RequestMapping(value = "/getUrl", method = RequestMethod.POST)
+    public String getUrl(@RequestBody CreatePaymentRequest id)  {
+        return "\""+FRONTAPP_URL+id.getCasopisUuid()+"\"";
+    }
 
     @PostMapping
     public CreatePaymentResponse create(@RequestBody CreatePaymentRequest request) {
@@ -26,6 +33,12 @@ public class PaymentController {
     public ResponseEntity<String> create(@RequestBody ExecutePaymentRequest request) {
         System.out.println(request.getPayerID());
         return new ResponseEntity<String>(paymentService.executePayment(request), HttpStatus.OK);
+    }
+
+    @GetMapping("/cancel/{id}")
+    public String cancelPayment(@PathVariable("id") Long id)  {
+        String redirectUrl = paymentService.cancelPayment(id);
+        return redirectUrl;
     }
 
 

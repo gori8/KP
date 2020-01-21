@@ -1,7 +1,13 @@
 package rs.ac.uns.ftn.bitcoin.cmrs;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+import rs.ac.uns.ftn.bitcoin.dto.AmountAndUrlDTO;
 import rs.ac.uns.ftn.bitcoin.dto.CoinGateRequest;
 import rs.ac.uns.ftn.bitcoin.dto.CoinGateResponse;
 import rs.ac.uns.ftn.bitcoin.dto.PreparePaymentRequest;
@@ -21,21 +27,26 @@ public class BitCoinPaymentServiceImpl implements BitCoinPaymentService{
     private static final String BITCOIN = "BTC";
     private static final String SUCCESS_URL = "http://localhost:8093/api/bitcoin/payment/success/";
     private static final String CANCEL_URL = "http://localhost:8093/api/bitcoin/payment/cancel/";
+    private static final String AMOUNTANDURL= "http://localhost:8090/api/amountandurl/";
+
 
 
 
     @Override
     public CoinGateRequest preparePayment(PreparePaymentRequest request) {
 
+        AmountAndUrlDTO amountAndUrlDTO=getAmountAndRedirectUrl(request.getCasopisUuid());
+
+
         CoinGateRequest coinGateRequest = new CoinGateRequest();
 
-        Seller seller = sellerRepository.findByUuid(UUID.fromString(request.getUuid()));
+        Seller seller = sellerRepository.findByUuid(UUID.fromString(request.getCasopisUuid()));
 
         BitCoinPayment savedPayment = bitCoinPaymentRepository.save(new BitCoinPayment());
 
         coinGateRequest.setPaymentId(savedPayment.getId());
 
-        coinGateRequest.setAmount(request.getAmount());
+        coinGateRequest.setAmount(amountAndUrlDTO.getAmount());
         coinGateRequest.setToken(seller.getToken());
 
         coinGateRequest.setCurrency(BITCOIN);
@@ -46,7 +57,12 @@ public class BitCoinPaymentServiceImpl implements BitCoinPaymentService{
 
         coinGateRequest.setCancelUrl(CANCEL_URL + savedPayment.getId());
 
-        coinGateRequest.setRedirectUrl(request.getRedirectUrl());
+        String rurl=notifyNc(amountAndUrlDTO.getRedirectUrl()+"/false");
+
+        rurl=rurl.substring(1, rurl.length()-1);
+
+        coinGateRequest.setRedirectUrl(rurl);
+
 
         return coinGateRequest;
     }
@@ -76,5 +92,31 @@ public class BitCoinPaymentServiceImpl implements BitCoinPaymentService{
         return bitCoinPaymentRepository.save(payment);
     }
 
+    @Autowired
+    RestTemplate restTemplate;
+
+    @Override
+    public  AmountAndUrlDTO getAmountAndRedirectUrl(String casopisID){
+        String url=AMOUNTANDURL+casopisID;
+        System.out.println(url);
+        ResponseEntity<AmountAndUrlDTO> resp
+                = restTemplate.getForEntity(url, AmountAndUrlDTO.class);
+        return resp.getBody();
+    }
+
+    @Override
+    public String notifyNc(String url){
+        HttpHeaders headers=new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity entity=new HttpEntity("",headers);
+        ResponseEntity<String> redirectUrl=restTemplate.postForEntity(url,entity,String.class);
+        return "\""+redirectUrl.getBody()+"\"";
+    }
+
+    @Override
+    public UUID getSellerUUID(Long id){
+        BitCoinPayment payment=bitCoinPaymentRepository.getOne(id);
+        return payment.getSeller().getUuid();
+    }
 
 }

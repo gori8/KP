@@ -13,10 +13,6 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class CreatePaymentRequest {
 
-    private String casopisID;
-
-    private String email;
-
-    private String redirectUrl;
+    private String casopisUuid;
 
 }

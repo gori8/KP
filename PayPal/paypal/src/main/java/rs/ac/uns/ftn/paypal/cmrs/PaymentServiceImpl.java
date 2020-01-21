@@ -7,11 +7,13 @@ import com.paypal.base.rest.PayPalRESTException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import rs.ac.uns.ftn.paypal.dto.CreatePaymentRequest;
-import rs.ac.uns.ftn.paypal.dto.CreatePaymentResponse;
-import rs.ac.uns.ftn.paypal.dto.ExecutePaymentRequest;
-import rs.ac.uns.ftn.paypal.dto.PayPalResponseDTO;
+import org.springframework.web.client.RestTemplate;
+import rs.ac.uns.ftn.paypal.dto.*;
 import rs.ac.uns.ftn.paypal.utils.MyPaymentUtils;
 
 import java.math.BigDecimal;
@@ -40,13 +42,20 @@ public class PaymentServiceImpl implements PaymentService{
     @Override
     public CreatePaymentResponse createPayment(CreatePaymentRequest request) {
 
-        Seller seller = sellerRepository.findByCasopisID(UUID.fromString(request.getCasopisID()));
+        System.out.println("UUID: "+request.getCasopisUuid());
+
+        AmountAndUrlDTO amountAndUrlDTO=MyPaymentUtils.getAmountAndRedirectUrl(request.getCasopisUuid());
+
+        BigDecimal amount=amountAndUrlDTO.getAmount();
+        String redirectUrl=amountAndUrlDTO.getRedirectUrl();
+
+        Seller seller = sellerRepository.findByCasopisID(UUID.fromString(request.getCasopisUuid()));
 
         MyPayment myPayment=new MyPayment();
 
         myPayment=myPaymentRepository.save(myPayment);
 
-        Transaction transaction = MyPaymentUtils.setTransaction(BigDecimal.valueOf(100), seller.getEmail());
+        Transaction transaction = MyPaymentUtils.setTransaction(amount, seller.getEmail());
 
         List<Transaction> transactions = new ArrayList<>();
 
@@ -75,10 +84,10 @@ public class PaymentServiceImpl implements PaymentService{
             e.printStackTrace();
         }
 
-        myPayment.setAmount(BigDecimal.valueOf(100));
+        myPayment.setAmount(amount);
         myPayment.setSeller(seller);
         myPayment.setPaymentId(createdPayment.getId());
-        myPayment.setRedirectUrl(request.getRedirectUrl());
+        myPayment.setRedirectUrl(redirectUrl);
         MyPayment savedPayment = myPaymentRepository.save(myPayment);
 
 
@@ -122,14 +131,33 @@ public class PaymentServiceImpl implements PaymentService{
             LOGGER.info("Executed payment - Response: \n" + Payment.getLastResponse());
 
         } catch (PayPalRESTException e) {
-            e.printStackTrace();
+            myPayment.setSuccessful(false);
+            myPaymentRepository.save(myPayment);
+            return notifyNc(myPayment.getRedirectUrl()+"/false");
         }
 
-        return myPayment.getRedirectUrl();
+        return notifyNc(myPayment.getRedirectUrl()+"/true");
+    }
+
+    @Override
+    public String cancelPayment(Long id) {
+        MyPayment payment = myPaymentRepository.getOne(id);
+        payment.setSuccessful(false);
+        myPaymentRepository.save(payment);
+        return payment.getRedirectUrl();
     }
 
 
+    @Autowired
+    RestTemplate restTemplate;
 
+    private String notifyNc(String url){
+        HttpHeaders headers=new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity entity=new HttpEntity("",headers);
+        ResponseEntity<String> redirectUrl=restTemplate.postForEntity(url,entity,String.class);
+        return "\""+redirectUrl.getBody()+"\"";
+    }
 
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 declare var paypal;
 
@@ -11,23 +12,24 @@ declare var paypal;
 export class PaypalComponentComponent implements OnInit {
   @ViewChild('paypal', { static: true }) paypalElement: ElementRef;
 
-
-  constructor() { }
+  constructor(private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.callPayPal(this.activatedRoute.snapshot.paramMap.get('uuid'));
+  }
+
+  callPayPal(uuid){
     paypal.Button.render({
       env: 'sandbox', // Or 'production'
       // Set up the payment:
       // 1. Add a payment callback
       payment: function(data, actions) {
-        console.log(data);
+        console.log(uuid);
         // 2. Make a request to your server
-        return fetch('http://localhost:8090/api/paypal',{
+        return fetch('http://localhost:8094/api/paypal',{
           method:'post',
           body:JSON.stringify({
-            casopisID:1,
-            email:'sb-4t1vg791084@business.example.com',
-            redirectUrl:'blabla'
+            casopisUuid:uuid,
           }),
           headers:{
             'Accept': 'application/json',
@@ -51,7 +53,7 @@ export class PaypalComponentComponent implements OnInit {
       // 1. Add an onAuthorize callback
       onAuthorize: function(data, actions) {
         // 2. Make a request to your server
-        return fetch('http://localhost:8090/api/paypal/execute',{ 
+        return fetch('http://localhost:8094/api/paypal/execute',{ 
           method:'post',
           body:JSON.stringify({
               paymentID: data.paymentID,
@@ -63,7 +65,9 @@ export class PaypalComponentComponent implements OnInit {
           }
         })
           .then(function(res) {
-            // 3. Show the buyer a confirmation message.
+            res.json().then(json => {
+              window.location.href=json;
+            });
           });
       }
     },'paypal');

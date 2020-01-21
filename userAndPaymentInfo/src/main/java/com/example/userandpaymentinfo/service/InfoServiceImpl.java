@@ -16,7 +16,7 @@ import java.util.UUID;
 @Service
 public class InfoServiceImpl implements InfoService{
 
-    private static final String frontUrl = "http://localhost:4200";
+    private static final String frontUrl = "https://localhost:4200";
 
     @Autowired
     CasopisRepository casopisRepository;

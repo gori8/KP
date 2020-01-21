@@ -3,6 +3,7 @@ package rs.ac.uns.ftn.paypal.cmrs;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Entity
 @Data
@@ -12,9 +13,9 @@ public class Seller {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @org.hibernate.annotations.Type(type="org.hibernate.type.UUIDBinaryType")
+    @org.hibernate.annotations.Type(type="org.hibernate.type.UUIDCharType")
     @Column(name = "casopisID", unique = true, nullable = false)
-    private Long casopisID;
+    private UUID casopisID;
 
     @Column(name = "email", unique = true, nullable = false)
     private String email;

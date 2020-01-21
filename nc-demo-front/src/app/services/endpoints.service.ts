@@ -16,6 +16,11 @@ export class EndpointsService {
     return this.http.get(`${BASE_URL}/casopis`);
   }
 
+  public getCasopis(uuid): Observable<any>{
+
+    return this.http.get(`${BASE_URL}/casopis/${uuid}`);
+  }
+
   public pay(uapId): Observable<any>{
 
     return this.http.post(`${BASE_URL}/pay/${uapId}`,null, {

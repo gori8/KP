@@ -1,29 +1,29 @@
 
 
-management:
-  endpoint:
-    health:
-      enabled: true
-      show-details: always
-    shutdown:
-      enabled: true
-  endpoints:
-    web:
-      base-path: /
+#management:
+#  endpoint:
+#    health:
+#      enabled: true
+#      show-details: always
+#    shutdown:
+#      enabled: true
+#  endpoints:
+#    web:
+#      base-path: /
       # By default, only 'health' and 'info' are accessible via web
-      exposure:
-        include: '*'
+#      exposure:
+#        include: '*'
 
 
-eureka:
-  instance:
-    appname: eureka-cluster
-  client:
-    serviceUrl:
-      defaultZone: http://eureka2:8761/eureka
-    register-with-eureka: true
-    fetch-registry: true
-  server:
-    enable-self-preservation: false
-server:
-  port: 8761
+#eureka:
+#  instance:
+#    appname: eureka-cluster
+#  client:
+#    serviceUrl:
+#      defaultZone: http://localhost:8761/eureka
+#    register-with-eureka: true
+#    fetch-registry: true
+#  server:
+#    enable-self-preservation: false
+#server:
+#  port: 8761
