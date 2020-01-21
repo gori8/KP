@@ -105,7 +105,7 @@ public class PaymentServiceImpl implements PaymentService {
 
         savedPayment = paymentRepository.save(payment);
 
-        return "http://localhost:4300/" + ret;
+        return "https://localhost:4300/" + ret;
 
     }
 
@@ -169,11 +169,13 @@ public class PaymentServiceImpl implements PaymentService {
 
         RestTemplate restTemplatePost = new RestTemplate();
         String postResourceUrl = ret;
-        JSONObject obj=null;
+
+        System.out.println(ret);
+
+        entity = new HttpEntity<String>("", headers);
 
         ResponseEntity<String> frontUrl
-                = restTemplatePost.postForEntity(postResourceUrl,obj,String.class);
-
+                = restTemplatePost.postForEntity(postResourceUrl,entity,String.class);
 
         return frontUrl.getBody();
     }
