@@ -13,6 +13,7 @@ import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import rs.ac.uns.ftn.url.UrlClass;
 
 import java.io.IOException;
 import java.util.List;
@@ -22,7 +23,7 @@ import java.util.concurrent.ThreadLocalRandom;
 @Service
 public class PaymentServiceImpl implements PaymentService {
 
-    private static final String PAYMENT_URL_F = "%s/card/%s";
+    //private static final String PAYMENT_URL_F = "%s/card/%s";
     public static final String NOT_FOUND = "notFound";
 
     @Autowired
@@ -45,7 +46,7 @@ public class PaymentServiceImpl implements PaymentService {
 
         RestTemplate restTemplate1 = new RestTemplate();
         String fooResourceUrl1
-                = "http://localhost:8090/api/amountandurl/" + kpRequestDto.getCasopisUuid();
+                = UrlClass.DOBAVI_CENU_URL_SA_PAYMENT_INFO + kpRequestDto.getCasopisUuid();
 
         ResponseEntity<AmountAndUrlDTO> resp
                 = restTemplate1.getForEntity(fooResourceUrl1, AmountAndUrlDTO.class);
@@ -59,7 +60,7 @@ public class PaymentServiceImpl implements PaymentService {
 
         RestTemplate restTemplate = new RestTemplate();
         String fooResourceUrl
-                = "http://localhost:8091/payment";
+                = UrlClass.DOBAVI_REDIRECT_URL_SA_BANKE;
 
         ObjectMapper mapper = new ObjectMapper();
 
@@ -105,7 +106,7 @@ public class PaymentServiceImpl implements PaymentService {
 
         savedPayment = paymentRepository.save(payment);
 
-        return "https://localhost:4300/" + ret;
+        return UrlClass.FRONT_BANKE + ret;
 
     }
 
@@ -114,7 +115,7 @@ public class PaymentServiceImpl implements PaymentService {
 
         RestTemplate restTemplate = new RestTemplate();
         String fooResourceUrl
-                = "http://localhost:8091/payment/" + url;
+                = UrlClass.DOBAVI_REDIRECT_URL_SA_BANKE + "/" + url;
 
         ObjectMapper mapper = new ObjectMapper();
         MappingClassCard mc = new MappingClassCard();

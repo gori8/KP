@@ -7,6 +7,7 @@ import com.example.userandpaymentinfo.repository.*;
 import com.example.userandpaymentinfo.util.Base64Utility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import rs.ac.uns.ftn.url.UrlClass;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,7 @@ import java.util.UUID;
 @Service
 public class InfoServiceImpl implements InfoService{
 
-    private static final String frontUrl = "https://localhost:4200";
+    //private static final String frontUrl = "https://localhost:4200";
 
     @Autowired
     CasopisRepository casopisRepository;
@@ -102,7 +103,7 @@ public class InfoServiceImpl implements InfoService{
 
         casopisRepository.save(c);
 
-        UrlDTO url = new UrlDTO(frontUrl+"/"+uuid.toString());
+        UrlDTO url = new UrlDTO(UrlClass.FRONT_KP+"/"+uuid.toString());
 
         return url;
     }

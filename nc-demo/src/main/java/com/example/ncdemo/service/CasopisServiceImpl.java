@@ -21,6 +21,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import rs.ac.uns.ftn.url.UrlClass;
 
 import java.io.FileInputStream;
 import java.security.KeyStore;
@@ -31,9 +32,9 @@ import java.util.UUID;
 @Service
 public class CasopisServiceImpl implements CasopisService {
 
-    private static final String redirectUrl = "https://localhost:9000/nc/casopis/";
-    private static final String fooResourceUrl = "https://localhost:8771/userandpayment/api/url";
-    private static final String ncFront = "https://localhost:4500/casopis/";
+    //private static final String redirectUrl = "https://localhost:9000/nc/casopis/";
+    //private static final String fooResourceUrl = "https://localhost:8771/userandpayment/api/url";
+    //private static final String ncFront = "https://localhost:4500/casopis/";
 
 
 
@@ -98,7 +99,7 @@ public class CasopisServiceImpl implements CasopisService {
         ObjectMapper mapper = new ObjectMapper();
 
         MappingClass mc = new MappingClass();
-        mc.setRedirectUrl(redirectUrl+uapId);
+        mc.setRedirectUrl(UrlClass.DOBAVI_CASOPIS_NA_NC_DEMO+uapId);
         mc.setId(uapId);
 
         String json="";
@@ -115,7 +116,7 @@ public class CasopisServiceImpl implements CasopisService {
         HttpEntity<String> entity = new HttpEntity<String>(json, headers);
 
         ResponseEntity<String> response
-                = restTemplate.postForEntity(fooResourceUrl,entity,String.class);
+                = restTemplate.postForEntity(UrlClass.DOBAVI_KP_FRONT_URL_SA_NACINIMA_PLACANJA_FROM_PAYMENT_INFO,entity,String.class);
 
         JSONObject actualObj=null;
         String ret = "";
@@ -137,15 +138,15 @@ public class CasopisServiceImpl implements CasopisService {
             Casopis casopis = casopisRepository.findOneByUuid(realUuid);
 
             if (casopis == null) {
-                return ncFront + uuid;
+                return UrlClass.FRONT_NC + uuid;
             }
 
             casopis.setPlacen(true);
             casopisRepository.save(casopis);
 
-            return ncFront + uuid;
+            return UrlClass.FRONT_NC + uuid;
         }else{
-            return ncFront + uuid;
+            return UrlClass.FRONT_NC + uuid;
         }
     }
 }

@@ -11,6 +11,7 @@ import rs.ac.uns.ftn.bitcoin.dto.AmountAndUrlDTO;
 import rs.ac.uns.ftn.bitcoin.dto.CoinGateRequest;
 import rs.ac.uns.ftn.bitcoin.dto.CoinGateResponse;
 import rs.ac.uns.ftn.bitcoin.dto.PreparePaymentRequest;
+import rs.ac.uns.ftn.url.UrlClass;
 
 import java.util.UUID;
 
@@ -25,9 +26,6 @@ public class BitCoinPaymentServiceImpl implements BitCoinPaymentService{
 
     private static final String TEST_ORDER = "Testing order";
     private static final String BITCOIN = "BTC";
-    private static final String SUCCESS_URL = "http://localhost:8093/api/bitcoin/payment/success/";
-    private static final String CANCEL_URL = "http://localhost:8093/api/bitcoin/payment/cancel/";
-    private static final String AMOUNTANDURL= "http://localhost:8090/api/amountandurl/";
 
 
 
@@ -53,9 +51,9 @@ public class BitCoinPaymentServiceImpl implements BitCoinPaymentService{
 
         coinGateRequest.setTitle(TEST_ORDER);
 
-        coinGateRequest.setSuccessUrl(SUCCESS_URL + savedPayment.getId());
+        coinGateRequest.setSuccessUrl(UrlClass.SUCCESS_URL_BTC + savedPayment.getId());
 
-        coinGateRequest.setCancelUrl(CANCEL_URL + savedPayment.getId());
+        coinGateRequest.setCancelUrl(UrlClass.CANCEL_URL_BTC + savedPayment.getId());
 
         String rurl=notifyNc(amountAndUrlDTO.getRedirectUrl()+"/false");
 
@@ -97,7 +95,7 @@ public class BitCoinPaymentServiceImpl implements BitCoinPaymentService{
 
     @Override
     public  AmountAndUrlDTO getAmountAndRedirectUrl(String casopisID){
-        String url=AMOUNTANDURL+casopisID;
+        String url=UrlClass.DOBAVI_CENU_URL_SA_PAYMENT_INFO+casopisID;
         System.out.println(url);
         ResponseEntity<AmountAndUrlDTO> resp
                 = restTemplate.getForEntity(url, AmountAndUrlDTO.class);

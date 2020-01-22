@@ -69,6 +69,11 @@
 			<artifactId>validation-api</artifactId>
 			<version>LATEST</version>
 		</dependency>
+		<dependency>
+			<groupId>rs.ac.uns.ftn</groupId>
+			<artifactId>urls</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
 
 
 	</dependencies>

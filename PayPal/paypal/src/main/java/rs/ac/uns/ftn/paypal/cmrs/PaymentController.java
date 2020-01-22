@@ -13,14 +13,14 @@ import rs.ac.uns.ftn.paypal.dto.ExecutePaymentRequest;
 @CrossOrigin("*")
 public class PaymentController {
 
-    private static final String FRONTAPP_URL="http://localhost:4400/";
+    //private static final String FRONTAPP_URL="http://localhost:4400/";
 
     @Autowired
     PaymentService paymentService;
 
     @RequestMapping(value = "/getUrl", method = RequestMethod.POST)
     public String getUrl(@RequestBody CreatePaymentRequest id)  {
-        return "\""+FRONTAPP_URL+id.getCasopisUuid()+"\"";
+        return "\""+UrlClass.class.FRONT_PAYPAL+id.getCasopisUuid()+"\"";
     }
 
     @PostMapping
