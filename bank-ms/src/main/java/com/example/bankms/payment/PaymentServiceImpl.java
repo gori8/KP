@@ -105,7 +105,7 @@ public class PaymentServiceImpl implements PaymentService {
 
         savedPayment = paymentRepository.save(payment);
 
-        return "https://localhost:4300/" + ret;
+        return "http://localhost:4300/" + ret;
 
     }
 
