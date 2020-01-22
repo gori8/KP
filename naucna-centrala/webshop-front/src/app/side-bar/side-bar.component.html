@@ -1,0 +1,110 @@
+<div class="page-wrapper chiller-theme toggled">
+  <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+    <i class="fas fa-bars"></i>
+  </a>
+  <nav id="sidebar" class="sidebar-wrapper">
+    <div class="sidebar-content">
+      <div class="sidebar-brand">
+        <a routerLink="">naučna centrala</a>
+      </div>
+      <div class="sidebar-header" *ngIf="currentUser$ | async as user">
+        <div class="user-pic">
+          <img class="img-responsive img-rounded" src="assets/img/user.jpg"
+            alt="User picture">
+        </div>
+        <div class="user-info">
+          <span class="user-name">{{user.ime}}
+            <strong>{{user.prezime}}</strong>
+          </span>
+          <span class="user-role">{{user.role}}</span>
+        </div>
+      </div>
+      <!-- sidebar-header  -->
+      
+      <div class="sidebar-menu">
+        <ul>
+          <li class="header-menu">
+            <span>Generalno</span>
+          </li>
+          <li>
+            <a routerLink="">
+              <i class="fa fa-home"></i>
+              <span>Početna strana</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/papers">
+              <i class="fas fa-book-open"></i>
+              <span>Časopisi</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <ng-container *ngIf="currentUser$ | async as user">
+        <div class="sidebar-menu" *ngIf="user.role=='Administrator'">
+          <ul>
+            <li class="header-menu">
+              <span>Administratorske stavke</span>
+            </li>
+            <li>
+              <a routerLink="/tasks">
+                <i class="fa fa-tasks"></i>
+                <span class="badge badge-pill badge-danger" *ngIf="numberOfTasks>0">{{numberOfTasks}}</span>
+                <span>Zadaci</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="currentUser$ | async as user">
+        <div class="sidebar-menu" *ngIf="user.role=='Urednik'">
+          <ul>
+            <li class="header-menu">
+              <span>Uredničke stavke</span>
+            </li>
+            <li>
+              <a routerLink="/tasks">
+                <i class="fa fa-tasks"></i>
+                <span class="badge badge-pill badge-danger" *ngIf="numberOfTasks>0">{{numberOfTasks}}</span>
+                <span>Zadaci</span>
+              </a>
+            </li>
+            <li>
+              <a routerLink="/newPaper">
+                <i class="fas fa-book"></i>
+                <span>Novi časopis</span>
+              </a>
+            </li>
+            <li>
+              <a routerLink="/myPapers">
+                <i class="fas fa-address-book"></i>
+                <span>Moji časopisi</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </ng-container>
+      <!-- sidebar-menu  -->
+    </div>
+    <!-- sidebar-content  -->
+    <div class="sidebar-footer">
+      <div class="row">
+        <button class="btn btn-outline-success mt-3 ml-5" *ngIf="authenticationService.currentUserValue == null" routerLink="/registration">Registracija</button>
+      </div>
+      <div class="row">
+        <button class="btn btn-outline-primary mt-3 mb-3 ml-5" *ngIf="authenticationService.currentUserValue == null" routerLink="/login">Prijava</button>  
+      </div>
+      <div class="row">
+        <button class="btn btn-outline-primary mt-3 mb-3 ml-5" (click)="logout()" *ngIf="currentUser$ | async as user">Odjava</button>  
+      </div>
+    </div>
+  </nav>
+  <!-- sidebar-wrapper  -->
+  <main class="page-content">
+    <div class="container-fluid">
+      <notifier-container></notifier-container>
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+  <!-- page-content" -->
+</div>

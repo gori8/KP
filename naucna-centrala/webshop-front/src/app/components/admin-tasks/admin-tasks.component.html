@@ -1,0 +1,143 @@
+<div class="container">
+  <div class="row mt-5">
+    <h2 class="text-primary" *ngIf="tasks.length==0">Trenutno nema aktivnih zadataka za ovog korisnika.</h2>
+    <h2 class="text-primary mb-5" *ngIf="tasks.length!=0">Zadaci:</h2>
+  </div>
+  <ng-container *ngFor="let t of tasks; let i = index">
+
+    <!--POTVRDA RECENZENTA-->
+    <div class="card" *ngIf="t.id=='potvrdaRecenzenta'">
+      <div class="card-header">
+        <h5>Potvrda recenzenta</h5>
+      </div>
+      <div class="card-body">
+        <div class="row ml-2">
+          <p>
+            Korisnik je zatražio da bude registrovan u ulozi recenzenta.
+          </p>
+        </div>
+        <div class="row ml-2">
+          <label>Korisnik: <b>{{t.user}}</b></label>
+        </div>
+        <div class="row mt-5 ml-2">
+          <button class="btn btn-success" (click)="potvrdaRecenzenta(t.instanceId,true,i)">Prihvatiti</button>
+          <button class="btn btn-danger ml-2" (click)="potvrdaRecenzenta(t.instanceId,false,i)">Odbiti</button>
+        </div>
+      </div>
+    </div>
+
+    <!--AKTIVACIJA CASOPISA-->
+    <div class="card" *ngIf="t.id=='aktivacijaCasopisa'">
+      <div class="card-header">
+        <h5>Aktivacija časopisa</h5>
+      </div>
+      <div class="card-body">
+        <div class="row ml-2">
+          <p>
+            Potrebno je doneti odluku da li časopis treba da bude aktiviran ili vraćen na doradu.
+          </p>
+        </div>
+        <div class="row ml-2">
+          <table>
+            <tr>
+              <td>Glavni urednik: </td>
+              <td><b>{{t.glavniUrednik}}</b></td>
+            </tr>
+            <tr>
+              <td>Recenzenti: </td>
+              <td><b>{{t.recenzenti}}</b></td>
+            </tr>
+            <tr>
+              <td>Urednici: </td>
+              <td><b>{{t.urednici}}</b></td>
+            </tr>
+            <tr>
+              <td>Naziv: </td>
+              <td><b>{{t.naziv}}</b></td>
+            </tr>
+            <tr>
+              <td>Članarina: </td>
+              <td><b>{{t.clanarina}} $</b></td>
+            </tr>
+            <tr>
+              <td>Ko plaća članarinu: </td>
+              <td><b>{{t.komeSeNaplacuje}}</b></td>
+            </tr>
+            <tr>
+              <td>Načini plaćanja: </td>
+              <td><b>{{t.naciniPlacanja}}</b></td>
+            </tr>
+            <tr>
+              <td>Naučne oblasti: </td>
+              <td><b>{{t.naucneOblasti}}</b></td>
+            </tr>
+          </table>
+        </div>
+        <div class="row mt-5 ml-2">
+          <button class="btn btn-success" (click)="aktivacijaCasopisa(t.instanceId,true,i)">Aktivirati</button>
+          <button class="btn btn-danger ml-2" (click)="aktivacijaCasopisa(t.instanceId,false,i)">Vratiti na doradu</button>
+        </div>
+      </div>
+    </div>
+
+    <!--Unos urednika i recenzenata-->
+    <div class="card" *ngIf="t.id=='unosUrednikaIRecenzenata'">
+      <div class="card-header">
+        <h5>Unos urednika i recenzenata</h5>
+      </div>
+      <div class="card-body">
+        <div class="row ml-2">
+          <p>
+            Potrebno je popuniti formu za recenzente i dodatne urednike časopisa.
+          </p>
+        </div>
+        <div class="row mt-5 ml-2">
+          <button class="btn btn-primary" routerLink="/newPaper/{{t.processId}}">Prikaz forme</button>
+        </div>
+      </div>
+    </div>
+
+    <!--Prepravka casopisa-->
+  <div class="card" *ngIf="t.id=='formaCasopisa'">
+    <div class="card-header">
+      <h5>Ispravka informacija o časopisu</h5>
+    </div>
+    <div class="card-body">
+      <div class="row ml-2">
+        <p>
+          Administrator je doneo odluku da je neophodno ispraviti informacije o časopisu. Ispravite formu časopisa kako bi nastavili sa njegovim dodavanjem u sistem.
+        </p>
+      </div>
+      <div class="row mt-5 ml-2">
+        <button class="btn btn-primary" routerLink="/correction/{{t.processId}}">Prikaz forme</button>
+      </div>
+    </div>
+  </div>
+</ng-container>
+  
+  <div class="card mt-5" *ngFor="let task of tasksLinks">
+    <div class="card-header">
+      <h5>Unos podataka za plaćanje</h5>
+    </div>
+    <div class="card-body">
+      <div class="row ml-2">
+        <p>
+          Potrebno je popuniti formu za način plaćanja koji je bio izabran prilikom registracije časopisa.
+        </p>
+      </div>
+      <div class="row ml-2">
+        <p>
+          Časopis: <b>{{task.casopis}}</b> 
+        </p>
+      </div>
+      <div class="row ml-2">
+        <p>
+          Način plaćanja: <b>{{task.nacinPlacanja}}</b>
+        </p>
+      </div>
+      <div class="row mt-5 ml-2">
+        <a class="btn btn-primary" href="{{task.link}}">Prikaz forme</a>
+      </div>
+    </div>
+  </div>
+</div>

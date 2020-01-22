@@ -13,7 +13,7 @@ import java.util.UUID;
 
 @Entity
 @Data
-public class Casopis {
+public class Item {
 
     @Id
     @Column(name = "id")
@@ -23,23 +23,21 @@ public class Casopis {
     @Column(name = "naziv", unique = true, nullable = false)
     private String naziv;
 
-    @Column(name = "issn", unique = true, nullable = false)
-    private String issn;
-
     @Column(name = "uuid", unique = true, nullable = false)
     @Type(type="org.hibernate.type.UUIDCharType")
     private UUID uuid;
 
-    @Column(name = "redirectUrl", unique = false, nullable = false)
+    @Column(name = "redirectUrl", unique = false, nullable = true)
     private String redirectUrl;
 
     @ManyToMany
     @JsonIgnore
     @JoinTable(
-            name = "casopic_nacin_placanja",
-            joinColumns = @JoinColumn(name = "casopis_id"),
+            name = "item_nacin_placanja",
+            joinColumns = @JoinColumn(name = "item_id"),
             inverseJoinColumns = @JoinColumn(name = "nacin_placanja_id"))
     private List<NacinPlacanja> nacinPlacanjaList = new ArrayList<>();
 
+    @Column(name = "amount", unique = false, nullable = false)
     private BigDecimal amount;
 }

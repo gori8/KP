@@ -1,0 +1,12 @@
+@import "~angular-notifier/styles";
+
+body{
+    background-image: url("assets/img/background.png");
+    background-size: 100%;
+}
+
+.darkbackground{
+    background-color: rgba(46, 46, 46, 0.4);
+    position: relative;
+    border-radius: 10px;
+}

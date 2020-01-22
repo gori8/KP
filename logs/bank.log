@@ -1,0 +1,40 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.1.4.RELEASE)
+
+2020-01-22 02:40:47.379  INFO 6079 --- [           main] com.example.bank.BankApplication         : Starting BankApplication v0.0.1-SNAPSHOT on antolovic-Lenovo-Legion-Y530-15ICH with PID 6079 (/home/antolovic/KP_SEP/KP/bank/target/bank.jar started by antolovic in /home/antolovic/KP_SEP/KP)
+2020-01-22 02:40:47.396  INFO 6079 --- [           main] com.example.bank.BankApplication         : No active profile set, falling back to default profiles: default
+2020-01-22 02:40:51.008  INFO 6079 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-01-22 02:40:51.429  INFO 6079 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 380ms. Found 5 repository interfaces.
+2020-01-22 02:40:53.830  INFO 6079 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$6fb91ba7] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-22 02:40:54.210  INFO 6079 --- [           main] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2020-01-22 02:40:54.501  INFO 6079 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$cb2156a8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-22 02:40:54.596  INFO 6079 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.hateoas.config.HateoasConfiguration' of type [org.springframework.hateoas.config.HateoasConfiguration$$EnhancerBySpringCGLIB$$4aa1a3da] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-22 02:40:56.900  INFO 6079 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8091 (http)
+2020-01-22 02:40:57.140  INFO 6079 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-01-22 02:40:57.143  INFO 6079 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.17]
+2020-01-22 02:40:57.659  INFO 6079 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-01-22 02:40:57.660  INFO 6079 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 9943 ms
+2020-01-22 02:40:59.217  INFO 6079 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-01-22 02:41:00.377  INFO 6079 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-01-22 02:41:00.761  INFO 6079 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2020-01-22 02:41:00.991  INFO 6079 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.9.Final}
+2020-01-22 02:41:01.010  INFO 6079 --- [           main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2020-01-22 02:41:01.867  INFO 6079 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2020-01-22 02:41:03.130  INFO 6079 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2020-01-22 02:41:07.857  INFO 6079 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-01-22 02:41:13.252  INFO 6079 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-01-22 02:41:13.504  WARN 6079 --- [           main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-01-22 02:41:16.333  INFO 6079 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8091 (http) with context path ''
+2020-01-22 02:41:16.336  INFO 6079 --- [           main] com.example.bank.BankApplication         : Started BankApplication in 31.318 seconds (JVM running for 32.972)
+2020-01-22 02:42:24.041  INFO 6079 --- [       Thread-2] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-01-22 02:42:24.046  INFO 6079 --- [       Thread-2] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-01-22 02:42:24.057  INFO 6079 --- [       Thread-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-01-22 02:42:24.087  INFO 6079 --- [       Thread-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

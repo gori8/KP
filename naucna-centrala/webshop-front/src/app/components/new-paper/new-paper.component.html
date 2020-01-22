@@ -1,0 +1,76 @@
+<div class="darkbackground"> 
+  <div class="container">
+      <div class="row ml-auto mr-auto">
+          <div class="col col-md-3"></div>
+          <div class="col col-md-6 mt-3">
+          
+              <!--FORM-->
+              <form #newPaperForm="ngForm" ngNativeValidate (ngSubmit)="onSubmit(newPaperForm)">
+                <h2 class="mb-3 text-light mt-3">Kreiranje novog časopisa</h2>
+                
+                <div class="form-group">
+                    <label class="text-light" for="naziv">Naziv</label>
+                    <input name="naziv" [(ngModel)]="formModel[0].fieldValue" id="naziv" type="text" class="form-control" required/>
+                </div>
+                
+                <div class="form-group">
+                  <label class="text-light" for="clanarina">Članarina</label>
+                  <input name="clanarina" [(ngModel)]="formModel[1].fieldValue" id="clanarina" type="number" class="form-control" required/>
+                </div>
+            
+                <div class="form-group">
+                  <label class="text-light" for="komeSeNaplacuje">Ko plaća članarinu</label>
+                  <select name="komeSeNaplacuje" [(ngModel)]="formModel[2].fieldValue" id="komeSeNaplacuje" class="form-control" required>
+                    <option value="Autor">Autor</option>
+                    <option value="Citalac">Čitalac</option>
+                  </select>
+                </div>
+                  
+                <div class="card">
+                  <div class="card-header">
+                    Naučne oblasti
+                  </div>
+                  <div class="card-body">
+                    <button class="btn btn-success mb-3 mr-1" type="button" (click)="addOblast()"><i class="fa fa-plus"></i></button>
+                    <button *ngIf="oblasti.length > 1" class="btn btn-danger mb-3" type="button" (click)="removeOblast()"><i class="fa fa-minus"></i></button>
+                    <button *ngIf="oblasti.length == 1" class="btn btn-danger mb-3" type="button" disabled><i class="fa fa-minus"></i></button>
+                    <div class="form-group" *ngFor="let o of oblasti; let i = index">
+                      <label class="text-dark">{{o}}</label>
+                      <select name="naucnaOblast{{i}}" [(ngModel)]="naucneOblasti[i].fieldValue" class="form-control" required>
+                        <option *ngFor="let item of listaOblasti" value="{{item.id}}">
+                          {{item.naziv}}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card mt-3">
+                  <div class="card-header">
+                    Načini plaćanja
+                  </div>
+                  <div class="card-body">
+                    <button class="btn btn-success mb-3 mr-1" type="button" (click)="addPlacanje()"><i class="fa fa-plus"></i></button>
+                    <button *ngIf="placanja.length > 1" class="btn btn-danger mb-3" type="button" (click)="removePlacanje()"><i class="fa fa-minus"></i></button>
+                    <button *ngIf="placanja.length == 1" class="btn btn-danger mb-3" type="button" disabled><i class="fa fa-minus"></i></button>
+                    <div class="form-group" *ngFor="let p of placanja; let i = index">
+                      <label class="text-dark">{{p}}</label>
+                      <select name="nacinPlacanja{{i}}" [(ngModel)]="naciniPlacanja[i].fieldValue" class="form-control" required>
+                        <option *ngFor="let item of listaPlacanja" value="{{item.id}}">
+                          {{item.naziv}}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <!--BUTTON-->
+                <button type="submit" [hidden]="hidden" class="btn btn-primary mt-3 mb-4" >Potvrdi</button>
+                <div [hidden]="!hidden" class="lds-roller mt-3"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+              </form>
+
+          </div>
+          <div class="col col-md-3"></div>
+      </div>
+  </div>    
+</div>
