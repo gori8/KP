@@ -18,7 +18,6 @@ public class UrlClass {
     public static final String FRONT_PAYPAL = "http://localhost:4400/";
     public static final String FRONT_NC = "https://localhost:4500/casopis/";
 
-
     public static void main(String[] args) {
         System.out.println("hello");
     }
