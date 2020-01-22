@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import rs.ac.uns.ftn.paypal.dto.CreatePaymentRequest;
 import rs.ac.uns.ftn.paypal.dto.CreatePaymentResponse;
 import rs.ac.uns.ftn.paypal.dto.ExecutePaymentRequest;
+import rs.ac.uns.ftn.paypal.dto.RegistrationDTO;
+import rs.ac.uns.ftn.url.UrlClass;
 
 @RequestMapping("/api/paypal")
 @RestController
@@ -18,9 +20,24 @@ public class PaymentController {
     @Autowired
     PaymentService paymentService;
 
+    @Autowired
+    SellerRepository sellerRepository;
+
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public ResponseEntity<Seller> register(@RequestBody RegistrationDTO registrationDTO) {
+
+        Seller seller = new Seller();
+        seller.setCasopisID(registrationDTO.getCasopisID());
+        seller.setEmail(registrationDTO.getEmail());
+        seller.setMerchant_id(registrationDTO.getMerchant_id());
+        Seller ret = sellerRepository.save(seller);
+
+        return new ResponseEntity<Seller>(ret, HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/getUrl", method = RequestMethod.POST)
     public String getUrl(@RequestBody CreatePaymentRequest id)  {
-        return "\""+UrlClass.class.FRONT_PAYPAL+id.getCasopisUuid()+"\"";
+        return "\""+ UrlClass.FRONT_PAYPAL+id.getCasopisUuid()+"\"";
     }
 
     @PostMapping
