@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-const BASE_URL = "https://localhost:8771/bank/api/bankms";
+const BASE_URL = "http://192.168.43.161:8771/bank/api/bankms";
 
 @Injectable({
   providedIn: 'root'

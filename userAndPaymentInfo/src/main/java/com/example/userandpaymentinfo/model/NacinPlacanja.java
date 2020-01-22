@@ -23,6 +23,6 @@ public class NacinPlacanja {
 
     @ManyToMany(mappedBy = "nacinPlacanjaList")
     private
-    List<Casopis> casopisList = new ArrayList<>();
+    List<Item> itemList = new ArrayList<>();
 
 }
