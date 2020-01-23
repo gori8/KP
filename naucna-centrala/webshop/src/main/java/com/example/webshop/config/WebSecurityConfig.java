@@ -4,10 +4,15 @@ import com.example.webshop.security.TokenUtils;
 import com.example.webshop.security.auth.RestAuthenticationEntryPoint;
 import com.example.webshop.security.auth.TokenAuthenticationFilter;
 import com.example.webshop.services.CustomUserDetailsService;
+import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.ssl.SSLContextBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -19,6 +24,10 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
+import org.springframework.web.client.RestTemplate;
+
+import java.io.FileInputStream;
+import java.security.KeyStore;
 
 
 @Configuration
@@ -83,9 +92,31 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**");
 		// TokenAuthenticationFilter ce ignorisati sve ispod navedene putanje
-		web.ignoring().antMatchers(HttpMethod.POST, "/auth/login","/webshop/registration/**");
+		web.ignoring().antMatchers(HttpMethod.POST,"/webshop/payments/complete/**", "/auth/login","/webshop/registration/**");
 		
 		web.ignoring().antMatchers(HttpMethod.GET,"/webshop/papers/**","/webshop/registration/**","/webshop/payments","/webshop/sciencefields","/","/images/**","/webjars/**", "/*.html", "/favicon.ico", "/**/*.html", "/**/*.css", "/**/*.js");
 
+	}
+
+	@Bean
+	public RestTemplate restTemplate() throws Exception{
+		KeyStore clientStore = KeyStore.getInstance("JKS");
+		clientStore.load(new FileInputStream("src/main/resources/identity.jks"), "secret".toCharArray());
+		KeyStore trustStore = KeyStore.getInstance("JKS");
+		trustStore.load(new FileInputStream("src/main/resources/truststore.jks"), "secret".toCharArray());
+
+		SSLContextBuilder sslContextBuilder = new SSLContextBuilder();
+		sslContextBuilder.setProtocol("TLS");
+		sslContextBuilder.loadKeyMaterial(clientStore, "secret".toCharArray());
+		sslContextBuilder.loadTrustMaterial(trustStore,null);
+
+		SSLConnectionSocketFactory sslConnectionSocketFactory = new SSLConnectionSocketFactory(sslContextBuilder.build());
+		CloseableHttpClient httpClient = HttpClients.custom()
+				.setSSLSocketFactory(sslConnectionSocketFactory)
+				.build();
+		HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory(httpClient);
+		requestFactory.setConnectTimeout(10000); // 10 seconds
+		requestFactory.setReadTimeout(10000); // 10 seconds
+		return new RestTemplate(requestFactory);
 	}
 }

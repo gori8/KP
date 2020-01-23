@@ -21,13 +21,14 @@ public class BitCoinPaymentController {
     SellerRepository sellerRepository;
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ResponseEntity<Seller> register(@RequestBody RegistrationDTO registrationDTO) {
+    public ResponseEntity<Long> register(@RequestBody RegistrationDTO registrationDTO) {
 
         Seller seller = new Seller();
-        seller.setUuid(registrationDTO.getUuid());
-        Seller ret = sellerRepository.save(seller);
+        seller.setUuid(UUID.fromString(registrationDTO.getUuid()));
+        seller.setToken(registrationDTO.getToken());
+        Long ret = sellerRepository.save(seller).getId();
 
-        return new ResponseEntity<Seller>(ret, HttpStatus.OK);
+        return new ResponseEntity<Long>(ret, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/prepare",method = RequestMethod.POST)

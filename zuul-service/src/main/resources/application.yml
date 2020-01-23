@@ -27,9 +27,16 @@ server:
     port: 8771
     ssl:
       enabled: true
-      key-store: zuul-service/src/main/resources/identity.jks
+      key-store: src/main/resources/identity.jks
       key-password: secret123
       key-store-password: secret123
-      trust-store: zuul-service/src/main/resources/truststore.jks
+      trust-store: src/main/resources/truststore.jks
       trust-store-password: secret123
       client-auth: need
+zuul:
+  host:
+    socket-timeout-millis: 300000
+
+
+ribbon:
+  ReadTimeout: 30000

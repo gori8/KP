@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface CasopisRepository extends JpaRepository<Casopis, Long> {
 
@@ -13,4 +14,6 @@ public interface CasopisRepository extends JpaRepository<Casopis, Long> {
 
     @Query(value = "SELECT c FROM Casopis c WHERE c.aktiviran=1")
     List<Casopis> findAllActive();
+
+    Casopis findOneByUuid(UUID uuid);
 }

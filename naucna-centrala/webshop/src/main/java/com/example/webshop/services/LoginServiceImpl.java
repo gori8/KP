@@ -20,16 +20,14 @@ public class LoginServiceImpl implements  LoginService{
     @Autowired
     AuthorityRepository authorityRepository;
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     @Override
     public Korisnik checkCredentials(JwtAuthenticationRequest request) {
         Korisnik user=userRepository.findOneByUsername(request.getUsername());
         if(user!=null && user.getAktiviran()==true){
-            if(passwordEncoder().matches(request.getPassword(),user.getPassword())){
+            if(passwordEncoder.matches(request.getPassword(),user.getPassword())){
                 return user;
             }
         }

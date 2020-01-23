@@ -1,0 +1,20 @@
+{
+    "form":[
+        {
+            "id":"token",
+            "type":"text",
+            "name":"Token",
+            "row":0,
+            "col":0,
+            "validation":{
+                "required":true
+            }
+        }
+    ],
+    "button":{
+        "name":"Submit",
+        "url":"https://localhost:8771/paypal/api/paypal/register"
+    },
+    "header":"Bit Coin Seller Registration",
+    "image":"assets/img/bitcoin-logo.png"
+}

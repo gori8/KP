@@ -1,13 +1,16 @@
 package com.example.userandpaymentinfo.service;
 
-import com.example.userandpaymentinfo.converters.ConverterAES;
 import com.example.userandpaymentinfo.dto.*;
 import com.example.userandpaymentinfo.model.*;
 import com.example.userandpaymentinfo.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 import rs.ac.uns.ftn.url.UrlClass;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -16,13 +19,14 @@ import java.util.UUID;
 @Service
 public class InfoServiceImpl implements InfoService{
 
-    //private static final String frontUrl = "https://localhost:4200";
-
     @Autowired
     ItemRepository itemRepository;
 
     @Autowired
     NacinPlacanjaRepository nacinPlacanjaRepository;
+
+    @Autowired
+    RestTemplate restTemplate;
 
     @Override
     public Item editCasopis(CasopisDTO casopisDTO) throws Exception {
@@ -125,6 +129,7 @@ public class InfoServiceImpl implements InfoService{
         item.setNaziv(dto.getNaziv());
         item.setAmount(dto.getAmount());
         item.setUuid(UUID.randomUUID());
+        item.setRedirectUrl(dto.getRedirectUrl()+item.getUuid());
         ret.setUuid(item.getUuid().toString());
 
         for (Long npId:dto.getNaciniPlacanja()) {
@@ -145,5 +150,21 @@ public class InfoServiceImpl implements InfoService{
         item = itemRepository.save(item);
 
         return ret;
+    }
+
+    public String registrationCompleted(RegistrationCompletedDTO dto){
+
+        Item item = itemRepository.findOneByUuid(UUID.fromString(dto.getUuid()));
+        String url = item.getRedirectUrl()+"/"+dto.getNacinPlacanjaId();
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        HttpEntity<CreateLinksDTO> entity = new HttpEntity<CreateLinksDTO>(null, headers);
+
+        ResponseEntity<String> response =
+                restTemplate.postForEntity(url,entity,String.class);
+
+        return response.getBody();
     }
 }

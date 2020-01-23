@@ -10,6 +10,8 @@ import rs.ac.uns.ftn.paypal.dto.ExecutePaymentRequest;
 import rs.ac.uns.ftn.paypal.dto.RegistrationDTO;
 import rs.ac.uns.ftn.url.UrlClass;
 
+import java.util.UUID;
+
 @RequestMapping("/api/paypal")
 @RestController
 @CrossOrigin("*")
@@ -24,15 +26,15 @@ public class PaymentController {
     SellerRepository sellerRepository;
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ResponseEntity<Seller> register(@RequestBody RegistrationDTO registrationDTO) {
+    public ResponseEntity<Long> register(@RequestBody RegistrationDTO registrationDTO) {
 
         Seller seller = new Seller();
-        seller.setCasopisID(registrationDTO.getCasopisID());
+        seller.setCasopisID(UUID.fromString(registrationDTO.getUuid()));
         seller.setEmail(registrationDTO.getEmail());
-        seller.setMerchant_id(registrationDTO.getMerchant_id());
-        Seller ret = sellerRepository.save(seller);
+        seller.setMerchant_id(registrationDTO.getMerchantId());
+        Long ret = sellerRepository.save(seller).getId();
 
-        return new ResponseEntity<Seller>(ret, HttpStatus.OK);
+        return new ResponseEntity<Long>(ret, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/getUrl", method = RequestMethod.POST)

@@ -36,10 +36,8 @@ public class ValidateRegistrationService implements JavaDelegate {
     @Autowired
     AuthorityRepository authorityRepository;
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
 
     public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
@@ -55,7 +53,7 @@ public class ValidateRegistrationService implements JavaDelegate {
         Korisnik korisnik = new Korisnik();
         korisnik.setAktiviran(false);
 
-        User user = identityService.newUser("");
+        User user = null;
 
         for (FormSubmissionDto formField : registracionaForma) {
             if(formField.getFieldId().equals("ime")) {
@@ -122,8 +120,8 @@ public class ValidateRegistrationService implements JavaDelegate {
                     break;
                 }
                 else {
+                    user = identityService.newUser(formField.getFieldValue());
                     korisnik.setUsername(formField.getFieldValue());
-                    user.setId(formField.getFieldValue());
                 }
             }
             if(formField.getFieldId().equals("password")) {
@@ -132,7 +130,7 @@ public class ValidateRegistrationService implements JavaDelegate {
                     break;
                 }
                 else {
-                    korisnik.setPassword(passwordEncoder().encode(formField.getFieldValue()));
+                    korisnik.setPassword(passwordEncoder.encode(formField.getFieldValue()));
                     user.setPassword(formField.getFieldValue());
                 }
             }

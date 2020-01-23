@@ -360,4 +360,9 @@ public class WebShopController {
     public @ResponseBody List<CasopisDTO> getAllPapers() {
         return userService.getAllPapers();
     }
+
+    @PostMapping(path = "/payments/complete/{uuid}/{nacinPlacanjaId}", produces = "application/json")
+    public ResponseEntity completePayment(@PathVariable("uuid") String uuid,@PathVariable("nacinPlacanjaId") Long nacinPlacanjaId) {
+        return new ResponseEntity(kpService.completePayment(uuid,nacinPlacanjaId),HttpStatus.OK);
+    }
 }

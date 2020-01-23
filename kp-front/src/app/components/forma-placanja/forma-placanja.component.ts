@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import  *  as  data  from  '../../../json/config.json';
+import { ActivatedRoute } from '@angular/router';
+import { EndpointsService } from 'src/app/services/endpoints.service.js';
 
 @Component({
   selector: 'app-forma-placanja',
@@ -8,8 +9,11 @@ import  *  as  data  from  '../../../json/config.json';
 })
 export class FormaPlacanjaComponent implements OnInit {
 
-  constructor() {}
+  constructor(private endpoints:EndpointsService,private activatedRoute: ActivatedRoute) {}
 
+  uuid=null;
+  body={};
+  nacinPlacana=null;
   forma=null;
   button="Submit";
   header="";
@@ -19,57 +23,97 @@ export class FormaPlacanjaComponent implements OnInit {
       cols:[]
     }
   ]
-  scripts=[];
 
   ngOnInit() {
 
-    this.forma = (data as any).default;
+    this.nacinPlacana = this.activatedRoute.snapshot.paramMap.get('nacinPlacanja');
+    this.uuid = this.activatedRoute.snapshot.paramMap.get('uuid');
 
-    this.scripts = this.forma.script;
+    this.getJson();
+  }
 
-    console.log(this.scripts);
+  getJson(){
+    this.endpoints.getJSON(this.nacinPlacana).subscribe(
+      data => {
+        this.forma=data;
+       
+        for(let field of this.forma.form){
+
+          if(field.validation===undefined){
+            field.validation = {pattern:".*"};
+          }else if(field.validation.pattern===undefined){
+            field.validation.pattern = ".*";
+          }
     
-
-    for(let field of this.forma.form){
-
-      if(field.validation===undefined){
-        field.validation = {pattern:".*"};
-      }else if(field.validation.pattern===undefined){
-        field.validation.pattern = ".*";
-      }
-
-      if(field.row != null || field.col != null){
-        if(this.rows[field.row] === undefined){
-          this.rows[field.row]={cols:[]};
+          if(field.row != null || field.col != null){
+            if(this.rows[field.row] === undefined){
+              this.rows[field.row]={cols:[]};
+            }
+            this.rows[field.row].cols[field.col] = field;
+          }
         }
-        this.rows[field.row].cols[field.col] = field;
-      }
-    }
-
-    this.rows = this.rows.filter(function (el) {
-      return el != null;
-    });
-
-    for(let r of this.rows){
-      r.cols= r.cols.filter(function (el) {
-        return el != null;
-      });
-    }
-
-    if(this.forma.button !== undefined && this.forma.button.name !== undefined){
-      this.button = this.forma.button.name;
-    }
-
-    if(this.forma.header !== undefined){
-      this.header = this.forma.header;
-    }
     
-    this.imageSource = this.forma.image;
+        this.rows = this.rows.filter(function (el) {
+          return el != null;
+        });
+    
+        for(let r of this.rows){
+          r.cols= r.cols.filter(function (el) {
+            return el != null;
+          });
+        }
+    
+        if(this.forma.button !== undefined && this.forma.button.name !== undefined){
+          this.button = this.forma.button.name;
+        }
+    
+        if(this.forma.header !== undefined){
+          this.header = this.forma.header;
+        }
+        
+        this.imageSource = this.forma.image;
+      }
+    );
   }
 
   onSubmit(paymentForm){
     if(paymentForm.valid===true){
-      console.log("Validna forma");
+      
+      for(let item of this.forma.form){
+        if(item.type!="reset"){
+          this.body[item.id]=item.model;
+        }
+      }
+      this.body["uuid"]=this.uuid;
+      console.log(this.body);
+      
+      this.endpoints.registerOnMs(this.body,this.forma.button.url).subscribe(
+        res => {
+          this.paymentRegistrationCompleted();
+        },
+        err => {
+          console.log(err);
+          alert("Error while registrating on microservice");
+        }
+      );
     }
+  }
+
+  paymentRegistrationCompleted(){
+
+    var body = {
+      "uuid":this.uuid,
+      "nacinPlacanjaId":this.nacinPlacana
+    }
+
+    this.endpoints.paymentRegistrationCompleted(body).subscribe(
+      res => {
+        window.location.href = res;
+      },
+      err => {
+        console.log(err);
+        alert("Error while registrating on microservice");
+      }
+    );
   }
 }
