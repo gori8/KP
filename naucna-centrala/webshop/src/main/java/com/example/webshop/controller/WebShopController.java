@@ -1,10 +1,7 @@
 package com.example.webshop.controller;
 
 import com.example.webshop.dto.*;
-import com.example.webshop.model.Casopis;
-import com.example.webshop.model.Korisnik;
-import com.example.webshop.model.NacinPlacanja;
-import com.example.webshop.model.NaucnaOblast;
+import com.example.webshop.model.*;
 import com.example.webshop.repository.CasopisRepository;
 import com.example.webshop.repository.NacinPlacanjaRepository;
 import com.example.webshop.repository.NaucnaOblastRepository;
@@ -57,6 +54,9 @@ public class WebShopController {
 
     @Autowired
     CasopisService casopisService;
+
+    @Autowired
+    CasopisRepository casopisRepository;
 
     @GetMapping(path = "/registration", produces = "application/json")
     public @ResponseBody String registrationStart() {
@@ -209,6 +209,22 @@ public class WebShopController {
         List<Task> taskList = taskService.createTaskQuery().taskAssignee(username).list();
         List<TaskDTO> ret = new ArrayList<>();
         for (Task t:taskList) {
+
+            if(t.getTaskDefinitionKey().equals("aktivacijaCasopisa")){
+                boolean flag = true;
+
+                Long id = (Long)runtimeService.getVariable(t.getProcessInstanceId(),"id");
+                for (Link link:casopisRepository.getOne(id).getLinkovi()) {
+                    if (link.getCompleted() == false) {
+                        flag = false;
+                        break;
+                    }
+                }
+                if(flag==false){
+                    continue;
+                }
+            }
+
             TaskDTO tDTO = new TaskDTO();
             tDTO.setId(t.getTaskDefinitionKey());
             tDTO.setInstanceId(t.getId());
