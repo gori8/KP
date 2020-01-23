@@ -9,14 +9,10 @@ import com.example.webshop.model.Link;
 import com.example.webshop.model.NacinPlacanja;
 import com.example.webshop.repository.CasopisRepository;
 import com.example.webshop.repository.LinkRepository;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.ssl.SSLContextBuilder;
-import org.camunda.bpm.engine.impl.util.json.JSONException;
-import org.camunda.bpm.engine.impl.util.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -25,11 +21,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
+import rs.ac.uns.ftn.url.*;
 import java.io.FileInputStream;
 import java.security.KeyStore;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -50,6 +45,7 @@ public class KPServiceImpl implements KPService {
         CreateLinksDTO dto = new CreateLinksDTO();
         dto.setNaziv(casopis.getNaziv());
         dto.setAmount(casopis.getClanarina());
+        dto.setRedirectUrl("http://localhost:9000/nc/payment/complete/");
         dto.setNaciniPlacanja(new ArrayList<>());
         for (NacinPlacanja np:casopis.getNaciniPlacanja()) {
             dto.getNaciniPlacanja().add(np.getId());

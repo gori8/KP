@@ -1,13 +1,11 @@
 package com.example.userandpaymentinfo.service;
 
-import com.example.userandpaymentinfo.converters.ConverterAES;
 import com.example.userandpaymentinfo.dto.*;
 import com.example.userandpaymentinfo.model.*;
 import com.example.userandpaymentinfo.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rs.ac.uns.ftn.url.UrlClass;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -15,8 +13,6 @@ import java.util.UUID;
 
 @Service
 public class InfoServiceImpl implements InfoService{
-
-    //private static final String frontUrl = "https://localhost:4200";
 
     @Autowired
     ItemRepository itemRepository;
@@ -125,6 +121,7 @@ public class InfoServiceImpl implements InfoService{
         item.setNaziv(dto.getNaziv());
         item.setAmount(dto.getAmount());
         item.setUuid(UUID.randomUUID());
+        item.setRedirectUrl(dto.getRedirectUrl()+item.getUuid());
         ret.setUuid(item.getUuid().toString());
 
         for (Long npId:dto.getNaciniPlacanja()) {
@@ -136,7 +133,7 @@ public class InfoServiceImpl implements InfoService{
             LinkDTO linkDTO = new LinkDTO();
            // String hash = converter.convertToDatabaseColumn(item.getUuid().toString());
             String hash = item.getUuid().toString();
-            linkDTO.setLink(frontUrl+"/paymentform/"+npId+"/"+hash);
+            linkDTO.setLink(UrlClass.FRONT_KP+"/paymentform/"+npId+"/"+hash);
             linkDTO.setNacinPlacanjaId(npId);
 
             ret.getLinks().add(linkDTO);

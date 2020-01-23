@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2bce4194-8d71-482d-b1b1-f111dda466f5" name="Default Changelist" comment="" />
+    <list default="true" id="2bce4194-8d71-482d-b1b1-f111dda466f5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../kp-front/src/app/components/forma-placanja/forma-placanja.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../kp-front/src/app/components/forma-placanja/forma-placanja.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../kp-front/src/app/services/endpoints.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../kp-front/src/app/services/endpoints.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../kp-front/src/json/config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../kp-front/src/json/fun.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../naucna-centrala/webshop/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../naucna-centrala/webshop/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../naucna-centrala/webshop/src/main/java/com/example/webshop/config/JacksonConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../naucna-centrala/webshop/src/main/java/com/example/webshop/config/JacksonConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../naucna-centrala/webshop/src/main/java/com/example/webshop/dto/CreateLinksDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../naucna-centrala/webshop/src/main/java/com/example/webshop/dto/CreateLinksDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../naucna-centrala/webshop/src/main/java/com/example/webshop/registrationServices/ConfirmationEmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../naucna-centrala/webshop/src/main/java/com/example/webshop/registrationServices/ConfirmationEmailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../naucna-centrala/webshop/src/main/java/com/example/webshop/services/KPServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../naucna-centrala/webshop/src/main/java/com/example/webshop/services/KPServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rs/ac/uns/ftn/url/UrlClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rs/ac/uns/ftn/url/UrlClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/rs/ac/uns/ftn/url/UrlClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/rs/ac/uns/ftn/url/UrlClass.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/urls-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/urls-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../userAndPaymentInfo/src/main/java/com/example/userandpaymentinfo/dto/CreateLinksDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../userAndPaymentInfo/src/main/java/com/example/userandpaymentinfo/dto/CreateLinksDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../userAndPaymentInfo/src/main/java/com/example/userandpaymentinfo/service/InfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../userAndPaymentInfo/src/main/java/com/example/userandpaymentinfo/service/InfoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../zuul-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../zuul-service/src/main/resources/application.yml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +33,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
       <MavenImportingSettings>
@@ -23,10 +44,11 @@
     </option>
   </component>
   <component name="ProjectId" id="1WiWf3QR3hjL5HJpn4VA6oTYXhf" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/META-INF" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -107,10 +129,25 @@
       <workItem from="1579642772373" duration="4028000" />
       <workItem from="1579694430739" duration="1201000" />
       <workItem from="1579695812021" duration="136000" />
+      <workItem from="1579712072382" duration="160000" />
+      <workItem from="1579712705089" duration="3163000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

@@ -1,12 +1,5 @@
 {
-
     "form":[
-        {
-            "id":"paypal-button",
-            "type":"div",
-            "row":6,
-            "col":0
-        },
         {
             "id":"tf1",
             "type":"text",

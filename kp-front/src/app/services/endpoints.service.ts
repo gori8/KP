@@ -27,4 +27,8 @@ export class EndpointsService {
       })
     });
   }
+
+  public getJSON(name): Observable<any> {
+    return this.http.get(`./assets/json/${name}.json`);
+  }
 }

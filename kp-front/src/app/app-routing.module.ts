@@ -4,7 +4,7 @@ import { FormaPlacanjaComponent } from './components/forma-placanja/forma-placan
 import { IzborPlacanjaComponent } from './components/izbor-placanja/izbor-placanja.component';
 
 const routes: Routes = [
-  { path: 'payment', component: FormaPlacanjaComponent },
+  { path: 'paymentform/:nacinPlacanja/:uuid', component: FormaPlacanjaComponent },
   { path: ':uuid', component: IzborPlacanjaComponent }
 ];
 

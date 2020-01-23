@@ -10,4 +10,5 @@ public class CreateLinksDTO {
     private String naziv;
     private List<Long> naciniPlacanja;
     private BigDecimal amount;
+    private String redirectUrl;
 }
