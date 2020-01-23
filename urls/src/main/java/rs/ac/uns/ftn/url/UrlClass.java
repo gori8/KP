@@ -15,7 +15,7 @@ public class UrlClass {
     //frontovi
     public static final String FRONT_KP = "https://localhost:4200";
     public static final String FRONT_BANKE = "https://localhost:4300/";
-    public static final String FRONT_PAYPAL = "http://localhost:4400/";
+    public static final String FRONT_PAYPAL = "https://localhost:4400/";
     public static final String FRONT_NC = "https://localhost:4500/casopis/";
 
     public static void main(String[] args) {
