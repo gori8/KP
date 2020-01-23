@@ -26,8 +26,8 @@ public class Payment {
     @Type(type="org.hibernate.type.UUIDCharType")
     private UUID casopisUuid;
 
-    @Column(name = "placeno", unique = false, nullable = false)
-    private Boolean placeno;
+    @Column(name = "status", unique = false, nullable = false)
+    private PaymentStatus status;
 
 
 }

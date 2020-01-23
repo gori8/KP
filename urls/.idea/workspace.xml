@@ -2,66 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2bce4194-8d71-482d-b1b1-f111dda466f5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../bank-ms/src/main/resources/kp.crt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bank-ms/src/main/resources/kp.key" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bank-ms/src/main/resources/kp.srl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bank-ms/src/main/resources/localhost.cer" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bank-ms/src/main/resources/localhost.csr" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bank-ms/src/main/resources/truststore.jks" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bank-ms/src/main/resources/userandpaymentinfo.crt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bank/src/main/resources/bank.cer" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bank/src/main/resources/identity.jks" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bank/src/main/resources/truststore.jks" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PayPal/paypal/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../PayPal/paypal/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bank-ms/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../bank-ms/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bank-ms/src/main/java/com/example/bankms/BankMsApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../bank-ms/src/main/java/rs/ac/uns/ftn/kp/bankms/BankMsApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bank-ms/src/main/java/com/example/bankms/client/ClientRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../bank-ms/src/main/java/rs/ac/uns/ftn/kp/bankms/client/ClientRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bank-ms/src/main/java/com/example/bankms/client/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../bank-ms/src/main/java/rs/ac/uns/ftn/kp/bankms/client/ClientService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bank-ms/src/main/java/com/example/bankms/client/ClientServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../bank-ms/src/main/java/rs/ac/uns/ftn/kp/bankms/client/ClientServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bank-ms/src/main/java/com/example/bankms/model/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/../bank-ms/src/main/java/rs/ac/uns/ftn/kp/bankms/model/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bank-ms/src/main/java/com/example/bankms/model/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../bank-ms/src/main/java/rs/ac/uns/ftn/kp/bankms/model/Payment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bank-ms/src/main/java/com/example/bankms/payment/AmountAndUrlDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../bank-ms/src/main/java/rs/ac/uns/ftn/kp/bankms/payment/AmountAndUrlDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bank-ms/src/main/java/com/example/bankms/payment/CardDataDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../bank-ms/src/main/java/rs/ac/uns/ftn/kp/bankms/payment/CardDataDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bank-ms/src/main/java/com/example/bankms/payment/MappingClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/../bank-ms/src/main/java/rs/ac/uns/ftn/kp/bankms/payment/MappingClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bank-ms/src/main/java/com/example/bankms/payment/MappingClassCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/../bank-ms/src/main/java/rs/ac/uns/ftn/kp/bankms/payment/MappingClassCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bank-ms/src/main/java/com/example/bankms/payment/PaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../bank-ms/src/main/java/rs/ac/uns/ftn/kp/bankms/payment/PaymentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bank-ms/src/main/java/com/example/bankms/payment/PaymentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../bank-ms/src/main/java/rs/ac/uns/ftn/kp/bankms/payment/PaymentRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bank-ms/src/main/java/com/example/bankms/payment/PaymentRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../bank-ms/src/main/java/rs/ac/uns/ftn/kp/bankms/payment/PaymentRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bank-ms/src/main/java/com/example/bankms/payment/PaymentResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../bank-ms/src/main/java/rs/ac/uns/ftn/kp/bankms/payment/PaymentResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bank-ms/src/main/java/com/example/bankms/payment/PaymentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../bank-ms/src/main/java/rs/ac/uns/ftn/kp/bankms/payment/PaymentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bank-ms/src/main/java/com/example/bankms/payment/PaymentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../bank-ms/src/main/java/rs/ac/uns/ftn/kp/bankms/payment/PaymentServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bank-ms/src/main/resources/identity.jks" beforeDir="false" afterPath="$PROJECT_DIR$/../bank-ms/src/main/resources/identity.jks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bank-ms/src/test/java/com/example/bankms/BankMsApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../bank-ms/src/test/java/rs/ac/uns/ftn/kp/bankms/BankMsApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bank/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../bank/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../banka/banka-front/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../banka/banka-front/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../banka/banka-front/src/app/services/endpoints.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../banka/banka-front/src/app/services/endpoints.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../kp-front/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../kp-front/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../kp-front/src/app/components/izbor-placanja/izbor-placanja.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../kp-front/src/app/components/izbor-placanja/izbor-placanja.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../kp-front/src/app/services/endpoints.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../kp-front/src/app/services/endpoints.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../logs/bank-ms-service.log" beforeDir="false" afterPath="$PROJECT_DIR$/../logs/bank-ms-service.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../logs/bank.log" beforeDir="false" afterPath="$PROJECT_DIR$/../logs/bank.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../logs/bitcoin-service.log" beforeDir="false" afterPath="$PROJECT_DIR$/../logs/bitcoin-service.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../logs/eureka-service.log" beforeDir="false" afterPath="$PROJECT_DIR$/../logs/eureka-service.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../logs/paypal-service.log" beforeDir="false" afterPath="$PROJECT_DIR$/../logs/paypal-service.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../logs/zuul-service.log" beforeDir="false" afterPath="$PROJECT_DIR$/../logs/zuul-service.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../nc-demo/src/main/java/com/example/ncdemo/config/RestTemplateConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../nc-demo/src/main/java/com/example/ncdemo/config/RestTemplateConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../nc-demo/src/main/java/com/example/ncdemo/service/CasopisServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../nc-demo/src/main/java/com/example/ncdemo/service/CasopisServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../nc-demo/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../nc-demo/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../nc-demo/src/main/resources/truststore.jks" beforeDir="false" afterPath="$PROJECT_DIR$/../nc-demo/src/main/resources/truststore.jks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../start.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../start.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../startDemo.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../startDemo.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../stop.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../stop.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../stopDemo.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../stopDemo.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rs/ac/uns/ftn/url/UrlClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rs/ac/uns/ftn/url/UrlClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/rs/ac/uns/ftn/url/UrlClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/rs/ac/uns/ftn/url/UrlClass.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/urls-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/urls-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../userAndPaymentInfo/src/main/java/com/example/userandpaymentinfo/controller/InfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../userAndPaymentInfo/src/main/java/com/example/userandpaymentinfo/controller/InfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../userAndPaymentInfo/src/main/java/com/example/userandpaymentinfo/service/InfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../userAndPaymentInfo/src/main/java/com/example/userandpaymentinfo/service/InfoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../userAndPaymentInfo/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../userAndPaymentInfo/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -197,6 +138,7 @@
       <workItem from="1579746804114" duration="117000" />
       <workItem from="1579747461034" duration="7000" />
       <workItem from="1579761710929" duration="77000" />
+      <workItem from="1579807013099" duration="612000" />
     </task>
     <servers />
   </component>
