@@ -33,3 +33,10 @@ server:
       trust-store: src/main/resources/truststore.jks
       trust-store-password: secret123
       client-auth: need
+zuul:
+  host:
+    socket-timeout-millis: 300000
+
+
+ribbon:
+  ReadTimeout: 30000

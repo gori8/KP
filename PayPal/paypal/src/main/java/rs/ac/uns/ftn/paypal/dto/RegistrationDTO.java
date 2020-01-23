@@ -6,8 +6,8 @@ import java.util.UUID;
 
 @Data
 public class RegistrationDTO {
-    private UUID casopisID;
+    private String uuid;
     private String email;
-    private String merchant_id;
+    private String merchantId;
 
 }

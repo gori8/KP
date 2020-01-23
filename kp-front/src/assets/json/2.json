@@ -1,0 +1,30 @@
+{
+    "form":[
+        {
+            "id":"merchantId",
+            "type":"text",
+            "name":"Merchant ID",
+            "row":0,
+            "col":0,
+            "validation":{
+                "required":true
+            }
+        },
+        {
+            "id":"email",
+            "type":"email",
+            "name":"Email",
+            "row":1,
+            "col":0,
+            "validation":{
+                "required":true
+            }
+        }
+    ],
+    "button":{
+        "name":"Submit",
+        "url":"https://localhost:8771/paypal/api/paypal/register"
+    },
+    "header":"PayPal Seller Registration",
+    "image":"assets/img/paypal-logo.png"
+}

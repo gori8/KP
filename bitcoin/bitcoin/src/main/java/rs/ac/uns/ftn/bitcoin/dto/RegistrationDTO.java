@@ -7,6 +7,7 @@ import java.util.UUID;
 @Data
 public class RegistrationDTO {
 
-    private UUID uuid;
+    private String uuid;
+    private String token;
 
 }

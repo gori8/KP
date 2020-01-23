@@ -14,5 +14,5 @@ public interface InfoService {
     public UrlDTO getUrl(RedirectUrlDTO redirectUrlDTO);
     public AmountAndUrlDTO getAmountAndUrl(String id);
     public ReturnLinksDTO createLinks(CreateLinksDTO dto);
-
+    public String registrationCompleted(RegistrationCompletedDTO dto);
 }

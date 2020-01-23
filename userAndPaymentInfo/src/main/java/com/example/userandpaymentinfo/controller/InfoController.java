@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.Registration;
 import java.util.List;
 
 @RestController
@@ -61,5 +62,10 @@ public class InfoController {
     public ResponseEntity<ReturnLinksDTO> createLinks(@RequestBody CreateLinksDTO dto) {
 
         return new ResponseEntity<>(infoService.createLinks(dto),HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/registration/complete", method = RequestMethod.POST)
+    public ResponseEntity<String> registrationCompleted(@RequestBody RegistrationCompletedDTO dto) {
+        return new ResponseEntity<String>("\""+infoService.registrationCompleted(dto)+"\"",HttpStatus.OK);
     }
 }

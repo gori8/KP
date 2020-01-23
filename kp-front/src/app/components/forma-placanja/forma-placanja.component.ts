@@ -36,8 +36,7 @@ export class FormaPlacanjaComponent implements OnInit {
     this.endpoints.getJSON(this.nacinPlacana).subscribe(
       data => {
         this.forma=data;
-        console.log(this.forma);
-        
+       
         for(let field of this.forma.form){
 
           if(field.validation===undefined){
@@ -85,7 +84,36 @@ export class FormaPlacanjaComponent implements OnInit {
           this.body[item.id]=item.model;
         }
       }
-      console.log(this.body); 
+      this.body["uuid"]=this.uuid;
+      console.log(this.body);
+      
+      this.endpoints.registerOnMs(this.body,this.forma.button.url).subscribe(
+        res => {
+          this.paymentRegistrationCompleted();
+        },
+        err => {
+          console.log(err);
+          alert("Error while registrating on microservice");
+        }
+      );
     }
+  }
+
+  paymentRegistrationCompleted(){
+
+    var body = {
+      "uuid":this.uuid,
+      "nacinPlacanjaId":this.nacinPlacana
+    }
+
+    this.endpoints.paymentRegistrationCompleted(body).subscribe(
+      res => {
+        window.location.href = res;
+      },
+      err => {
+        console.log(err);
+        alert("Error while registrating on microservice");
+      }
+    );
   }
 }

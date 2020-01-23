@@ -30,13 +30,15 @@ import java.util.UUID;
 @Service
 public class KPServiceImpl implements KPService {
 
-    public static final String userAndPaymentUrl = "http://localhost:8090/api";
-
     @Autowired
     CasopisRepository casopisRepository;
 
     @Autowired
     LinkRepository linkRepository;
+
+    @Autowired
+    RestTemplate restTemplate;
+
 
     @Override
     public void createLinks(Long casopisId){
@@ -45,17 +47,10 @@ public class KPServiceImpl implements KPService {
         CreateLinksDTO dto = new CreateLinksDTO();
         dto.setNaziv(casopis.getNaziv());
         dto.setAmount(casopis.getClanarina());
-        dto.setRedirectUrl("http://localhost:9000/nc/payment/complete/");
+        dto.setRedirectUrl(UrlClass.REDIRECT_URL_REGISTRATION);
         dto.setNaciniPlacanja(new ArrayList<>());
         for (NacinPlacanja np:casopis.getNaciniPlacanja()) {
             dto.getNaciniPlacanja().add(np.getId());
-        }
-
-        RestTemplate restTemplate=null;
-        try {
-            restTemplate = restTemplate();
-        }catch (Exception e){
-            e.printStackTrace();
         }
 
         HttpHeaders headers = new HttpHeaders();
@@ -63,18 +58,8 @@ public class KPServiceImpl implements KPService {
 
         HttpEntity<CreateLinksDTO> entity = new HttpEntity<CreateLinksDTO>(dto, headers);
 
-        if(restTemplate == null){
-            System.out.println("restTemplate je null");
-        }
-        if(entity == null){
-            System.out.println("entity je null");
-        }
-        if(userAndPaymentUrl == null){
-            System.out.println("userAndPaymentUrl je null");
-        }
-
         ResponseEntity<ReturnLinksDTO> response =
-                restTemplate.postForEntity(userAndPaymentUrl+"/links",entity,ReturnLinksDTO.class);
+                restTemplate.postForEntity(UrlClass.USER_AND_PAYMENT_URL+"links",entity,ReturnLinksDTO.class);
 
         ReturnLinksDTO responseBody = response.getBody();
 
@@ -93,24 +78,11 @@ public class KPServiceImpl implements KPService {
         casopisRepository.save(casopis);
     }
 
-    public RestTemplate restTemplate() throws Exception{
-        KeyStore clientStore = KeyStore.getInstance("JKS");
-        clientStore.load(new FileInputStream("src/main/resources/identity.jks"), "secret".toCharArray());
-        KeyStore trustStore = KeyStore.getInstance("JKS");
-        trustStore.load(new FileInputStream("src/main/resources/truststore.jks"), "secret".toCharArray());
+    public String completePayment(String uuid, Long nacinPlacanjaId){
+        Link link = linkRepository.findOneByCasopisUuidAndNacinPlacanja(UUID.fromString(uuid),nacinPlacanjaId);
+        link.setCompleted(true);
+        linkRepository.save(link);
 
-        SSLContextBuilder sslContextBuilder = new SSLContextBuilder();
-        sslContextBuilder.setProtocol("TLS");
-        sslContextBuilder.loadKeyMaterial(clientStore, "secret".toCharArray());
-        sslContextBuilder.loadTrustMaterial(trustStore,null);
-
-        SSLConnectionSocketFactory sslConnectionSocketFactory = new SSLConnectionSocketFactory(sslContextBuilder.build());
-        CloseableHttpClient httpClient = HttpClients.custom()
-                .setSSLSocketFactory(sslConnectionSocketFactory)
-                .build();
-        HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory(httpClient);
-        requestFactory.setConnectTimeout(10000); // 10 seconds
-        requestFactory.setReadTimeout(10000); // 10 seconds
-        return new RestTemplate(requestFactory);
+        return UrlClass.FRON_WEBSHOP+"tasks";
     }
 }
