@@ -4,6 +4,7 @@ pkill -f paypal.jar
 pkill -f bitcoin.jar
 pkill -f bank-ms.jar
 pkill -f bank.jar
+pkill -f userandpaymentinfo.jar
 pkill -f nc-demo.jar
 
 

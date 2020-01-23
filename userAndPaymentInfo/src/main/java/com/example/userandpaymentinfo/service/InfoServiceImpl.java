@@ -136,7 +136,7 @@ public class InfoServiceImpl implements InfoService{
             LinkDTO linkDTO = new LinkDTO();
            // String hash = converter.convertToDatabaseColumn(item.getUuid().toString());
             String hash = item.getUuid().toString();
-            linkDTO.setLink(frontUrl+"/paymentform/"+npId+"/"+hash);
+            linkDTO.setLink(UrlClass.FRONT_KP+"/paymentform/"+npId+"/"+hash);
             linkDTO.setNacinPlacanjaId(npId);
 
             ret.getLinks().add(linkDTO);
