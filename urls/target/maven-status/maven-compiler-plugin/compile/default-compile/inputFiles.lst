@@ -1,1 +1,7 @@
+<<<<<<< HEAD
 /home/milan/Desktop/Projects/KP/urls/src/main/java/rs/ac/uns/ftn/url/UrlClass.java
+=======
+/home/antolovic/KP_SEP/KP/urls/src/main/java/rs/ac/uns/ftn/url/Base64Utility.java
+/home/antolovic/KP_SEP/KP/urls/src/main/java/rs/ac/uns/ftn/url/UrlClass.java
+/home/antolovic/KP_SEP/KP/urls/src/main/java/rs/ac/uns/ftn/url/ConverterAES.java
+>>>>>>> 8d51fd335e74ee0b8e8180ee3916e9322f73a99c

@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-//@CrossOrigin("http://localhost:4200")
-@RequestMapping(value = "api", produces = "application/json;charset=UTF-8")
+@RequestMapping(value = "/api", produces = "application/json;charset=UTF-8")
 @CrossOrigin(origins = "*")
 public class InfoController {
 

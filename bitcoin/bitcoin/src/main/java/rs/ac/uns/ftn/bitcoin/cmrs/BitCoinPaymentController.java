@@ -17,6 +17,19 @@ public class BitCoinPaymentController {
     @Autowired
     BitCoinPaymentService bitCoinPaymentService;
 
+    @Autowired
+    SellerRepository sellerRepository;
+
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public ResponseEntity<Seller> register(@RequestBody RegistrationDTO registrationDTO) {
+
+        Seller seller = new Seller();
+        seller.setUuid(registrationDTO.getUuid());
+        Seller ret = sellerRepository.save(seller);
+
+        return new ResponseEntity<Seller>(ret, HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/prepare",method = RequestMethod.POST)
     public ResponseEntity<String> postPreparePayment(@RequestBody PreparePaymentRequest request) {
 
