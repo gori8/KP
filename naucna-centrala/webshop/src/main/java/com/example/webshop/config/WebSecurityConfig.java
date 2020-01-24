@@ -1,14 +1,13 @@
 package com.example.webshop.config;
 
-import com.example.webshop.security.TokenUtils;
-import com.example.webshop.security.auth.RestAuthenticationEntryPoint;
-import com.example.webshop.security.auth.TokenAuthenticationFilter;
-import com.example.webshop.services.CustomUserDetailsService;
+
+
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.ssl.SSLContextBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -25,6 +24,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
+import com.example.webshop.security.TokenUtils;
+import com.example.webshop.security.auth.RestAuthenticationEntryPoint;
+import com.example.webshop.security.auth.TokenAuthenticationFilter;
+import com.example.webshop.services.CustomUserDetailsService;
 
 import java.io.FileInputStream;
 import java.security.KeyStore;
@@ -62,7 +68,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 
 	@Autowired
-    TokenUtils tokenUtils;
+	TokenUtils tokenUtils;
 
 	// Definisemo prava pristupa odredjenim URL-ovima
 	@Override
@@ -118,5 +124,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		requestFactory.setConnectTimeout(10000); // 10 seconds
 		requestFactory.setReadTimeout(10000); // 10 seconds
 		return new RestTemplate(requestFactory);
+	}
+
+	@Bean
+	public FilterRegistrationBean corsFilter() {
+		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		CorsConfiguration config = new CorsConfiguration();
+		config.setAllowCredentials(true);
+		config.addAllowedOrigin("*");
+		config.addAllowedHeader("*");
+		config.addAllowedMethod("*");
+		source.registerCorsConfiguration("/**", config);
+		FilterRegistrationBean bean = new FilterRegistrationBean(new CorsFilter(source));
+		bean.setOrder(0);
+		return bean;
 	}
 }
