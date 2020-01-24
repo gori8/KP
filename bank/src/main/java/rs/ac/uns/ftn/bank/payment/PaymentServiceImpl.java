@@ -1,6 +1,8 @@
 package rs.ac.uns.ftn.bank.payment;
 
 import org.hibernate.cfg.CreateKeySecondPass;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
 import rs.ac.uns.ftn.bank.account.AccountService;
 import rs.ac.uns.ftn.bank.card.CardService;
 import rs.ac.uns.ftn.bank.client.ClientService;
@@ -16,6 +18,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rs.ac.uns.ftn.url.ConverterAES;
+import rs.ac.uns.ftn.url.UrlClass;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -25,7 +28,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 @Service
 public class PaymentServiceImpl implements PaymentService {
-    private static final String PAYMENT_URL_F = "%s/card/%s";
+    private static final String PAYMENT_URL_F = UrlClass.FRONT_BANKE+"%s/card/%s";
 
     private final Logger LOGGER = LoggerFactory.getLogger(PaymentServiceImpl.class);
     public static final String NOT_FOUND = "notFound";
@@ -48,6 +51,9 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Autowired
     private BankProperties properties;
+
+    @Autowired
+    RestTemplate restTemplate;
 
     @Override
     public ExternalBankPaymentResponse handleKpRequest(ExternalBankPaymentRequest kpRequestDto) {
@@ -114,7 +120,9 @@ public class PaymentServiceImpl implements PaymentService {
             transaction.setAmount(BigDecimal.valueOf(0));
             transactionService.save(transaction);
 
-            response.setUrl(payment.getErrorUrl());
+            ResponseEntity<String> redirectUrlResponse
+                    = restTemplate.getForEntity(payment.getErrorUrl(),String.class);
+            response.setUrl(redirectUrlResponse.getBody());
             response.setSuccessful(false);
             return response;
         }
@@ -134,7 +142,9 @@ public class PaymentServiceImpl implements PaymentService {
             transaction.setRecipient(payment.getMerchant());
             transactionService.save(transaction);
 
-            response.setUrl(payment.getErrorUrl());
+            ResponseEntity<String> redirectUrlResponse
+                    = restTemplate.getForEntity(payment.getErrorUrl(),String.class);
+            response.setUrl(redirectUrlResponse.getBody());
             response.setSuccessful(false);
             return response;
         }
@@ -147,7 +157,9 @@ public class PaymentServiceImpl implements PaymentService {
             transaction.setRecipient(payment.getMerchant());
             transactionService.save(transaction);
 
-            response.setUrl(payment.getErrorUrl());
+            ResponseEntity<String> redirectUrlResponse
+                    = restTemplate.getForEntity(payment.getErrorUrl(),String.class);
+            response.setUrl(redirectUrlResponse.getBody());
             response.setSuccessful(false);
             return response;
         }
@@ -160,7 +172,9 @@ public class PaymentServiceImpl implements PaymentService {
             transaction.setRecipient(payment.getMerchant());
             transactionService.save(transaction);
 
-            response.setUrl(payment.getErrorUrl());
+            ResponseEntity<String> redirectUrlResponse
+                    = restTemplate.getForEntity(payment.getErrorUrl(),String.class);
+            response.setUrl(redirectUrlResponse.getBody());
             response.setSuccessful(false);
             return response;
         }
@@ -178,9 +192,13 @@ public class PaymentServiceImpl implements PaymentService {
         if (account.getAmount().compareTo(payment.getAmount()) < 0) {
             LOGGER.error("There is not enough funds on Card.");
             transaction.setValid(false);
-            redirectUrl = payment.getFailedUrl();
+            ResponseEntity<String> redirectUrlResponse
+                    = restTemplate.getForEntity(payment.getFailedUrl(),String.class);
+            redirectUrl = redirectUrlResponse.getBody();
         } else {
-            redirectUrl = payment.getSuccessUrl();
+            ResponseEntity<String> redirectUrlResponse
+                    = restTemplate.getForEntity(payment.getSuccessUrl(),String.class);
+            redirectUrl = redirectUrlResponse.getBody();
 
             account.setAmount(account.getAmount().subtract(payment.getAmount()));
             merchant.setAmount(merchant.getAmount().add(payment.getAmount()));

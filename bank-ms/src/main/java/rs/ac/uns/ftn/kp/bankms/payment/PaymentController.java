@@ -1,6 +1,8 @@
 package rs.ac.uns.ftn.kp.bankms.payment;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.http.HttpStatus;
@@ -11,7 +13,8 @@ import org.springframework.http.ResponseEntity;
 @CrossOrigin("*")
 public class PaymentController {
 
-    private final PaymentService paymentService;
+    @Autowired
+    PaymentService paymentService;
 
 
     public PaymentController(PaymentServiceImpl paymentService) {
@@ -24,8 +27,10 @@ public class PaymentController {
         return new ResponseEntity<String>("\""+paymentService.handleKpRequest(kpRequestDto)+"\"", HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/{url}", method = RequestMethod.POST)
-    public ResponseEntity<String> useCardData(@RequestBody CardDataDto cardDataDto, @PathVariable String url) {
-        return new ResponseEntity<String>("\""+paymentService.useCardData(cardDataDto, url)+"\"", HttpStatus.OK);
+    @RequestMapping(method = RequestMethod.GET,value = "/{id}/{status}")
+    public ResponseEntity<String> setPaymentStatus(@PathVariable String id, @PathVariable String status) {
+        return ResponseEntity.ok(paymentService.setPaymentStatus(id,status));
     }
+
+
 }

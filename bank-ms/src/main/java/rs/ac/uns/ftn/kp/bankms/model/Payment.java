@@ -19,7 +19,7 @@ public class Payment {
     @Column(name = "amount", unique = false, nullable = true)
     private BigDecimal amount;
 
-    @Column(name = "url", unique = false, nullable = false)
+    @Column(name = "url", unique = false, nullable = true)
     private String url;
 
     @Column(name = "casopisUuid", unique = false, nullable = false)

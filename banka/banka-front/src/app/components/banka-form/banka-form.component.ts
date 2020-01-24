@@ -32,7 +32,7 @@ export class BankaFormComponent implements OnInit {
       this.endpoints.paymentConfirmed(this.formModel,this.transaction).subscribe(
         res => {
             console.log(res);
-            window.location.href = res;
+            window.location.href = res.url;
         },
         err => {
           console.log(err); 

@@ -7,7 +7,7 @@ import java.util.List;
 public interface PaymentService {
 
     List<Payment> findAll();
-    String useCardData(CardDataDto cardDataDto, String url);
     String handleKpRequest(PaymentRequest kpRequestDto);
+    String setPaymentStatus(String id,String status);
 
 }
