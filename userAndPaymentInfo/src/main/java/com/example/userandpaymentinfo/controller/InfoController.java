@@ -3,13 +3,18 @@ package com.example.userandpaymentinfo.controller;
 import com.example.userandpaymentinfo.dto.*;
 import com.example.userandpaymentinfo.model.Item;
 import com.example.userandpaymentinfo.service.InfoService;
+import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.Registration;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/api", produces = "application/json;charset=UTF-8")
@@ -67,5 +72,15 @@ public class InfoController {
     @RequestMapping(value = "/registration/complete", method = RequestMethod.POST)
     public ResponseEntity<String> registrationCompleted(@RequestBody RegistrationCompletedDTO dto) {
         return new ResponseEntity<String>("\""+infoService.registrationCompleted(dto)+"\"",HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/form/{folder}", method = RequestMethod.GET)
+    public ResponseEntity<Object> getForm(@PathVariable("folder") String folder) {
+        return new ResponseEntity<>(infoService.getForm(folder),HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/image/{folder}/{name}", method = RequestMethod.GET)
+    public ResponseEntity<Map<String, String>> getImage(@PathVariable("folder") String folder, @PathVariable("name") String name){
+        return new ResponseEntity<>(infoService.getImage(folder,name),HttpStatus.OK);
     }
 }

@@ -7,7 +7,7 @@
                 <!--FORM-->
                 <form #paymentForm="ngForm" ngNativeValidate (ngSubmit)="onSubmit(paymentForm)">
                     <!--IMAGE-->
-                    <img class="img-logo" src="{{imageSource}}" *ngIf="imageSource!==undefined"/>
+                    <img class="img-logo" [src]="image" *ngIf="image!==null"/>
                     
                     <!--HEADER-->
                     <h2 class="mb-3 text-light mt-5">{{header}}</h2>

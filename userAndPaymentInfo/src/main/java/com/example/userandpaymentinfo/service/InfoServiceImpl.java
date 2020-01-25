@@ -4,6 +4,7 @@ import com.example.userandpaymentinfo.dto.*;
 import com.example.userandpaymentinfo.model.*;
 import com.example.userandpaymentinfo.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -11,9 +12,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import rs.ac.uns.ftn.url.UrlClass;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.*;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 
 @Service
@@ -152,6 +157,7 @@ public class InfoServiceImpl implements InfoService{
         return ret;
     }
 
+    @Override
     public String registrationCompleted(RegistrationCompletedDTO dto){
 
         Item item = itemRepository.findOneByUuid(UUID.fromString(dto.getUuid()));
@@ -166,5 +172,36 @@ public class InfoServiceImpl implements InfoService{
                 restTemplate.postForEntity(url,entity,String.class);
 
         return response.getBody();
+    }
+
+    @Override
+    public Object getForm(String folder){
+        JSONParser parser = new JSONParser();
+
+        try {
+            Object obj = parser.parse(new FileReader("userAndPaymentInfo/src/main/resources/json/"+folder+"/form.json"));
+            JSONObject jsonObject = (JSONObject) obj;
+
+            return jsonObject;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public Map<String,String> getImage(String folder,String name){
+        try {
+            File file = new File("userAndPaymentInfo/src/main/resources/json/"+folder+"/images/"+name);
+            String encodeImage = Base64.getEncoder().withoutPadding().encodeToString(Files.readAllBytes(file.toPath()));
+            Map<String, String> jsonMap = new HashMap<>();
+            jsonMap.put("content", encodeImage);
+
+            return jsonMap;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

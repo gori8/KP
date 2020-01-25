@@ -3,7 +3,6 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 const BASE_URL_USER_AND_PAYMENT = "https://localhost:8771/userandpayment/api";
-const BASE_MICROSERVICE_URL = "http://localhost:8093";
 
 @Injectable({
   providedIn: 'root'
@@ -29,17 +28,21 @@ export class EndpointsService {
   }
 
   public getJSON(name): Observable<any> {
-    return this.http.get(`./assets/json/${name}.json`);
+    return this.http.get(`${BASE_URL_USER_AND_PAYMENT}/form/${name}`);
   }
 
-  public registerOnMs(body,url): Observable<any>{
-    
-    return this.http.post(url,body, {
+  public registerOnMs(body,msUrl): Observable<any>{
+
+    return this.http.post(msUrl,body, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
       })
     });
   } 
+
+  public getImage(folder,name) : Observable<any> {
+    return this.http.get(`${BASE_URL_USER_AND_PAYMENT}/image/${folder}/${name}`);
+  }
 
   public paymentRegistrationCompleted(body): Observable<any>{
 

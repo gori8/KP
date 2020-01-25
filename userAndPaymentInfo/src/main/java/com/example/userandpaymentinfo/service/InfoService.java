@@ -4,6 +4,7 @@ import com.example.userandpaymentinfo.dto.*;
 import com.example.userandpaymentinfo.model.Item;
 
 import java.util.List;
+import java.util.Map;
 
 public interface InfoService {
 
@@ -15,4 +16,6 @@ public interface InfoService {
     public AmountAndUrlDTO getAmountAndUrl(String id);
     public ReturnLinksDTO createLinks(CreateLinksDTO dto);
     public String registrationCompleted(RegistrationCompletedDTO dto);
+    public Object getForm(String folder);
+    public Map<String,String> getImage(String folder, String name);
 }

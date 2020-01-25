@@ -6,7 +6,7 @@
   <ng-container *ngFor="let t of tasks; let i = index">
 
     <!--POTVRDA RECENZENTA-->
-    <div class="card" *ngIf="t.id=='potvrdaRecenzenta'">
+    <div class="card mt-5" *ngIf="t.id=='potvrdaRecenzenta'">
       <div class="card-header">
         <h5>Potvrda recenzenta</h5>
       </div>
@@ -27,7 +27,7 @@
     </div>
 
     <!--AKTIVACIJA CASOPISA-->
-    <div class="card" *ngIf="t.id=='aktivacijaCasopisa'">
+    <div class="card mt-5" *ngIf="t.id=='aktivacijaCasopisa'">
       <div class="card-header">
         <h5>Aktivacija časopisa</h5>
       </div>
@@ -81,7 +81,7 @@
     </div>
 
     <!--Unos urednika i recenzenata-->
-    <div class="card" *ngIf="t.id=='unosUrednikaIRecenzenata'">
+    <div class="card mt-5" *ngIf="t.id=='unosUrednikaIRecenzenata'">
       <div class="card-header">
         <h5>Unos urednika i recenzenata</h5>
       </div>
@@ -98,7 +98,7 @@
     </div>
 
     <!--Prepravka casopisa-->
-  <div class="card" *ngIf="t.id=='formaCasopisa'">
+  <div class="card mt-5" *ngIf="t.id=='formaCasopisa'">
     <div class="card-header">
       <h5>Ispravka informacija o časopisu</h5>
     </div>
@@ -115,6 +115,7 @@
   </div>
 </ng-container>
   
+  <!--Registracija casopisa na KP-->
   <div class="card mt-5" *ngFor="let task of tasksLinks">
     <div class="card-header">
       <h5>Unos podataka za plaćanje</h5>

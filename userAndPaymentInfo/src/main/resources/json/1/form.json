@@ -43,8 +43,8 @@
     ],
     "button":{
         "name":"Završi",
-        "uri":""
+        "url":"https://localhost:8771/bank/api/bankms/register"
     },
     "header":"Registracija Prodavca u Banci",
-    "image":"assets/img/bank-logo.svg"
+    "image":"bank-logo.png"
 }

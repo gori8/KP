@@ -16,5 +16,5 @@
         "url":"https://localhost:8771/bitcoin/api/bitcoin/register"
     },
     "header":"Bit Coin Seller Registration",
-    "image":"assets/img/bitcoin-logo.png"
+    "image":"bitcoin-logo.png"
 }

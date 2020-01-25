@@ -26,5 +26,5 @@
         "url":"https://localhost:8771/paypal/api/paypal/register"
     },
     "header":"PayPal Seller Registration",
-    "image":"assets/img/paypal-logo.png"
+    "image":"paypal-logo.png"
 }
