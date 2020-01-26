@@ -40,20 +40,21 @@ public class BankController {
     public ResponseEntity<ResponseToIssuer> makeResponse(@RequestBody RequestFromAcquirer requestFromAcquirer) {
 
         ResponseToIssuer responseToIssuer = new ResponseToIssuer();
+
         String pan = requestFromAcquirer.getPan();
         pan = pan.substring(1, 7);
         System.out.println(pan);
 
         Bank bank = bankRepository.findOneByBankCode(pan);
 
-        responseToIssuer.setBankUrl(bank.getBankUrl());
+        //responseToIssuer.setBankUrl(bank.getBankUrl());
 
-        saveRequest(requestFromAcquirer);
+        responseToIssuer = saveRequest(requestFromAcquirer);
 
         return new ResponseEntity<ResponseToIssuer>(responseToIssuer, HttpStatus.OK);
     }
 
-    public void saveRequest(RequestFromAcquirer requestFromAcquirer) {
+    public ResponseToIssuer saveRequest(RequestFromAcquirer requestFromAcquirer) {
 
         TransactionRequest transactionRequest = new TransactionRequest();
         transactionRequest.setAcquirerOrderId(requestFromAcquirer.getAcquirerOrderId());
@@ -64,6 +65,16 @@ public class BankController {
         transactionRequest.setValidTo(requestFromAcquirer.getValidTo());
 
         transactionRequestRepository.save(transactionRequest);
+
+        ResponseToIssuer responseToIssuer = new ResponseToIssuer();
+        responseToIssuer.setAcquirerOrderId(requestFromAcquirer.getAcquirerOrderId());
+        responseToIssuer.setAcquirerTimestamp(requestFromAcquirer.getAcquirerTimestamp());
+        responseToIssuer.setHolderName(requestFromAcquirer.getHolderName());
+        responseToIssuer.setPan(requestFromAcquirer.getPan());
+        responseToIssuer.setSecurityCode(requestFromAcquirer.getSecurityCode());
+        responseToIssuer.setValidTo(responseToIssuer.getValidTo());
+
+        return responseToIssuer;
     }
 
 }

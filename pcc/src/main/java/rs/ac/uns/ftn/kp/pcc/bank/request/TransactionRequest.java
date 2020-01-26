@@ -17,7 +17,7 @@ public class TransactionRequest {
     private String acquirerOrderId;
 
     @Column(name = "acquirerTimestamp", unique = false, nullable = false)
-    private String acquirerTimestamp;
+    private Date acquirerTimestamp;
 
     @Column(name = "pan", unique = false, nullable = false)
     private String pan;

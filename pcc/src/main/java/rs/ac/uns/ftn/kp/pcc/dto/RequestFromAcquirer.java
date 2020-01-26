@@ -8,7 +8,7 @@ import java.util.Date;
 public class RequestFromAcquirer {
 
     private String acquirerOrderId;
-    private String acquirerTimestamp;
+    private Date acquirerTimestamp;
     private String pan;
     private Integer securityCode;
     private String holderName;
