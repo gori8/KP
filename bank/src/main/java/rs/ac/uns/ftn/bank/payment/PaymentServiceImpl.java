@@ -1,11 +1,14 @@
 package rs.ac.uns.ftn.bank.payment;
 
-import org.hibernate.cfg.CreateKeySecondPass;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 import rs.ac.uns.ftn.bank.account.AccountService;
 import rs.ac.uns.ftn.bank.card.CardService;
 import rs.ac.uns.ftn.bank.client.ClientService;
+import rs.ac.uns.ftn.bank.dto.PccDTO;
 import rs.ac.uns.ftn.bank.dto.ExecuteTransactionResponse;
 import rs.ac.uns.ftn.bank.dto.ExternalBankPaymentRequest;
 import rs.ac.uns.ftn.bank.dto.ExternalBankPaymentResponse;
@@ -17,14 +20,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import rs.ac.uns.ftn.url.ConverterAES;
+import rs.ac.uns.ftn.url.TransactionStatus;
 import rs.ac.uns.ftn.url.UrlClass;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
-import java.util.concurrent.ThreadLocalRandom;
 
 @Service
 public class PaymentServiceImpl implements PaymentService {
@@ -32,6 +34,8 @@ public class PaymentServiceImpl implements PaymentService {
 
     private final Logger LOGGER = LoggerFactory.getLogger(PaymentServiceImpl.class);
     public static final String NOT_FOUND = "notFound";
+
+    private static final String BANK_CODE = "381311";
 
 
     @Autowired
@@ -232,5 +236,103 @@ public class PaymentServiceImpl implements PaymentService {
 
     private String generateRedirectUrl(String code) {
         return String.format(PAYMENT_URL_F, "banka", code);
+    }
+
+    private TransactionStatus callPcc(CardDataDto cardDataDto, Long transactionId, Date timeStamp,BigDecimal amount){
+        PccDTO pccDTO = new PccDTO();
+        pccDTO.setPan(cardDataDto.getPan());
+        pccDTO.setHolderName(cardDataDto.getHolderName());
+        pccDTO.setSecurityCode(cardDataDto.getSecurityCode());
+        pccDTO.setValidTo(cardDataDto.getValidTo());
+        pccDTO.setAcquirerOrderId(""+transactionId);
+        pccDTO.setAcquirerTimestamp(timeStamp);
+        pccDTO.setBankCode(BANK_CODE);
+        pccDTO.setAmount(amount);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        HttpEntity<PccDTO> entity = new HttpEntity<PccDTO>(pccDTO, headers);
+
+        ResponseEntity<TransactionStatus> response =
+                restTemplate.postForEntity(UrlClass.PCC_URL+"response",entity,TransactionStatus.class);
+
+        TransactionStatus status = response.getBody();
+        return status;
+    }
+
+    @Override
+    public TransactionStatus pccAnswer(PccDTO pccDTO){
+
+        Transaction transaction = new Transaction();
+
+        Card card = cardService.findByPan(pccDTO.getPan());
+        System.out.println("PAN:    " + pccDTO.getPan());
+        System.out.println("CARD:   " + card);
+
+        if (card == null) {
+            LOGGER.error("Could not find card with provided pan number: " + pccDTO.getPan());
+            LOGGER.info("Returning error-url to Bank Microservice");
+
+            transaction.setValid(false);
+            transaction.setAmount(BigDecimal.valueOf(0));
+            //TODO: Recipient izmena
+            transaction.setRecipient(null);
+            transactionService.save(transaction);
+
+            return TransactionStatus.ERROR;
+        }
+
+        if (!card.getSecurityCode().toString().equals(pccDTO.getSecurityCode().toString())) {
+            LOGGER.error("Provided Security Code does not match for provided Card.");
+            LOGGER.info("Returning error-url to Bank Microservice");
+            transaction.setValid(false);
+            transaction.setAmount(BigDecimal.valueOf(0));
+            //TODO: Recipient izmena
+            transaction.setRecipient(null);
+            transactionService.save(transaction);
+
+            return TransactionStatus.ERROR;
+        }
+
+        if(!card.getValidTo().toString().equals(pccDTO.getValidTo().toString())) {
+            LOGGER.error("Provided Valid to Date do not match for provided Card.");
+            LOGGER.info("Returning error-url to Bank Microservice");
+            transaction.setValid(false);
+            transaction.setAmount(BigDecimal.valueOf(0));
+            //TODO: Recipient izmena
+            transaction.setRecipient(null);
+            transactionService.save(transaction);
+
+            return TransactionStatus.ERROR;
+        }
+
+        LOGGER.info("Provided Card Data is valid.");
+
+        //TODO: Recipient izmena
+        transaction.setRecipient(null);
+        transaction.setPayer(card.getAccount());
+        transaction.setAmount(pccDTO.getAmount());
+
+        Account account = card.getAccount();
+
+        TransactionStatus ret = null;
+        LOGGER.info("Checking if there is enough funding for payment..");
+        if (account.getAmount().compareTo(pccDTO.getAmount()) < 0) {
+            LOGGER.error("There is not enough funds on Card.");
+            transaction.setValid(false);
+            ret = TransactionStatus.FAILED;
+        } else {
+            account.setAmount(account.getAmount().subtract(pccDTO.getAmount()));
+
+            accountService.save(account);
+
+            transaction.setValid(true);
+
+            ret = TransactionStatus.SUCCESSFUL;
+        }
+        transactionService.save(transaction);
+        LOGGER.info("Payment transaction is saved in bank database.");
+        return ret;
     }
 }
