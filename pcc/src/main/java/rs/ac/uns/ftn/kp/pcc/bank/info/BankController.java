@@ -11,7 +11,6 @@ import rs.ac.uns.ftn.kp.pcc.bank.request.TransactionRequest;
 import rs.ac.uns.ftn.kp.pcc.bank.request.TransactionRequestRepository;
 import rs.ac.uns.ftn.kp.pcc.dto.RegisterBankDTO;
 import rs.ac.uns.ftn.kp.pcc.dto.RequestFromAcquirer;
-import rs.ac.uns.ftn.kp.pcc.dto.ResponseToIssuer;
 
 @RestController
 @RequestMapping("/api/pcc")
@@ -37,9 +36,8 @@ public class BankController {
     }
 
     @RequestMapping(value = "/response", method = RequestMethod.POST)
-    public ResponseEntity<ResponseToIssuer> makeResponse(@RequestBody RequestFromAcquirer requestFromAcquirer) {
+    public ResponseEntity<RequestFromAcquirer> makeResponse(@RequestBody RequestFromAcquirer requestFromAcquirer) {
 
-        ResponseToIssuer responseToIssuer = new ResponseToIssuer();
 
         String pan = requestFromAcquirer.getPan();
         pan = pan.substring(1, 7);
@@ -47,14 +45,12 @@ public class BankController {
 
         Bank bank = bankRepository.findOneByBankCode(pan);
 
-        //responseToIssuer.setBankUrl(bank.getBankUrl());
+        saveRequest(requestFromAcquirer);
 
-        responseToIssuer = saveRequest(requestFromAcquirer);
-
-        return new ResponseEntity<ResponseToIssuer>(responseToIssuer, HttpStatus.OK);
+        return new ResponseEntity<RequestFromAcquirer>(requestFromAcquirer, HttpStatus.OK);
     }
 
-    public ResponseToIssuer saveRequest(RequestFromAcquirer requestFromAcquirer) {
+    public void saveRequest(RequestFromAcquirer requestFromAcquirer) {
 
         TransactionRequest transactionRequest = new TransactionRequest();
         transactionRequest.setAcquirerOrderId(requestFromAcquirer.getAcquirerOrderId());
@@ -65,16 +61,6 @@ public class BankController {
         transactionRequest.setValidTo(requestFromAcquirer.getValidTo());
 
         transactionRequestRepository.save(transactionRequest);
-
-        ResponseToIssuer responseToIssuer = new ResponseToIssuer();
-        responseToIssuer.setAcquirerOrderId(requestFromAcquirer.getAcquirerOrderId());
-        responseToIssuer.setAcquirerTimestamp(requestFromAcquirer.getAcquirerTimestamp());
-        responseToIssuer.setHolderName(requestFromAcquirer.getHolderName());
-        responseToIssuer.setPan(requestFromAcquirer.getPan());
-        responseToIssuer.setSecurityCode(requestFromAcquirer.getSecurityCode());
-        responseToIssuer.setValidTo(responseToIssuer.getValidTo());
-
-        return responseToIssuer;
     }
 
 }
