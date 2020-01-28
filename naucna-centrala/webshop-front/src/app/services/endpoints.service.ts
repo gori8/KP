@@ -8,7 +8,7 @@ const BASE_URL = "https://localhost:9000/webshop";
   providedIn: 'root'
 })
 export class EndpointsService {
-
+  
   constructor(private http: HttpClient) { }
 
   startProcess(): Observable<any>{
@@ -49,6 +49,18 @@ export class EndpointsService {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'responseType': 'text'
+      })
+    });
+  }
+
+  getCasopis(id): Observable<any>{
+    return this.http.get(`${BASE_URL}/papers/${id}`);
+  }
+
+  submitIzdanje(izdanje): Observable<any>{
+    return this.http.post(`${BASE_URL}/numbers`, izdanje,{
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
       })
     });
   }

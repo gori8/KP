@@ -4,11 +4,11 @@ import { EndpointsService } from 'src/app/services/endpoints.service.js';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-forma-placanja',
-  templateUrl: './forma-placanja.component.html',
-  styleUrls: ['./forma-placanja.component.scss']
+  selector: 'app-json-placanja',
+  templateUrl: './json-placanja.component.html',
+  styleUrls: ['./json-placanja.component.scss']
 })
-export class FormaPlacanjaComponent implements OnInit {
+export class jsonPlacanjaComponent implements OnInit {
 
   constructor(private sanitizer: DomSanitizer,private endpoints:EndpointsService,private activatedRoute: ActivatedRoute) {}
 
@@ -16,7 +16,7 @@ export class FormaPlacanjaComponent implements OnInit {
   private uuid=null;
   private body={};
   private nacinPlacana=null;
-  private forma=null;
+  private json=null;
   private button="Submit";
   private header="";
   private rows = [
@@ -35,11 +35,11 @@ export class FormaPlacanjaComponent implements OnInit {
   }
 
   getJson(){
-    this.endpoints.getJSON(this.nacinPlacana).subscribe(
+    this.endpoints.getJSON(this.nacinPlacana,this.uuid).subscribe(
       res => {
-        this.forma=res;
+        this.json=res;
        
-        for(let field of this.forma.form){
+        for(let field of this.json.form){
 
           if(field.validation===undefined){
             field.validation = {pattern:".*"};
@@ -65,18 +65,18 @@ export class FormaPlacanjaComponent implements OnInit {
           });
         }
     
-        if(this.forma.button !== undefined && this.forma.button.name !== undefined){
-          this.button = this.forma.button.name;
+        if(this.json.button !== undefined && this.json.button.name !== undefined){
+          this.button = this.json.button.name;
         }
     
-        if(this.forma.header !== undefined){
-          this.header = this.forma.header;
+        if(this.json.header !== undefined){
+          this.header = this.json.header;
         }
         
-        if(this.forma.image!=null){
-          var type = this.forma.image.split('.')[1];
+        if(this.json.image!=null){
+          var type = this.json.image.split('.')[1];
           this.imageType = `data:image/${type};base64,`
-          this.getImage(this.nacinPlacana,this.forma.image);
+          this.getImage(this.nacinPlacana,this.json.image);
         }
       },
 
@@ -96,22 +96,20 @@ export class FormaPlacanjaComponent implements OnInit {
 
   onSubmit(paymentForm){
     if(paymentForm.valid===true){
-      for(let item of this.forma.form){
+      for(let item of this.json.form){
         if(item.type!="reset"){
           this.body[item.id]=item.model;
         }
       }
       this.body["uuid"]=this.uuid;
-      console.log(this.body);
-      console.log(this.forma.button.url);
-      
+      this.body["sellerEmail"]=this.json.sellerEmail;
 
       this.registerOnMs();
     }
   }
 
   registerOnMs(){
-    this.endpoints.registerOnMs(this.body,this.forma.button.url).subscribe(
+    this.endpoints.registerOnMs(this.body,this.json.button.url).subscribe(
       res => {
         this.paymentRegistrationCompleted();
       },

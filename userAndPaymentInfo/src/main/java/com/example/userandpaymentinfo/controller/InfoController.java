@@ -63,10 +63,22 @@ public class InfoController {
         return new ResponseEntity<>(infoService.getAmountAndUrl(id),HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/links", method = RequestMethod.POST)
-    public ResponseEntity<ReturnLinksDTO> createLinks(@RequestBody CreateLinksDTO dto) {
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public ResponseEntity register(@RequestBody CreateLinksDTO dto) {
 
-        return new ResponseEntity<>(infoService.createLinks(dto),HttpStatus.OK);
+        ReturnLinksDTO ret =infoService.register(dto);
+
+        if(ret.getLinks().isEmpty()){
+            return ResponseEntity.status(201).body(ret);
+        }
+
+        return new ResponseEntity<>(ret,HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/item", method = RequestMethod.POST)
+    public ResponseEntity<ReturnLinksDTO> addItem(@RequestBody CreateLinksDTO dto) {
+
+        return new ResponseEntity<>(infoService.register(dto),HttpStatus.OK);
     }
 
     @RequestMapping(value = "/registration/complete", method = RequestMethod.POST)
@@ -74,9 +86,9 @@ public class InfoController {
         return new ResponseEntity<String>("\""+infoService.registrationCompleted(dto)+"\"",HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/form/{folder}", method = RequestMethod.GET)
-    public ResponseEntity<Object> getForm(@PathVariable("folder") String folder) {
-        return new ResponseEntity<>(infoService.getForm(folder),HttpStatus.OK);
+    @RequestMapping(value = "/form/{folder}/{uuid}", method = RequestMethod.GET)
+    public ResponseEntity<Object> getForm(@PathVariable("folder") String folder,@PathVariable("uuid") String uuid) {
+        return new ResponseEntity<>(infoService.getForm(folder,uuid),HttpStatus.OK);
     }
 
     @RequestMapping(value = "/image/{folder}/{name}", method = RequestMethod.GET)

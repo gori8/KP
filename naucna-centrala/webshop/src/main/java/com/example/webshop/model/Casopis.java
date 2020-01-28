@@ -60,6 +60,9 @@ public class Casopis {
     @OneToMany(mappedBy = "casopis")
     protected List<Link> linkovi = new ArrayList<>();
 
+    @OneToMany(mappedBy = "casopis")
+    protected List<Izdanje> izdanja = new ArrayList<>();
+
     @ManyToMany
     @JsonIgnore
     @JoinTable(

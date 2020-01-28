@@ -14,8 +14,8 @@ public interface InfoService {
     public List<NacinPlacanjaDTO> getNacinePlacanjaZaCasopis(String casopisId);
     public UrlDTO getUrl(RedirectUrlDTO redirectUrlDTO);
     public AmountAndUrlDTO getAmountAndUrl(String id);
-    public ReturnLinksDTO createLinks(CreateLinksDTO dto);
+    public ReturnLinksDTO register(CreateLinksDTO dto);
     public String registrationCompleted(RegistrationCompletedDTO dto);
-    public Object getForm(String folder);
+    public Object getForm(String folder, String uuid);
     public Map<String,String> getImage(String folder, String name);
 }

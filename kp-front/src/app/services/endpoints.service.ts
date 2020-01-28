@@ -27,8 +27,8 @@ export class EndpointsService {
     });
   }
 
-  public getJSON(name): Observable<any> {
-    return this.http.get(`${BASE_URL_USER_AND_PAYMENT}/form/${name}`);
+  public getJSON(name,uuid): Observable<any> {
+    return this.http.get(`${BASE_URL_USER_AND_PAYMENT}/form/${name}/${uuid}`);
   }
 
   public registerOnMs(body,msUrl): Observable<any>{
