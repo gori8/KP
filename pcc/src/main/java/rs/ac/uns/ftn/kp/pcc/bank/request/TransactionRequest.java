@@ -1,6 +1,7 @@
 package rs.ac.uns.ftn.kp.pcc.bank.request;
 
 import lombok.Data;
+import rs.ac.uns.ftn.url.TransactionStatus;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -30,5 +31,8 @@ public class TransactionRequest {
 
     @Column(name = "validTo", unique = false, nullable = false)
     private Date validTo;
+
+    @Column(name = "status", unique = false, nullable = false)
+    private TransactionStatus status;
 
 }
