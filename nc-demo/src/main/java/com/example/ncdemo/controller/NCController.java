@@ -37,7 +37,7 @@ public class NCController {
         return new ResponseEntity<>("\""+url+"\"",HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/casopis/{uuid}/{success}", method = RequestMethod.GET)
+    @RequestMapping(value = "/casopis/{uuid}/{success}", method = RequestMethod.POST)
     public ResponseEntity<String> changePayed(@PathVariable("uuid")String uuid, @PathVariable("success")Boolean success) {
 
         return new ResponseEntity<>(casopisService.changePayed(uuid,success),HttpStatus.OK);

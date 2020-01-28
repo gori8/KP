@@ -23,4 +23,10 @@ public class Seller {
     @Column(name = "merchant_id", unique = true, nullable = false)
     private String merchant_id;
 
+    @Column(name = "can_subscribe", nullable = false)
+    private Boolean canSubscribe;
+
+    @Column(name = "plan_id", unique = true)
+    private String planId;
+
 }

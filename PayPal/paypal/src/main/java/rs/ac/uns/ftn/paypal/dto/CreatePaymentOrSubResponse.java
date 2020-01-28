@@ -6,7 +6,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreatePaymentResponse {
+public class CreatePaymentOrSubResponse {
 
     private String approvalUrl;
 

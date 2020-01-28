@@ -13,5 +13,6 @@ public class ExecutePaymentRequest {
 
     private String paymentID;
     private String payerID;
+    private String token;
 
 }

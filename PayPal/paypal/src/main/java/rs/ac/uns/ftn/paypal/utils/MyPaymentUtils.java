@@ -13,12 +13,12 @@ import java.util.UUID;
 public class MyPaymentUtils {
 
     private static final String CURRENCY="USD";
-    private static final String RETURN_URL = "https://github.com/" ;
+    private static final String RETURN_URL = "https://localhost:8771/paypal/api/paypal/execute" ;
     //private static final String CANCEL_URL = "http://localhost/paypal/cancel/" ;
     //private static final String AMOUNTANDURL= "http://localhost:8090/api/amountandurl/";
 
 
-    static RestTemplate restTemplate=new RestTemplate();
+
 
     public static Transaction setTransaction(BigDecimal total, String paypalEmail) {
         Amount amount = setAmount(total);
@@ -63,7 +63,7 @@ public class MyPaymentUtils {
         return redirectUrls;
     }
 
-    public static AmountAndUrlDTO getAmountAndRedirectUrl(String casopisID){
+    public static AmountAndUrlDTO getAmountAndRedirectUrl(RestTemplate restTemplate,String casopisID){
         String url=UrlClass.DOBAVI_CENU_URL_SA_PAYMENT_INFO+casopisID;
         System.out.println(url);
         ResponseEntity<AmountAndUrlDTO> resp

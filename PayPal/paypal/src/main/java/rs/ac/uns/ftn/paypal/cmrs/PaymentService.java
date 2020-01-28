@@ -1,15 +1,22 @@
 package rs.ac.uns.ftn.paypal.cmrs;
 
-import rs.ac.uns.ftn.paypal.dto.CreatePaymentRequest;
-import rs.ac.uns.ftn.paypal.dto.CreatePaymentResponse;
+import com.paypal.api.payments.Plan;
+import rs.ac.uns.ftn.paypal.dto.CreatePaymentOrSubRequest;
+import rs.ac.uns.ftn.paypal.dto.CreatePaymentOrSubResponse;
 import rs.ac.uns.ftn.paypal.dto.ExecutePaymentRequest;
 
 public interface PaymentService {
 
-    public abstract CreatePaymentResponse createPayment(CreatePaymentRequest kpRequest);
+    CreatePaymentOrSubResponse createPayment(CreatePaymentOrSubRequest kpRequest);
 
-    public abstract String executePayment(ExecutePaymentRequest request);
+    String executePayment(ExecutePaymentRequest request);
 
-    public abstract String cancelPayment(Long id);
+    String cancelPayment(Long id);
+
+    Plan createBillingPlan(CreatePaymentOrSubRequest request);
+
+    String activateSubscription(CreatePaymentOrSubRequest request);
+
+    void executeSubAgreement(String token);
 }
 

@@ -1,4 +1,4 @@
-2020-01-24 02:08:05.819  INFO 15066 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$8993ca23] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-28 06:22:35.688  INFO 14933 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$9f3aa6d9] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -8,83 +8,84 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::        (v2.2.1.RELEASE)
 
-2020-01-24 02:08:07.168  INFO 15066 --- [           main] c.e.e.EurekaServiceApplication           : No active profile set, falling back to default profiles: default
-2020-01-24 02:08:14.025  WARN 15066 --- [           main] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
-2020-01-24 02:08:15.298  INFO 15066 --- [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=c64e7e89-ffaa-3919-b215-1c3a44d5031a
-2020-01-24 02:08:16.925  INFO 15066 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$8993ca23] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-24 02:08:18.729  INFO 15066 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8761 (http)
-2020-01-24 02:08:18.803  INFO 15066 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2020-01-24 02:08:18.804  INFO 15066 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.27]
-2020-01-24 02:08:19.208  INFO 15066 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2020-01-24 02:08:19.208  INFO 15066 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 11916 ms
-2020-01-24 02:08:19.883  WARN 15066 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
-2020-01-24 02:08:19.889  INFO 15066 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-2020-01-24 02:08:20.138  INFO 15066 --- [           main] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@13c3c1e1
-2020-01-24 02:08:24.764  INFO 15066 --- [           main] c.s.j.s.i.a.WebApplicationImpl           : Initiating Jersey application, version 'Jersey: 1.19.1 03/11/2016 02:08 PM'
-2020-01-24 02:08:25.342  INFO 15066 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
-2020-01-24 02:08:25.362  INFO 15066 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2020-01-28 06:22:37.221  INFO 14933 --- [           main] c.e.e.EurekaServiceApplication           : No active profile set, falling back to default profiles: default
+2020-01-28 06:22:43.466  WARN 14933 --- [           main] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2020-01-28 06:22:44.668  INFO 14933 --- [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=c64e7e89-ffaa-3919-b215-1c3a44d5031a
+2020-01-28 06:22:45.834  INFO 14933 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$9f3aa6d9] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-28 06:22:47.057  INFO 14933 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8761 (http)
+2020-01-28 06:22:47.129  INFO 14933 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-01-28 06:22:47.130  INFO 14933 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.27]
+2020-01-28 06:22:47.429  INFO 14933 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-01-28 06:22:47.430  INFO 14933 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 10062 ms
+2020-01-28 06:22:48.010  WARN 14933 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-01-28 06:22:48.011  INFO 14933 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-01-28 06:22:48.160  INFO 14933 --- [           main] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@36546a22
+2020-01-28 06:22:51.176  INFO 14933 --- [           main] c.s.j.s.i.a.WebApplicationImpl           : Initiating Jersey application, version 'Jersey: 1.19.1 03/11/2016 02:08 PM'
+2020-01-28 06:22:51.678  INFO 14933 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2020-01-28 06:22:51.703  INFO 14933 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
 WARNING: An illegal reflective access operation has occurred
 WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (jar:file:/home/antolovic/KP_SEP/KP/eureka-service/target/eureka-service.jar!/BOOT-INF/lib/xstream-1.4.11.1.jar!/) to field java.util.TreeMap.comparator
 WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
 WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
 WARNING: All illegal access operations will be denied in a future release
-2020-01-24 02:08:26.488  INFO 15066 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
-2020-01-24 02:08:26.499  INFO 15066 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
-2020-01-24 02:08:29.360  WARN 15066 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
-2020-01-24 02:08:29.368  INFO 15066 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-2020-01-24 02:08:31.519  INFO 15066 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-01-24 02:08:34.325  WARN 15066 --- [           main] ockingLoadBalancerClientRibbonWarnLogger : You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
-2020-01-24 02:08:34.707  INFO 15066 --- [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
-2020-01-24 02:08:34.842  INFO 15066 --- [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
-2020-01-24 02:08:34.843  INFO 15066 --- [           main] com.netflix.discovery.DiscoveryClient    : Client configured to neither register nor query for data.
-2020-01-24 02:08:34.880  INFO 15066 --- [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1579828114878 with initial instances count: 0
-2020-01-24 02:08:35.194  INFO 15066 --- [           main] c.n.eureka.DefaultEurekaServerContext    : Initializing ...
-2020-01-24 02:08:35.210  INFO 15066 --- [           main] c.n.eureka.cluster.PeerEurekaNodes       : Adding new peer nodes [http://localhost:8761/eureka/]
-2020-01-24 02:08:36.411  INFO 15066 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
-2020-01-24 02:08:36.412  INFO 15066 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
-2020-01-24 02:08:36.414  INFO 15066 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
-2020-01-24 02:08:36.415  INFO 15066 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
-2020-01-24 02:08:37.510  INFO 15066 --- [           main] c.n.eureka.cluster.PeerEurekaNodes       : Replica node URL:  http://localhost:8761/eureka/
-2020-01-24 02:08:37.564  INFO 15066 --- [           main] c.n.e.registry.AbstractInstanceRegistry  : Finished initializing remote region registries. All known remote regions: []
-2020-01-24 02:08:37.565  INFO 15066 --- [           main] c.n.eureka.DefaultEurekaServerContext    : Initialized
-2020-01-24 02:08:37.711  INFO 15066 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
-2020-01-24 02:08:37.944  INFO 15066 --- [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application EUREKA-SERVER with eureka with status UP
-2020-01-24 02:08:37.979  INFO 15066 --- [      Thread-10] o.s.c.n.e.server.EurekaServerBootstrap   : Setting the eureka configuration..
-2020-01-24 02:08:37.984  INFO 15066 --- [      Thread-10] o.s.c.n.e.server.EurekaServerBootstrap   : Eureka data center value eureka.datacenter is not set, defaulting to default
-2020-01-24 02:08:37.985  INFO 15066 --- [      Thread-10] o.s.c.n.e.server.EurekaServerBootstrap   : Eureka environment value eureka.environment is not set, defaulting to test
-2020-01-24 02:08:38.048  INFO 15066 --- [      Thread-10] o.s.c.n.e.server.EurekaServerBootstrap   : isAws returned false
-2020-01-24 02:08:38.049  INFO 15066 --- [      Thread-10] o.s.c.n.e.server.EurekaServerBootstrap   : Initialized server context
-2020-01-24 02:08:38.049  INFO 15066 --- [      Thread-10] c.n.e.r.PeerAwareInstanceRegistryImpl    : Got 1 instances from neighboring DS node
-2020-01-24 02:08:38.049  INFO 15066 --- [      Thread-10] c.n.e.r.PeerAwareInstanceRegistryImpl    : Renew threshold is: 1
-2020-01-24 02:08:38.050  INFO 15066 --- [      Thread-10] c.n.e.r.PeerAwareInstanceRegistryImpl    : Changing status to UP
-2020-01-24 02:08:38.082  INFO 15066 --- [      Thread-10] e.s.EurekaServerInitializerConfiguration : Started Eureka Server
-2020-01-24 02:08:38.280  INFO 15066 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8761 (http) with context path ''
-2020-01-24 02:08:38.282  INFO 15066 --- [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8761
-2020-01-24 02:08:38.291  INFO 15066 --- [           main] c.e.e.EurekaServiceApplication           : Started EurekaServiceApplication in 38.547 seconds (JVM running for 40.907)
-2020-01-24 02:08:40.311  INFO 15066 --- [nio-8761-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2020-01-24 02:08:40.311  INFO 15066 --- [nio-8761-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2020-01-24 02:08:40.353  INFO 15066 --- [nio-8761-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 42 ms
-2020-01-24 02:08:41.717  INFO 15066 --- [nio-8761-exec-3] c.n.e.registry.AbstractInstanceRegistry  : Registered instance ZUUL-SERVER/zuul-server:daf0284e4c90d5c8d3bc75b3fe083276 with status UP (replication=false)
-2020-01-24 02:08:42.967  INFO 15066 --- [nio-8761-exec-6] c.n.e.registry.AbstractInstanceRegistry  : Registered instance ZUUL-SERVER/zuul-server:daf0284e4c90d5c8d3bc75b3fe083276 with status UP (replication=true)
-2020-01-24 02:08:46.501  INFO 15066 --- [nio-8761-exec-6] c.n.e.registry.AbstractInstanceRegistry  : Registered instance PAYPAL/paypal:2b2365a0f6972518d5a0c359cb202eeb with status UP (replication=false)
-2020-01-24 02:08:46.636  INFO 15066 --- [nio-8761-exec-4] c.n.e.registry.AbstractInstanceRegistry  : Registered instance PAYPAL/paypal:2b2365a0f6972518d5a0c359cb202eeb with status UP (replication=true)
-2020-01-24 02:08:47.252  INFO 15066 --- [nio-8761-exec-7] c.n.e.registry.AbstractInstanceRegistry  : Registered instance BITCOIN/bitcoin:ebd2edfc9f78bf87380d1c6d4aaa5e2a with status UP (replication=false)
-2020-01-24 02:08:47.650  INFO 15066 --- [nio-8761-exec-3] c.n.e.registry.AbstractInstanceRegistry  : Registered instance BITCOIN/bitcoin:ebd2edfc9f78bf87380d1c6d4aaa5e2a with status UP (replication=true)
-2020-01-24 02:08:50.855  INFO 15066 --- [nio-8761-exec-8] c.n.e.registry.AbstractInstanceRegistry  : Registered instance USERANDPAYMENT/userandpayment:a13ad576e2da86f1a98c406f361c7128 with status UP (replication=false)
-2020-01-24 02:08:51.136  INFO 15066 --- [nio-8761-exec-1] c.n.e.registry.AbstractInstanceRegistry  : Registered instance BANK/bank:958560819acffdce530b25d2a3883f7e with status UP (replication=false)
-2020-01-24 02:08:51.367  INFO 15066 --- [nio-8761-exec-2] c.n.e.registry.AbstractInstanceRegistry  : Registered instance USERANDPAYMENT/userandpayment:a13ad576e2da86f1a98c406f361c7128 with status UP (replication=true)
-2020-01-24 02:08:51.370  INFO 15066 --- [nio-8761-exec-2] c.n.e.registry.AbstractInstanceRegistry  : Registered instance BANK/bank:958560819acffdce530b25d2a3883f7e with status UP (replication=true)
-2020-01-24 02:09:38.051  INFO 15066 --- [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 0ms
-2020-01-24 02:10:38.051  INFO 15066 --- [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 0ms
-2020-01-24 02:11:38.051  INFO 15066 --- [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 0ms
-2020-01-24 02:12:38.052  INFO 15066 --- [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 0ms
-2020-01-24 02:13:38.052  INFO 15066 --- [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 0ms
-2020-01-24 02:14:38.052  INFO 15066 --- [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 0ms
-2020-01-24 02:15:33.846  INFO 15066 --- [extShutdownHook] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application EUREKA-SERVER with eureka with status DOWN
-2020-01-24 02:15:33.858  INFO 15066 --- [extShutdownHook] c.n.eureka.DefaultEurekaServerContext    : Shutting down ...
-2020-01-24 02:15:33.862  INFO 15066 --- [nio-8761-exec-7] c.n.e.registry.AbstractInstanceRegistry  : Registered instance ZUUL-SERVER/zuul-server:daf0284e4c90d5c8d3bc75b3fe083276 with status DOWN (replication=false)
-2020-01-24 02:15:33.866  INFO 15066 --- [nio-8761-exec-5] c.n.e.registry.AbstractInstanceRegistry  : Registered instance PAYPAL/paypal:2b2365a0f6972518d5a0c359cb202eeb with status DOWN (replication=false)
-2020-01-24 02:15:33.872  INFO 15066 --- [extShutdownHook] c.n.eureka.DefaultEurekaServerContext    : Shut down
-2020-01-24 02:15:33.875  INFO 15066 --- [extShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
-2020-01-24 02:15:33.882  INFO 15066 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
-2020-01-24 02:15:33.882  INFO 15066 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
+2020-01-28 06:22:52.718  INFO 14933 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2020-01-28 06:22:52.729  INFO 14933 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2020-01-28 06:22:55.374  WARN 14933 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-01-28 06:22:55.377  INFO 14933 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-01-28 06:22:57.355  INFO 14933 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-01-28 06:22:59.746  WARN 14933 --- [           main] ockingLoadBalancerClientRibbonWarnLogger : You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2020-01-28 06:23:00.182  INFO 14933 --- [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2020-01-28 06:23:00.321  INFO 14933 --- [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2020-01-28 06:23:00.322  INFO 14933 --- [           main] com.netflix.discovery.DiscoveryClient    : Client configured to neither register nor query for data.
+2020-01-28 06:23:00.366  INFO 14933 --- [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1580188980363 with initial instances count: 0
+2020-01-28 06:23:00.730  INFO 14933 --- [           main] c.n.eureka.DefaultEurekaServerContext    : Initializing ...
+2020-01-28 06:23:00.743  INFO 14933 --- [           main] c.n.eureka.cluster.PeerEurekaNodes       : Adding new peer nodes [http://localhost:8761/eureka/]
+2020-01-28 06:23:01.751  INFO 14933 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2020-01-28 06:23:01.752  INFO 14933 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2020-01-28 06:23:01.752  INFO 14933 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2020-01-28 06:23:01.752  INFO 14933 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2020-01-28 06:23:02.661  INFO 14933 --- [           main] c.n.eureka.cluster.PeerEurekaNodes       : Replica node URL:  http://localhost:8761/eureka/
+2020-01-28 06:23:02.707  INFO 14933 --- [           main] c.n.e.registry.AbstractInstanceRegistry  : Finished initializing remote region registries. All known remote regions: []
+2020-01-28 06:23:02.708  INFO 14933 --- [           main] c.n.eureka.DefaultEurekaServerContext    : Initialized
+2020-01-28 06:23:02.808  INFO 14933 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-01-28 06:23:02.992  INFO 14933 --- [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application EUREKA-SERVER with eureka with status UP
+2020-01-28 06:23:03.050  INFO 14933 --- [      Thread-10] o.s.c.n.e.server.EurekaServerBootstrap   : Setting the eureka configuration..
+2020-01-28 06:23:03.062  INFO 14933 --- [      Thread-10] o.s.c.n.e.server.EurekaServerBootstrap   : Eureka data center value eureka.datacenter is not set, defaulting to default
+2020-01-28 06:23:03.063  INFO 14933 --- [      Thread-10] o.s.c.n.e.server.EurekaServerBootstrap   : Eureka environment value eureka.environment is not set, defaulting to test
+2020-01-28 06:23:03.157  INFO 14933 --- [      Thread-10] o.s.c.n.e.server.EurekaServerBootstrap   : isAws returned false
+2020-01-28 06:23:03.158  INFO 14933 --- [      Thread-10] o.s.c.n.e.server.EurekaServerBootstrap   : Initialized server context
+2020-01-28 06:23:03.158  INFO 14933 --- [      Thread-10] c.n.e.r.PeerAwareInstanceRegistryImpl    : Got 1 instances from neighboring DS node
+2020-01-28 06:23:03.159  INFO 14933 --- [      Thread-10] c.n.e.r.PeerAwareInstanceRegistryImpl    : Renew threshold is: 1
+2020-01-28 06:23:03.159  INFO 14933 --- [      Thread-10] c.n.e.r.PeerAwareInstanceRegistryImpl    : Changing status to UP
+2020-01-28 06:23:03.315  INFO 14933 --- [      Thread-10] e.s.EurekaServerInitializerConfiguration : Started Eureka Server
+2020-01-28 06:23:03.353  INFO 14933 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8761 (http) with context path ''
+2020-01-28 06:23:03.354  INFO 14933 --- [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8761
+2020-01-28 06:23:03.389  INFO 14933 --- [           main] c.e.e.EurekaServiceApplication           : Started EurekaServiceApplication in 33.189 seconds (JVM running for 35.555)
+2020-01-28 06:23:04.007  INFO 14933 --- [nio-8761-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-01-28 06:23:04.008  INFO 14933 --- [nio-8761-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-01-28 06:23:04.057  INFO 14933 --- [nio-8761-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 49 ms
+2020-01-28 06:23:04.295  WARN 14933 --- [nio-8761-exec-1] c.n.e.registry.AbstractInstanceRegistry  : DS: Registry: lease doesn't exist, registering resource: ZUUL-SERVER - zuul-server:9650221b2cf93d190368c495f4c381cf
+2020-01-28 06:23:04.296  WARN 14933 --- [nio-8761-exec-1] c.n.eureka.resources.InstanceResource    : Not Found (Renew): ZUUL-SERVER - zuul-server:9650221b2cf93d190368c495f4c381cf
+2020-01-28 06:23:05.039  INFO 14933 --- [nio-8761-exec-2] c.n.e.registry.AbstractInstanceRegistry  : Registered instance ZUUL-SERVER/zuul-server:9650221b2cf93d190368c495f4c381cf with status UP (replication=false)
+2020-01-28 06:23:06.104  INFO 14933 --- [nio-8761-exec-3] c.n.e.registry.AbstractInstanceRegistry  : Registered instance ZUUL-SERVER/zuul-server:9650221b2cf93d190368c495f4c381cf with status UP (replication=true)
+2020-01-28 06:23:10.661  INFO 14933 --- [nio-8761-exec-3] c.n.e.registry.AbstractInstanceRegistry  : Registered instance BITCOIN/bitcoin:2819bfc0c8777aca03f35aee8732f3ad with status UP (replication=false)
+2020-01-28 06:23:11.170  INFO 14933 --- [nio-8761-exec-6] c.n.e.registry.AbstractInstanceRegistry  : Registered instance BITCOIN/bitcoin:2819bfc0c8777aca03f35aee8732f3ad with status UP (replication=true)
+2020-01-28 06:23:11.355  INFO 14933 --- [nio-8761-exec-7] c.n.e.registry.AbstractInstanceRegistry  : Registered instance PAYPAL/paypal:ab016c1ab9ab4acdfa31a11965432e27 with status UP (replication=false)
+2020-01-28 06:23:11.870  INFO 14933 --- [io-8761-exec-10] c.n.e.registry.AbstractInstanceRegistry  : Registered instance PAYPAL/paypal:ab016c1ab9ab4acdfa31a11965432e27 with status UP (replication=true)
+2020-01-28 06:23:14.579  INFO 14933 --- [nio-8761-exec-2] c.n.e.registry.AbstractInstanceRegistry  : Registered instance USERANDPAYMENT/userandpayment:6cf2547586cc816b1765afd50ba5f1c3 with status UP (replication=false)
+2020-01-28 06:23:14.750  INFO 14933 --- [nio-8761-exec-5] c.n.e.registry.AbstractInstanceRegistry  : Registered instance USERANDPAYMENT/userandpayment:6cf2547586cc816b1765afd50ba5f1c3 with status UP (replication=true)
+2020-01-28 06:23:14.799  INFO 14933 --- [nio-8761-exec-6] c.n.e.registry.AbstractInstanceRegistry  : Registered instance BANK/bank:98a0071187c4bfc9a12bbb511179b8e5 with status UP (replication=false)
+2020-01-28 06:23:15.310  INFO 14933 --- [nio-8761-exec-8] c.n.e.registry.AbstractInstanceRegistry  : Registered instance BANK/bank:98a0071187c4bfc9a12bbb511179b8e5 with status UP (replication=true)
+2020-01-28 06:24:03.282  INFO 14933 --- [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 0ms
+2020-01-28 06:25:03.282  INFO 14933 --- [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 0ms
+2020-01-28 06:26:03.282  INFO 14933 --- [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 0ms
+2020-01-28 06:27:03.282  INFO 14933 --- [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 0ms
+2020-01-28 06:28:03.283  INFO 14933 --- [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 0ms
+2020-01-28 06:29:03.284  INFO 14933 --- [a-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 1ms
+2020-01-28 06:29:22.236  INFO 14933 --- [extShutdownHook] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application EUREKA-SERVER with eureka with status DOWN
+2020-01-28 06:29:22.245  INFO 14933 --- [extShutdownHook] c.n.eureka.DefaultEurekaServerContext    : Shutting down ...
+2020-01-28 06:29:22.255  INFO 14933 --- [extShutdownHook] c.n.eureka.DefaultEurekaServerContext    : Shut down
+2020-01-28 06:29:22.264  INFO 14933 --- [extShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-01-28 06:29:22.274  INFO 14933 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2020-01-28 06:29:22.274  INFO 14933 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
+2020-01-28 06:29:22.275  INFO 14933 --- [nio-8761-exec-1] c.n.e.registry.AbstractInstanceRegistry  : Registered instance ZUUL-SERVER/zuul-server:9650221b2cf93d190368c495f4c381cf with status DOWN (replication=false)

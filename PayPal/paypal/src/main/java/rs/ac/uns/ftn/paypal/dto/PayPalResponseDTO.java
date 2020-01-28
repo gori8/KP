@@ -13,7 +13,7 @@ public class PayPalResponseDTO {
 
     private String approvalUrl;
 
-    private String PaymentId;
+    private String id;
 
 }
 

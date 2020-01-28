@@ -7,78 +7,70 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::        (v2.2.2.RELEASE)
 
-2020-01-24 02:08:06.044  INFO 15069 --- [           main] r.ac.uns.ftn.bitcoin.BitcoinApplication  : No active profile set, falling back to default profiles: default
-2020-01-24 02:08:13.607  INFO 15069 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2020-01-24 02:08:15.200  INFO 15069 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1548ms. Found 2 JPA repository interfaces.
-2020-01-24 02:08:16.229  WARN 15069 --- [           main] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
-2020-01-24 02:08:17.389  INFO 15069 --- [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=6b37e511-228c-3a9c-8ada-db114aea1ff9
-2020-01-24 02:08:19.355  INFO 15069 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-24 02:08:21.832  INFO 15069 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8093 (http)
-2020-01-24 02:08:21.895  INFO 15069 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2020-01-24 02:08:21.896  INFO 15069 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
-2020-01-24 02:08:22.321  INFO 15069 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2020-01-24 02:08:22.323  INFO 15069 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 16090 ms
-2020-01-24 02:08:23.276  WARN 15069 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
-2020-01-24 02:08:23.276  INFO 15069 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-2020-01-24 02:08:23.369  INFO 15069 --- [           main] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@7d3430a7
-2020-01-24 02:08:27.713  INFO 15069 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2020-01-24 02:08:28.144  INFO 15069 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.9.Final}
-2020-01-24 02:08:28.909  INFO 15069 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
-2020-01-24 02:08:29.876  INFO 15069 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2020-01-24 02:08:30.921  INFO 15069 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2020-01-24 02:08:31.009  INFO 15069 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2020-01-24 02:08:36.318  INFO 15069 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2020-01-24 02:08:36.358  INFO 15069 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2020-01-24 02:08:39.302  WARN 15069 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
-2020-01-24 02:08:39.303  INFO 15069 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-2020-01-24 02:08:39.767  WARN 15069 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2020-01-24 02:08:40.777  INFO 15069 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-01-24 02:08:43.078  WARN 15069 --- [           main] ockingLoadBalancerClientRibbonWarnLogger : You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
-2020-01-24 02:08:43.244  INFO 15069 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
-2020-01-24 02:08:43.341  INFO 15069 --- [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
-2020-01-24 02:08:43.781  INFO 15069 --- [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
-2020-01-24 02:08:44.625  INFO 15069 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
-2020-01-24 02:08:44.625  INFO 15069 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2020-01-28 06:22:35.893  INFO 14936 --- [           main] r.ac.uns.ftn.bitcoin.BitcoinApplication  : No active profile set, falling back to default profiles: default
+2020-01-28 06:22:43.061  INFO 14936 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-01-28 06:22:44.468  INFO 14936 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1370ms. Found 2 JPA repository interfaces.
+2020-01-28 06:22:45.376  WARN 14936 --- [           main] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2020-01-28 06:22:46.149  INFO 14936 --- [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=6b37e511-228c-3a9c-8ada-db114aea1ff9
+2020-01-28 06:22:47.406  INFO 14936 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-28 06:22:49.070  INFO 14936 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8093 (http)
+2020-01-28 06:22:49.132  INFO 14936 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-01-28 06:22:49.147  INFO 14936 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2020-01-28 06:22:49.554  INFO 14936 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-01-28 06:22:49.561  INFO 14936 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 13454 ms
+2020-01-28 06:22:50.229  WARN 14936 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-01-28 06:22:50.229  INFO 14936 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-01-28 06:22:50.296  INFO 14936 --- [           main] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@5536379e
+2020-01-28 06:22:53.508  INFO 14936 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-01-28 06:22:54.227  INFO 14936 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.9.Final}
+2020-01-28 06:22:55.104  INFO 14936 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-01-28 06:22:55.808  INFO 14936 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-01-28 06:22:56.892  INFO 14936 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-01-28 06:22:56.995  INFO 14936 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2020-01-28 06:23:01.495  INFO 14936 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-01-28 06:23:01.515  INFO 14936 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-01-28 06:23:03.884  WARN 14936 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-01-28 06:23:03.885  INFO 14936 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-01-28 06:23:04.285  WARN 14936 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-01-28 06:23:05.042  INFO 14936 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-01-28 06:23:06.833  WARN 14936 --- [           main] ockingLoadBalancerClientRibbonWarnLogger : You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2020-01-28 06:23:06.999  INFO 14936 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-01-28 06:23:07.123  INFO 14936 --- [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2020-01-28 06:23:07.427  INFO 14936 --- [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2020-01-28 06:23:08.467  INFO 14936 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2020-01-28 06:23:08.468  INFO 14936 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
 WARNING: An illegal reflective access operation has occurred
 WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (jar:file:/home/antolovic/KP_SEP/KP/bitcoin/bitcoin/target/bitcoin.jar!/BOOT-INF/lib/xstream-1.4.11.1.jar!/) to field java.util.TreeMap.comparator
 WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
 WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
 WARNING: All illegal access operations will be denied in a future release
-2020-01-24 02:08:45.408  INFO 15069 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
-2020-01-24 02:08:45.409  INFO 15069 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
-2020-01-24 02:08:46.032  INFO 15069 --- [           main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
-2020-01-24 02:08:46.141  INFO 15069 --- [           main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
-2020-01-24 02:08:46.147  INFO 15069 --- [           main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
-2020-01-24 02:08:46.148  INFO 15069 --- [           main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
-2020-01-24 02:08:46.148  INFO 15069 --- [           main] com.netflix.discovery.DiscoveryClient    : Application is null : false
-2020-01-24 02:08:46.148  INFO 15069 --- [           main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
-2020-01-24 02:08:46.148  INFO 15069 --- [           main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
-2020-01-24 02:08:46.148  INFO 15069 --- [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
-2020-01-24 02:08:46.866  INFO 15069 --- [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200
-2020-01-24 02:08:46.883  INFO 15069 --- [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 1
-2020-01-24 02:08:46.897  INFO 15069 --- [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
-2020-01-24 02:08:46.921  INFO 15069 --- [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1579828126917 with initial instances count: 0
-2020-01-24 02:08:46.948  INFO 15069 --- [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application BITCOIN with eureka with status UP
-2020-01-24 02:08:46.950  INFO 15069 --- [           main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1579828126950, current=UP, previous=STARTING]
-2020-01-24 02:08:46.958  INFO 15069 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BITCOIN/bitcoin:ebd2edfc9f78bf87380d1c6d4aaa5e2a: registering service...
-2020-01-24 02:08:47.220  INFO 15069 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8093 (http) with context path ''
-2020-01-24 02:08:47.222  INFO 15069 --- [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8093
-2020-01-24 02:08:47.227  INFO 15069 --- [           main] r.ac.uns.ftn.bitcoin.BitcoinApplication  : Started BitcoinApplication in 47.204 seconds (JVM running for 49.843)
-2020-01-24 02:08:47.255  INFO 15069 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BITCOIN/bitcoin:ebd2edfc9f78bf87380d1c6d4aaa5e2a - registration status: 204
-2020-01-24 02:09:16.873  INFO 15069 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
-2020-01-24 02:09:16.873  INFO 15069 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
-2020-01-24 02:09:16.873  INFO 15069 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
-2020-01-24 02:09:16.874  INFO 15069 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
-2020-01-24 02:09:16.874  INFO 15069 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
-2020-01-24 02:09:16.874  INFO 15069 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
-2020-01-24 02:09:16.874  INFO 15069 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
-2020-01-24 02:09:16.958  INFO 15069 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
-2020-01-24 02:13:46.152  INFO 15069 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
-2020-01-24 02:15:33.884  INFO 15069 --- [extShutdownHook] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application BITCOIN with eureka with status DOWN
-2020-01-24 02:15:33.885  WARN 15069 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1579828533885, current=DOWN, previous=UP]
-2020-01-24 02:15:33.885  INFO 15069 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BITCOIN/bitcoin:ebd2edfc9f78bf87380d1c6d4aaa5e2a: registering service...
-2020-01-24 02:15:33.907  INFO 15069 --- [extShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
-2020-01-24 02:15:33.906 ERROR 15069 --- [nfoReplicator-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
+2020-01-28 06:23:09.082  INFO 14936 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2020-01-28 06:23:09.082  INFO 14936 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2020-01-28 06:23:09.606  INFO 14936 --- [           main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-01-28 06:23:09.682  INFO 14936 --- [           main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2020-01-28 06:23:09.683  INFO 14936 --- [           main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2020-01-28 06:23:09.683  INFO 14936 --- [           main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2020-01-28 06:23:09.683  INFO 14936 --- [           main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2020-01-28 06:23:09.683  INFO 14936 --- [           main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2020-01-28 06:23:09.683  INFO 14936 --- [           main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2020-01-28 06:23:09.683  INFO 14936 --- [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2020-01-28 06:23:10.470  INFO 14936 --- [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2020-01-28 06:23:10.505  INFO 14936 --- [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 1
+2020-01-28 06:23:10.523  INFO 14936 --- [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2020-01-28 06:23:10.536  INFO 14936 --- [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1580188990535 with initial instances count: 1
+2020-01-28 06:23:10.541  INFO 14936 --- [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application BITCOIN with eureka with status UP
+2020-01-28 06:23:10.543  INFO 14936 --- [           main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1580188990543, current=UP, previous=STARTING]
+2020-01-28 06:23:10.550  INFO 14936 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BITCOIN/bitcoin:2819bfc0c8777aca03f35aee8732f3ad: registering service...
+2020-01-28 06:23:10.664  INFO 14936 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BITCOIN/bitcoin:2819bfc0c8777aca03f35aee8732f3ad - registration status: 204
+2020-01-28 06:23:10.895  INFO 14936 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8093 (http) with context path ''
+2020-01-28 06:23:10.897  INFO 14936 --- [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8093
+2020-01-28 06:23:10.909  INFO 14936 --- [           main] r.ac.uns.ftn.bitcoin.BitcoinApplication  : Started BitcoinApplication in 40.705 seconds (JVM running for 43.076)
+2020-01-28 06:28:09.691  INFO 14936 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-01-28 06:29:22.295  INFO 14936 --- [extShutdownHook] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application BITCOIN with eureka with status DOWN
+2020-01-28 06:29:22.296  WARN 14936 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1580189362296, current=DOWN, previous=UP]
+2020-01-28 06:29:22.296  INFO 14936 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BITCOIN/bitcoin:2819bfc0c8777aca03f35aee8732f3ad: registering service...
+2020-01-28 06:29:22.310  INFO 14936 --- [extShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-01-28 06:29:22.315 ERROR 14936 --- [nfoReplicator-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
 
 com.sun.jersey.api.client.ClientHandlerException: org.apache.http.NoHttpResponseException: localhost:8761 failed to respond
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:187) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
@@ -127,9 +119,9 @@ Caused by: org.apache.http.NoHttpResponseException: localhost:8761 failed to res
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:173) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
 	... 28 common frames omitted
 
-2020-01-24 02:15:33.909  WARN 15069 --- [nfoReplicator-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: org.apache.http.NoHttpResponseException: localhost:8761 failed to respond
-2020-01-24 02:15:33.915  INFO 15069 --- [extShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2020-01-24 02:15:33.923 ERROR 15069 --- [nfoReplicator-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
+2020-01-28 06:29:22.316  INFO 14936 --- [extShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-01-28 06:29:22.316  WARN 14936 --- [nfoReplicator-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: org.apache.http.NoHttpResponseException: localhost:8761 failed to respond
+2020-01-28 06:29:22.319 ERROR 14936 --- [nfoReplicator-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
 
 com.sun.jersey.api.client.ClientHandlerException: java.net.ConnectException: Connection refused (Connection refused)
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:187) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
@@ -181,8 +173,8 @@ Caused by: java.net.ConnectException: Connection refused (Connection refused)
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:173) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
 	... 29 common frames omitted
 
-2020-01-24 02:15:33.924  WARN 15069 --- [nfoReplicator-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
-2020-01-24 02:15:33.925  WARN 15069 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BITCOIN/bitcoin:ebd2edfc9f78bf87380d1c6d4aaa5e2a - registration failed Cannot execute request on any known server
+2020-01-28 06:29:22.320  WARN 14936 --- [nfoReplicator-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
+2020-01-28 06:29:22.321  WARN 14936 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BITCOIN/bitcoin:2819bfc0c8777aca03f35aee8732f3ad - registration failed Cannot execute request on any known server
 
 com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
 	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-1.9.13.jar!/:1.9.13]
@@ -200,7 +192,7 @@ com.netflix.discovery.shared.transport.TransportException: Cannot execute reques
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
 	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
 
-2020-01-24 02:15:33.925  WARN 15069 --- [nfoReplicator-0] c.n.discovery.InstanceInfoReplicator     : There was a problem with the instance info replicator
+2020-01-28 06:29:22.323  WARN 14936 --- [nfoReplicator-0] c.n.discovery.InstanceInfoReplicator     : There was a problem with the instance info replicator
 
 com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
 	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-1.9.13.jar!/:1.9.13]
@@ -218,8 +210,8 @@ com.netflix.discovery.shared.transport.TransportException: Cannot execute reques
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
 	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
 
-2020-01-24 02:15:33.933  INFO 15069 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
-2020-01-24 02:15:34.822 ERROR 15069 --- [tbeatExecutor-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
+2020-01-28 06:29:22.324  INFO 14936 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2020-01-28 06:29:22.384 ERROR 14936 --- [tbeatExecutor-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
 
 com.sun.jersey.api.client.ClientHandlerException: java.net.ConnectException: Connection refused (Connection refused)
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:187) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
@@ -269,8 +261,8 @@ Caused by: java.net.ConnectException: Connection refused (Connection refused)
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:173) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
 	... 27 common frames omitted
 
-2020-01-24 02:15:34.823  WARN 15069 --- [tbeatExecutor-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
-2020-01-24 02:15:34.823 ERROR 15069 --- [tbeatExecutor-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BITCOIN/bitcoin:ebd2edfc9f78bf87380d1c6d4aaa5e2a - was unable to send heartbeat!
+2020-01-28 06:29:22.385  WARN 14936 --- [tbeatExecutor-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
+2020-01-28 06:29:22.385 ERROR 14936 --- [tbeatExecutor-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BITCOIN/bitcoin:2819bfc0c8777aca03f35aee8732f3ad - was unable to send heartbeat!
 
 com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
 	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-1.9.13.jar!/:1.9.13]
@@ -286,7 +278,7 @@ com.netflix.discovery.shared.transport.TransportException: Cannot execute reques
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
 	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
 
-2020-01-24 02:15:35.826 ERROR 15069 --- [tbeatExecutor-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
+2020-01-28 06:29:23.388 ERROR 14936 --- [tbeatExecutor-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
 
 com.sun.jersey.api.client.ClientHandlerException: java.net.ConnectException: Connection refused (Connection refused)
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:187) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
@@ -336,8 +328,8 @@ Caused by: java.net.ConnectException: Connection refused (Connection refused)
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:173) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
 	... 27 common frames omitted
 
-2020-01-24 02:15:35.827  WARN 15069 --- [tbeatExecutor-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
-2020-01-24 02:15:35.827 ERROR 15069 --- [tbeatExecutor-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BITCOIN/bitcoin:ebd2edfc9f78bf87380d1c6d4aaa5e2a - was unable to send heartbeat!
+2020-01-28 06:29:23.389  WARN 14936 --- [tbeatExecutor-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
+2020-01-28 06:29:23.390 ERROR 14936 --- [tbeatExecutor-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BITCOIN/bitcoin:2819bfc0c8777aca03f35aee8732f3ad - was unable to send heartbeat!
 
 com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
 	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-1.9.13.jar!/:1.9.13]
@@ -353,7 +345,7 @@ com.netflix.discovery.shared.transport.TransportException: Cannot execute reques
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
 	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
 
-2020-01-24 02:15:36.829 ERROR 15069 --- [tbeatExecutor-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
+2020-01-28 06:29:24.393 ERROR 14936 --- [tbeatExecutor-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
 
 com.sun.jersey.api.client.ClientHandlerException: java.net.ConnectException: Connection refused (Connection refused)
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:187) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
@@ -403,8 +395,8 @@ Caused by: java.net.ConnectException: Connection refused (Connection refused)
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:173) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
 	... 27 common frames omitted
 
-2020-01-24 02:15:36.830  WARN 15069 --- [tbeatExecutor-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
-2020-01-24 02:15:36.830 ERROR 15069 --- [tbeatExecutor-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BITCOIN/bitcoin:ebd2edfc9f78bf87380d1c6d4aaa5e2a - was unable to send heartbeat!
+2020-01-28 06:29:24.394  WARN 14936 --- [tbeatExecutor-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
+2020-01-28 06:29:24.395 ERROR 14936 --- [tbeatExecutor-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BITCOIN/bitcoin:2819bfc0c8777aca03f35aee8732f3ad - was unable to send heartbeat!
 
 com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
 	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-1.9.13.jar!/:1.9.13]
@@ -420,8 +412,8 @@ com.netflix.discovery.shared.transport.TransportException: Cannot execute reques
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
 	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
 
-2020-01-24 02:15:36.935  INFO 15069 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : Unregistering ...
-2020-01-24 02:15:36.940 ERROR 15069 --- [extShutdownHook] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
+2020-01-28 06:29:25.326  INFO 14936 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : Unregistering ...
+2020-01-28 06:29:25.335 ERROR 14936 --- [extShutdownHook] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
 
 com.sun.jersey.api.client.ClientHandlerException: java.net.ConnectException: Connection refused (Connection refused)
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:187) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
@@ -486,8 +478,8 @@ Caused by: java.net.ConnectException: Connection refused (Connection refused)
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:173) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
 	... 42 common frames omitted
 
-2020-01-24 02:15:36.941  WARN 15069 --- [extShutdownHook] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
-2020-01-24 02:15:36.941 ERROR 15069 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BITCOIN/bitcoin:ebd2edfc9f78bf87380d1c6d4aaa5e2a - de-registration failedCannot execute request on any known server
+2020-01-28 06:29:25.337  WARN 14936 --- [extShutdownHook] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
+2020-01-28 06:29:25.338 ERROR 14936 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BITCOIN/bitcoin:2819bfc0c8777aca03f35aee8732f3ad - de-registration failedCannot execute request on any known server
 
 com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
 	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-1.9.13.jar!/:1.9.13]
@@ -518,6 +510,6 @@ com.netflix.discovery.shared.transport.TransportException: Cannot execute reques
 	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1029) ~[spring-context-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
 	at org.springframework.context.support.AbstractApplicationContext$1.run(AbstractApplicationContext.java:948) ~[spring-context-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
 
-2020-01-24 02:15:36.959  INFO 15069 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
-2020-01-24 02:15:36.965  INFO 15069 --- [extShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2020-01-24 02:15:37.000  INFO 15069 --- [extShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-01-28 06:29:25.381  INFO 14936 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
+2020-01-28 06:29:25.382  INFO 14936 --- [extShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-01-28 06:29:25.411  INFO 14936 --- [extShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
