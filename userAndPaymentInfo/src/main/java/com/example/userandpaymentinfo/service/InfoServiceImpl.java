@@ -3,6 +3,8 @@ package com.example.userandpaymentinfo.service;
 import com.example.userandpaymentinfo.dto.*;
 import com.example.userandpaymentinfo.model.*;
 import com.example.userandpaymentinfo.repository.*;
+import com.netflix.discovery.converters.Auto;
+import org.hibernate.annotations.Check;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpEntity;
@@ -32,6 +34,9 @@ public class InfoServiceImpl implements InfoService{
 
     @Autowired
     RestTemplate restTemplate;
+
+    @Autowired
+    SellerRepository sellerRepository;
 
     @Override
     public Item editCasopis(CasopisDTO casopisDTO) throws Exception {
@@ -125,16 +130,25 @@ public class InfoServiceImpl implements InfoService{
     }
 
     @Override
-    public ReturnLinksDTO createLinks(CreateLinksDTO dto){
+    public ReturnLinksDTO register(CreateLinksDTO dto){
        // ConverterAES converter = new ConverterAES();
 
         ReturnLinksDTO ret = new ReturnLinksDTO();
+
+        Seller seller = sellerRepository.findOneByEmail(dto.getEmail());
+        if(seller == null){
+            seller = new Seller();
+            seller.setEmail(dto.getEmail());
+            seller = sellerRepository.save(seller);
+        }
 
         Item item = new Item();
         item.setNaziv(dto.getNaziv());
         item.setAmount(dto.getAmount());
         item.setUuid(UUID.randomUUID());
         item.setRedirectUrl(dto.getRedirectUrl()+item.getUuid());
+        item.setSeller(seller);
+        seller.getItems().add(item);
         ret.setUuid(item.getUuid().toString());
 
         for (Long npId:dto.getNaciniPlacanja()) {
@@ -143,16 +157,31 @@ public class InfoServiceImpl implements InfoService{
             np.getItemList().add(item);
             nacinPlacanjaRepository.save(np);
 
-            LinkDTO linkDTO = new LinkDTO();
-           // String hash = converter.convertToDatabaseColumn(item.getUuid().toString());
-            String hash = item.getUuid().toString();
-            linkDTO.setLink(UrlClass.FRONT_KP+"/paymentform/"+npId+"/"+hash);
-            linkDTO.setNacinPlacanjaId(npId);
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
 
-            ret.getLinks().add(linkDTO);
+            CheckSellerDTO checkSellerDTO = new CheckSellerDTO();
+            checkSellerDTO.setEmail(dto.getEmail());
+
+            HttpEntity<CheckSellerDTO> entity = new HttpEntity<CheckSellerDTO>(checkSellerDTO, headers);
+
+            ResponseEntity<Boolean> response =
+                    restTemplate.postForEntity(np.getCheckUrl(),entity,Boolean.class);
+
+            Boolean exist = response.getBody();
+            if(exist==false){
+                LinkDTO linkDTO = new LinkDTO();
+                // String hash = converter.convertToDatabaseColumn(item.getUuid().toString());
+                String hash = item.getUuid().toString();
+                linkDTO.setLink(UrlClass.FRONT_KP+"/paymentform/"+npId+"/"+hash);
+                linkDTO.setNacinPlacanjaId(npId);
+
+                ret.getLinks().add(linkDTO);
+            }
         }
 
         item = itemRepository.save(item);
+        sellerRepository.save(seller);
 
         return ret;
     }
@@ -175,12 +204,15 @@ public class InfoServiceImpl implements InfoService{
     }
 
     @Override
-    public Object getForm(String folder){
+    public Object getForm(String folder,String uuid){
         JSONParser parser = new JSONParser();
 
         try {
             Object obj = parser.parse(new FileReader("userAndPaymentInfo/src/main/resources/json/"+folder+"/form.json"));
             JSONObject jsonObject = (JSONObject) obj;
+
+            String email = itemRepository.findOneByUuid(UUID.fromString(uuid)).getSeller().getEmail();
+            jsonObject.put("sellerEmail", email);
 
             return jsonObject;
 

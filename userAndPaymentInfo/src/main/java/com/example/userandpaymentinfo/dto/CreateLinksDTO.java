@@ -11,4 +11,5 @@ public class CreateLinksDTO {
     private List<Long> naciniPlacanja;
     private BigDecimal amount;
     private String redirectUrl;
+    private String email;
 }

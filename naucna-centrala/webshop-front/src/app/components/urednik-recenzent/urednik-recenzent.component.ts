@@ -82,7 +82,7 @@ export class UrednikRecenzentComponent implements OnInit {
       this.endpoints.submitUredniciRecenzenti(this.body,this.processId).subscribe(
         res => {
           if(res == true){
-            this.notifier.notify("success", "Novi časopis je poslat administratoru. Da bi časopis bio vidljiv mora biti odobren od strane administratora.");
+            this.notifier.notify("success", "Uspešno kreiran časopis. Da bi časopis bio vidljiv mora biti odobren od strane administratora.");
             this.router.navigate(['']);
           }else if(res == false){
             this.notifier.notify("error", "Nevalidan unos recenzenata i urednika.");

@@ -1,0 +1,36 @@
+<div class="darkbackground"> 
+  <div class="container">
+      <div class="row ml-auto mr-auto">
+          <div class="col col-md-3"></div>
+          <div class="col col-md-6 mt-3">
+          
+              <!--FORM-->
+              <form #form="ngForm" ngNativeValidate (ngSubmit)="onSubmit(form)" *ngIf="casopis!=null">
+                <h2 class="mb-3 text-light mt-3">Dodavanje novog izdanja časopisa "{{casopis.naziv}}"</h2>
+                
+                <div class="form-group">
+                    <label class="text-light" for="naziv">Naziv</label>
+                    <input name="naziv" [(ngModel)]="izdanje.naziv" id="naziv" type="text" class="form-control" required/>
+                </div>
+                
+                <div class="form-group">
+                  <label class="text-light" for="broj">Broj</label>
+                  <input name="broj" [(ngModel)]="izdanje.broj" id="broj" type="number" class="form-control" required/>
+                </div>
+
+                <div class="form-group">
+                  <label class="text-light" for="cena">Cena</label>
+                  <input name="cena" [(ngModel)]="izdanje.cena" id="cena" type="number" class="form-control" required/>
+                </div>
+            
+      
+                <!--BUTTON-->
+                <button type="submit" [hidden]="hidden" class="btn btn-primary mt-3 mb-4" >Potvrdi</button>
+                <div [hidden]="!hidden" class="lds-roller mt-3"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+              </form>
+
+          </div>
+          <div class="col col-md-3"></div>
+      </div>
+  </div>    
+</div>

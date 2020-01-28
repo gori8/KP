@@ -40,4 +40,7 @@ public class Item {
 
     @Column(name = "amount", unique = false, nullable = false)
     private BigDecimal amount;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    protected Seller seller;
 }

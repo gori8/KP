@@ -381,4 +381,16 @@ public class WebShopController {
     public ResponseEntity completePayment(@PathVariable("uuid") String uuid,@PathVariable("nacinPlacanjaId") Long nacinPlacanjaId) {
         return new ResponseEntity(kpService.completePayment(uuid,nacinPlacanjaId),HttpStatus.OK);
     }
+
+    @GetMapping(path = "/papers/{id}", produces = "application/json")
+    @PreAuthorize("hasRole('UREDNIK')")
+    public ResponseEntity<CasopisDTO> getPaper(@PathVariable("id") Long id){
+        return new ResponseEntity<>(casopisService.getPaper(id),HttpStatus.OK);
+    }
+
+    @PostMapping(path = "/numbers", produces = "application/json")
+    @PreAuthorize("hasRole('UREDNIK')")
+    public ResponseEntity<Long> addNewNumber(@RequestBody IzdanjeDTO dto){
+        return new ResponseEntity<Long>(kpService.addNewNumber(dto),HttpStatus.OK);
+    }
 }

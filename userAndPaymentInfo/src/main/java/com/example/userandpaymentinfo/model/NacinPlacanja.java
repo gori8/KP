@@ -21,6 +21,9 @@ public class NacinPlacanja {
     @Column(name = "url", unique = true, nullable = false)
     private String url;
 
+    @Column(name = "checkUrl", unique = true, nullable = false)
+    private String checkUrl;
+
     @ManyToMany(mappedBy = "nacinPlacanjaList")
     private
     List<Item> itemList = new ArrayList<>();
