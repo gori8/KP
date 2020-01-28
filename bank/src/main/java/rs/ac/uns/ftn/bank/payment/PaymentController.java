@@ -1,11 +1,13 @@
 package rs.ac.uns.ftn.bank.payment;
 
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import rs.ac.uns.ftn.bank.account.AccountService;
 import rs.ac.uns.ftn.bank.dto.ExecuteTransactionResponse;
 import rs.ac.uns.ftn.bank.dto.ExternalBankPaymentRequest;
 import rs.ac.uns.ftn.bank.dto.ExternalBankPaymentResponse;
+import rs.ac.uns.ftn.bank.dto.PccDTO;
 import rs.ac.uns.ftn.bank.model.Payment;
 import rs.ac.uns.ftn.bank.card.CardDataDto;
 import org.slf4j.Logger;
@@ -50,5 +52,10 @@ public class PaymentController {
         }else{
             return  ResponseEntity.status(400).body(response);
         }
+    }
+
+    @RequestMapping(value = "/response", method = RequestMethod.POST)
+    public ResponseEntity pccAnswer(@RequestBody PccDTO pccDTO){
+        return new ResponseEntity<>(paymentService.pccAnswer(pccDTO), HttpStatus.OK);
     }
 }

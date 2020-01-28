@@ -4,8 +4,10 @@ package rs.ac.uns.ftn.bank.payment;
 import rs.ac.uns.ftn.bank.dto.ExecuteTransactionResponse;
 import rs.ac.uns.ftn.bank.dto.ExternalBankPaymentRequest;
 import rs.ac.uns.ftn.bank.dto.ExternalBankPaymentResponse;
+import rs.ac.uns.ftn.bank.dto.PccDTO;
 import rs.ac.uns.ftn.bank.model.Payment;
 import rs.ac.uns.ftn.bank.card.CardDataDto;
+import rs.ac.uns.ftn.url.TransactionStatus;
 
 import java.util.List;
 
@@ -18,4 +20,5 @@ public interface PaymentService {
 
     ExecuteTransactionResponse submitCardData(CardDataDto cardDataDto, String url);
 
+    TransactionStatus pccAnswer(PccDTO pccDTO);
 }

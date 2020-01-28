@@ -11,7 +11,6 @@ import rs.ac.uns.ftn.kp.pcc.bank.request.TransactionRequest;
 import rs.ac.uns.ftn.kp.pcc.bank.request.TransactionRequestRepository;
 import rs.ac.uns.ftn.kp.pcc.dto.RegisterBankDTO;
 import rs.ac.uns.ftn.kp.pcc.dto.RequestFromAcquirer;
-import rs.ac.uns.ftn.kp.pcc.dto.ResponseToIssuer;
 
 @RestController
 @RequestMapping("/api/pcc")
@@ -37,20 +36,18 @@ public class BankController {
     }
 
     @RequestMapping(value = "/response", method = RequestMethod.POST)
-    public ResponseEntity<ResponseToIssuer> makeResponse(@RequestBody RequestFromAcquirer requestFromAcquirer) {
+    public ResponseEntity<RequestFromAcquirer> makeResponse(@RequestBody RequestFromAcquirer requestFromAcquirer) {
 
-        ResponseToIssuer responseToIssuer = new ResponseToIssuer();
+
         String pan = requestFromAcquirer.getPan();
         pan = pan.substring(1, 7);
         System.out.println(pan);
 
         Bank bank = bankRepository.findOneByBankCode(pan);
 
-        responseToIssuer.setBankUrl(bank.getBankUrl());
-
         saveRequest(requestFromAcquirer);
 
-        return new ResponseEntity<ResponseToIssuer>(responseToIssuer, HttpStatus.OK);
+        return new ResponseEntity<RequestFromAcquirer>(requestFromAcquirer, HttpStatus.OK);
     }
 
     public void saveRequest(RequestFromAcquirer requestFromAcquirer) {
