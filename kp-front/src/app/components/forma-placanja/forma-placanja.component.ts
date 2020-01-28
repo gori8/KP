@@ -4,11 +4,11 @@ import { EndpointsService } from 'src/app/services/endpoints.service.js';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-json-placanja',
-  templateUrl: './json-placanja.component.html',
-  styleUrls: ['./json-placanja.component.scss']
+  selector: 'app-forma-placanja',
+  templateUrl: './forma-placanja.component.html',
+  styleUrls: ['./forma-placanja.component.scss']
 })
-export class jsonPlacanjaComponent implements OnInit {
+export class FormaPlacanjaComponent implements OnInit {
 
   constructor(private sanitizer: DomSanitizer,private endpoints:EndpointsService,private activatedRoute: ActivatedRoute) {}
 
