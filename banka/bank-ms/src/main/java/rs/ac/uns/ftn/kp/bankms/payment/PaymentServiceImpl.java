@@ -70,8 +70,10 @@ public class PaymentServiceImpl implements PaymentService {
         mc.setErrorUrl(UrlClass.BANKMS_URL +savedPayment.getId()+"/error");
         mc.setFailedUrl(UrlClass.BANKMS_URL +savedPayment.getId()+ "/failed");
         mc.setSuccessUrl(UrlClass.BANKMS_URL +savedPayment.getId()+ "/successful");
-        Client cl = clientRepository.findByCasopisUuid(UUID.fromString(kpRequestDto.getCasopisUuid()));
-        mc.setMerchantId(cl.getMerchantId());
+
+        //TODO: Nema Vise Casopis UUID
+        //Client cl = clientRepository.findByCasopisUuid(UUID.fromString(kpRequestDto.getCasopisUuid()));
+        //mc.setMerchantId(cl.getMerchantId());
 
         String json="";
 

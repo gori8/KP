@@ -1,8 +1,9 @@
 package rs.ac.uns.ftn.kp.bankms.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Data;
+import lombok.*;
 import org.hibernate.annotations.Type;
+import org.springframework.stereotype.Service;
 
 import javax.persistence.*;
 
@@ -11,7 +12,10 @@ import java.util.UUID;
 
 
 @Entity
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Client {
 
     @Id

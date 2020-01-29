@@ -383,7 +383,6 @@ public class WebShopController {
     }
 
     @GetMapping(path = "/papers/{id}", produces = "application/json")
-    @PreAuthorize("hasRole('UREDNIK')")
     public ResponseEntity<CasopisDTO> getPaper(@PathVariable("id") Long id){
         return new ResponseEntity<>(casopisService.getPaper(id),HttpStatus.OK);
     }

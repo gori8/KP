@@ -11,6 +11,7 @@ import { UrednikRecenzentComponent } from './components/urednik-recenzent/uredni
 import { MyPapersComponent } from './components/my-papers/my-papers.component';
 import { AuthGuard } from './_guards';
 import { AllPapersComponent } from './components/all-papers/all-papers.component';
+import { IzdanjeRegistracijaComponent } from './components/izdanje-registracija/izdanje-registracija.component';
 
 const routes: Routes = [
   { path : "", component : HomeComponent },
@@ -23,7 +24,8 @@ const routes: Routes = [
   { path : "correction/:processId", component : NewPaperComponent, canActivate:[AuthGuard] },
   { path : "newPaper/:processId", component : UrednikRecenzentComponent, canActivate:[AuthGuard] },
   { path : "myPapers", component : MyPapersComponent, canActivate:[AuthGuard] },
-  { path : "papers", component : AllPapersComponent}
+  { path : "papers", component : AllPapersComponent},
+  { path : "number/:casopisId", component : IzdanjeRegistracijaComponent, canActivate:[AuthGuard] }
 ];
 
 @NgModule({
