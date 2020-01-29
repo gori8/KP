@@ -1,12 +1,15 @@
 package rs.ac.uns.ftn.kp.bankms.model;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class KpSeller {
 

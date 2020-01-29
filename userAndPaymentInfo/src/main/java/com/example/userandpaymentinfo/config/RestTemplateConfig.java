@@ -19,9 +19,9 @@ public class RestTemplateConfig {
     @Bean
     public RestTemplate restTemplate() throws Exception{
         KeyStore clientStore = KeyStore.getInstance("JKS");
-        clientStore.load(new FileInputStream("bank-ms/src/main/resources/identity.jks"), "secret".toCharArray());
+        clientStore.load(new FileInputStream("ssl/ms/identity.jks"), "secret".toCharArray());
         KeyStore trustStore = KeyStore.getInstance("JKS");
-        trustStore.load(new FileInputStream("bank-ms/src/main/resources/truststore.jks"), "secret".toCharArray());
+        trustStore.load(new FileInputStream("ssl/ms/truststore.jks"), "secret".toCharArray());
 
         SSLContextBuilder sslContextBuilder = new SSLContextBuilder();
         sslContextBuilder.setProtocol("TLS");

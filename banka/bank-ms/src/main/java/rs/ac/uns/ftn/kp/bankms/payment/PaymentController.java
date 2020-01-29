@@ -68,8 +68,10 @@ public class PaymentController {
         Long ret=null;
 
         try{
-            ret = clientRepository.save(client).getId();
+            seller = kpSellerRepository.save(seller);
+            client = clientRepository.save(client);
             kpSellerRepository.save(seller);
+            ret = client.getId();
         }catch (Exception e){
             e.printStackTrace();
         }
