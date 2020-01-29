@@ -1,11 +1,14 @@
 package com.example.webshop.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -35,4 +38,12 @@ public class Izdanje {
 
     @ManyToOne(fetch = FetchType.EAGER)
     protected Casopis casopis;
+
+    @ManyToMany
+    @JsonIgnore
+    @JoinTable(
+            name = "izdanje_kupac",
+            joinColumns = @JoinColumn(name = "izdanje_id"),
+            inverseJoinColumns = @JoinColumn(name = "kupac_id"))
+    private List<Korisnik> kupci = new ArrayList<>();
 }

@@ -49,6 +49,7 @@ public class Korisnik implements UserDetails {
     @Column(name = "aktiviran", unique = false)
     private Boolean aktiviran = false;
 
+
     @ManyToMany
     @JsonIgnore
     @JoinTable(
@@ -72,6 +73,11 @@ public class Korisnik implements UserDetails {
     @ManyToMany(mappedBy = "recenzenti")
     private List<Casopis> casopisiRecenzent = new ArrayList<>();
 
+    @ManyToMany(mappedBy = "pretplatnici")
+    private List<Casopis> casopisiPretplatnik = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "kupci")
+    private List<Izdanje> casopisiKupci = new ArrayList<>();
 
     @Override
     public boolean isEnabled() {

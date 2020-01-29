@@ -392,4 +392,23 @@ public class WebShopController {
     public ResponseEntity<Long> addNewNumber(@RequestBody IzdanjeDTO dto){
         return new ResponseEntity<Long>(kpService.addNewNumber(dto),HttpStatus.OK);
     }
+
+    @GetMapping(path = "/papers/{id}/numbers", produces = "application/json")
+    public ResponseEntity<CasopisDTO> getNumbersForPaper(@PathVariable("id") Long id){
+        return new ResponseEntity<>(casopisService.getNumbersForPaper(id),HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/pay/{uapId}/{username}", method = RequestMethod.POST)
+    @PreAuthorize("hasRole('USER')")
+    public ResponseEntity<String> pay(@PathVariable("uapId") String uapId, @PathVariable("username") String username ) {
+
+        String url = kpService.getRedirectUrl(uapId,username);
+        return new ResponseEntity<>("\""+url+"\"",HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/payed/{username}/{uuid}/{success}", method = RequestMethod.POST)
+    public ResponseEntity<String> changePayed(@PathVariable("username")String username, @PathVariable("uuid")String uuid, @PathVariable("success")Boolean success) {
+
+        return new ResponseEntity<>(kpService.changePayed(uuid,success,username),HttpStatus.OK);
+    }
 }

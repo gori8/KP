@@ -1,0 +1,19 @@
+<div [hidden]="hidden" class="darkbackground"> 
+  <div class="container">
+      <div class="row ml-auto mr-auto">
+          <div class="col col-md-3"></div>
+          <div class="col col-md-6 mt-3 text-center">
+            <i class="fa fa-check-circle fa-5x text-light" aria-hidden="true" *ngIf="message=='success'"></i>
+            <i class="fa fa-times-circle fa-5x text-light" aria-hidden="true" *ngIf="message=='failed'"></i>
+            <h2 class="mb-3 text-light mt-3">Kupovina</h2>
+            <p class="text-light mt-5" *ngIf="message=='success'">
+              Predmet je uspešno plaćen i dostupan za korišćenje.
+            </p>
+            <p class="text-light mt-5" *ngIf="message=='failed'">
+              Neuspešno plaćanje. Proverite da li imate dovoljno stanja na računu za ovaj predmet.
+            </p>
+          </div>
+          <div class="col col-md-3"></div>
+      </div>
+  </div>    
+</div>
