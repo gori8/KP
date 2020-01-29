@@ -25,7 +25,7 @@ public class BitCoinPaymentController {
 
 
 
-    @RequestMapping(value = "/prepare",method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<String> postPreparePayment(@RequestBody PreparePaymentRequest request) {
 
         PaymentUrlDTO paymentUrlDto = new PaymentUrlDTO();

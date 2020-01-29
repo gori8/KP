@@ -9,5 +9,4 @@ public interface PaymentRepository extends JpaRepository<Payment, Long> {
 
     Payment findOneByUrl(String url);
 
-    Payment findOneByCasopisUuid(UUID uuid);
 }

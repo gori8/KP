@@ -97,6 +97,7 @@ public class InfoServiceImpl implements InfoService{
 
         List<NacinPlacanjaDTO> ret = new ArrayList<NacinPlacanjaDTO>();
 
+
         for (NacinPlacanja np: item.getNacinPlacanjaList()) {
             NacinPlacanjaDTO npDTO = new NacinPlacanjaDTO(np.getId(),np.getNacinPlacanja(),np.getUrl());
             ret.add(npDTO);
@@ -127,6 +128,7 @@ public class InfoServiceImpl implements InfoService{
         AmountAndUrlDTO dto=new AmountAndUrlDTO();
         dto.setAmount(item.getAmount());
         dto.setRedirectUrl(item.getRedirectUrl());
+        dto.setSellerEmail(item.getSeller().getEmail());
         return dto;
     }
 

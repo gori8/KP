@@ -64,6 +64,9 @@ public class PaymentServiceImpl implements PaymentService{
 
         AmountAndUrlDTO amountAndUrlDTO=MyPaymentUtils.getAmountAndRedirectUrl(restTemplate,request.getCasopisUuid());
 
+        System.out.println("Email: "+amountAndUrlDTO.getSellerEmail());
+
+
         BigDecimal amount = amountAndUrlDTO.getAmount();
         String redirectUrl = amountAndUrlDTO.getRedirectUrl();
         String sellerEmail = amountAndUrlDTO.getSellerEmail();

@@ -27,10 +27,6 @@ public class PaymentController {
     PasswordEncoder passwordEncoder;
 
 
-    public PaymentController(PaymentServiceImpl paymentService) {
-        this.paymentService = paymentService;
-    }
-
     @PostMapping
     public ResponseEntity<String> paymentRequest(@RequestBody PaymentRequest kpRequestDto) {
 
@@ -42,34 +38,6 @@ public class PaymentController {
         return ResponseEntity.ok(paymentService.setPaymentStatus(id,status));
     }
 
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ResponseEntity<Long> register(@RequestBody RegistrationDTO registrationDTO){
 
-        Seller seller = new Seller();
-        seller.setSeller(registrationDTO.getSellerEmail());
-        seller.setFirstName(registrationDTO.getFirstName());
-        seller.setLastName(registrationDTO.getLastName());
-        seller.setMerchantId(registrationDTO.getMerchantId());
-        seller.setMerchantPassword(passwordEncoder.encode(registrationDTO.getMerchantPassword()));
-        Long ret=null;
-
-        try{
-            seller = sellerService.save(seller);
-            ret = seller.getId();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-        return new ResponseEntity<Long>(ret, HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/check/email", method = RequestMethod.POST)
-    public ResponseEntity checkEmail(@RequestBody CheckSellerDTO checkSellerDTO){
-        if(sellerService.getBySeller(checkSellerDTO.getEmail())==null){
-            return ResponseEntity.ok(false);
-        }else{
-            return ResponseEntity.ok(true);
-        }
-    }
 
 }
