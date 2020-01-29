@@ -5,3 +5,4 @@ java -jar bitcoin/bitcoin/target/bitcoin.jar > logs/bitcoin-service.log 2>&1 &
 java -jar banka/bank-ms/target/bank-ms.jar > logs/bank-ms-service.log 2>&1 &
 java -jar userAndPaymentInfo/target/userandpaymentinfo.jar > logs/userandpaymentinfo-service.log 2>&1 &
 java -jar banka/bank/target/bank.jar > logs/bank.log 2>&1 &
+java -jar naucna-centrala/webshop/target/webshop.jar > logs/webshop.log 2>&1 &
