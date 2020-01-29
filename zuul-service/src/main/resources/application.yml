@@ -34,10 +34,20 @@ server:
       trust-store-password: secret123
       client-auth: need
 
+
+
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: false
+
 zuul:
   host:
-    socket-timeout-millis: 300000
-
+    socket-timeout-millis: 10000
+    connect-timeout-millis: 10000
 
 ribbon:
-  ReadTimeout: 30000
+  ConnectTimeout: 10000
+  ReadTimeout: 10000
