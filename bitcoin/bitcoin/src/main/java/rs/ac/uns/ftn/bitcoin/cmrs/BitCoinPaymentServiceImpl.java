@@ -7,10 +7,10 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import rs.ac.uns.ftn.bitcoin.dto.AmountAndUrlDTO;
 import rs.ac.uns.ftn.bitcoin.dto.CoinGateRequest;
 import rs.ac.uns.ftn.bitcoin.dto.CoinGateResponse;
 import rs.ac.uns.ftn.bitcoin.dto.PreparePaymentRequest;
+import rs.ac.uns.ftn.url.AmountAndUrlDTO;
 import rs.ac.uns.ftn.url.UrlClass;
 
 import java.util.UUID;

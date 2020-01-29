@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import rs.ac.uns.ftn.bitcoin.dto.*;
 import rs.ac.uns.ftn.bitcoin.utils.BitCoinPaymentUtils;
+import rs.ac.uns.ftn.url.AmountAndUrlDTO;
 
 import java.util.UUID;
 

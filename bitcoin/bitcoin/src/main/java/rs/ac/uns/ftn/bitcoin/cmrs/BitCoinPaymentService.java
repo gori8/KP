@@ -1,9 +1,9 @@
 package rs.ac.uns.ftn.bitcoin.cmrs;
 
-import rs.ac.uns.ftn.bitcoin.dto.AmountAndUrlDTO;
 import rs.ac.uns.ftn.bitcoin.dto.CoinGateRequest;
 import rs.ac.uns.ftn.bitcoin.dto.CoinGateResponse;
 import rs.ac.uns.ftn.bitcoin.dto.PreparePaymentRequest;
+import rs.ac.uns.ftn.url.AmountAndUrlDTO;
 
 import java.util.UUID;
 

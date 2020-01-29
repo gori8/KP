@@ -1,4 +1,4 @@
-package rs.ac.uns.ftn.paypal.dto;
+package rs.ac.uns.ftn.url;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,4 +14,5 @@ import java.math.BigDecimal;
 public class AmountAndUrlDTO {
     BigDecimal amount;
     String redirectUrl;
+    String sellerEmail;
 }

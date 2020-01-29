@@ -36,7 +36,7 @@ public class Client {
     @Column(name = "merchantPassword", unique = false, nullable = false)
     private String merchantPassword;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    private KpSeller seller;
+    @Column(name = "seller", unique = true, nullable = false)
+    private String seller;
 
 }

@@ -7,4 +7,6 @@ import java.util.UUID;
 
 public interface ClientRepository extends JpaRepository<Client, Long> {
     Client findByMerchantId(String merchantId);
+
+    Client findOneBySeller(String seller);
 }

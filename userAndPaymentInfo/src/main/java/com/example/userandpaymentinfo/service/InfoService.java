@@ -2,6 +2,7 @@ package com.example.userandpaymentinfo.service;
 
 import com.example.userandpaymentinfo.dto.*;
 import com.example.userandpaymentinfo.model.Item;
+import rs.ac.uns.ftn.url.AmountAndUrlDTO;
 
 import java.util.List;
 import java.util.Map;

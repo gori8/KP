@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import rs.ac.uns.ftn.paypal.dto.*;
 import rs.ac.uns.ftn.paypal.utils.MyPaymentUtils;
+import rs.ac.uns.ftn.url.AmountAndUrlDTO;
 
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;

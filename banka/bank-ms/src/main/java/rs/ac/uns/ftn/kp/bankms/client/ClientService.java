@@ -8,4 +8,8 @@ public interface ClientService {
     List<Client> findAll();
 
     Client findByMerchantId(String merchantId);
+
+    Client getBySeller(String seller);
+
+    Client save(Client client);
 }

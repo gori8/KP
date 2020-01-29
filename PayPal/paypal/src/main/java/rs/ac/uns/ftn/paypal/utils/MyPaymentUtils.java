@@ -4,7 +4,7 @@ import com.paypal.api.payments.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
-import rs.ac.uns.ftn.paypal.dto.AmountAndUrlDTO;
+import rs.ac.uns.ftn.url.AmountAndUrlDTO;
 import rs.ac.uns.ftn.url.UrlClass;
 
 import java.math.BigDecimal;
@@ -63,7 +63,7 @@ public class MyPaymentUtils {
         return redirectUrls;
     }
 
-    public static AmountAndUrlDTO getAmountAndRedirectUrl(RestTemplate restTemplate,String casopisID){
+    public static AmountAndUrlDTO getAmountAndRedirectUrl(RestTemplate restTemplate, String casopisID){
         String url=UrlClass.DOBAVI_CENU_URL_SA_PAYMENT_INFO+casopisID;
         System.out.println(url);
         ResponseEntity<AmountAndUrlDTO> resp

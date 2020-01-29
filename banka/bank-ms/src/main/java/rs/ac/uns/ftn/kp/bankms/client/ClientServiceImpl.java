@@ -22,4 +22,16 @@ public class ClientServiceImpl implements ClientService {
     public Client findByMerchantId(String merchantId) {
         return clientRepository.findByMerchantId(merchantId);
     }
+
+    @Override
+    public Client getBySeller(String seller) {
+        return clientRepository.findOneBySeller(seller);
+    }
+
+    @Override
+    public Client save(Client client) {
+        return clientRepository.save(client);
+    }
+
+
 }

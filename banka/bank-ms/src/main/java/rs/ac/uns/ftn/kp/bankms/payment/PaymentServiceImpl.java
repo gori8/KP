@@ -13,6 +13,7 @@ import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import rs.ac.uns.ftn.kp.bankms.model.PaymentStatus;
+import rs.ac.uns.ftn.url.AmountAndUrlDTO;
 import rs.ac.uns.ftn.url.UrlClass;
 
 import java.util.List;
@@ -38,6 +39,7 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Autowired
     RestTemplate restTemplate;
+
 
     @Override
     public String handleKpRequest(PaymentRequest kpRequestDto) {
@@ -71,9 +73,9 @@ public class PaymentServiceImpl implements PaymentService {
         mc.setFailedUrl(UrlClass.BANKMS_URL +savedPayment.getId()+ "/failed");
         mc.setSuccessUrl(UrlClass.BANKMS_URL +savedPayment.getId()+ "/successful");
 
-        //TODO: Nema Vise Casopis UUID
-        //Client cl = clientRepository.findByCasopisUuid(UUID.fromString(kpRequestDto.getCasopisUuid()));
-        //mc.setMerchantId(cl.getMerchantId());
+        Client client=clientService.getBySeller(resp.getBody().getSellerEmail());
+        mc.setMerchantId(client.getMerchantId());
+
 
         String json="";
 
