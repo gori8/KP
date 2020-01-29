@@ -2,10 +2,7 @@ package rs.ac.uns.ftn.bitcoin.cmrs;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
@@ -18,7 +15,7 @@ public class Seller {
 
     private String token;
 
-    @org.hibernate.annotations.Type(type="org.hibernate.type.UUIDCharType")
-    private UUID uuid;
+    @Column(name="seller_email" , unique = true, nullable = false)
+    private String sellerEmail;
 
 }

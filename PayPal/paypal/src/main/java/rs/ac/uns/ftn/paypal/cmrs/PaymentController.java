@@ -21,35 +21,16 @@ import java.util.UUID;
 @CrossOrigin("*")
 public class PaymentController {
 
-    //private static final String FRONTAPP_URL="http://localhost:4400/";
-
     @Autowired
     PaymentService paymentService;
 
     @Autowired
     SellerRepository sellerRepository;
 
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ResponseEntity<Long> register(@RequestBody RegistrationDTO registrationDTO) {
-
-        Seller seller = new Seller();
-        seller.setCasopisID(UUID.fromString(registrationDTO.getUuid()));
-        seller.setEmail(registrationDTO.getEmail());
-        seller.setMerchant_id(registrationDTO.getMerchantId());
-        Long ret = sellerRepository.save(seller).getId();
-
-        return new ResponseEntity<Long>(ret, HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/getUrl", method = RequestMethod.POST)
-    public String getUrl(@RequestBody CreatePaymentOrSubRequest id)  {
-        return "\""+ UrlClass.FRONT_PAYPAL+id.getCasopisUuid()+"\"";
-    }
-
     @PostMapping
-    public CreatePaymentOrSubResponse create(@RequestBody CreatePaymentOrSubRequest request) {
+    public String create(@RequestBody CreatePaymentOrSubRequest request) {
         System.out.println(request);
-        return paymentService.createPayment(request);
+        return "\""+paymentService.createPayment(request).getApprovalUrl()+"\"";
     }
 
     @RequestMapping(value = "/execute", method = RequestMethod.GET)

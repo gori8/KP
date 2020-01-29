@@ -4,6 +4,7 @@ import com.paypal.api.payments.Plan;
 import rs.ac.uns.ftn.paypal.dto.CreatePaymentOrSubRequest;
 import rs.ac.uns.ftn.paypal.dto.CreatePaymentOrSubResponse;
 import rs.ac.uns.ftn.paypal.dto.ExecutePaymentRequest;
+import rs.ac.uns.ftn.url.AmountAndUrlDTO;
 
 public interface PaymentService {
 
@@ -13,7 +14,7 @@ public interface PaymentService {
 
     String cancelPayment(Long id);
 
-    Plan createBillingPlan(CreatePaymentOrSubRequest request);
+    Plan createBillingPlan(CreatePaymentOrSubRequest request, AmountAndUrlDTO amountAndUrlDTO);
 
     String activateSubscription(CreatePaymentOrSubRequest request);
 

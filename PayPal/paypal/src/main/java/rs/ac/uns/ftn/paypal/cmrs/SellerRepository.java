@@ -6,6 +6,9 @@ import java.util.UUID;
 
 public interface SellerRepository extends JpaRepository<Seller,Long> {
 
-    public Seller findByCasopisID(UUID casopisID);
+
+    Seller findByPaypalEmail(String paypalEmail);
+
+    Seller findBySellerEmail(String sellerEmail);
 
 }

@@ -1,8 +1,8 @@
 package rs.ac.uns.ftn.kp.bankms.payment;
 
-import rs.ac.uns.ftn.kp.bankms.client.ClientRepository;
-import rs.ac.uns.ftn.kp.bankms.client.ClientService;
-import rs.ac.uns.ftn.kp.bankms.model.Client;
+import rs.ac.uns.ftn.kp.bankms.client.SellerRepository;
+import rs.ac.uns.ftn.kp.bankms.client.SellerService;
+import rs.ac.uns.ftn.kp.bankms.model.Seller;
 import rs.ac.uns.ftn.kp.bankms.model.Payment;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -27,10 +27,10 @@ public class PaymentServiceImpl implements PaymentService {
     private PaymentRepository paymentRepository;
 
     @Autowired
-    private ClientService clientService;
+    private SellerService sellerService;
 
     @Autowired
-    private ClientRepository clientRepository;
+    private SellerRepository sellerRepository;
 
     @Override
     public List<Payment> findAll() {
@@ -53,9 +53,10 @@ public class PaymentServiceImpl implements PaymentService {
 
 
         Payment payment = new Payment();
-        payment.setCasopisUuid(UUID.fromString(kpRequestDto.getCasopisUuid()));
+        payment.setItemUuid(UUID.fromString(kpRequestDto.getCasopisUuid()));
         payment.setAmount(resp.getBody().getAmount());
         payment.setStatus(PaymentStatus.CREATED_ON_KP);
+        payment.setSellerEmail(resp.getBody().getSellerEmail());
 
         Payment savedPayment=paymentRepository.save(payment);
 
@@ -73,8 +74,8 @@ public class PaymentServiceImpl implements PaymentService {
         mc.setFailedUrl(UrlClass.BANKMS_URL +savedPayment.getId()+ "/failed");
         mc.setSuccessUrl(UrlClass.BANKMS_URL +savedPayment.getId()+ "/successful");
 
-        Client client=clientService.getBySeller(resp.getBody().getSellerEmail());
-        mc.setMerchantId(client.getMerchantId());
+        Seller seller = sellerService.getBySeller(resp.getBody().getSellerEmail());
+        mc.setMerchantId(seller.getMerchantId());
 
 
         String json="";

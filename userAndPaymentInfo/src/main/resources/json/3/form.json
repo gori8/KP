@@ -13,7 +13,7 @@
     ],
     "button":{
         "name":"Submit",
-        "url":"https://localhost:8771/bitcoin/api/bitcoin/register"
+        "url":"https://localhost:8771/bitcoin/api/register"
     },
     "header":"Bit Coin Seller Registration",
     "image":"bitcoin-logo.png"

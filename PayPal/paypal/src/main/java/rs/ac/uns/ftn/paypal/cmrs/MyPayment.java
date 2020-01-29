@@ -5,6 +5,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.UUID;
 
 @Entity
 @Data
@@ -22,6 +23,10 @@ public class MyPayment{
     private String paymentId;
 
     private String redirectUrl;
+
+    @org.hibernate.annotations.Type(type="org.hibernate.type.UUIDCharType")
+    @Column(name = "item_id", unique = false, nullable = false)
+    private UUID itemId;
 
     private Boolean successful;
 
