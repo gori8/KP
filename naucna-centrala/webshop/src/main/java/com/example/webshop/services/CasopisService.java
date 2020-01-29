@@ -9,4 +9,6 @@ public interface CasopisService {
     public List<TaskLinkDTO> getTasks(String username);
 
     public CasopisDTO getPaper(Long id);
+
+    public CasopisDTO getNumbersForPaper(Long id);
 }

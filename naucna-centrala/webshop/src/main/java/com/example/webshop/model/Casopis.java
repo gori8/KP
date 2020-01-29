@@ -78,4 +78,12 @@ public class Casopis {
             joinColumns = @JoinColumn(name = "casopis_id"),
             inverseJoinColumns = @JoinColumn(name = "recenzent_id"))
     private List<Korisnik> recenzenti = new ArrayList<>();
+
+    @ManyToMany
+    @JsonIgnore
+    @JoinTable(
+            name = "casopis_pretplatnik",
+            joinColumns = @JoinColumn(name = "casopis_id"),
+            inverseJoinColumns = @JoinColumn(name = "pretplatnik_id"))
+    private List<Korisnik> pretplatnici = new ArrayList<>();
 }

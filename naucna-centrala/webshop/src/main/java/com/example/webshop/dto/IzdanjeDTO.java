@@ -3,6 +3,7 @@ package com.example.webshop.dto;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 @Data
 public class IzdanjeDTO {
@@ -12,4 +13,6 @@ public class IzdanjeDTO {
     private Long broj;
     private BigDecimal cena;
     private Long casopisId;
+    private Date datumIzdanja;
+    private String uuid;
 }

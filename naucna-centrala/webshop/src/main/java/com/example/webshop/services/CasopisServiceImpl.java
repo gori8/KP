@@ -1,8 +1,10 @@
 package com.example.webshop.services;
 
 import com.example.webshop.dto.CasopisDTO;
+import com.example.webshop.dto.IzdanjeDTO;
 import com.example.webshop.dto.TaskLinkDTO;
 import com.example.webshop.model.Casopis;
+import com.example.webshop.model.Izdanje;
 import com.example.webshop.model.Korisnik;
 import com.example.webshop.model.Link;
 import com.example.webshop.repository.CasopisRepository;
@@ -59,5 +61,35 @@ public class CasopisServiceImpl implements CasopisService {
         dto.setKomeSeNaplacuje(casopis.getKomeSeNaplacuje());
 
         return dto;
+    }
+
+    @Override
+    public CasopisDTO getNumbersForPaper(Long id){
+        Casopis casopis = casopisRepository.getOne(id);
+        CasopisDTO dto = new CasopisDTO();
+        dto.setNaziv(casopis.getNaziv());
+        dto.setAktiviran(casopis.getAktiviran());
+        dto.setClanarina(casopis.getClanarina());
+        dto.setId(casopis.getId());
+        dto.setIssn(casopis.getIssn());
+        dto.setKomeSeNaplacuje(casopis.getKomeSeNaplacuje());
+        dto.setIzdanja(new ArrayList<>());
+        dto.setUrednik(casopis.getGlavniUrednik().getUsername());
+        dto.setUuid(casopis.getUuid().toString());
+        for (Izdanje izdanje:casopis.getIzdanja()) {
+            IzdanjeDTO izdanjeDTO = new IzdanjeDTO();
+            izdanjeDTO.setBroj(izdanje.getBroj());
+            izdanjeDTO.setCasopisId(dto.getId());
+            izdanjeDTO.setCena(izdanje.getCena());
+            izdanjeDTO.setId(izdanje.getId());
+            izdanjeDTO.setNaziv(izdanje.getNaziv());
+            izdanjeDTO.setDatumIzdanja(izdanje.getDatumIzdanja());
+            izdanjeDTO.setUuid(izdanje.getUuid().toString());
+
+            dto.getIzdanja().add(izdanjeDTO);
+        }
+
+        return dto;
+
     }
 }

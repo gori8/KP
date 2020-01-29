@@ -4,7 +4,7 @@
   </div>
   <div class="row ml-auto mr-auto">
     <div class="col col-md-3 mb-5 mr-5" *ngFor="let c of casopisi">
-      <div class="card bg-dark text-light" style="height: 30rem;width: 18rem;">
+      <div class="card bg-dark text-light" style="height: 31rem;width: 18rem;">
         <div class="text-center">
           <img src="assets/img/paper.png" class="card-img-top mt-4"  style="height: 8rem;width:8rem">
         </div>
@@ -24,7 +24,11 @@
               <td>{{c.issn}}</td>
             </tr>
           </table>
-          <button class="btn btn-outline-light">Kupi</button>
+
+          <button class="btn btn-outline-light" routerLink="/papers/{{c.id}}/numbers">Izdanja</button>
+          <ng-container *ngIf="currentUser$ | async as user">
+            <button class="btn btn-outline-light ml-3" *ngIf="user.role=='Registrovani korisnik'">Pretplati se</button>
+          </ng-container>
         </div>
       </div>
     </div>

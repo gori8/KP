@@ -1,13 +1,15 @@
 package com.example.webshop.services;
 
 import com.example.webshop.dto.*;
-import com.example.webshop.model.Casopis;
-import com.example.webshop.model.Izdanje;
-import com.example.webshop.model.Link;
-import com.example.webshop.model.NacinPlacanja;
+import com.example.webshop.model.*;
 import com.example.webshop.repository.CasopisRepository;
 import com.example.webshop.repository.IzdanjeRepository;
+import com.example.webshop.repository.KorisnikRepository;
 import com.example.webshop.repository.LinkRepository;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.boot.configurationprocessor.json.JSONException;
+import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -36,6 +38,8 @@ public class KPServiceImpl implements KPService {
     @Autowired
     IzdanjeRepository izdanjeRepository;
 
+    @Autowired
+    KorisnikRepository korisnikRepository;
 
     @Override
     public void createLinks(Long casopisId){
@@ -123,5 +127,65 @@ public class KPServiceImpl implements KPService {
         casopisRepository.save(casopis);
 
         return izdanje.getId();
+    }
+
+    public String getRedirectUrl(String uapId,String username){
+        ObjectMapper mapper = new ObjectMapper();
+
+        MappingClass mc = new MappingClass();
+        mc.setRedirectUrl(UrlClass.REDIRECT_URL_PAYMENT+username+"/"+uapId);
+        mc.setId(uapId);
+
+        String json="";
+
+        try {
+            json = mapper.writeValueAsString(mc);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        HttpEntity<String> entity = new HttpEntity<String>(json, headers);
+
+        ResponseEntity<String> response
+                = restTemplate.postForEntity(UrlClass.DOBAVI_KP_FRONT_URL_SA_NACINIMA_PLACANJA_FROM_PAYMENT_INFO,entity,String.class);
+
+        JSONObject actualObj=null;
+        String ret = "";
+
+        try {
+            actualObj = new JSONObject(response.getBody());
+            ret = actualObj.getString("url");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return ret;
+    }
+
+    @Override
+    public String changePayed(String uuid, Boolean success, String username) {
+        if (success) {
+            UUID realUuid = UUID.fromString(uuid);
+            Izdanje izdanje = izdanjeRepository.findOneByUuid(realUuid);
+
+            if(izdanje==null){
+                return UrlClass.FRON_WEBSHOP+"paymentresponse/failed";
+            }
+
+            Korisnik korisnik = korisnikRepository.findOneByUsername(username);
+
+            izdanje.getKupci().add(korisnik);
+            izdanje = izdanjeRepository.save(izdanje);
+
+            korisnik.getCasopisiKupci().add(izdanje);
+            korisnik = korisnikRepository.save(korisnik);
+
+            return UrlClass.FRON_WEBSHOP+"paymentresponse/success";
+        } else {
+            return UrlClass.FRON_WEBSHOP+"paymentresponse/failed";
+        }
     }
 }

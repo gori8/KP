@@ -57,6 +57,10 @@ export class EndpointsService {
     return this.http.get(`${BASE_URL}/papers/${id}`);
   }
 
+  getNumbersForCasopis(id): Observable<any>{
+    return this.http.get(`${BASE_URL}/papers/${id}/numbers`);
+  }
+
   submitIzdanje(izdanje): Observable<any>{
     return this.http.post(`${BASE_URL}/numbers`, izdanje,{
       headers: new HttpHeaders({
@@ -120,5 +124,15 @@ export class EndpointsService {
 
   getTasksLinks(username): Observable<any>{
     return this.http.get(`${BASE_URL}/tasksLinks/${username}`);
+  }
+
+  public pay(uapId,username): Observable<any>{
+
+    return this.http.post(`${BASE_URL}/pay/${uapId}/${username}`,null, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'responseType': 'text'
+      })
+    });
   }
 }

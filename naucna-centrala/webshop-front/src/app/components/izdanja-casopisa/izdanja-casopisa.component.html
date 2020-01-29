@@ -1,0 +1,41 @@
+<div class="container" *ngIf="casopis!=null">
+  <div class="row mt-5">
+    <h2 class="text-primary mb-5">Izdanja časopisa {{casopis.naziv}}:</h2>
+  </div>
+  <div class="row mb-5" *ngIf="currentUser$ | async as user">
+    <button class="btn btn-success" routerLink="/number/{{casopis.id}}" *ngIf="user.role=='Urednik' && user.username==casopis.urednik">Dodaj izdanje <i class="fas fa-plus"></i></button>
+  </div>
+  <div class="row ml-auto mr-auto">
+    <div class="col col-md-3 mb-5 mr-5" *ngFor="let item of casopis.izdanja">
+      <div class="card bg-dark text-light" style="height: 28rem;width: 20rem;">
+        <div class="card-img-top">
+          <div class="text-center">
+            <span class="fa-stack fa-5x">
+              <i class="fas fa-square fa-stack-5x"></i>
+              <strong class="fa-stack-1x text-dark">
+                {{item.broj}}  
+              </strong>
+            </span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">{{item.naziv}}</h3>
+          <table class="table text-light">
+            <tr>
+              <td>Cena: </td>
+              <td>{{item.cena}} $</td>
+            </tr>
+            <tr>
+              <td>Datum izdanja: </td>
+              <td>{{item.datumIzdanja}}</td>
+            </tr>
+          </table>
+
+          <ng-container *ngIf="currentUser$ | async as user">
+            <button (click)="pay(item.uuid)" class="btn btn-outline-light ml-3" *ngIf="user.role=='Registrovani korisnik'">Kupi izdanje</button>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
