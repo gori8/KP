@@ -7,70 +7,70 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::        (v2.2.1.RELEASE)
 
-2020-01-29 18:08:05.592  INFO 24436 --- [           main] c.e.u.UserandpaymentinfoApplication      : No active profile set, falling back to default profiles: default
-2020-01-29 18:08:12.487  INFO 24436 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
-2020-01-29 18:08:14.142  INFO 24436 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1574ms. Found 3 repository interfaces.
-2020-01-29 18:08:15.559  WARN 24436 --- [           main] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
-2020-01-29 18:08:16.753  INFO 24436 --- [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=6a83398a-296b-3480-b0f7-17163f7d2cdf
-2020-01-29 18:08:18.726  INFO 24436 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$57cf4afd] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-29 18:08:19.151  INFO 24436 --- [           main] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2020-01-29 18:08:19.324  INFO 24436 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-29 18:08:22.097  INFO 24436 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8090 (http)
-2020-01-29 18:08:22.129  INFO 24436 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2020-01-29 18:08:22.166  INFO 24436 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.27]
-2020-01-29 18:08:22.481  INFO 24436 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2020-01-29 18:08:22.481  INFO 24436 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 16711 ms
-2020-01-29 18:08:23.413  WARN 24436 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
-2020-01-29 18:08:23.417  INFO 24436 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-2020-01-29 18:08:23.481  INFO 24436 --- [           main] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@263f04ca
-2020-01-29 18:08:28.053  INFO 24436 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2020-01-29 18:08:28.538  INFO 24436 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.8.Final}
-2020-01-29 18:08:29.249  INFO 24436 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
-2020-01-29 18:08:29.903  INFO 24436 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2020-01-29 18:08:30.750  INFO 24436 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2020-01-29 18:08:30.845  INFO 24436 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2020-01-29 18:08:34.209  INFO 24436 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2020-01-29 18:08:34.218  INFO 24436 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2020-01-29 18:08:38.326  WARN 24436 --- [           main] o.s.d.rest.webmvc.halbrowser.HalBrowser  : ---
-2020-01-29 18:08:38.326  WARN 24436 --- [           main] o.s.d.rest.webmvc.halbrowser.HalBrowser  : Spring Data REST HAL Browser is deprecated! Prefer the HAL Explorer (artifactId: spring-data-rest-hal-explorer)!
-2020-01-29 18:08:38.327  WARN 24436 --- [           main] o.s.d.rest.webmvc.halbrowser.HalBrowser  : ---
-2020-01-29 18:08:38.373  WARN 24436 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
-2020-01-29 18:08:38.373  INFO 24436 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-2020-01-29 18:08:38.623  WARN 24436 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2020-01-29 18:08:39.010  INFO 24436 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-01-29 18:08:40.684  WARN 24436 --- [           main] ockingLoadBalancerClientRibbonWarnLogger : You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
-2020-01-29 18:08:40.833  INFO 24436 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
-2020-01-29 18:08:40.945  INFO 24436 --- [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
-2020-01-29 18:08:41.109  INFO 24436 --- [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
-2020-01-29 18:08:41.290  INFO 24436 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
-2020-01-29 18:08:41.290  INFO 24436 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2020-01-29 19:10:31.555  INFO 29474 --- [           main] c.e.u.UserandpaymentinfoApplication      : No active profile set, falling back to default profiles: default
+2020-01-29 19:10:38.542  INFO 29474 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-01-29 19:10:39.859  INFO 29474 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1282ms. Found 3 repository interfaces.
+2020-01-29 19:10:41.232  WARN 29474 --- [           main] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2020-01-29 19:10:42.498  INFO 29474 --- [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=6a83398a-296b-3480-b0f7-17163f7d2cdf
+2020-01-29 19:10:44.311  INFO 29474 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$13379a6b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-29 19:10:44.666  INFO 29474 --- [           main] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2020-01-29 19:10:44.859  INFO 29474 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-29 19:10:47.604  INFO 29474 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8090 (http)
+2020-01-29 19:10:47.646  INFO 29474 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-01-29 19:10:47.667  INFO 29474 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.27]
+2020-01-29 19:10:47.983  INFO 29474 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-01-29 19:10:47.983  INFO 29474 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 16278 ms
+2020-01-29 19:10:49.084  WARN 29474 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-01-29 19:10:49.084  INFO 29474 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-01-29 19:10:49.179  INFO 29474 --- [           main] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@54afd745
+2020-01-29 19:10:54.500  INFO 29474 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-01-29 19:10:54.840  INFO 29474 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.8.Final}
+2020-01-29 19:10:55.527  INFO 29474 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-01-29 19:10:56.238  INFO 29474 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-01-29 19:10:57.375  INFO 29474 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-01-29 19:10:57.470  INFO 29474 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2020-01-29 19:11:02.400  INFO 29474 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-01-29 19:11:02.427  INFO 29474 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-01-29 19:11:07.619  WARN 29474 --- [           main] o.s.d.rest.webmvc.halbrowser.HalBrowser  : ---
+2020-01-29 19:11:07.620  WARN 29474 --- [           main] o.s.d.rest.webmvc.halbrowser.HalBrowser  : Spring Data REST HAL Browser is deprecated! Prefer the HAL Explorer (artifactId: spring-data-rest-hal-explorer)!
+2020-01-29 19:11:07.620  WARN 29474 --- [           main] o.s.d.rest.webmvc.halbrowser.HalBrowser  : ---
+2020-01-29 19:11:07.725  WARN 29474 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-01-29 19:11:07.726  INFO 29474 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-01-29 19:11:08.037  WARN 29474 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-01-29 19:11:08.630  INFO 29474 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-01-29 19:11:11.661  WARN 29474 --- [           main] ockingLoadBalancerClientRibbonWarnLogger : You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2020-01-29 19:11:11.860  INFO 29474 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-01-29 19:11:12.066  INFO 29474 --- [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2020-01-29 19:11:12.291  INFO 29474 --- [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2020-01-29 19:11:12.545  INFO 29474 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2020-01-29 19:11:12.545  INFO 29474 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
 WARNING: An illegal reflective access operation has occurred
 WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (jar:file:/home/antolovic/KP_SEP/KP/userAndPaymentInfo/target/userandpaymentinfo.jar!/BOOT-INF/lib/xstream-1.4.11.1.jar!/) to field java.util.TreeMap.comparator
 WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
 WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
 WARNING: All illegal access operations will be denied in a future release
-2020-01-29 18:08:41.616  INFO 24436 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
-2020-01-29 18:08:41.617  INFO 24436 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
-2020-01-29 18:08:41.985  INFO 24436 --- [           main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
-2020-01-29 18:08:42.049  INFO 24436 --- [           main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
-2020-01-29 18:08:42.049  INFO 24436 --- [           main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
-2020-01-29 18:08:42.049  INFO 24436 --- [           main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
-2020-01-29 18:08:42.049  INFO 24436 --- [           main] com.netflix.discovery.DiscoveryClient    : Application is null : false
-2020-01-29 18:08:42.050  INFO 24436 --- [           main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
-2020-01-29 18:08:42.050  INFO 24436 --- [           main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
-2020-01-29 18:08:42.050  INFO 24436 --- [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
-2020-01-29 18:08:42.378  INFO 24436 --- [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200
-2020-01-29 18:08:42.382  INFO 24436 --- [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 1
-2020-01-29 18:08:42.385  INFO 24436 --- [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
-2020-01-29 18:08:42.391  INFO 24436 --- [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1580317722390 with initial instances count: 1
-2020-01-29 18:08:42.400  INFO 24436 --- [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application USERANDPAYMENT with eureka with status UP
-2020-01-29 18:08:42.401  INFO 24436 --- [           main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1580317722401, current=UP, previous=STARTING]
-2020-01-29 18:08:42.405  INFO 24436 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_USERANDPAYMENT/userandpayment:2f43f1d80439c977802b5187bfc24338: registering service...
-2020-01-29 18:08:42.452  INFO 24436 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_USERANDPAYMENT/userandpayment:2f43f1d80439c977802b5187bfc24338 - registration status: 204
-2020-01-29 18:08:42.476  INFO 24436 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8090 (http) with context path ''
-2020-01-29 18:08:42.477  INFO 24436 --- [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8090
-2020-01-29 18:08:42.481  INFO 24436 --- [           main] c.e.u.UserandpaymentinfoApplication      : Started UserandpaymentinfoApplication in 42.095 seconds (JVM running for 45.114)
-2020-01-29 18:13:42.053  INFO 24436 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
-2020-01-29 18:18:42.056  INFO 24436 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
-2020-01-29 18:23:42.057  INFO 24436 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
-2020-01-29 18:28:42.058  INFO 24436 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-01-29 19:11:13.092  INFO 29474 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2020-01-29 19:11:13.093  INFO 29474 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2020-01-29 19:11:13.625  INFO 29474 --- [           main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-01-29 19:11:13.670  INFO 29474 --- [           main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2020-01-29 19:11:13.678  INFO 29474 --- [           main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2020-01-29 19:11:13.678  INFO 29474 --- [           main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2020-01-29 19:11:13.678  INFO 29474 --- [           main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2020-01-29 19:11:13.678  INFO 29474 --- [           main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2020-01-29 19:11:13.678  INFO 29474 --- [           main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2020-01-29 19:11:13.678  INFO 29474 --- [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2020-01-29 19:11:14.139  INFO 29474 --- [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2020-01-29 19:11:14.155  INFO 29474 --- [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 1
+2020-01-29 19:11:14.167  INFO 29474 --- [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2020-01-29 19:11:14.188  INFO 29474 --- [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1580321474187 with initial instances count: 1
+2020-01-29 19:11:14.199  INFO 29474 --- [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application USERANDPAYMENT with eureka with status UP
+2020-01-29 19:11:14.200  INFO 29474 --- [           main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1580321474200, current=UP, previous=STARTING]
+2020-01-29 19:11:14.203  INFO 29474 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_USERANDPAYMENT/userandpayment:90db6aab64fb1d13e7aebac3c23f1979: registering service...
+2020-01-29 19:11:14.279  INFO 29474 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_USERANDPAYMENT/userandpayment:90db6aab64fb1d13e7aebac3c23f1979 - registration status: 204
+2020-01-29 19:11:14.300  INFO 29474 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8090 (http) with context path ''
+2020-01-29 19:11:14.319  INFO 29474 --- [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8090
+2020-01-29 19:11:14.338  INFO 29474 --- [           main] c.e.u.UserandpaymentinfoApplication      : Started UserandpaymentinfoApplication in 48.143 seconds (JVM running for 50.65)
+2020-01-29 19:16:13.682  INFO 29474 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-01-29 19:21:13.683  INFO 29474 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-01-29 19:26:13.684  INFO 29474 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-01-29 19:31:13.684  INFO 29474 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration

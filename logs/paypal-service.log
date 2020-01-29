@@ -7,65 +7,65 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::        (v2.2.2.RELEASE)
 
-2020-01-29 18:08:04.534  INFO 24433 --- [           main] rs.ac.uns.ftn.paypal.PaypalApplication   : No active profile set, falling back to default profiles: default
-2020-01-29 18:08:10.200  INFO 24433 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2020-01-29 18:08:11.540  INFO 24433 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1308ms. Found 2 JPA repository interfaces.
-2020-01-29 18:08:12.605  WARN 24433 --- [           main] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
-2020-01-29 18:08:13.583  INFO 24433 --- [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=95e232e6-5660-3ad7-a656-1b9f7afe2a68
-2020-01-29 18:08:15.338  INFO 24433 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-29 18:08:17.101  INFO 24433 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8094 (http)
-2020-01-29 18:08:17.164  INFO 24433 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2020-01-29 18:08:17.175  INFO 24433 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
-2020-01-29 18:08:17.538  INFO 24433 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2020-01-29 18:08:17.539  INFO 24433 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 12839 ms
-2020-01-29 18:08:18.250  WARN 24433 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
-2020-01-29 18:08:18.251  INFO 24433 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-2020-01-29 18:08:18.333  INFO 24433 --- [           main] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@6b54655f
-2020-01-29 18:08:22.000  INFO 24433 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2020-01-29 18:08:22.454  INFO 24433 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.9.Final}
-2020-01-29 18:08:23.078  INFO 24433 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
-2020-01-29 18:08:23.620  INFO 24433 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2020-01-29 18:08:24.497  INFO 24433 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2020-01-29 18:08:24.571  INFO 24433 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2020-01-29 18:08:28.310  INFO 24433 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2020-01-29 18:08:28.334  INFO 24433 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2020-01-29 18:08:31.072  WARN 24433 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
-2020-01-29 18:08:31.072  INFO 24433 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-2020-01-29 18:08:31.298  WARN 24433 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2020-01-29 18:08:31.898  INFO 24433 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-01-29 18:08:33.199  WARN 24433 --- [           main] ockingLoadBalancerClientRibbonWarnLogger : You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
-2020-01-29 18:08:33.383  INFO 24433 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
-2020-01-29 18:08:33.546  INFO 24433 --- [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
-2020-01-29 18:08:34.022  INFO 24433 --- [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
-2020-01-29 18:08:34.545  INFO 24433 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
-2020-01-29 18:08:34.545  INFO 24433 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2020-01-29 19:10:31.249  INFO 29471 --- [           main] rs.ac.uns.ftn.paypal.PaypalApplication   : No active profile set, falling back to default profiles: default
+2020-01-29 19:10:37.561  INFO 29471 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-01-29 19:10:39.019  INFO 29471 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1404ms. Found 2 JPA repository interfaces.
+2020-01-29 19:10:39.971  WARN 29471 --- [           main] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2020-01-29 19:10:40.946  INFO 29471 --- [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=95e232e6-5660-3ad7-a656-1b9f7afe2a68
+2020-01-29 19:10:42.466  INFO 29471 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-29 19:10:44.512  INFO 29471 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8094 (http)
+2020-01-29 19:10:44.593  INFO 29471 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-01-29 19:10:44.602  INFO 29471 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2020-01-29 19:10:44.998  INFO 29471 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-01-29 19:10:45.015  INFO 29471 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 13662 ms
+2020-01-29 19:10:45.607  WARN 29471 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-01-29 19:10:45.607  INFO 29471 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-01-29 19:10:45.666  INFO 29471 --- [           main] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@7e3060d8
+2020-01-29 19:10:49.085  INFO 29471 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-01-29 19:10:49.462  INFO 29471 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.9.Final}
+2020-01-29 19:10:50.270  INFO 29471 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-01-29 19:10:50.962  INFO 29471 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-01-29 19:10:52.181  INFO 29471 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-01-29 19:10:52.259  INFO 29471 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2020-01-29 19:10:56.518  INFO 29471 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-01-29 19:10:56.560  INFO 29471 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-01-29 19:11:00.504  WARN 29471 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-01-29 19:11:00.504  INFO 29471 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-01-29 19:11:00.838  WARN 29471 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-01-29 19:11:01.620  INFO 29471 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-01-29 19:11:03.593  WARN 29471 --- [           main] ockingLoadBalancerClientRibbonWarnLogger : You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2020-01-29 19:11:03.812  INFO 29471 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-01-29 19:11:03.935  INFO 29471 --- [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2020-01-29 19:11:04.259  INFO 29471 --- [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2020-01-29 19:11:04.724  INFO 29471 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2020-01-29 19:11:04.725  INFO 29471 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
 WARNING: An illegal reflective access operation has occurred
 WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (jar:file:/home/antolovic/KP_SEP/KP/PayPal/paypal/target/paypal.jar!/BOOT-INF/lib/xstream-1.4.11.1.jar!/) to field java.util.TreeMap.comparator
 WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
 WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
 WARNING: All illegal access operations will be denied in a future release
-2020-01-29 18:08:35.171  INFO 24433 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
-2020-01-29 18:08:35.171  INFO 24433 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
-2020-01-29 18:08:35.879  INFO 24433 --- [           main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
-2020-01-29 18:08:36.022  INFO 24433 --- [           main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
-2020-01-29 18:08:36.022  INFO 24433 --- [           main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
-2020-01-29 18:08:36.022  INFO 24433 --- [           main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
-2020-01-29 18:08:36.023  INFO 24433 --- [           main] com.netflix.discovery.DiscoveryClient    : Application is null : false
-2020-01-29 18:08:36.023  INFO 24433 --- [           main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
-2020-01-29 18:08:36.023  INFO 24433 --- [           main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
-2020-01-29 18:08:36.023  INFO 24433 --- [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
-2020-01-29 18:08:36.710  INFO 24433 --- [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200
-2020-01-29 18:08:36.719  INFO 24433 --- [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 1
-2020-01-29 18:08:36.731  INFO 24433 --- [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
-2020-01-29 18:08:36.745  INFO 24433 --- [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1580317716743 with initial instances count: 1
-2020-01-29 18:08:36.753  INFO 24433 --- [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application PAYPAL with eureka with status UP
-2020-01-29 18:08:36.754  INFO 24433 --- [           main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1580317716754, current=UP, previous=STARTING]
-2020-01-29 18:08:36.759  INFO 24433 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_PAYPAL/paypal:d081cf0dbefa7e036621093a832364f0: registering service...
-2020-01-29 18:08:36.895  INFO 24433 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_PAYPAL/paypal:d081cf0dbefa7e036621093a832364f0 - registration status: 204
-2020-01-29 18:08:36.998  INFO 24433 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8094 (http) with context path ''
-2020-01-29 18:08:37.001  INFO 24433 --- [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8094
-2020-01-29 18:08:37.008  INFO 24433 --- [           main] rs.ac.uns.ftn.paypal.PaypalApplication   : Started PaypalApplication in 36.921 seconds (JVM running for 39.64)
-2020-01-29 18:13:36.027  INFO 24433 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
-2020-01-29 18:18:36.030  INFO 24433 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
-2020-01-29 18:23:36.031  INFO 24433 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
-2020-01-29 18:28:36.032  INFO 24433 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-01-29 19:11:05.505  INFO 29471 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2020-01-29 19:11:05.505  INFO 29471 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2020-01-29 19:11:06.339  INFO 29471 --- [           main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-01-29 19:11:06.507  INFO 29471 --- [           main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2020-01-29 19:11:06.508  INFO 29471 --- [           main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2020-01-29 19:11:06.508  INFO 29471 --- [           main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2020-01-29 19:11:06.508  INFO 29471 --- [           main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2020-01-29 19:11:06.508  INFO 29471 --- [           main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2020-01-29 19:11:06.508  INFO 29471 --- [           main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2020-01-29 19:11:06.508  INFO 29471 --- [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2020-01-29 19:11:07.164  INFO 29471 --- [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2020-01-29 19:11:07.202  INFO 29471 --- [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 1
+2020-01-29 19:11:07.230  INFO 29471 --- [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2020-01-29 19:11:07.261  INFO 29471 --- [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1580321467260 with initial instances count: 1
+2020-01-29 19:11:07.265  INFO 29471 --- [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application PAYPAL with eureka with status UP
+2020-01-29 19:11:07.280  INFO 29471 --- [           main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1580321467280, current=UP, previous=STARTING]
+2020-01-29 19:11:07.292  INFO 29471 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_PAYPAL/paypal:40053253c8afdf9ee1cb2885a3e66b1d: registering service...
+2020-01-29 19:11:07.452  INFO 29471 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_PAYPAL/paypal:40053253c8afdf9ee1cb2885a3e66b1d - registration status: 204
+2020-01-29 19:11:07.597  INFO 29471 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8094 (http) with context path ''
+2020-01-29 19:11:07.598  INFO 29471 --- [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8094
+2020-01-29 19:11:07.662  INFO 29471 --- [           main] rs.ac.uns.ftn.paypal.PaypalApplication   : Started PaypalApplication in 41.353 seconds (JVM running for 43.976)
+2020-01-29 19:16:06.511  INFO 29471 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-01-29 19:21:06.513  INFO 29471 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-01-29 19:26:06.514  INFO 29471 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-01-29 19:31:06.514  INFO 29471 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
