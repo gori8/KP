@@ -9,6 +9,7 @@ public interface SellerRepository extends JpaRepository<Seller,Long> {
 
     public Seller findByToken(String token);
 
-    public Seller findByUuid(UUID uuid);
+
+    public Seller findBySellerEmail(String sellerEmail);
 
 }

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import rs.ac.uns.ftn.bitcoin.BitcoinApplication;
 import rs.ac.uns.ftn.bitcoin.dto.*;
 import rs.ac.uns.ftn.bitcoin.utils.BitCoinPaymentUtils;
 import rs.ac.uns.ftn.url.AmountAndUrlDTO;
@@ -21,16 +22,8 @@ public class BitCoinPaymentController {
     @Autowired
     SellerRepository sellerRepository;
 
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ResponseEntity<Long> register(@RequestBody RegistrationDTO registrationDTO) {
 
-        Seller seller = new Seller();
-        seller.setUuid(UUID.fromString(registrationDTO.getUuid()));
-        seller.setToken(registrationDTO.getToken());
-        Long ret = sellerRepository.save(seller).getId();
 
-        return new ResponseEntity<Long>(ret, HttpStatus.OK);
-    }
 
     @RequestMapping(value = "/prepare",method = RequestMethod.POST)
     public ResponseEntity<String> postPreparePayment(@RequestBody PreparePaymentRequest request) {
@@ -53,9 +46,9 @@ public class BitCoinPaymentController {
 
     @GetMapping("/payment/cancel/{paymentId}")
     public ResponseEntity<?> getPaymentCanceled(@PathVariable Long paymentId) {
-        UUID sellerUuid=bitCoinPaymentService.getSellerUUID(paymentId);
+        BitCoinPayment bitCoinPayment=bitCoinPaymentService.getById(paymentId);
 
-        AmountAndUrlDTO amountAndUrlDTO=bitCoinPaymentService.getAmountAndRedirectUrl(sellerUuid.toString());
+        AmountAndUrlDTO amountAndUrlDTO=bitCoinPaymentService.getAmountAndRedirectUrl(bitCoinPayment.getItemId().toString());
 
         String url = bitCoinPaymentService.notifyNc(amountAndUrlDTO.getRedirectUrl()+"/false");
 
@@ -77,9 +70,9 @@ public class BitCoinPaymentController {
     @GetMapping("/payment/success/{paymentId}")
     public ResponseEntity<?> getPaymentSuccess(@PathVariable Long paymentId) {
 
-        UUID sellerUuid=bitCoinPaymentService.getSellerUUID(paymentId);
+        BitCoinPayment bitCoinPayment=bitCoinPaymentService.getById(paymentId);
 
-        AmountAndUrlDTO amountAndUrlDTO=bitCoinPaymentService.getAmountAndRedirectUrl(sellerUuid.toString());
+        AmountAndUrlDTO amountAndUrlDTO=bitCoinPaymentService.getAmountAndRedirectUrl(bitCoinPayment.getItemId().toString());
 
         String url = bitCoinPaymentService.notifyNc(amountAndUrlDTO.getRedirectUrl()+"/true");
 

@@ -21,5 +21,5 @@ public interface BitCoinPaymentService {
 
     String notifyNc(String url);
 
-    UUID getSellerUUID(Long id);
+    String getSellerEmail(Long id);
 }

@@ -9,5 +9,6 @@ public class RegistrationDTO {
 
     private String uuid;
     private String token;
+    private String sellerEmail;
 
 }

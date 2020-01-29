@@ -13,12 +13,11 @@ public class Seller {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @org.hibernate.annotations.Type(type="org.hibernate.type.UUIDCharType")
-    @Column(name = "casopisID", unique = true, nullable = false)
-    private UUID casopisID;
+    @Column(name = "seller_email", unique = true, nullable = false)
+    private String sellerEmail;
 
-    @Column(name = "email", unique = true, nullable = false)
-    private String email;
+    @Column(name = "paypal_email", unique = true, nullable = false)
+    private String paypalEmail;
 
     @Column(name = "merchant_id", unique = true, nullable = false)
     private String merchant_id;
@@ -28,5 +27,8 @@ public class Seller {
 
     @Column(name = "plan_id", unique = true)
     private String planId;
+
+
+
 
 }

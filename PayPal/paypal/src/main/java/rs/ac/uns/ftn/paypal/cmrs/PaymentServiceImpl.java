@@ -64,16 +64,19 @@ public class PaymentServiceImpl implements PaymentService{
 
         AmountAndUrlDTO amountAndUrlDTO=MyPaymentUtils.getAmountAndRedirectUrl(restTemplate,request.getCasopisUuid());
 
-        BigDecimal amount=amountAndUrlDTO.getAmount();
-        String redirectUrl=amountAndUrlDTO.getRedirectUrl();
+        BigDecimal amount = amountAndUrlDTO.getAmount();
+        String redirectUrl = amountAndUrlDTO.getRedirectUrl();
+        String sellerEmail = amountAndUrlDTO.getSellerEmail();
 
-        Seller seller = sellerRepository.findByCasopisID(UUID.fromString(request.getCasopisUuid()));
+        Seller seller = sellerRepository.findBySellerEmail(sellerEmail);
 
         MyPayment myPayment=new MyPayment();
 
+        myPayment.setItemId(UUID.fromString(request.getCasopisUuid()));
+
         myPayment=myPaymentRepository.save(myPayment);
 
-        Transaction transaction = MyPaymentUtils.setTransaction(amount, seller.getEmail());
+        Transaction transaction = MyPaymentUtils.setTransaction(amount, seller.getPaypalEmail());
 
         List<Transaction> transactions = new ArrayList<>();
 
@@ -176,14 +179,11 @@ public class PaymentServiceImpl implements PaymentService{
 
 
     @Override
-    public Plan createBillingPlan(CreatePaymentOrSubRequest request) {
-
-        AmountAndUrlDTO amountAndUrlDTO=MyPaymentUtils.getAmountAndRedirectUrl(restTemplate,request.getCasopisUuid());
+    public Plan createBillingPlan(CreatePaymentOrSubRequest request, AmountAndUrlDTO amountAndUrlDTO) {
 
         BigDecimal amount=amountAndUrlDTO.getAmount();
         String redirectUrl=amountAndUrlDTO.getRedirectUrl();
-
-        Seller seller = sellerRepository.findByCasopisID(UUID.fromString(request.getCasopisUuid()));
+        String sellerEmail = amountAndUrlDTO.getSellerEmail();
 
         MyPayment myPayment=new MyPayment();
 
@@ -251,13 +251,18 @@ public class PaymentServiceImpl implements PaymentService{
 
     @Override
     public String activateSubscription(CreatePaymentOrSubRequest request) {
+        AmountAndUrlDTO amountAndUrlDTO=MyPaymentUtils.getAmountAndRedirectUrl(restTemplate,request.getCasopisUuid());
 
-        Seller seller = sellerRepository.findByCasopisID(UUID.fromString(request.getCasopisUuid()));
+        BigDecimal amount=amountAndUrlDTO.getAmount();
+        String redirectUrl=amountAndUrlDTO.getRedirectUrl();
+        String sellerEmail = amountAndUrlDTO.getSellerEmail();
+
+        Seller seller = sellerRepository.findBySellerEmail(sellerEmail);
 
         if(seller.getCanSubscribe()){
             String planId = seller.getPlanId();
             if (planId==null){
-                Plan plan = createBillingPlan(request);
+                Plan plan = createBillingPlan(request,amountAndUrlDTO);
                 planId=plan.getId();
             }
 

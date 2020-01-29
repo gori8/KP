@@ -22,12 +22,15 @@ public class Payment {
     @Column(name = "url", unique = false, nullable = true)
     private String url;
 
-    @Column(name = "casopisUuid", unique = false, nullable = false)
+    @Column(name = "itemUuid", unique = false, nullable = false)
     @Type(type="org.hibernate.type.UUIDCharType")
-    private UUID casopisUuid;
+    private UUID itemUuid;
 
     @Column(name = "status", unique = false, nullable = false)
     private PaymentStatus status;
+
+    @Column(name = "seller_email", unique = true, nullable = false)
+    private String sellerEmail;
 
 
 }

@@ -38,9 +38,11 @@ public class BitCoinPaymentServiceImpl implements BitCoinPaymentService{
 
         CoinGateRequest coinGateRequest = new CoinGateRequest();
 
-        Seller seller = sellerRepository.findByUuid(UUID.fromString(request.getCasopisUuid()));
+        Seller seller = sellerRepository.findBySellerEmail(amountAndUrlDTO.getSellerEmail());
 
-        BitCoinPayment savedPayment = bitCoinPaymentRepository.save(new BitCoinPayment());
+        BitCoinPayment savedPayment = new BitCoinPayment();
+        savedPayment.setItemId(UUID.fromString(request.getCasopisUuid()));
+        savedPayment = bitCoinPaymentRepository.save(savedPayment);
 
         coinGateRequest.setPaymentId(savedPayment.getId());
 
@@ -112,9 +114,9 @@ public class BitCoinPaymentServiceImpl implements BitCoinPaymentService{
     }
 
     @Override
-    public UUID getSellerUUID(Long id){
+    public String getSellerEmail(Long id){
         BitCoinPayment payment=bitCoinPaymentRepository.getOne(id);
-        return payment.getSeller().getUuid();
+        return payment.getSeller().getSellerEmail();
     }
 
 }
