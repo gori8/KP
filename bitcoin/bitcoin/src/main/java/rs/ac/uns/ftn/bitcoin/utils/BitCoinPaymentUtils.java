@@ -1,21 +1,25 @@
 package rs.ac.uns.ftn.bitcoin.utils;
 
+import com.netflix.discovery.converters.Auto;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 import rs.ac.uns.ftn.bitcoin.cmrs.BitCoinPayment;
 import rs.ac.uns.ftn.bitcoin.cmrs.BitCoinPaymentRepository;
+import rs.ac.uns.ftn.bitcoin.cmrs.Seller;
+import rs.ac.uns.ftn.bitcoin.cmrs.SellerRepository;
 import rs.ac.uns.ftn.bitcoin.dto.CoinGateResponse;
 import rs.ac.uns.ftn.bitcoin.dto.CoinGateRequest;
 
 
-@NoArgsConstructor
+@Component
 public class BitCoinPaymentUtils {
     private static final String API_ORDERS = "https://api-sandbox.coingate.com/v2/orders";
 
@@ -33,7 +37,10 @@ public class BitCoinPaymentUtils {
     @Autowired
     BitCoinPaymentRepository bitCoinPaymentRepository;
 
-    private String getRedirectUrl(Long paymentId) {
+    @Autowired
+    SellerRepository sellerRepository;
+
+    public String getRedirectUrl(Long paymentId) {
 
         BitCoinPayment payment = bitCoinPaymentRepository.getOne(paymentId);
 
@@ -51,7 +58,7 @@ public class BitCoinPaymentUtils {
     }
 
 
-    public static CoinGateResponse postOrder(CoinGateRequest request) {
+    public CoinGateResponse postOrder(CoinGateRequest request) {
         RestTemplate restTemplate = new RestTemplate();
 
         HttpHeaders headers = new HttpHeaders();
@@ -75,13 +82,14 @@ public class BitCoinPaymentUtils {
         return ret;
     }
 
-    public static CoinGateResponse getOrder(BitCoinPayment payment) {
+    public CoinGateResponse getOrder(BitCoinPayment payment) {
+        Seller seller = sellerRepository.findBySellerEmail(payment.getSellerEmail());
 
         RestTemplate restTemplate=new RestTemplate();
 
         HttpHeaders headers = new HttpHeaders();
 
-        headers.add(AUTHORIZATION, TOKEN + payment.getSeller().getToken());
+        headers.add(AUTHORIZATION, TOKEN + seller.getToken());
 
         HttpEntity<String> request = new HttpEntity<>(PARAMS, headers);
 

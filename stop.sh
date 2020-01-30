@@ -6,6 +6,8 @@ pkill -f bank-ms.jar
 pkill -f userandpaymentinfo.jar
 pkill -f bank.jar
 pkill -f webshop.jar
+pkill -f red-bank.jar
+pkill -f pcc.jar
 
 
 

@@ -18,7 +18,7 @@ public class RegistrationController {
     @Autowired
     SellerRepository sellerRepository;
 
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    @RequestMapping( method = RequestMethod.POST)
     public ResponseEntity<Long> register(@RequestBody RegistrationDTO registrationDTO) {
         Seller seller = new Seller();
         seller.setToken(registrationDTO.getToken());
@@ -29,7 +29,7 @@ public class RegistrationController {
     }
 
 
-    @RequestMapping(value = "/check/email", method = RequestMethod.POST)
+    @RequestMapping(value = "/check/mail", method = RequestMethod.POST)
     public ResponseEntity checkEmail(@RequestBody CheckSellerDTO checkSellerDTO){
         if(sellerRepository.findBySellerEmail(checkSellerDTO.getEmail())==null){
             return ResponseEntity.ok(false);

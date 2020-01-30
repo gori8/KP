@@ -17,7 +17,7 @@ public class RegistrationController {
     @Autowired
     SellerRepository sellerRepository;
 
-    @RequestMapping(value = "/check/email", method = RequestMethod.POST)
+    @RequestMapping(value = "/check/mail", method = RequestMethod.POST)
     public ResponseEntity checkEmail(@RequestBody CheckSellerDTO checkSellerDTO){
         if(sellerRepository.findBySellerEmail(checkSellerDTO.getEmail())==null){
             return ResponseEntity.ok(false);
@@ -30,6 +30,7 @@ public class RegistrationController {
     public ResponseEntity<Long> register(@RequestBody RegistrationDTO registrationDTO) {
 
         Seller seller = new Seller();
+        seller.setCanSubscribe(registrationDTO.getCanSubscribe());
         seller.setPaypalEmail(registrationDTO.getEmail());
         seller.setMerchant_id(registrationDTO.getMerchantId());
         seller.setSellerEmail(registrationDTO.getSellerEmail());
