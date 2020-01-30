@@ -41,6 +41,10 @@ export class FormaPlacanjaComponent implements OnInit {
        
         for(let field of this.json.form){
 
+          if(field.default!=null){
+            field.model=field.default;
+          }
+
           if(field.validation===undefined){
             field.validation = {pattern:".*"};
           }else if(field.validation.pattern===undefined){
@@ -109,6 +113,7 @@ export class FormaPlacanjaComponent implements OnInit {
   }
 
   registerOnMs(){
+    console.log(this.body);
     this.endpoints.registerOnMs(this.body,this.json.button.url).subscribe(
       res => {
         this.paymentRegistrationCompleted();
