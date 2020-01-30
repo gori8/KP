@@ -1,4 +1,4 @@
-keytool -genkeypair -keyalg RSA -keysize 2048 -alias front -dname "CN=KOBEFOREVERRR,OU=Development,O=FRONTNC,C=NL" -ext "SAN:c=DNS:localhost,IP:192.168.43.86" -validity 3650 -keystore identityOnPN.jks -storepass secret -keypass secret -deststoretype pkcs12
+keytool -genkeypair -keyalg RSA -keysize 2048 -alias front -dname "CN=KOBEFOREVERR,OU=Development,O=FRONTNC,C=NL" -ext "SAN:c=DNS:192.168.0.17,IP:192.168.0.17" -validity 3650 -keystore identityOnPN.jks -storepass secret -keypass secret -deststoretype pkcs12
 
 #izvuci frontnc.cer iz identity.jks od frontnc
 keytool -exportcert -keystore identityOnPN.jks -storepass secret -alias front -rfc -file frontOnPN.cer
