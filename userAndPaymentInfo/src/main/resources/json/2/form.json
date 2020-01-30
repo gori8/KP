@@ -19,11 +19,19 @@
             "validation":{
                 "required":true
             }
+        },
+        {
+            "id":"canSubscribe",
+            "type":"checkbox",
+            "name":"Enable subscription",
+            "row":2,
+            "col":0,
+            "default":false
         }
     ],
     "button":{
         "name":"Submit",
-        "url":"https://localhost:8771/paypal/api/register"
+        "url":"https://192.168.43.161:8771/paypal/api/register"
     },
     "header":"PayPal Seller Registration",
     "image":"paypal-logo.png"

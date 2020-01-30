@@ -18,8 +18,8 @@ public class BitCoinPayment {
 
     private Integer orderId;
 
-    @ManyToOne
-    private Seller seller;
+    @Column(name="seller_email",nullable = false)
+    private String sellerEmail;
 
     @Digits(integer = 10, fraction = 2)
     private BigDecimal amount;

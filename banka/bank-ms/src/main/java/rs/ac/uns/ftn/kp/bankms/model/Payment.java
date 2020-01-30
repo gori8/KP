@@ -29,7 +29,7 @@ public class Payment {
     @Column(name = "status", unique = false, nullable = false)
     private PaymentStatus status;
 
-    @Column(name = "seller_email", unique = true, nullable = false)
+    @Column(name = "seller_email", unique = false, nullable = false)
     private String sellerEmail;
 
 

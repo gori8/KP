@@ -19,7 +19,7 @@ public class RegistrationController {
     SellerService sellerService;
 
 
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    @RequestMapping( method = RequestMethod.POST)
     public ResponseEntity<Long> register(@RequestBody RegistrationDTO registrationDTO){
 
         Seller seller = new Seller();
@@ -40,7 +40,7 @@ public class RegistrationController {
         return new ResponseEntity<Long>(ret, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/check/email", method = RequestMethod.POST)
+    @RequestMapping(value = "/check/mail", method = RequestMethod.POST)
     public ResponseEntity checkEmail(@RequestBody CheckSellerDTO checkSellerDTO){
         if(sellerService.getBySeller(checkSellerDTO.getEmail())==null){
             return ResponseEntity.ok(false);

@@ -22,7 +22,8 @@ public class BitCoinPaymentController {
     @Autowired
     SellerRepository sellerRepository;
 
-
+    @Autowired
+    BitCoinPaymentUtils bitCoinPaymentUtils;
 
 
     @RequestMapping(method = RequestMethod.POST)
@@ -33,7 +34,7 @@ public class BitCoinPaymentController {
 
         CoinGateRequest preparedPayment = bitCoinPaymentService.preparePayment(request);
 
-        CoinGateResponse response = BitCoinPaymentUtils.postOrder(preparedPayment);
+        CoinGateResponse response = bitCoinPaymentUtils.postOrder(preparedPayment);
 
         String paymentUrl = response.getPaymentUrl();
 
@@ -54,7 +55,7 @@ public class BitCoinPaymentController {
 
         BitCoinPayment payment = bitCoinPaymentService.getById(paymentId);
 
-        CoinGateResponse response = BitCoinPaymentUtils.getOrder(payment);
+        CoinGateResponse response = bitCoinPaymentUtils.getOrder(payment);
 
         String status = response.getStatus();
 
@@ -78,7 +79,7 @@ public class BitCoinPaymentController {
 
         BitCoinPayment payment = bitCoinPaymentService.getById(paymentId);
 
-        CoinGateResponse response = BitCoinPaymentUtils.getOrder(payment);
+        CoinGateResponse response = bitCoinPaymentUtils.getOrder(payment);
 
         String status = response.getStatus();
 
