@@ -12,9 +12,12 @@ export class PaypalSubscriptionComponent implements OnInit {
   private body={
     "tipCiklusa":"INFINITE",
     "brojCiklusa":0,
-    "period":null,
-    "casopisUuid":null
+    "period":"DAY",
+    "casopisUuid":null,
+    "ucestalostPerioda":1
   }
+
+  private hidden = false;
 
   constructor(private activatedRoute: ActivatedRoute, private endpoints: EndpointsService) { }
 
@@ -23,6 +26,7 @@ export class PaypalSubscriptionComponent implements OnInit {
   }
 
   onSubmit(form){
+    this.hidden=true;
     if(form.valid===true){
       if(this.body.tipCiklusa=="INFINITE"){
         this.body.brojCiklusa=0;
@@ -35,6 +39,7 @@ export class PaypalSubscriptionComponent implements OnInit {
             window.location.href = res;
         },
         err => {
+          this.hidden=false;
           console.log(err);  
         }
       );

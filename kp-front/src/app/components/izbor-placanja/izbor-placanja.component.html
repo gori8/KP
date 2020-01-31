@@ -9,7 +9,8 @@
                         {{item.name}}
                     </option>
                 </select>
-                <button id="submitPayment" (click)="submitPaymetMethod()" class="btn btn-primary mt-4">Prihvati</button>
+                <button id="submitPayment" [hidden]="hidden" (click)="submitPaymetMethod()" class="btn btn-primary mt-4">Prihvati</button>
+                <div [hidden]="!hidden" class="lds-roller mt-3"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
             </div>
             <div class="col md-3"></div>
         </div>

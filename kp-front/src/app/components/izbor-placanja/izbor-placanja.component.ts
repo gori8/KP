@@ -14,6 +14,7 @@ export class IzborPlacanjaComponent implements OnInit {
   naciniPlacanja = [];
   selectedPaymentMethod = null;
   uuid="";
+  private hidden = false;
 
   ngOnInit() {
 
@@ -26,6 +27,8 @@ export class IzborPlacanjaComponent implements OnInit {
 
   submitPaymetMethod(){
 
+    this.hidden=true;
+
     for(let np of this.naciniPlacanja){
       if(np.value == this.selectedPaymentMethod){
         this.endpoints.callSelectedMicroservice(np.url,this.uuid).subscribe(
@@ -35,7 +38,7 @@ export class IzborPlacanjaComponent implements OnInit {
           },
           err => {
             console.log(err);
-            
+            this.hidden=false;
             alert("An error has occured while usgin url "+np.url);
           }
         )

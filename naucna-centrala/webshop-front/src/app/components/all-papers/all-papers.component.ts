@@ -25,6 +25,8 @@ export class AllPapersComponent implements OnInit {
     this.endpoints.getAllPapers().subscribe(
       res => {
           this.casopisi = res;
+          console.log(res);
+          
       },
       err => {
         console.log(err); 
