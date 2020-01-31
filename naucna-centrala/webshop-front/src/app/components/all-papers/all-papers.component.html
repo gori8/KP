@@ -28,6 +28,7 @@
           <button class="btn btn-outline-light" routerLink="/papers/{{c.id}}/numbers">Izdanja</button>
           <ng-container *ngIf="currentUser$ | async as user">
             <button class="btn btn-outline-light ml-3" *ngIf="user.role=='Registrovani korisnik'">Pretplati se</button>
+            <button (click)="paypalSubscription(c.uuid)" class="btn btn-primary ml-3" *ngIf="user.role=='Registrovani korisnik' && paypalSubscription==true"><i class="fab fa-paypal"></i> Donacija</button>
           </ng-container>
         </div>
       </div>

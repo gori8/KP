@@ -110,6 +110,14 @@ public class UserServiceImpl implements  UserService {
             dto.setIssn(casopis.getIssn());
             dto.setAktiviran(casopis.getAktiviran());
             dto.setKomeSeNaplacuje(casopis.getKomeSeNaplacuje());
+            dto.setUuid(casopis.getUuid().toString());
+
+            for (NacinPlacanja np:casopis.getNaciniPlacanja()) {
+                if(np.getId()==2){
+                    dto.setPaypalSubscription(true);
+                    break;
+                }
+            }
 
             ret.add(dto);
         }

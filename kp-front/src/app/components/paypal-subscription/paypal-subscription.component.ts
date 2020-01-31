@@ -13,13 +13,13 @@ export class PaypalSubscriptionComponent implements OnInit {
     "tipCiklusa":"INFINITE",
     "brojCiklusa":0,
     "period":null,
-    "uuid":null
+    "casopisUuid":null
   }
 
   constructor(private activatedRoute: ActivatedRoute, private endpoints: EndpointsService) { }
 
   ngOnInit() {
-    this.body.uuid=this.activatedRoute.snapshot.paramMap.get('uuid');
+    this.body.casopisUuid=this.activatedRoute.snapshot.paramMap.get('uuid');
   }
 
   onSubmit(form){
@@ -28,6 +28,16 @@ export class PaypalSubscriptionComponent implements OnInit {
         this.body.brojCiklusa=0;
       }
       console.log(this.body);
+    
+      this.endpoints.paypalSubscription(this.body).subscribe(
+        res => {
+            console.log(res);
+            window.location.href = res;
+        },
+        err => {
+          console.log(err);  
+        }
+      );
     }
   }
 

@@ -17,4 +17,5 @@ public class CasopisDTO {
     private List<IzdanjeDTO> izdanja;
     private String urednik;
     private String uuid;
+    private Boolean paypalSubscription = false;
 }

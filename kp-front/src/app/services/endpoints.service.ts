@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 const BASE_URL_USER_AND_PAYMENT = "https://192.168.43.161:8771/userandpayment/api";
+const BASE_URL_PAYPAL = "https://192.168.43.161:8771/paypal/api/paypal";
 
 @Injectable({
   providedIn: 'root'
@@ -47,6 +48,16 @@ export class EndpointsService {
   public paymentRegistrationCompleted(body): Observable<any>{
 
     return this.http.post(`${BASE_URL_USER_AND_PAYMENT}/registration/complete`,body, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'responseType': 'text'
+      })
+    });
+  }
+
+  public paypalSubscription(body): Observable<any>{
+
+    return this.http.post(`${BASE_URL_USER_AND_PAYMENT}/subscription`,body, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'responseType': 'text'
