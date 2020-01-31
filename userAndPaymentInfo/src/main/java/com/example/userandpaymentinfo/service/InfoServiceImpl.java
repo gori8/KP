@@ -130,7 +130,6 @@ public class InfoServiceImpl implements InfoService{
         dto.setAmount(item.getAmount());
         dto.setRedirectUrl(item.getRedirectUrl());
         dto.setSellerEmail(item.getSeller().getEmail());
-        dto.setCheckStatusUrl(item.getCheckStatusUrl());
         return dto;
     }
 

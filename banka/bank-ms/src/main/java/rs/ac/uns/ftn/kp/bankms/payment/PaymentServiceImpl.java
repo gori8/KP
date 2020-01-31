@@ -63,6 +63,7 @@ public class PaymentServiceImpl implements PaymentService {
         payment.setAmount(resp.getBody().getAmount());
         payment.setStatus(PaymentStatus.CREATED_ON_KP);
         payment.setSellerEmail(resp.getBody().getSellerEmail());
+        payment.setCheckStatusUrl(resp.getBody().getRedirectUrl());
 
         Payment savedPayment=paymentRepository.save(payment);
 
@@ -129,20 +130,20 @@ public class PaymentServiceImpl implements PaymentService {
                 payment.setStatus(PaymentStatus.ERROR);
                 paymentRepository.save(payment);
                 ResponseEntity<String> response
-                        = restTemplate.postForEntity(payment.getUrl()+"/false",null,String.class);
+                        = restTemplate.postForEntity(payment.getCheckStatusUrl()+"/false",null,String.class);
                 return response.getBody();
 
             }else if(status.equals("failed")){
                 payment.setStatus(PaymentStatus.FAILED);
                 paymentRepository.save(payment);
                 ResponseEntity<String> response
-                        = restTemplate.postForEntity(payment.getUrl()+"/false",null,String.class);
+                        = restTemplate.postForEntity(payment.getCheckStatusUrl()+"/false",null,String.class);
                 return response.getBody();
             }else if(status.equals("successful")){
                 payment.setStatus(PaymentStatus.SUCCESSFUL);
                 paymentRepository.save(payment);
                 ResponseEntity<String> response
-                        = restTemplate.postForEntity(payment.getUrl()+"/true",null,String.class);
+                        = restTemplate.postForEntity(payment.getCheckStatusUrl()+"/true",null,String.class);
                 return response.getBody();
             }
         }
@@ -152,7 +153,7 @@ public class PaymentServiceImpl implements PaymentService {
     @Override
     public void updateStatus() {
 
-        LOGGER.info("Finding all payments with status CREATED.");
+        LOGGER.info("Checking if bank status is changed...");
         List<Payment> payments = paymentRepository.findAllByStatus(PaymentStatus.CREATED);
         payments.parallelStream().forEach(payment -> {
 
@@ -166,10 +167,10 @@ public class PaymentServiceImpl implements PaymentService {
             paymentRepository.save(payment);
             if(payment.getStatus()==PaymentStatus.SUCCESSFUL) {
                 ResponseEntity<String> response
-                        = restTemplate.postForEntity(payment.getUrl() + "/true", null, String.class);
+                        = restTemplate.postForEntity( payment.getCheckStatusUrl()+ "/true", null, String.class);
             }else if(payment.getStatus()==PaymentStatus.FAILED || payment.getStatus()==PaymentStatus.ERROR){
                 ResponseEntity<String> response
-                        = restTemplate.postForEntity(payment.getUrl() + "/false", null, String.class);
+                        = restTemplate.postForEntity(payment.getCheckStatusUrl() + "/false", null, String.class);
             }
         });
 
@@ -177,23 +178,17 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Override
     public void updateIntegratedSoftwareStatus() {
-
-        LOGGER.info("Checking if payment is recorded on seller software.");
+        LOGGER.info("Checking if payment is recorded on seller software...");
         List<Payment> payments = paymentRepository.findAllByStatusAndCheckedStatus(PaymentStatus.SUCCESSFUL,false);
         payments.parallelStream().forEach(payment -> {
 
             LOGGER.info("Founded payment: " + payment.getId() + " ,status: " + payment.getStatus());
-            ResponseEntity resp = restTemplate.postForEntity(getStatusUrl,urlDTO,PaymentStatus.class);
-            LOGGER.info("Payment with that url from bank: " + payment.getUrl() + " ,status: " + resp.getBody());
-
-            payment.setStatus(resp.getBody());
-            paymentRepository.save(payment);
-            if(payment.getStatus()==PaymentStatus.SUCCESSFUL) {
-                ResponseEntity<String> response
-                        = restTemplate.postForEntity(payment.getUrl() + "/true", null, String.class);
-            }else if(payment.getStatus()==PaymentStatus.FAILED || payment.getStatus()==PaymentStatus.ERROR){
-                ResponseEntity<String> response
-                        = restTemplate.postForEntity(payment.getUrl() + "/false", null, String.class);
+            ResponseEntity<Boolean> resp = restTemplate.getForEntity(payment.getCheckStatusUrl(),Boolean.class);
+            if(resp.getBody()) {
+                payment.setCheckedStatus(true);
+                paymentRepository.save(payment);
+            }else{
+                restTemplate.postForEntity(payment.getCheckStatusUrl()+"/true",null,String.class);
             }
         });
 

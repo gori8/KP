@@ -419,8 +419,13 @@ public class WebShopController {
     }
 
     @RequestMapping(value = "/payed/{username}/{uuid}", method = RequestMethod.GET)
-    public ResponseEntity getPayed(@PathVariable("username")String username, @PathVariable("uuid")String uuid) {
-
-        return ResponseEntity.ok().build();
+    public ResponseEntity<Boolean> getPayed(@PathVariable("username")String username, @PathVariable("uuid")String uuid) {
+        List<CasopisDTO> casopisList=casopisService.getBoughtItems(username);
+        for(CasopisDTO casopis : casopisList){
+            if(casopis.getUuid().equals(uuid)){
+                return ResponseEntity.ok(true);
+            }
+        }
+        return ResponseEntity.ok(false);
     }
 }

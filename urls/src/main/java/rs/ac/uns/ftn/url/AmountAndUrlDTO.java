@@ -14,6 +14,5 @@ import java.math.BigDecimal;
 public class AmountAndUrlDTO {
     BigDecimal amount;
     String redirectUrl;
-    String checkStatusUrl;
     String sellerEmail;
 }

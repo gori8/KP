@@ -14,6 +14,5 @@ public class MappingClass {
 
     private String redirectUrl;
     private String id;
-    private String checkStatusUrl;
 
 }

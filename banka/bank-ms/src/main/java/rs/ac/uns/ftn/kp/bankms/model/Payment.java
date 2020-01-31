@@ -35,4 +35,7 @@ public class Payment {
     @Column(name = "checked_status", unique = false, nullable = false)
     private Boolean checkedStatus=false;
 
+    @Column(name = "check_status_url", unique = false, nullable = false)
+    private String checkStatusUrl;
+
 }
