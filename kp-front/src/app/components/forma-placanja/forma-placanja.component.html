@@ -38,14 +38,13 @@
                                 <input name="{{i}}" [(ngModel)]="item.model" id="{{item.id}}" class="form-control" type="tel" *ngIf="item.type == 'tel'">
                                 <input name="{{i}}" [(ngModel)]="item.model" id="{{item.id}}" class="form-control" type="time" *ngIf="item.type == 'time'">
                                 <input name="{{i}}" [(ngModel)]="item.model" id="{{item.id}}" class="form-control" type="week" *ngIf="item.type == 'week'">
-                                <div id="{{item.id}}" *ngIf="item.type == 'div'"></div>
                             </ng-container>
 
                             <!--IF REQUIRED-->
                             <ng-container *ngIf="item.validation !== undefined && item.validation.required == true">
                                 <label class="text-light" for="{{item.id}}" *ngIf="item.name !== undefined">{{item.name}}: </label>
                                 <input name="{{i}}" [(ngModel)]="item.model" id="{{item.id}}" type="text" class="form-control" pattern="{{item.validation.pattern}}" *ngIf="item.type == 'text'" required/>
-                                <select name="{{i}}" [(ngModel)]="item.model" id="{{item.id}}" class="form-control" *ngIf="item.type == 'select'" required>
+                                <select name="{{i}}" [(ngModel)]="item.model" id="{{item.id}}" class="form-control" *ngIf="item.type == 'select'" value="{{item.default}}" required>
                                     <option *ngFor="let opt of item.options" value="{{opt.value}}">
                                         {{opt.text}}
                                     </option>
@@ -63,7 +62,6 @@
                                 <input name="{{i}}" [(ngModel)]="item.model" id="{{item.id}}" class="form-control" type="tel" *ngIf="item.type == 'tel'" required>
                                 <input name="{{i}}" [(ngModel)]="item.model" id="{{item.id}}" class="form-control" type="time" *ngIf="item.type == 'time'" required>
                                 <input name="{{i}}" [(ngModel)]="item.model" id="{{item.id}}" class="form-control" type="week" *ngIf="item.type == 'week'" required>
-                                <div id="{{item.id}}" *ngIf="item.type == 'div'"></div>
                             </ng-container>
 
                         </div>

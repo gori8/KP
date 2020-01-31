@@ -398,6 +398,12 @@ public class WebShopController {
         return new ResponseEntity<>(casopisService.getNumbersForPaper(id),HttpStatus.OK);
     }
 
+    @GetMapping(path = "/bought/{username}", produces = "application/json")
+    @PreAuthorize("hasRole('USER')")
+    public ResponseEntity<List<CasopisDTO>> getBoughtItems(@PathVariable("username") String username){
+        return new ResponseEntity<>(casopisService.getBoughtItems(username),HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/pay/{uapId}/{username}", method = RequestMethod.POST)
     @PreAuthorize("hasRole('USER')")
     public ResponseEntity<String> pay(@PathVariable("uapId") String uapId, @PathVariable("username") String username ) {

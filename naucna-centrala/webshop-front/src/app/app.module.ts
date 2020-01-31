@@ -21,6 +21,7 @@ import { AllPapersComponent } from './components/all-papers/all-papers.component
 import { IzdanjeRegistracijaComponent } from './components/izdanje-registracija/izdanje-registracija.component';
 import { IzdanjaCasopisaComponent } from './components/izdanja-casopisa/izdanja-casopisa.component';
 import { PaymentResponseComponent } from './components/payment-response/payment-response.component';
+import { KupljeniPredmetiComponent } from './components/kupljeni-predmeti/kupljeni-predmeti.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -80,6 +81,7 @@ const customNotifierOptions: NotifierOptions = {
     IzdanjeRegistracijaComponent,
     IzdanjaCasopisaComponent,
     PaymentResponseComponent,
+    KupljeniPredmetiComponent,
   ],
   imports: [
     BrowserModule,
