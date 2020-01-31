@@ -11,4 +11,6 @@ public interface CasopisService {
     public CasopisDTO getPaper(Long id);
 
     public CasopisDTO getNumbersForPaper(Long id);
+
+    public List<CasopisDTO> getBoughtItems(String username);
 }

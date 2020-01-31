@@ -14,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 @Service
@@ -91,5 +93,45 @@ public class CasopisServiceImpl implements CasopisService {
 
         return dto;
 
+    }
+
+    public List<CasopisDTO> getBoughtItems(String username){
+        Korisnik korisnik = korisnikRepository.findOneByUsername(username);
+
+        HashMap<Long,CasopisDTO> casopisiMap = new HashMap<>();
+
+        for (Izdanje izdanje:korisnik.getCasopisiKupci()) {
+            IzdanjeDTO izdanjeDTO = new IzdanjeDTO();
+            izdanjeDTO.setBroj(izdanje.getBroj());
+            izdanjeDTO.setCasopisId(izdanje.getCasopis().getId());
+            izdanjeDTO.setCena(izdanje.getCena());
+            izdanjeDTO.setId(izdanje.getId());
+            izdanjeDTO.setNaziv(izdanje.getNaziv());
+            izdanjeDTO.setDatumIzdanja(izdanje.getDatumIzdanja());
+            izdanjeDTO.setUuid(izdanje.getUuid().toString());
+
+            Casopis casopis = izdanje.getCasopis();
+            CasopisDTO casopisDTO;
+            if(casopisiMap.containsKey(casopis.getId())){
+                casopisDTO = casopisiMap.get(casopis.getId());
+            }else{
+                casopisDTO = new CasopisDTO();
+                casopisDTO.setNaziv(casopis.getNaziv());
+                casopisDTO.setAktiviran(casopis.getAktiviran());
+                casopisDTO.setClanarina(casopis.getClanarina());
+                casopisDTO.setId(casopis.getId());
+                casopisDTO.setIssn(casopis.getIssn());
+                casopisDTO.setKomeSeNaplacuje(casopis.getKomeSeNaplacuje());
+                casopisDTO.setIzdanja(new ArrayList<>());
+                casopisDTO.setUrednik(casopis.getGlavniUrednik().getUsername());
+                casopisDTO.setUuid(casopis.getUuid().toString());
+
+                casopisiMap.put(casopisDTO.getId(),casopisDTO);
+            }
+
+            casopisDTO.getIzdanja().add(izdanjeDTO);
+        }
+
+        return (List<CasopisDTO>) casopisiMap.values();
     }
 }

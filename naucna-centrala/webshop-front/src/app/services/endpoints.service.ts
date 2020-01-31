@@ -122,6 +122,10 @@ export class EndpointsService {
     return this.http.get(`${BASE_URL}/papers`);
   }
 
+  getBoughtItems(username): Observable<any>{
+    return this.http.get(`${BASE_URL}/bought/${username}`);
+  }
+
   getTasksLinks(username): Observable<any>{
     return this.http.get(`${BASE_URL}/tasksLinks/${username}`);
   }
