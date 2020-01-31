@@ -47,8 +47,8 @@ public class PaymentServiceImpl implements PaymentService{
     private static final String PAYMENT_DEF_TYPE="REGULAR";
     private static final String PLAN_STATE="CREATE";
     private static final String PLAN_FREQUENCY="MONTH";
-    private static final String SUBSCRIPTION_CANCEL="https://localhost:8771/paypal/api/paypal/subscription/cancel";
-    static final String SUBSCRIPTION_CONFIRM="https://localhost:8771/paypal/api/paypal/subscription/confirm";
+    private static final String SUBSCRIPTION_CANCEL="https://192.168.43.161:8771/paypal/api/paypal/subscription/cancel";
+    static final String SUBSCRIPTION_CONFIRM="https://192.168.43.161:8771/paypal/api/paypal/subscription/confirm";
 
     private static final APIContext API_CONTEXT = new APIContext(PAYPAL_CLIENTID, PAYPAL_SECRET, MODE);
 
@@ -62,6 +62,9 @@ public class PaymentServiceImpl implements PaymentService{
 
     @Autowired
     RestTemplate restTemplate;
+
+    @Autowired
+    SubscriptionRepository subscriptionRepository;
 
 
     @Override
@@ -173,7 +176,14 @@ public class PaymentServiceImpl implements PaymentService{
         MyPayment payment = myPaymentRepository.getOne(id);
         payment.setStatus(PayPalPaymentStatus.CANCELED);
         myPaymentRepository.save(payment);
-        return payment.getRedirectUrl();
+        return notifyNc(payment.getRedirectUrl()+"/false");
+    }
+
+    @Override
+    public void cancelSubscription(Long id) {
+        Subscription subscription = subscriptionRepository.getOne(id);
+        subscription.setStatus(SubscriptionStatus.CANCELED);
+        subscriptionRepository.save(subscription);
     }
 
 
@@ -193,7 +203,19 @@ public class PaymentServiceImpl implements PaymentService{
         String redirectUrl=amountAndUrlDTO.getRedirectUrl();
         String sellerEmail = amountAndUrlDTO.getSellerEmail();
 
-        MyPayment myPayment=new MyPayment();
+        LOGGER.info(String.format("Creating plan: %s   %s   %s",request.getTipCiklusa(),request.getPeriod(),request.getBrojCiklusa()));
+
+        Seller seller = sellerRepository.findBySellerEmail(sellerEmail);
+        Subscription subscription=new Subscription();
+        subscription.setItemId(UUID.fromString(request.getCasopisUuid()));
+        subscription.setAmount(amount);
+        subscription.setCycles(request.getBrojCiklusa());
+        subscription.setFrequency(request.getPeriod());
+        subscription.setFrequencyInterval(request.getUcestalostPerioda());
+        subscription.setSeller(seller);
+        subscription.setType(request.getTipCiklusa());
+
+        subscription=subscriptionRepository.save(subscription);
 
         Plan plan = new Plan();
 
@@ -210,19 +232,19 @@ public class PaymentServiceImpl implements PaymentService{
 
         MerchantPreferences merchantPreferences=new MerchantPreferences();
         merchantPreferences.setMaxFailAttempts("3");
-        merchantPreferences.setCancelUrl(SUBSCRIPTION_CANCEL);
-        merchantPreferences.setReturnUrl(SUBSCRIPTION_CONFIRM);
+        merchantPreferences.setCancelUrl(SUBSCRIPTION_CANCEL+"/"+subscription.getId());
+        merchantPreferences.setReturnUrl(SUBSCRIPTION_CONFIRM+"/"+subscription.getId());
         merchantPreferences.setInitialFailAmountAction(INITIAL_FAIL_AMOUNT_ACTION);
 
         PaymentDefinition paymentDefinition = new PaymentDefinition();
         paymentDefinition.setName("Regular payment definition for "+request.getCasopisUuid());
         paymentDefinition.setType(PAYMENT_DEF_TYPE);
-        paymentDefinition.setCycles("0");
+        paymentDefinition.setCycles(request.getBrojCiklusa().toString());
         Currency currency=new com.paypal.api.payments.Currency();
         currency.setCurrency("EUR");
         currency.setValue(amount.toString());
         paymentDefinition.setAmount(currency);
-        paymentDefinition.setFrequencyInterval(request.getBrojCiklusa().toString());
+        paymentDefinition.setFrequencyInterval(request.getUcestalostPerioda().toString());
         paymentDefinition.setFrequency(request.getPeriod());
 
         List<PaymentDefinition> paymentDefinitions=new ArrayList<>();
@@ -254,6 +276,9 @@ public class PaymentServiceImpl implements PaymentService{
             e.printStackTrace();
         }
 
+        subscription.setPlanId(plan.getId());
+        subscriptionRepository.save(subscription);
+
         return createdPlan;
     }
 
@@ -272,6 +297,7 @@ public class PaymentServiceImpl implements PaymentService{
             if (planId==null){
                 Plan plan = createBillingPlan(request,amountAndUrlDTO);
                 planId=plan.getId();
+
             }
 
             Agreement agreement = new Agreement();
@@ -315,14 +341,17 @@ public class PaymentServiceImpl implements PaymentService{
     }
 
     @Override
-    public void executeSubAgreement(String token) {
-
+    public void executeSubAgreement(Long subscriptionId,String token) {
+        Subscription subscription = subscriptionRepository.getOne(subscriptionId);
         Agreement agreement =  new Agreement();
         agreement.setToken(token);
         APIContext apiContext = new APIContext(PAYPAL_CLIENTID, PAYPAL_SECRET, MODE);
 
         try {
             Agreement activeAgreement = agreement.execute(apiContext, agreement.getToken());
+            subscription.setAgreementId(activeAgreement.getId());
+            subscription.setStatus(SubscriptionStatus.ACTIVE);
+            subscriptionRepository.save(subscription);
             LOGGER.info("Agreement created with ID " + activeAgreement.getId());
         } catch (PayPalRESTException e) {
             LOGGER.error(e.getMessage());

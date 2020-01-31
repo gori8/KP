@@ -7,6 +7,7 @@ import rs.ac.uns.ftn.bank.dto.ExternalBankPaymentResponse;
 import rs.ac.uns.ftn.bank.model.Payment;
 import rs.ac.uns.ftn.bank.card.CardDataDto;
 import rs.ac.uns.ftn.url.PccDTO;
+import rs.ac.uns.ftn.url.PccEntity;
 import rs.ac.uns.ftn.url.TransactionStatus;
 
 import java.text.ParseException;
@@ -21,5 +22,5 @@ public interface PaymentService {
 
     ExecuteTransactionResponse submitCardData(CardDataDto cardDataDto, String url);
 
-    TransactionStatus pccAnswer(PccDTO pccDTO) throws ParseException;
+    PccEntity pccAnswer(PccDTO pccDTO) throws ParseException;
 }

@@ -63,9 +63,8 @@ public class BitCoinPaymentController {
 
         BitCoinPayment savedPayment = bitCoinPaymentService.save(payment);
 
-        String redirectUrl = payment.getRedirectUrl();
 
-        return ResponseEntity.status(HttpStatus.FOUND).header("Location", redirectUrl).build();
+        return ResponseEntity.status(HttpStatus.FOUND).header("Location", url).build();
     }
 
     @GetMapping("/payment/success/{paymentId}")
@@ -87,9 +86,7 @@ public class BitCoinPaymentController {
 
         BitCoinPayment savedPayment = bitCoinPaymentService.save(payment);
 
-        String redirectUrl = payment.getRedirectUrl();
-
-        return ResponseEntity.status(HttpStatus.FOUND).header("Location", redirectUrl).build();
+        return ResponseEntity.status(HttpStatus.FOUND).header("Location", url).build();
     }
 
 }

@@ -21,8 +21,8 @@ public class ConverterAES implements AttributeConverter<String, String> {
     public String convertToDatabaseColumn(String attribute) {
         try {
             KeyStore keystore = KeyStore.getInstance(KeyStore.getDefaultType());
-            String ksPass="secret123";
-            keystore.load(new FileInputStream(new File("..//kpks//identity.jks")),ksPass.toCharArray());
+            String ksPass="secret";
+            keystore.load(new FileInputStream(new File("ssl/aesStore.jks")),ksPass.toCharArray());
             String aesPass="secret123";
             Key key = keystore.getKey("AESKey", aesPass.toCharArray());
             return Base64Utility.encode(encrypt(attribute,key));
@@ -45,8 +45,8 @@ public class ConverterAES implements AttributeConverter<String, String> {
     public String convertToEntityAttribute(String dbData) {
         try {
             KeyStore keystore = KeyStore.getInstance(KeyStore.getDefaultType());
-            String ksPass="secret123";
-            keystore.load(new FileInputStream(new File("..//kpks//identity.jks")),ksPass.toCharArray());
+            String ksPass="secret";
+            keystore.load(new FileInputStream(new File("ssl/aesStore.jks")),ksPass.toCharArray());
             String aesPass="secret123";
             Key key = keystore.getKey("AESKey", aesPass.toCharArray());
             return new String(decrypt(Base64Utility.decode(dbData),key));

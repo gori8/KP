@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-import rs.ac.uns.ftn.kp.pcc.bank.request.TransactionRequest;
-import rs.ac.uns.ftn.kp.pcc.bank.request.TransactionRequestRepository;
+import rs.ac.uns.ftn.kp.pcc.bank.request.PccEntity;
+import rs.ac.uns.ftn.kp.pcc.bank.request.PccEntityRepository;
 import rs.ac.uns.ftn.kp.pcc.dto.RegisterBankDTO;
 import rs.ac.uns.ftn.url.PccDTO;
 import rs.ac.uns.ftn.url.TransactionStatus;
@@ -29,7 +29,7 @@ public class BankController {
     BankRepository bankRepository;
 
     @Autowired
-    TransactionRequestRepository transactionRequestRepository;
+    PccEntityRepository pccEntityRepository;
 
     @Autowired
     RestTemplate restTemplate;
@@ -55,35 +55,36 @@ public class BankController {
         System.out.println(requestFromAcquirer.getValidTo());
 
 
-        TransactionRequest transactionRequest = saveRequest(requestFromAcquirer);
+        PccEntity pccEntity = saveRequest(requestFromAcquirer);
 
         Bank bank = bankRepository.findOneByBankCode(pan);
 
         if(bank==null){
-            transactionRequest.setStatus(TransactionStatus.ERROR);
-            transactionRequestRepository.save(transactionRequest);
+            pccEntity.setStatus(TransactionStatus.ERROR);
+            pccEntityRepository.save(pccEntity);
             return ResponseEntity.ok(TransactionStatus.ERROR);
         }
-        ResponseEntity<TransactionStatus> response = restTemplate.postForEntity(bank.getBankUrl(),requestFromAcquirer,TransactionStatus.class);
-        transactionRequest.setStatus(response.getBody());
-        transactionRequestRepository.save(transactionRequest);
-        return response;
+        ResponseEntity<PccEntity> response = restTemplate.postForEntity(bank.getBankUrl(),requestFromAcquirer,PccEntity.class);
+        pccEntity.setStatus(response.getBody().getStatus());
+        pccEntity.setIssuerOrderId(response.getBody().getIssuerOrderId());
+        pccEntity.setIssuerTimeStamp(response.getBody().getIssuerTimeStamp());
+        pccEntityRepository.save(pccEntity);
+        return ResponseEntity.ok(response.getBody().getStatus());
     }
 
-    public TransactionRequest saveRequest(PccDTO requestFromAcquirer) throws ParseException {
+    public PccEntity saveRequest(PccDTO requestFromAcquirer) throws ParseException {
 
         SimpleDateFormat formatter=new SimpleDateFormat("yyyy-MM-dd");
 
-        TransactionRequest transactionRequest = new TransactionRequest();
-        transactionRequest.setAcquirerOrderId(requestFromAcquirer.getAcquirerOrderId());
-        transactionRequest.setAcquirerTimestamp(requestFromAcquirer.getAcquirerTimestamp());
-        transactionRequest.setHolderName(requestFromAcquirer.getHolderName());
-        transactionRequest.setPan(requestFromAcquirer.getPan());
-        transactionRequest.setSecurityCode(requestFromAcquirer.getSecurityCode());
-        transactionRequest.setValidTo(formatter.parse(requestFromAcquirer.getValidTo()));
+        PccEntity transactionRequest = new PccEntity();
+        transactionRequest.setAcquirerOrderId(Long.valueOf(requestFromAcquirer.getAcquirerOrderId()));
+        transactionRequest.setAcquirerTimeStamp(requestFromAcquirer.getAcquirerTimestamp());
+        transactionRequest.setAcquirerBankCode(requestFromAcquirer.getBankCode());
+        transactionRequest.setAmount(requestFromAcquirer.getAmount());
+        transactionRequest.setIssuerBankCode(requestFromAcquirer.getPan().substring(1,7));
         transactionRequest.setStatus(TransactionStatus.CREATED);
 
-        return transactionRequestRepository.save(transactionRequest);
+        return pccEntityRepository.save(transactionRequest);
     }
 
 }

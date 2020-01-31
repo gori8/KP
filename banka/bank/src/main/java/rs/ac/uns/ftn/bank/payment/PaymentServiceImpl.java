@@ -22,6 +22,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rs.ac.uns.ftn.url.PccDTO;
+import rs.ac.uns.ftn.url.PccEntity;
 import rs.ac.uns.ftn.url.TransactionStatus;
 import rs.ac.uns.ftn.url.UrlClass;
 
@@ -135,9 +136,9 @@ public class PaymentServiceImpl implements PaymentService {
             transaction.setAmount(BigDecimal.valueOf(0));
             transactionService.save(transaction);
 
-            /*ResponseEntity<String> redirectUrlResponse
+            ResponseEntity<String> redirectUrlResponse
                     = restTemplate.getForEntity(payment.getErrorUrl(),String.class);
-            response.setUrl(redirectUrlResponse.getBody());*/
+            response.setUrl(redirectUrlResponse.getBody());
             response.setSuccessful(false);
             return response;
         }
@@ -149,10 +150,13 @@ public class PaymentServiceImpl implements PaymentService {
         System.out.println("CARD:   " + card);
 
         if (card == null) {
-            if(callPcc(cardDataDto,payment.getId(),new Date(),payment.getAmount()).equals(TransactionStatus.SUCCESSFUL)){
-                /*ResponseEntity<String> redirectUrlResponse
+            transaction.setValid(false);
+            transaction.setAmount(BigDecimal.valueOf(0));
+            transactionService.save(transaction);
+            if(callPcc(cardDataDto,transaction.getId(),new Date(),payment.getAmount()).equals(TransactionStatus.SUCCESSFUL)){
+                ResponseEntity<String> redirectUrlResponse
                         = restTemplate.getForEntity(payment.getSuccessUrl(),String.class);
-                redirectUrl = redirectUrlResponse.getBody();*/
+                redirectUrl = redirectUrlResponse.getBody();
 
                 Account merchant = payment.getMerchant();
 
@@ -172,7 +176,7 @@ public class PaymentServiceImpl implements PaymentService {
                 transaction.setValid(true);
                 transactionService.save(transaction);
 
-                //response.setUrl(redirectUrl);
+                response.setUrl(redirectUrl);
                 response.setSuccessful(transaction.getValid());
 
                 return response;
@@ -185,9 +189,9 @@ public class PaymentServiceImpl implements PaymentService {
             transaction.setRecipient(payment.getMerchant());
             transactionService.save(transaction);
 
-            /*ResponseEntity<String> redirectUrlResponse
+            ResponseEntity<String> redirectUrlResponse
                     = restTemplate.getForEntity(payment.getErrorUrl(),String.class);
-            response.setUrl(redirectUrlResponse.getBody());*/
+            response.setUrl(redirectUrlResponse.getBody());
             response.setSuccessful(false);
             return response;
         }
@@ -215,9 +219,9 @@ public class PaymentServiceImpl implements PaymentService {
             transaction.setRecipient(payment.getMerchant());
             transactionService.save(transaction);
 
-            /*ResponseEntity<String> redirectUrlResponse
+            ResponseEntity<String> redirectUrlResponse
                     = restTemplate.getForEntity(payment.getErrorUrl(),String.class);
-            response.setUrl(redirectUrlResponse.getBody());*/
+            response.setUrl(redirectUrlResponse.getBody());
             response.setSuccessful(false);
             return response;
         }
@@ -235,13 +239,13 @@ public class PaymentServiceImpl implements PaymentService {
         if (account.getAmount().compareTo(payment.getAmount()) < 0) {
             LOGGER.error("There is not enough funds on Card.");
             transaction.setValid(false);
-            /*ResponseEntity<String> redirectUrlResponse
+            ResponseEntity<String> redirectUrlResponse
                     = restTemplate.getForEntity(payment.getFailedUrl(),String.class);
-            redirectUrl = redirectUrlResponse.getBody();*/
+            redirectUrl = redirectUrlResponse.getBody();
         } else {
-            /*ResponseEntity<String> redirectUrlResponse
+            ResponseEntity<String> redirectUrlResponse
                     = restTemplate.getForEntity(payment.getSuccessUrl(),String.class);
-            redirectUrl = redirectUrlResponse.getBody();*/
+            redirectUrl = redirectUrlResponse.getBody();
 
             account.setAmount(account.getAmount().subtract(payment.getAmount()));
             merchant.setAmount(merchant.getAmount().add(payment.getAmount()));
@@ -254,7 +258,7 @@ public class PaymentServiceImpl implements PaymentService {
         transactionService.save(transaction);
         LOGGER.info("Payment transaction is saved in bank database.");
 
-        //response.setUrl(redirectUrl);
+        response.setUrl(redirectUrl);
         response.setSuccessful(transaction.getValid());
         return response;
     }
@@ -303,7 +307,7 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     @Override
-    public TransactionStatus pccAnswer(PccDTO pccDTO) throws ParseException {
+    public PccEntity pccAnswer(PccDTO pccDTO) throws ParseException {
 
         Transaction transaction = new Transaction();
 
@@ -316,6 +320,10 @@ public class PaymentServiceImpl implements PaymentService {
         Client client = clientRepository.findByMerchantId("pcc");
         Account recipientAccount=client.getAccount();
 
+        PccEntity pccEntity=new PccEntity();
+        Date timestamp=new Date();
+        pccEntity.setIssuerTimeStamp(timestamp);
+
         if (card == null) {
             LOGGER.error("Could not find card with provided pan number: " + pccDTO.getPan());
             LOGGER.info("Returning error-url to Bank Microservice");
@@ -325,7 +333,9 @@ public class PaymentServiceImpl implements PaymentService {
             transaction.setRecipient(recipientAccount);
             transactionService.save(transaction);
 
-            return TransactionStatus.ERROR;
+            pccEntity.setIssuerOrderId(transaction.getId());
+            pccEntity.setStatus(TransactionStatus.ERROR);
+            return pccEntity;
         }
 
         if (!card.getSecurityCode().toString().equals(pccDTO.getSecurityCode().toString())) {
@@ -336,7 +346,9 @@ public class PaymentServiceImpl implements PaymentService {
             transaction.setRecipient(recipientAccount);
             transactionService.save(transaction);
 
-            return TransactionStatus.ERROR;
+            pccEntity.setIssuerOrderId(transaction.getId());
+            pccEntity.setStatus(TransactionStatus.ERROR);
+            return pccEntity;
         }
 
         if(!card.getValidTo().toString().equals(pccDTO.getValidTo().toString())) {
@@ -347,7 +359,9 @@ public class PaymentServiceImpl implements PaymentService {
             transaction.setRecipient(recipientAccount);
             transactionService.save(transaction);
 
-            return TransactionStatus.ERROR;
+            pccEntity.setIssuerOrderId(transaction.getId());
+            pccEntity.setStatus(TransactionStatus.ERROR);
+            return pccEntity;
         }
 
         LOGGER.info("Provided Card Data is valid.");
@@ -361,10 +375,11 @@ public class PaymentServiceImpl implements PaymentService {
 
         TransactionStatus ret = null;
         LOGGER.info("Checking if there is enough funding for payment..");
+
         if (account.getAmount().compareTo(pccDTO.getAmount()) < 0) {
             LOGGER.error("There is not enough funds on Card.");
-            transaction.setValid(false);
-            ret = TransactionStatus.FAILED;
+            transaAESction.setValid(false);
+            pccEntity.setStatus(TransactionStatus.FAILED);
         } else {
             account.setAmount(account.getAmount().subtract(pccDTO.getAmount()));
             recipientAccount.setAmount(recipientAccount.getAmount().add(pccDTO.getAmount()));
@@ -373,10 +388,11 @@ public class PaymentServiceImpl implements PaymentService {
 
             transaction.setValid(true);
 
-            ret = TransactionStatus.SUCCESSFUL;
+            pccEntity.setStatus(TransactionStatus.SUCCESSFUL);
         }
-        transactionService.save(transaction);
+        transaction = transactionService.save(transaction);
+        pccEntity.setIssuerOrderId(transaction.getId());
         LOGGER.info("Payment transaction is saved in bank database.");
-        return ret;
+        return pccEntity;
     }
 }

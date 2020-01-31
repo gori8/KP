@@ -58,9 +58,8 @@ public class BitCoinPaymentServiceImpl implements BitCoinPaymentService{
 
         coinGateRequest.setCancelUrl(UrlClass.CANCEL_URL_BTC + savedPayment.getId());
 
-        String rurl=notifyNc(amountAndUrlDTO.getRedirectUrl()+"/false");
+        String rurl=amountAndUrlDTO.getRedirectUrl();
 
-        rurl=rurl.substring(1, rurl.length()-1);
 
         coinGateRequest.setRedirectUrl(rurl);
 
@@ -108,10 +107,11 @@ public class BitCoinPaymentServiceImpl implements BitCoinPaymentService{
     @Override
     public String notifyNc(String url){
         HttpHeaders headers=new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.setContentType(MediaType.TEXT_PLAIN);
         HttpEntity entity=new HttpEntity("",headers);
         ResponseEntity<String> redirectUrl=restTemplate.postForEntity(url,entity,String.class);
-        return "\""+redirectUrl.getBody()+"\"";
+        System.out.println(redirectUrl);
+        return redirectUrl.getBody();
     }
 
     @Override
