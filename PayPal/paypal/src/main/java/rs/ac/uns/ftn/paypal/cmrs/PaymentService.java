@@ -19,5 +19,9 @@ public interface PaymentService {
     String activateSubscription(CreatePaymentOrSubRequest request);
 
     void executeSubAgreement(String token);
+
+    void updateStatusOrRetryCapture();
+
+    void updateIntegratedSoftwareStatus();
 }
 

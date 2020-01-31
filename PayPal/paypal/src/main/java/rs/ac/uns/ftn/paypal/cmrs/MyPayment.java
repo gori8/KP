@@ -28,6 +28,10 @@ public class MyPayment{
     @Column(name = "item_id", unique = false, nullable = false)
     private UUID itemId;
 
-    private Boolean successful;
+    @Column(name = "status", nullable = false)
+    private PayPalPaymentStatus status=PayPalPaymentStatus.CREATED;
+
+    @Column(name = "checked_status", unique = false, nullable = false)
+    private Boolean checkedStatus=false;
 
 }

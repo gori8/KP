@@ -183,11 +183,13 @@ public class PaymentServiceImpl implements PaymentService {
         payments.parallelStream().forEach(payment -> {
 
             LOGGER.info("Founded payment: " + payment.getId() + " ,status: " + payment.getStatus());
+            LOGGER.info("Getting status on url: " + payment.getCheckStatusUrl());
             ResponseEntity<Boolean> resp = restTemplate.getForEntity(payment.getCheckStatusUrl(),Boolean.class);
             if(resp.getBody()) {
                 payment.setCheckedStatus(true);
                 paymentRepository.save(payment);
             }else{
+                LOGGER.info("Posting status on seller app on url: " + payment.getCheckStatusUrl());
                 restTemplate.postForEntity(payment.getCheckStatusUrl()+"/true",null,String.class);
             }
         });

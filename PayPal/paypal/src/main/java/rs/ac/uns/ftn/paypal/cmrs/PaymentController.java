@@ -50,13 +50,13 @@ public class PaymentController {
 
     @RequestMapping(value = "/subscription", method = RequestMethod.POST)
     public ResponseEntity<String> createSubscription(@RequestBody CreatePaymentOrSubRequest request) {
-        return new ResponseEntity<String>(paymentService.activateSubscription(request), HttpStatus.OK);
+        return new ResponseEntity<String>("\""+paymentService.activateSubscription(request)+"\"", HttpStatus.OK);
     }
 
     @RequestMapping(value = "/subscription/confirm")
     public ResponseEntity confirmSubscription(@RequestParam("token")String token) throws URISyntaxException {
         paymentService.executeSubAgreement(token);
-        URI redirectUrl = new URI("https://localhost:4500/potvrdjeno");
+        URI redirectUrl = new URI("https://localhost:4500/payment/response/success");
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setLocation(redirectUrl);
         return ResponseEntity.status(HttpStatus.FOUND).headers(httpHeaders).build();

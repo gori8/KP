@@ -13,7 +13,6 @@ import java.util.UUID;
 public class MyPaymentUtils {
 
     private static final String CURRENCY="USD";
-    private static final String RETURN_URL = "https://localhost:8771/paypal/api/paypal/execute" ;
     //private static final String CANCEL_URL = "http://localhost/paypal/cancel/" ;
     //private static final String AMOUNTANDURL= "http://localhost:8090/api/amountandurl/";
 
@@ -58,7 +57,7 @@ public class MyPaymentUtils {
 
     public static RedirectUrls setRedirectUrls(Long id) {
         RedirectUrls redirectUrls = new RedirectUrls();
-        redirectUrls.setReturnUrl(RETURN_URL);
+        redirectUrls.setReturnUrl(UrlClass.PAYPAL_RETURN_URL);
         redirectUrls.setCancelUrl(UrlClass.CANCEL_URL_PAYPAL + id.toString());
         return redirectUrls;
     }

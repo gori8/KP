@@ -126,8 +126,7 @@ public class PaymentServiceImpl implements PaymentService {
         String redirectUrl;
 
         LOGGER.info("Trying to find payment on provided url..");
-        Payment payment = paymentRepository.findByUrl(url);
-        System.out.println(payment.getAmount().toString() + payment.getMerchant() + payment.getUrl() + payment.getId() + payment.getSuccessUrl());
+        Payment payment = paymentRepository.findByUrl(UrlClass.FRONT_BANKE+"banka/card/"+url);
 
         if (payment == null) {
             LOGGER.error("Could not find payment on provided url: " + url);
