@@ -28,6 +28,30 @@ export class IzdanjaCasopisaComponent implements OnInit {
     this.endpoints.getNumbersForCasopis(id).subscribe(
       res => {
         this.casopis = res
+
+        var user = this.authenticationService.currentUserValue;
+        if(user.role=="Registrovani korisnik"){
+          this.getBought(id,user.username);
+        }
+      },
+      err => {
+        console.log(err); 
+      }
+    );
+  }
+
+  getBought(casopisId,username){
+    this.endpoints.getNumbersForCasopisAndKupac(casopisId,username).subscribe(
+      res => {
+        for(let izdanje of this.casopis.izdanja){
+          izdanje['kupljen']=false;
+          for(let item of res){
+            if(izdanje.id==item.id){
+              izdanje['kupljen']=true;
+              break;
+            }
+          }
+        }
       },
       err => {
         console.log(err); 

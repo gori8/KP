@@ -7,7 +7,8 @@ import { FormaPlacanjaComponent } from './components/forma-placanja/forma-placan
 import { IzborPlacanjaComponent } from './components/izbor-placanja/izbor-placanja.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NavbarComponent } from './navbar/navbar.component'
+import { NavbarComponent } from './navbar/navbar.component';
+import { PaypalSubscriptionComponent } from './components/paypal-subscription/paypal-subscription.component'
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { NavbarComponent } from './navbar/navbar.component'
     FormaPlacanjaComponent,
     IzborPlacanjaComponent,
     NavbarComponent,
+    PaypalSubscriptionComponent,
     
   ],
   imports: [
