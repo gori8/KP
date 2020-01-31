@@ -13,6 +13,8 @@ export class BankaFormComponent implements OnInit {
   constructor(private endpoints: EndpointsService,private activatedRoute: ActivatedRoute) {
   }
 
+  private hidden = false;
+
   formModel = {
     pan:null,
     holderName:null,
@@ -28,6 +30,7 @@ export class BankaFormComponent implements OnInit {
   }
 
   onSubmit(paymentForm:NgForm){
+    this.hidden=true;
     if(paymentForm.valid===true){
       this.endpoints.paymentConfirmed(this.formModel,this.transaction).subscribe(
         res => {
@@ -35,6 +38,7 @@ export class BankaFormComponent implements OnInit {
             window.location.href = res.url;
         },
         err => {
+          this.hidden=false;
           console.log(err); 
           alert("An error has occured while confirming a payment");
         }

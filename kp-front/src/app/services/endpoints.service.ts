@@ -57,7 +57,7 @@ export class EndpointsService {
 
   public paypalSubscription(body): Observable<any>{
 
-    return this.http.post(`${BASE_URL_USER_AND_PAYMENT}/subscription`,body, {
+    return this.http.post(`${BASE_URL_PAYPAL}/subscription`,body, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'responseType': 'text'
