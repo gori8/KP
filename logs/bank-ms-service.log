@@ -7,76 +7,191 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::        (v2.2.1.RELEASE)
 
-2020-01-30 21:34:54.824  INFO 19295 --- [           main] r.a.uns.ftn.kp.bankms.BankMsApplication  : No active profile set, falling back to default profiles: default
-2020-01-30 21:35:03.594  INFO 19295 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
-2020-01-30 21:35:05.355  INFO 19295 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1698ms. Found 2 repository interfaces.
-2020-01-30 21:35:07.205  WARN 19295 --- [           main] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
-2020-01-30 21:35:08.868  INFO 19295 --- [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=fb5d0fef-a68c-3d7e-afff-df4a62c5a447
-2020-01-30 21:35:10.866  INFO 19295 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$ec1af249] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-30 21:35:11.209  INFO 19295 --- [           main] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2020-01-30 21:35:11.353  INFO 19295 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-30 21:35:14.614  INFO 19295 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8092 (http)
-2020-01-30 21:35:14.673  INFO 19295 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2020-01-30 21:35:14.694  INFO 19295 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.27]
-2020-01-30 21:35:15.099  INFO 19295 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2020-01-30 21:35:15.099  INFO 19295 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 20060 ms
-2020-01-30 21:35:16.216  WARN 19295 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
-2020-01-30 21:35:16.234  INFO 19295 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-2020-01-30 21:35:16.324  INFO 19295 --- [           main] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@287f94b1
-2020-01-30 21:35:23.191  INFO 19295 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2020-01-30 21:35:23.941  INFO 19295 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.8.Final}
-2020-01-30 21:35:25.095  INFO 19295 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
-2020-01-30 21:35:26.239  INFO 19295 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2020-01-30 21:35:27.707  INFO 19295 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2020-01-30 21:35:27.851  INFO 19295 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2020-01-30 21:35:33.087  INFO 19295 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2020-01-30 21:35:33.107  INFO 19295 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2020-01-30 21:35:37.829  WARN 19295 --- [           main] o.s.d.rest.webmvc.halbrowser.HalBrowser  : ---
-2020-01-30 21:35:37.829  WARN 19295 --- [           main] o.s.d.rest.webmvc.halbrowser.HalBrowser  : Spring Data REST HAL Browser is deprecated! Prefer the HAL Explorer (artifactId: spring-data-rest-hal-explorer)!
-2020-01-30 21:35:37.829  WARN 19295 --- [           main] o.s.d.rest.webmvc.halbrowser.HalBrowser  : ---
-2020-01-30 21:35:37.885  WARN 19295 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
-2020-01-30 21:35:37.885  INFO 19295 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-2020-01-30 21:35:38.236  WARN 19295 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2020-01-30 21:35:39.040  INFO 19295 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-01-30 21:35:41.806  WARN 19295 --- [           main] ockingLoadBalancerClientRibbonWarnLogger : You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
-2020-01-30 21:35:42.173  INFO 19295 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
-2020-01-30 21:35:42.342  INFO 19295 --- [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
-2020-01-30 21:35:42.635  INFO 19295 --- [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
-2020-01-30 21:35:43.046  INFO 19295 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
-2020-01-30 21:35:43.046  INFO 19295 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2020-01-31 01:08:51.595  INFO 10758 --- [           main] r.a.uns.ftn.kp.bankms.BankMsApplication  : No active profile set, falling back to default profiles: default
+2020-01-31 01:08:59.813  INFO 10758 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-01-31 01:09:01.751  INFO 10758 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1860ms. Found 2 repository interfaces.
+2020-01-31 01:09:03.597  WARN 10758 --- [           main] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2020-01-31 01:09:05.233  INFO 10758 --- [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=a8dafe2b-ff57-3cc8-bef1-443bef0efa1f
+2020-01-31 01:09:07.682  INFO 10758 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$7e764a86] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-31 01:09:08.069  INFO 10758 --- [           main] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2020-01-31 01:09:08.235  INFO 10758 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-31 01:09:11.124  INFO 10758 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8092 (http)
+2020-01-31 01:09:11.157  INFO 10758 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-01-31 01:09:11.162  INFO 10758 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.27]
+2020-01-31 01:09:11.498  INFO 10758 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-01-31 01:09:11.510  INFO 10758 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 19653 ms
+2020-01-31 01:09:12.906  WARN 10758 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-01-31 01:09:12.925  INFO 10758 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-01-31 01:09:12.976  INFO 10758 --- [           main] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@5489c777
+2020-01-31 01:09:18.826  INFO 10758 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-01-31 01:09:19.534  INFO 10758 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.8.Final}
+2020-01-31 01:09:20.432  INFO 10758 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-01-31 01:09:21.396  INFO 10758 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-01-31 01:09:22.923  INFO 10758 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-01-31 01:09:23.008  INFO 10758 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2020-01-31 01:09:28.682  INFO 10758 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-01-31 01:09:28.755  INFO 10758 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-01-31 01:09:35.123  WARN 10758 --- [           main] o.s.d.rest.webmvc.halbrowser.HalBrowser  : ---
+2020-01-31 01:09:35.123  WARN 10758 --- [           main] o.s.d.rest.webmvc.halbrowser.HalBrowser  : Spring Data REST HAL Browser is deprecated! Prefer the HAL Explorer (artifactId: spring-data-rest-hal-explorer)!
+2020-01-31 01:09:35.123  WARN 10758 --- [           main] o.s.d.rest.webmvc.halbrowser.HalBrowser  : ---
+2020-01-31 01:09:35.235  WARN 10758 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-01-31 01:09:35.239  INFO 10758 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-01-31 01:09:35.531  WARN 10758 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-01-31 01:09:36.215  INFO 10758 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-01-31 01:09:38.164  INFO 10758 --- [           main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2020-01-31 01:09:38.593  WARN 10758 --- [           main] ockingLoadBalancerClientRibbonWarnLogger : You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2020-01-31 01:09:38.796  INFO 10758 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-01-31 01:09:38.974  INFO 10758 --- [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2020-01-31 01:09:39.276  INFO 10758 --- [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2020-01-31 01:09:39.598  INFO 10758 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2020-01-31 01:09:39.607  INFO 10758 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
 WARNING: An illegal reflective access operation has occurred
 WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (jar:file:/home/antolovic/KP_SEP/KP/banka/bank-ms/target/bank-ms.jar!/BOOT-INF/lib/xstream-1.4.11.1.jar!/) to field java.util.TreeMap.comparator
 WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
 WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
 WARNING: All illegal access operations will be denied in a future release
-2020-01-30 21:35:43.522  INFO 19295 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
-2020-01-30 21:35:43.522  INFO 19295 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
-2020-01-30 21:35:44.092  INFO 19295 --- [           main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
-2020-01-30 21:35:44.163  INFO 19295 --- [           main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
-2020-01-30 21:35:44.171  INFO 19295 --- [           main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
-2020-01-30 21:35:44.171  INFO 19295 --- [           main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
-2020-01-30 21:35:44.171  INFO 19295 --- [           main] com.netflix.discovery.DiscoveryClient    : Application is null : false
-2020-01-30 21:35:44.171  INFO 19295 --- [           main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
-2020-01-30 21:35:44.171  INFO 19295 --- [           main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
-2020-01-30 21:35:44.172  INFO 19295 --- [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
-2020-01-30 21:35:44.670  INFO 19295 --- [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200
-2020-01-30 21:35:44.675  INFO 19295 --- [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 1
-2020-01-30 21:35:44.691  INFO 19295 --- [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
-2020-01-30 21:35:44.703  INFO 19295 --- [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1580416544701 with initial instances count: 1
-2020-01-30 21:35:44.715  INFO 19295 --- [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application BANK with eureka with status UP
-2020-01-30 21:35:44.717  INFO 19295 --- [           main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1580416544716, current=UP, previous=STARTING]
-2020-01-30 21:35:44.722  INFO 19295 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BANK/bank:aad38f7c445c7372bff4b2d06f220636: registering service...
-2020-01-30 21:35:44.837  INFO 19295 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BANK/bank:aad38f7c445c7372bff4b2d06f220636 - registration status: 204
-2020-01-30 21:35:44.993  INFO 19295 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8092 (http) with context path ''
-2020-01-30 21:35:45.000  INFO 19295 --- [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8092
-2020-01-30 21:35:45.192  INFO 19295 --- [           main] r.a.uns.ftn.kp.bankms.BankMsApplication  : Started BankMsApplication in 57.851 seconds (JVM running for 61.312)
-2020-01-30 21:40:44.178  INFO 19295 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
-2020-01-30 21:41:15.624  INFO 19295 --- [extShutdownHook] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application BANK with eureka with status DOWN
-2020-01-30 21:41:15.624  WARN 19295 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1580416875624, current=DOWN, previous=UP]
-2020-01-30 21:41:15.624  INFO 19295 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BANK/bank:aad38f7c445c7372bff4b2d06f220636: registering service...
-2020-01-30 21:41:15.655  INFO 19295 --- [extShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
-2020-01-30 21:41:15.660  INFO 19295 --- [extShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2020-01-30 21:41:15.651 ERROR 19295 --- [nfoReplicator-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
+2020-01-31 01:09:40.116  INFO 10758 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2020-01-31 01:09:40.117  INFO 10758 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2020-01-31 01:09:40.571  INFO 10758 --- [           main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-01-31 01:09:40.631  INFO 10758 --- [           main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2020-01-31 01:09:40.631  INFO 10758 --- [           main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2020-01-31 01:09:40.631  INFO 10758 --- [           main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2020-01-31 01:09:40.631  INFO 10758 --- [           main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2020-01-31 01:09:40.631  INFO 10758 --- [           main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2020-01-31 01:09:40.631  INFO 10758 --- [           main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2020-01-31 01:09:40.631  INFO 10758 --- [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2020-01-31 01:09:41.208  INFO 10758 --- [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2020-01-31 01:09:41.242  INFO 10758 --- [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 1
+2020-01-31 01:09:41.259  INFO 10758 --- [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2020-01-31 01:09:41.276  INFO 10758 --- [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1580429381275 with initial instances count: 1
+2020-01-31 01:09:41.289  INFO 10758 --- [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application BANK with eureka with status UP
+2020-01-31 01:09:41.293  INFO 10758 --- [           main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1580429381293, current=UP, previous=STARTING]
+2020-01-31 01:09:41.296  INFO 10758 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BANK/bank:46222ebd2645f1a2fa2e928305e62f78: registering service...
+2020-01-31 01:09:41.362  INFO 10758 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Finding all payments with status CREATED.
+2020-01-31 01:09:41.407  INFO 10758 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BANK/bank:46222ebd2645f1a2fa2e928305e62f78 - registration status: 204
+2020-01-31 01:09:41.549  INFO 10758 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8092 (http) with context path ''
+2020-01-31 01:09:41.556  INFO 10758 --- [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8092
+2020-01-31 01:09:41.570  INFO 10758 --- [           main] r.a.uns.ftn.kp.bankms.BankMsApplication  : Started BankMsApplication in 55.875 seconds (JVM running for 58.877)
+Hibernate: select payment0_.id as id1_0_, payment0_.amount as amount2_0_, payment0_.item_uuid as item_uui3_0_, payment0_.seller_email as seller_e4_0_, payment0_.status as status5_0_, payment0_.url as url6_0_ from payment payment0_ where payment0_.status=?
+2020-01-31 01:09:41.855  INFO 10758 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 7 ,status: CREATED ,url: https://localhost:4300/banka/card/17795c04-b286-4f12-a416-30322aa246e2
+2020-01-31 01:09:43.170  INFO 10758 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/17795c04-b286-4f12-a416-30322aa246e2 ,status: SUCCESSFUL
+Hibernate: select payment0_.id as id1_0_0_, payment0_.amount as amount2_0_0_, payment0_.item_uuid as item_uui3_0_0_, payment0_.seller_email as seller_e4_0_0_, payment0_.status as status5_0_0_, payment0_.url as url6_0_0_ from payment payment0_ where payment0_.id=?
+Hibernate: update payment set amount=?, item_uuid=?, seller_email=?, status=?, url=? where id=?
+2020-01-31 01:09:43.267 ERROR 10758 --- [   scheduling-1] o.s.s.s.TaskUtils$LoggingErrorHandler    : Unexpected error occurred in scheduled task
+
+org.springframework.web.client.ResourceAccessException: I/O error on POST request for "https://localhost:4300/banka/card/17795c04-b286-4f12-a416-30322aa246e2/true": Connect to localhost:4300 [localhost/127.0.0.1] failed: Connection refused (Connection refused); nested exception is org.apache.http.conn.HttpHostConnectException: Connect to localhost:4300 [localhost/127.0.0.1] failed: Connection refused (Connection refused)
+	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:751) ~[spring-web-5.2.1.RELEASE.jar!/:5.2.1.RELEASE]
+	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:677) ~[spring-web-5.2.1.RELEASE.jar!/:5.2.1.RELEASE]
+	at org.springframework.web.client.RestTemplate.postForEntity(RestTemplate.java:452) ~[spring-web-5.2.1.RELEASE.jar!/:5.2.1.RELEASE]
+	at rs.ac.uns.ftn.kp.bankms.payment.PaymentServiceImpl.lambda$updateStatus$0(PaymentServiceImpl.java:169) ~[classes!/:0.0.1-SNAPSHOT]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183) ~[na:na]
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1654) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachTask.compute(ForEachOps.java:290) ~[na:na]
+	at java.base/java.util.concurrent.CountedCompleter.exec(CountedCompleter.java:746) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:290) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.doInvoke(ForkJoinTask.java:408) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.invoke(ForkJoinTask.java:736) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateParallel(ForEachOps.java:159) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateParallel(ForEachOps.java:173) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:233) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:497) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:661) ~[na:na]
+	at rs.ac.uns.ftn.kp.bankms.payment.PaymentServiceImpl.updateStatus(PaymentServiceImpl.java:157) ~[classes!/:0.0.1-SNAPSHOT]
+	at rs.ac.uns.ftn.kp.bankms.payment.PaymentServiceImpl.changeStatus(PaymentServiceImpl.java:180) ~[classes!/:0.0.1-SNAPSHOT]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84) ~[spring-context-5.2.1.RELEASE.jar!/:5.2.1.RELEASE]
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54) ~[spring-context-5.2.1.RELEASE.jar!/:5.2.1.RELEASE]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[na:na]
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305) ~[na:na]
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+Caused by: org.apache.http.conn.HttpHostConnectException: Connect to localhost:4300 [localhost/127.0.0.1] failed: Connection refused (Connection refused)
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:156) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:374) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:393) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:186) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:89) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:56) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.springframework.http.client.HttpComponentsClientHttpRequest.executeInternal(HttpComponentsClientHttpRequest.java:87) ~[spring-web-5.2.1.RELEASE.jar!/:5.2.1.RELEASE]
+	at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:48) ~[spring-web-5.2.1.RELEASE.jar!/:5.2.1.RELEASE]
+	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:53) ~[spring-web-5.2.1.RELEASE.jar!/:5.2.1.RELEASE]
+	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:742) ~[spring-web-5.2.1.RELEASE.jar!/:5.2.1.RELEASE]
+	... 30 common frames omitted
+Caused by: java.net.ConnectException: Connection refused (Connection refused)
+	at java.base/java.net.PlainSocketImpl.socketConnect(Native Method) ~[na:na]
+	at java.base/java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:399) ~[na:na]
+	at java.base/java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:242) ~[na:na]
+	at java.base/java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:224) ~[na:na]
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:403) ~[na:na]
+	at java.base/java.net.Socket.connect(Socket.java:609) ~[na:na]
+	at org.apache.http.conn.ssl.SSLConnectionSocketFactory.connectSocket(SSLConnectionSocketFactory.java:368) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:142) ~[httpclient-4.5.10.jar!/:4.5.10]
+	... 43 common frames omitted
+
+2020-01-31 01:09:51.355  INFO 10758 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Finding all payments with status CREATED.
+Hibernate: select payment0_.id as id1_0_, payment0_.amount as amount2_0_, payment0_.item_uuid as item_uui3_0_, payment0_.seller_email as seller_e4_0_, payment0_.status as status5_0_, payment0_.url as url6_0_ from payment payment0_ where payment0_.status=?
+2020-01-31 01:10:01.355  INFO 10758 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Finding all payments with status CREATED.
+Hibernate: select payment0_.id as id1_0_, payment0_.amount as amount2_0_, payment0_.item_uuid as item_uui3_0_, payment0_.seller_email as seller_e4_0_, payment0_.status as status5_0_, payment0_.url as url6_0_ from payment payment0_ where payment0_.status=?
+2020-01-31 01:10:11.355  INFO 10758 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Finding all payments with status CREATED.
+Hibernate: select payment0_.id as id1_0_, payment0_.amount as amount2_0_, payment0_.item_uuid as item_uui3_0_, payment0_.seller_email as seller_e4_0_, payment0_.status as status5_0_, payment0_.url as url6_0_ from payment payment0_ where payment0_.status=?
+2020-01-31 01:10:21.355  INFO 10758 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Finding all payments with status CREATED.
+Hibernate: select payment0_.id as id1_0_, payment0_.amount as amount2_0_, payment0_.item_uuid as item_uui3_0_, payment0_.seller_email as seller_e4_0_, payment0_.status as status5_0_, payment0_.url as url6_0_ from payment payment0_ where payment0_.status=?
+2020-01-31 01:10:31.355  INFO 10758 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Finding all payments with status CREATED.
+Hibernate: select payment0_.id as id1_0_, payment0_.amount as amount2_0_, payment0_.item_uuid as item_uui3_0_, payment0_.seller_email as seller_e4_0_, payment0_.status as status5_0_, payment0_.url as url6_0_ from payment payment0_ where payment0_.status=?
+2020-01-31 01:10:41.355  INFO 10758 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Finding all payments with status CREATED.
+Hibernate: select payment0_.id as id1_0_, payment0_.amount as amount2_0_, payment0_.item_uuid as item_uui3_0_, payment0_.seller_email as seller_e4_0_, payment0_.status as status5_0_, payment0_.url as url6_0_ from payment payment0_ where payment0_.status=?
+2020-01-31 01:10:51.355  INFO 10758 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Finding all payments with status CREATED.
+Hibernate: select payment0_.id as id1_0_, payment0_.amount as amount2_0_, payment0_.item_uuid as item_uui3_0_, payment0_.seller_email as seller_e4_0_, payment0_.status as status5_0_, payment0_.url as url6_0_ from payment payment0_ where payment0_.status=?
+2020-01-31 01:11:01.355  INFO 10758 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Finding all payments with status CREATED.
+Hibernate: select payment0_.id as id1_0_, payment0_.amount as amount2_0_, payment0_.item_uuid as item_uui3_0_, payment0_.seller_email as seller_e4_0_, payment0_.status as status5_0_, payment0_.url as url6_0_ from payment payment0_ where payment0_.status=?
+2020-01-31 01:11:11.355  INFO 10758 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Finding all payments with status CREATED.
+Hibernate: select payment0_.id as id1_0_, payment0_.amount as amount2_0_, payment0_.item_uuid as item_uui3_0_, payment0_.seller_email as seller_e4_0_, payment0_.status as status5_0_, payment0_.url as url6_0_ from payment payment0_ where payment0_.status=?
+2020-01-31 01:11:21.355  INFO 10758 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Finding all payments with status CREATED.
+Hibernate: select payment0_.id as id1_0_, payment0_.amount as amount2_0_, payment0_.item_uuid as item_uui3_0_, payment0_.seller_email as seller_e4_0_, payment0_.status as status5_0_, payment0_.url as url6_0_ from payment payment0_ where payment0_.status=?
+2020-01-31 01:11:31.355  INFO 10758 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Finding all payments with status CREATED.
+Hibernate: select payment0_.id as id1_0_, payment0_.amount as amount2_0_, payment0_.item_uuid as item_uui3_0_, payment0_.seller_email as seller_e4_0_, payment0_.status as status5_0_, payment0_.url as url6_0_ from payment payment0_ where payment0_.status=?
+2020-01-31 01:11:41.355  INFO 10758 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Finding all payments with status CREATED.
+Hibernate: select payment0_.id as id1_0_, payment0_.amount as amount2_0_, payment0_.item_uuid as item_uui3_0_, payment0_.seller_email as seller_e4_0_, payment0_.status as status5_0_, payment0_.url as url6_0_ from payment payment0_ where payment0_.status=?
+2020-01-31 01:11:51.355  INFO 10758 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Finding all payments with status CREATED.
+Hibernate: select payment0_.id as id1_0_, payment0_.amount as amount2_0_, payment0_.item_uuid as item_uui3_0_, payment0_.seller_email as seller_e4_0_, payment0_.status as status5_0_, payment0_.url as url6_0_ from payment payment0_ where payment0_.status=?
+2020-01-31 01:12:01.355  INFO 10758 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Finding all payments with status CREATED.
+Hibernate: select payment0_.id as id1_0_, payment0_.amount as amount2_0_, payment0_.item_uuid as item_uui3_0_, payment0_.seller_email as seller_e4_0_, payment0_.status as status5_0_, payment0_.url as url6_0_ from payment payment0_ where payment0_.status=?
+2020-01-31 01:12:11.356  INFO 10758 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Finding all payments with status CREATED.
+Hibernate: select payment0_.id as id1_0_, payment0_.amount as amount2_0_, payment0_.item_uuid as item_uui3_0_, payment0_.seller_email as seller_e4_0_, payment0_.status as status5_0_, payment0_.url as url6_0_ from payment payment0_ where payment0_.status=?
+2020-01-31 01:12:21.356  INFO 10758 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Finding all payments with status CREATED.
+Hibernate: select payment0_.id as id1_0_, payment0_.amount as amount2_0_, payment0_.item_uuid as item_uui3_0_, payment0_.seller_email as seller_e4_0_, payment0_.status as status5_0_, payment0_.url as url6_0_ from payment payment0_ where payment0_.status=?
+2020-01-31 01:12:31.355  INFO 10758 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Finding all payments with status CREATED.
+Hibernate: select payment0_.id as id1_0_, payment0_.amount as amount2_0_, payment0_.item_uuid as item_uui3_0_, payment0_.seller_email as seller_e4_0_, payment0_.status as status5_0_, payment0_.url as url6_0_ from payment payment0_ where payment0_.status=?
+2020-01-31 01:12:41.355  INFO 10758 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Finding all payments with status CREATED.
+Hibernate: select payment0_.id as id1_0_, payment0_.amount as amount2_0_, payment0_.item_uuid as item_uui3_0_, payment0_.seller_email as seller_e4_0_, payment0_.status as status5_0_, payment0_.url as url6_0_ from payment payment0_ where payment0_.status=?
+2020-01-31 01:12:51.355  INFO 10758 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Finding all payments with status CREATED.
+Hibernate: select payment0_.id as id1_0_, payment0_.amount as amount2_0_, payment0_.item_uuid as item_uui3_0_, payment0_.seller_email as seller_e4_0_, payment0_.status as status5_0_, payment0_.url as url6_0_ from payment payment0_ where payment0_.status=?
+2020-01-31 01:13:01.356  INFO 10758 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Finding all payments with status CREATED.
+Hibernate: select payment0_.id as id1_0_, payment0_.amount as amount2_0_, payment0_.item_uuid as item_uui3_0_, payment0_.seller_email as seller_e4_0_, payment0_.status as status5_0_, payment0_.url as url6_0_ from payment payment0_ where payment0_.status=?
+2020-01-31 01:13:11.355  INFO 10758 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Finding all payments with status CREATED.
+Hibernate: select payment0_.id as id1_0_, payment0_.amount as amount2_0_, payment0_.item_uuid as item_uui3_0_, payment0_.seller_email as seller_e4_0_, payment0_.status as status5_0_, payment0_.url as url6_0_ from payment payment0_ where payment0_.status=?
+2020-01-31 01:13:21.355  INFO 10758 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Finding all payments with status CREATED.
+Hibernate: select payment0_.id as id1_0_, payment0_.amount as amount2_0_, payment0_.item_uuid as item_uui3_0_, payment0_.seller_email as seller_e4_0_, payment0_.status as status5_0_, payment0_.url as url6_0_ from payment payment0_ where payment0_.status=?
+2020-01-31 01:13:31.355  INFO 10758 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Finding all payments with status CREATED.
+Hibernate: select payment0_.id as id1_0_, payment0_.amount as amount2_0_, payment0_.item_uuid as item_uui3_0_, payment0_.seller_email as seller_e4_0_, payment0_.status as status5_0_, payment0_.url as url6_0_ from payment payment0_ where payment0_.status=?
+2020-01-31 01:13:41.355  INFO 10758 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Finding all payments with status CREATED.
+Hibernate: select payment0_.id as id1_0_, payment0_.amount as amount2_0_, payment0_.item_uuid as item_uui3_0_, payment0_.seller_email as seller_e4_0_, payment0_.status as status5_0_, payment0_.url as url6_0_ from payment payment0_ where payment0_.status=?
+2020-01-31 01:13:50.307  INFO 10758 --- [extShutdownHook] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application BANK with eureka with status DOWN
+2020-01-31 01:13:50.307  WARN 10758 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1580429630307, current=DOWN, previous=UP]
+2020-01-31 01:13:50.308  INFO 10758 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BANK/bank:46222ebd2645f1a2fa2e928305e62f78: registering service...
+2020-01-31 01:13:50.311  INFO 10758 --- [extShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'taskScheduler'
+2020-01-31 01:13:50.320  INFO 10758 --- [extShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-01-31 01:13:50.320 ERROR 10758 --- [nfoReplicator-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
 
 com.sun.jersey.api.client.ClientHandlerException: java.net.ConnectException: Connection refused (Connection refused)
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:187) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
@@ -127,8 +242,8 @@ Caused by: java.net.ConnectException: Connection refused (Connection refused)
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:173) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
 	... 28 common frames omitted
 
-2020-01-30 21:41:15.663  WARN 19295 --- [nfoReplicator-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
-2020-01-30 21:41:15.665 ERROR 19295 --- [nfoReplicator-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
+2020-01-31 01:13:50.321  WARN 10758 --- [nfoReplicator-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
+2020-01-31 01:13:50.323 ERROR 10758 --- [nfoReplicator-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
 
 com.sun.jersey.api.client.ClientHandlerException: java.net.ConnectException: Connection refused (Connection refused)
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:187) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
@@ -180,8 +295,8 @@ Caused by: java.net.ConnectException: Connection refused (Connection refused)
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:173) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
 	... 29 common frames omitted
 
-2020-01-30 21:41:15.665  WARN 19295 --- [nfoReplicator-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
-2020-01-30 21:41:15.666  WARN 19295 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BANK/bank:aad38f7c445c7372bff4b2d06f220636 - registration failed Cannot execute request on any known server
+2020-01-31 01:13:50.323  WARN 10758 --- [nfoReplicator-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
+2020-01-31 01:13:50.323  WARN 10758 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BANK/bank:46222ebd2645f1a2fa2e928305e62f78 - registration failed Cannot execute request on any known server
 
 com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
 	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-1.9.13.jar!/:1.9.13]
@@ -199,7 +314,8 @@ com.netflix.discovery.shared.transport.TransportException: Cannot execute reques
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
 	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
 
-2020-01-30 21:41:15.667  WARN 19295 --- [nfoReplicator-0] c.n.discovery.InstanceInfoReplicator     : There was a problem with the instance info replicator
+2020-01-31 01:13:50.324  INFO 10758 --- [extShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-01-31 01:13:50.324  WARN 10758 --- [nfoReplicator-0] c.n.discovery.InstanceInfoReplicator     : There was a problem with the instance info replicator
 
 com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
 	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-1.9.13.jar!/:1.9.13]
@@ -217,8 +333,8 @@ com.netflix.discovery.shared.transport.TransportException: Cannot execute reques
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
 	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
 
-2020-01-30 21:41:15.683  INFO 19295 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
-2020-01-30 21:41:16.391 ERROR 19295 --- [tbeatExecutor-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
+2020-01-31 01:13:50.329  INFO 10758 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2020-01-31 01:13:50.651 ERROR 10758 --- [tbeatExecutor-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
 
 com.sun.jersey.api.client.ClientHandlerException: java.net.ConnectException: Connection refused (Connection refused)
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:187) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
@@ -268,8 +384,8 @@ Caused by: java.net.ConnectException: Connection refused (Connection refused)
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:173) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
 	... 27 common frames omitted
 
-2020-01-30 21:41:16.392  WARN 19295 --- [tbeatExecutor-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
-2020-01-30 21:41:16.393 ERROR 19295 --- [tbeatExecutor-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BANK/bank:aad38f7c445c7372bff4b2d06f220636 - was unable to send heartbeat!
+2020-01-31 01:13:50.651  WARN 10758 --- [tbeatExecutor-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
+2020-01-31 01:13:50.652 ERROR 10758 --- [tbeatExecutor-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BANK/bank:46222ebd2645f1a2fa2e928305e62f78 - was unable to send heartbeat!
 
 com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
 	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-1.9.13.jar!/:1.9.13]
@@ -285,7 +401,7 @@ com.netflix.discovery.shared.transport.TransportException: Cannot execute reques
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
 	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
 
-2020-01-30 21:41:17.396 ERROR 19295 --- [tbeatExecutor-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
+2020-01-31 01:13:51.655 ERROR 10758 --- [tbeatExecutor-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
 
 com.sun.jersey.api.client.ClientHandlerException: java.net.ConnectException: Connection refused (Connection refused)
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:187) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
@@ -335,8 +451,8 @@ Caused by: java.net.ConnectException: Connection refused (Connection refused)
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:173) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
 	... 27 common frames omitted
 
-2020-01-30 21:41:17.397  WARN 19295 --- [tbeatExecutor-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
-2020-01-30 21:41:17.398 ERROR 19295 --- [tbeatExecutor-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BANK/bank:aad38f7c445c7372bff4b2d06f220636 - was unable to send heartbeat!
+2020-01-31 01:13:51.656  WARN 10758 --- [tbeatExecutor-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
+2020-01-31 01:13:51.657 ERROR 10758 --- [tbeatExecutor-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BANK/bank:46222ebd2645f1a2fa2e928305e62f78 - was unable to send heartbeat!
 
 com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
 	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-1.9.13.jar!/:1.9.13]
@@ -352,7 +468,7 @@ com.netflix.discovery.shared.transport.TransportException: Cannot execute reques
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
 	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
 
-2020-01-30 21:41:18.401 ERROR 19295 --- [tbeatExecutor-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
+2020-01-31 01:13:52.659 ERROR 10758 --- [tbeatExecutor-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
 
 com.sun.jersey.api.client.ClientHandlerException: java.net.ConnectException: Connection refused (Connection refused)
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:187) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
@@ -402,8 +518,8 @@ Caused by: java.net.ConnectException: Connection refused (Connection refused)
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:173) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
 	... 27 common frames omitted
 
-2020-01-30 21:41:18.402  WARN 19295 --- [tbeatExecutor-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
-2020-01-30 21:41:18.403 ERROR 19295 --- [tbeatExecutor-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BANK/bank:aad38f7c445c7372bff4b2d06f220636 - was unable to send heartbeat!
+2020-01-31 01:13:52.660  WARN 10758 --- [tbeatExecutor-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
+2020-01-31 01:13:52.660 ERROR 10758 --- [tbeatExecutor-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BANK/bank:46222ebd2645f1a2fa2e928305e62f78 - was unable to send heartbeat!
 
 com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
 	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-1.9.13.jar!/:1.9.13]
@@ -419,8 +535,8 @@ com.netflix.discovery.shared.transport.TransportException: Cannot execute reques
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
 	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
 
-2020-01-30 21:41:18.684  INFO 19295 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : Unregistering ...
-2020-01-30 21:41:18.689 ERROR 19295 --- [extShutdownHook] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
+2020-01-31 01:13:53.330  INFO 10758 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : Unregistering ...
+2020-01-31 01:13:53.333 ERROR 10758 --- [extShutdownHook] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
 
 com.sun.jersey.api.client.ClientHandlerException: java.net.ConnectException: Connection refused (Connection refused)
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:187) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
@@ -485,8 +601,8 @@ Caused by: java.net.ConnectException: Connection refused (Connection refused)
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:173) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
 	... 42 common frames omitted
 
-2020-01-30 21:41:18.690  WARN 19295 --- [extShutdownHook] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
-2020-01-30 21:41:18.690 ERROR 19295 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BANK/bank:aad38f7c445c7372bff4b2d06f220636 - de-registration failedCannot execute request on any known server
+2020-01-31 01:13:53.334  WARN 10758 --- [extShutdownHook] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
+2020-01-31 01:13:53.334 ERROR 10758 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BANK/bank:46222ebd2645f1a2fa2e928305e62f78 - de-registration failedCannot execute request on any known server
 
 com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
 	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-1.9.13.jar!/:1.9.13]
@@ -517,6 +633,6 @@ com.netflix.discovery.shared.transport.TransportException: Cannot execute reques
 	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1029) ~[spring-context-5.2.1.RELEASE.jar!/:5.2.1.RELEASE]
 	at org.springframework.context.support.AbstractApplicationContext$1.run(AbstractApplicationContext.java:948) ~[spring-context-5.2.1.RELEASE.jar!/:5.2.1.RELEASE]
 
-2020-01-30 21:41:18.711  INFO 19295 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
-2020-01-30 21:41:18.726  INFO 19295 --- [extShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2020-01-30 21:41:18.738  INFO 19295 --- [extShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-01-31 01:13:53.371  INFO 10758 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
+2020-01-31 01:13:53.371  INFO 10758 --- [extShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-01-31 01:13:53.387  INFO 10758 --- [extShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

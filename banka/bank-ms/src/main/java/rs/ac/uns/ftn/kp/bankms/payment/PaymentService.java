@@ -10,4 +10,7 @@ public interface PaymentService {
     String handleKpRequest(PaymentRequest kpRequestDto);
     String setPaymentStatus(String id,String status);
 
+    void updateStatus();
+
+    void updateIntegratedSoftwareStatus();
 }

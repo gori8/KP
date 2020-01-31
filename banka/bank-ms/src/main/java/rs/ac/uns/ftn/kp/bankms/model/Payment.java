@@ -32,5 +32,7 @@ public class Payment {
     @Column(name = "seller_email", unique = false, nullable = false)
     private String sellerEmail;
 
+    @Column(name = "checked_status", unique = false, nullable = false)
+    private Boolean checkedStatus=false;
 
 }

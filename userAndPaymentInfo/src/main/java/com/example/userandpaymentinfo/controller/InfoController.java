@@ -32,12 +32,6 @@ public class InfoController {
 
     }
 
-    @RequestMapping(value = "/journal", method = RequestMethod.POST)
-    public ResponseEntity<Item> editCasopis(@RequestBody CasopisDTO casopisDTO) throws Exception {
-
-        return new ResponseEntity<Item>(infoService.editCasopis(casopisDTO), HttpStatus.OK);
-
-    }
 
     @RequestMapping(value = "/journal/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Item> updateCasopis(@RequestBody CasopisDTO casopisDTO, @PathVariable("id") Long id) {

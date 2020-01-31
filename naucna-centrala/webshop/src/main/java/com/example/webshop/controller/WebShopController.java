@@ -411,4 +411,10 @@ public class WebShopController {
 
         return new ResponseEntity<>(kpService.changePayed(uuid,success,username),HttpStatus.OK);
     }
+
+    @RequestMapping(value = "/payed/{username}/{uuid}", method = RequestMethod.GET)
+    public ResponseEntity getPayed(@PathVariable("username")String username, @PathVariable("uuid")String uuid) {
+
+        return ResponseEntity.ok().build();
+    }
 }

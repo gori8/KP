@@ -113,6 +113,7 @@ public class InfoServiceImpl implements InfoService{
         Item c = itemRepository.findOneByUuid(uuid);
         System.out.println(redirectUrlDTO.getId());
         c.setRedirectUrl(redirectUrlDTO.getRedirectUrl());
+        c.setCheckStatusUrl(redirectUrlDTO.getCheckStatusUrl());
 
         itemRepository.save(c);
 
@@ -129,6 +130,7 @@ public class InfoServiceImpl implements InfoService{
         dto.setAmount(item.getAmount());
         dto.setRedirectUrl(item.getRedirectUrl());
         dto.setSellerEmail(item.getSeller().getEmail());
+        dto.setCheckStatusUrl(item.getCheckStatusUrl());
         return dto;
     }
 

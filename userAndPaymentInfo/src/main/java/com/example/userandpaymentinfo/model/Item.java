@@ -30,6 +30,9 @@ public class Item {
     @Column(name = "redirectUrl", unique = false, nullable = true)
     private String redirectUrl;
 
+    @Column(name = "check_status_url", unique = false, nullable = true)
+    private String checkStatusUrl;
+
     @ManyToMany
     @JsonIgnore
     @JoinTable(

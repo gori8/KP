@@ -3,16 +3,17 @@ package com.example.userandpaymentinfo.dto;
 
 
 import com.example.userandpaymentinfo.model.NacinPlacanja;
+import lombok.AllArgsConstructor;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+@AllArgsConstructor
 public class CasopisDTO {
 
     private Long id;
     private String naziv;
-    private String issn;
     private String uuid;
     private Long nacinPlacanjaId;
     private String redirectUrl;
@@ -66,21 +67,5 @@ public class CasopisDTO {
         this.naziv = naziv;
     }
 
-    public String getIssn() {
-        return issn;
-    }
 
-    public void setIssn(String issn) {
-        this.issn = issn;
-    }
-
-
-    public CasopisDTO() {
-    }
-
-    public CasopisDTO(Long id, String naziv, String issn) {
-        this.id = id;
-        this.naziv = naziv;
-        this.issn = issn;
-    }
 }
