@@ -32,7 +32,8 @@
           </table>
 
           <ng-container *ngIf="currentUser$ | async as user">
-            <button (click)="pay(item.uuid)" class="btn btn-outline-light ml-3" *ngIf="user.role=='Registrovani korisnik'">Kupi izdanje</button>
+            <button (click)="pay(item.uuid)" class="btn btn-outline-light ml-3" *ngIf="user.role=='Registrovani korisnik' && item.kupljen==false">Kupi izdanje</button>
+            <label class="text-light ml-3" *ngIf="user.role=='Registrovani korisnik' && item.kupljen==true">Kupljen</label>
           </ng-container>
         </div>
       </div>

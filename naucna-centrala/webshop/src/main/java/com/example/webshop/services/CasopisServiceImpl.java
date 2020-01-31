@@ -95,6 +95,7 @@ public class CasopisServiceImpl implements CasopisService {
 
     }
 
+    @Override
     public List<CasopisDTO> getBoughtItems(String username){
         Korisnik korisnik = korisnikRepository.findOneByUsername(username);
 
@@ -133,5 +134,28 @@ public class CasopisServiceImpl implements CasopisService {
         }
 
         return new ArrayList<>(casopisiMap.values());
+    }
+
+    @Override
+    public List<IzdanjeDTO> getBoughtItemsForCasopis(String username, Long casopisId){
+        Korisnik korisnik = korisnikRepository.findOneByUsername(username);
+        List<IzdanjeDTO> ret = new ArrayList<>();
+
+        for (Izdanje izdanje:korisnik.getCasopisiKupci()) {
+            if(izdanje.getCasopis().getId()==casopisId){
+                IzdanjeDTO izdanjeDTO = new IzdanjeDTO();
+                izdanjeDTO.setBroj(izdanje.getBroj());
+                izdanjeDTO.setCasopisId(izdanje.getCasopis().getId());
+                izdanjeDTO.setCena(izdanje.getCena());
+                izdanjeDTO.setId(izdanje.getId());
+                izdanjeDTO.setNaziv(izdanje.getNaziv());
+                izdanjeDTO.setDatumIzdanja(izdanje.getDatumIzdanja());
+                izdanjeDTO.setUuid(izdanje.getUuid().toString());
+
+                ret.add(izdanjeDTO);
+            }
+        }
+
+        return ret;
     }
 }

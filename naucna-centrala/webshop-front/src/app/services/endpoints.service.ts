@@ -61,6 +61,10 @@ export class EndpointsService {
     return this.http.get(`${BASE_URL}/papers/${id}/numbers`);
   }
 
+  getNumbersForCasopisAndKupac(casopisId,username): Observable<any>{
+    return this.http.get(`${BASE_URL}/bought/${username}/${casopisId}`);
+  }
+
   submitIzdanje(izdanje): Observable<any>{
     return this.http.post(`${BASE_URL}/numbers`, izdanje,{
       headers: new HttpHeaders({

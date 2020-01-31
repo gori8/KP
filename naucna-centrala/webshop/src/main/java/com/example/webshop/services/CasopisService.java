@@ -1,6 +1,7 @@
 package com.example.webshop.services;
 
 import com.example.webshop.dto.CasopisDTO;
+import com.example.webshop.dto.IzdanjeDTO;
 import com.example.webshop.dto.TaskLinkDTO;
 
 import java.util.List;
@@ -13,4 +14,6 @@ public interface CasopisService {
     public CasopisDTO getNumbersForPaper(Long id);
 
     public List<CasopisDTO> getBoughtItems(String username);
+
+    public List<IzdanjeDTO> getBoughtItemsForCasopis(String username, Long casopisId);
 }

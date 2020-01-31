@@ -404,6 +404,12 @@ public class WebShopController {
         return new ResponseEntity<>(casopisService.getBoughtItems(username),HttpStatus.OK);
     }
 
+    @GetMapping(path = "/bought/{username}/{casopisId}", produces = "application/json")
+    @PreAuthorize("hasRole('USER')")
+    public ResponseEntity<List<IzdanjeDTO>> getBoughtItemsForCasopis(@PathVariable("username") String username,@PathVariable("casopisId") Long casopisId){
+        return new ResponseEntity<>(casopisService.getBoughtItemsForCasopis(username,casopisId),HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/pay/{uapId}/{username}", method = RequestMethod.POST)
     @PreAuthorize("hasRole('USER')")
     public ResponseEntity<String> pay(@PathVariable("uapId") String uapId, @PathVariable("username") String username ) {
