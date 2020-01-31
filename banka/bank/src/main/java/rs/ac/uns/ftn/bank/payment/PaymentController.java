@@ -2,6 +2,7 @@ package rs.ac.uns.ftn.bank.payment;
 
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import rs.ac.uns.ftn.bank.account.AccountService;
 import rs.ac.uns.ftn.bank.dto.ExecuteTransactionResponse;
@@ -13,7 +14,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import rs.ac.uns.ftn.bank.model.PaymentStatus;
 import rs.ac.uns.ftn.url.PccDTO;
+import rs.ac.uns.ftn.url.UrlDTO;
 
 import java.text.ParseException;
 import java.util.List;
@@ -30,6 +33,9 @@ public class PaymentController {
 
     @Autowired
     AccountService accountService;
+
+    @Autowired
+    PaymentRepository paymentRepository;
 
 
     @PostMapping
@@ -58,5 +64,10 @@ public class PaymentController {
     @RequestMapping(value = "/response", method = RequestMethod.POST)
     public ResponseEntity pccAnswer(@RequestBody PccDTO pccDTO) throws ParseException {
         return new ResponseEntity<>(paymentService.pccAnswer(pccDTO), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/status", method = RequestMethod.POST)
+    public ResponseEntity<PaymentStatus> getStatus(@RequestBody UrlDTO url) {
+        return ResponseEntity.ok(paymentRepository.findByUrl(url.getUrl()).getStatus());
     }
 }

@@ -1,5 +1,4 @@
-package com.example.webshop.dto;
-
+package rs.ac.uns.ftn.url;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,11 +7,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-public class MappingClass {
-
-    private String redirectUrl;
-    private String id;
-
+@AllArgsConstructor
+public class UrlDTO {
+    String url;
 }

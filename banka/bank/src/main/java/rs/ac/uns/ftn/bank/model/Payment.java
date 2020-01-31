@@ -35,4 +35,7 @@ public class Payment {
 
     @Column(name = "timeStamp", unique = false, nullable = false)
     private Date timeStamp;
+
+    @Column(name = "status", unique = false, nullable = false)
+    private PaymentStatus status;
 }

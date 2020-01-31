@@ -1,5 +1,8 @@
 package rs.ac.uns.ftn.kp.bankms.payment;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.scheduling.annotation.Scheduled;
 import rs.ac.uns.ftn.kp.bankms.client.SellerRepository;
 import rs.ac.uns.ftn.kp.bankms.client.SellerService;
 import rs.ac.uns.ftn.kp.bankms.model.Seller;
@@ -15,6 +18,7 @@ import org.springframework.web.client.RestTemplate;
 import rs.ac.uns.ftn.kp.bankms.model.PaymentStatus;
 import rs.ac.uns.ftn.url.AmountAndUrlDTO;
 import rs.ac.uns.ftn.url.UrlClass;
+import rs.ac.uns.ftn.url.UrlDTO;
 
 import java.util.List;
 import java.util.UUID;
@@ -37,6 +41,8 @@ public class PaymentServiceImpl implements PaymentService {
         return paymentRepository.findAll();
     }
 
+    private final Logger LOGGER = LoggerFactory.getLogger(PaymentServiceImpl.class);
+
     @Autowired
     RestTemplate restTemplate;
 
@@ -57,6 +63,7 @@ public class PaymentServiceImpl implements PaymentService {
         payment.setAmount(resp.getBody().getAmount());
         payment.setStatus(PaymentStatus.CREATED_ON_KP);
         payment.setSellerEmail(resp.getBody().getSellerEmail());
+        payment.setCheckStatusUrl(resp.getBody().getRedirectUrl());
 
         Payment savedPayment=paymentRepository.save(payment);
 
@@ -103,7 +110,7 @@ public class PaymentServiceImpl implements PaymentService {
             e.printStackTrace();
         }
 
-        savedPayment.setUrl(resp.getBody().getRedirectUrl());
+        savedPayment.setUrl(urlJson);
 
 
         savedPayment.setStatus(PaymentStatus.CREATED);
@@ -123,24 +130,78 @@ public class PaymentServiceImpl implements PaymentService {
                 payment.setStatus(PaymentStatus.ERROR);
                 paymentRepository.save(payment);
                 ResponseEntity<String> response
-                        = restTemplate.postForEntity(payment.getUrl()+"/false",null,String.class);
+                        = restTemplate.postForEntity(payment.getCheckStatusUrl()+"/false",null,String.class);
                 return response.getBody();
 
             }else if(status.equals("failed")){
                 payment.setStatus(PaymentStatus.FAILED);
                 paymentRepository.save(payment);
                 ResponseEntity<String> response
-                        = restTemplate.postForEntity(payment.getUrl()+"/false",null,String.class);
+                        = restTemplate.postForEntity(payment.getCheckStatusUrl()+"/false",null,String.class);
                 return response.getBody();
             }else if(status.equals("successful")){
                 payment.setStatus(PaymentStatus.SUCCESSFUL);
                 paymentRepository.save(payment);
                 ResponseEntity<String> response
-                        = restTemplate.postForEntity(payment.getUrl()+"/true",null,String.class);
+                        = restTemplate.postForEntity(payment.getCheckStatusUrl()+"/true",null,String.class);
                 return response.getBody();
             }
         }
         return null;
+    }
+
+    @Override
+    public void updateStatus() {
+
+        LOGGER.info("Checking if bank status is changed...");
+        List<Payment> payments = paymentRepository.findAllByStatus(PaymentStatus.CREATED);
+        payments.parallelStream().forEach(payment -> {
+
+            LOGGER.info("Founded payment: " + payment.getId() + " ,status: " + payment.getStatus() + " ,url: " + payment.getUrl());
+            String getStatusUrl = "https://localhost:8091/payment/status";
+            UrlDTO urlDTO=new UrlDTO(payment.getUrl());
+            ResponseEntity<PaymentStatus> resp = restTemplate.postForEntity(getStatusUrl,urlDTO,PaymentStatus.class);
+            LOGGER.info("Payment with that url from bank: " + payment.getUrl() + " ,status: " + resp.getBody());
+
+            payment.setStatus(resp.getBody());
+            paymentRepository.save(payment);
+            if(payment.getStatus()==PaymentStatus.SUCCESSFUL) {
+                ResponseEntity<String> response
+                        = restTemplate.postForEntity( payment.getCheckStatusUrl()+ "/true", null, String.class);
+            }else if(payment.getStatus()==PaymentStatus.FAILED || payment.getStatus()==PaymentStatus.ERROR){
+                ResponseEntity<String> response
+                        = restTemplate.postForEntity(payment.getCheckStatusUrl() + "/false", null, String.class);
+            }
+        });
+
+    }
+
+    @Override
+    public void updateIntegratedSoftwareStatus() {
+        LOGGER.info("Checking if payment is recorded on seller software...");
+        List<Payment> payments = paymentRepository.findAllByStatusAndCheckedStatus(PaymentStatus.SUCCESSFUL,false);
+        payments.parallelStream().forEach(payment -> {
+
+            LOGGER.info("Founded payment: " + payment.getId() + " ,status: " + payment.getStatus());
+            ResponseEntity<Boolean> resp = restTemplate.getForEntity(payment.getCheckStatusUrl(),Boolean.class);
+            if(resp.getBody()) {
+                payment.setCheckedStatus(true);
+                paymentRepository.save(payment);
+            }else{
+                restTemplate.postForEntity(payment.getCheckStatusUrl()+"/true",null,String.class);
+            }
+        });
+
+    }
+
+    @Scheduled(fixedRate = 10000)
+    public void changeStatus() {
+        updateStatus();
+    }
+
+    @Scheduled(fixedRate = 10000)
+    public void checkIntegratedSoftwareStatus() {
+        updateIntegratedSoftwareStatus();
     }
 
 
