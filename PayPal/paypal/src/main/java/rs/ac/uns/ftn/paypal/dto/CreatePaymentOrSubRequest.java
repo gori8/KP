@@ -14,5 +14,9 @@ import java.math.BigDecimal;
 public class CreatePaymentOrSubRequest {
 
     private String casopisUuid;
+    private String tipCiklusa;
+    private Long brojCiklusa;
+    private String period;
+    private Long ucestalostPerioda;
 
 }

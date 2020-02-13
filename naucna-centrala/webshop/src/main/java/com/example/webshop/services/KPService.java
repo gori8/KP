@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 
 public interface KPService {
 
-    public void createLinks(Long casopisId);
+    public void createLinks(Long casopisId) throws Exception;
 
     public String completePayment(String uuid, Long nacinPlacanjaId);
 

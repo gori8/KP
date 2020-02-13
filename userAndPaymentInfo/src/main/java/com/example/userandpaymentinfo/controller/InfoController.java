@@ -58,10 +58,14 @@ public class InfoController {
         return new ResponseEntity<>(infoService.getAmountAndUrl(id),HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ResponseEntity register(@RequestBody CreateLinksDTO dto) {
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public ResponseEntity add(@RequestBody CreateLinksDTO dto) {
 
-        ReturnLinksDTO ret =infoService.register(dto);
+        ReturnLinksDTO ret =infoService.add(dto);
+
+        if(ret.getRegisterUrl()!=null){
+            ResponseEntity.status(401).body(ret);
+        }
 
         if(ret.getLinks().isEmpty()){
             return ResponseEntity.status(201).body(ret);
@@ -70,10 +74,15 @@ public class InfoController {
         return new ResponseEntity<>(ret,HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public ResponseEntity register(@RequestBody RegisterDTO dto) {
+        infoService.register(dto);
+        return ResponseEntity.status(201).body(true);
+    }
+
     @RequestMapping(value = "/item", method = RequestMethod.POST)
     public ResponseEntity<ReturnLinksDTO> addItem(@RequestBody CreateLinksDTO dto) {
-
-        return new ResponseEntity<>(infoService.register(dto),HttpStatus.OK);
+        return new ResponseEntity<>(infoService.add(dto),HttpStatus.OK);
     }
 
     @RequestMapping(value = "/registration/complete", method = RequestMethod.POST)

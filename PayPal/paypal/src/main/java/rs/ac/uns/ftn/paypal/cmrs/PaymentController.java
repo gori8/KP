@@ -29,7 +29,7 @@ public class PaymentController {
 
     @PostMapping
     public String create(@RequestBody CreatePaymentOrSubRequest request) {
-        System.out.println(request);
+        System.out.println("Item: "+request.getCasopisUuid());
         return "\""+paymentService.createPayment(request).getApprovalUrl()+"\"";
     }
 
@@ -43,20 +43,31 @@ public class PaymentController {
     }
 
     @GetMapping("/cancel/{id}")
-    public String cancelPayment(@PathVariable("id") Long id)  {
-        String redirectUrl = paymentService.cancelPayment(id);
-        return redirectUrl;
+    public ResponseEntity cancelPayment(@PathVariable("id") Long id) throws URISyntaxException {
+        URI redirectUrl = new URI(paymentService.cancelPayment(id));
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setLocation(redirectUrl);
+        return ResponseEntity.status(HttpStatus.FOUND).headers(httpHeaders).build();
     }
 
     @RequestMapping(value = "/subscription", method = RequestMethod.POST)
     public ResponseEntity<String> createSubscription(@RequestBody CreatePaymentOrSubRequest request) {
-        return new ResponseEntity<String>(paymentService.activateSubscription(request), HttpStatus.OK);
+        return new ResponseEntity<String>("\""+paymentService.activateSubscription(request)+"\"", HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/subscription/confirm")
-    public ResponseEntity confirmSubscription(@RequestParam("token")String token) throws URISyntaxException {
-        paymentService.executeSubAgreement(token);
-        URI redirectUrl = new URI("https://localhost:4500/potvrdjeno");
+    @RequestMapping(value = "/subscription/confirm/{id}")
+    public ResponseEntity confirmSubscription(@PathVariable String id,@RequestParam("token")String token) throws URISyntaxException {
+        paymentService.executeSubAgreement(Long.parseLong(id),token);
+        URI redirectUrl = new URI("https://localhost:4500/paymentresponse/success");
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setLocation(redirectUrl);
+        return ResponseEntity.status(HttpStatus.FOUND).headers(httpHeaders).build();
+    }
+
+    @RequestMapping(value = "/subscription/cancel/{id}")
+    public ResponseEntity cancelSubscription(@PathVariable String id,@RequestParam("token")String token) throws URISyntaxException {
+        paymentService.cancelSubscription(Long.parseLong(id));
+        URI redirectUrl = new URI("https://localhost:4500");
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setLocation(redirectUrl);
         return ResponseEntity.status(HttpStatus.FOUND).headers(httpHeaders).build();

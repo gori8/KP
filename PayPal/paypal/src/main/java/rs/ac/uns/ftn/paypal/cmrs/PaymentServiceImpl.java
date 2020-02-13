@@ -1,6 +1,7 @@
 package rs.ac.uns.ftn.paypal.cmrs;
 
 
+import com.netflix.discovery.converters.Auto;
 import com.paypal.api.payments.*;
 import com.paypal.api.payments.Currency;
 import com.paypal.base.rest.APIContext;
@@ -12,11 +13,13 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import rs.ac.uns.ftn.paypal.dto.*;
 import rs.ac.uns.ftn.paypal.utils.MyPaymentUtils;
 import rs.ac.uns.ftn.url.AmountAndUrlDTO;
+import rs.ac.uns.ftn.url.UrlDTO;
 
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
@@ -44,8 +47,11 @@ public class PaymentServiceImpl implements PaymentService{
     private static final String PAYMENT_DEF_TYPE="REGULAR";
     private static final String PLAN_STATE="CREATE";
     private static final String PLAN_FREQUENCY="MONTH";
-    private static final String SUBSCRIPTION_CANCEL="https://localhost:8771/paypal/api/paypal/subscription/cancel";
-    static final String SUBSCRIPTION_CONFIRM="https://localhost:8771/paypal/api/paypal/subscription/confirm";
+    private static final String SUBSCRIPTION_CANCEL="https://192.168.43.161:8771/paypal/api/paypal/subscription/cancel";
+    static final String SUBSCRIPTION_CONFIRM="https://192.168.43.161:8771/paypal/api/paypal/subscription/confirm";
+
+    private static final APIContext API_CONTEXT = new APIContext(PAYPAL_CLIENTID, PAYPAL_SECRET, MODE);
+
 
 
     @Autowired
@@ -56,6 +62,10 @@ public class PaymentServiceImpl implements PaymentService{
 
     @Autowired
     RestTemplate restTemplate;
+
+    @Autowired
+    SubscriptionRepository subscriptionRepository;
+
 
     @Override
     public CreatePaymentOrSubResponse createPayment(CreatePaymentOrSubRequest request) {
@@ -92,12 +102,11 @@ public class PaymentServiceImpl implements PaymentService{
 
         payment.setRedirectUrls(MyPaymentUtils.setRedirectUrls(myPayment.getId()));
 
-        APIContext apiContext = new APIContext(PAYPAL_CLIENTID, PAYPAL_SECRET, MODE);
 
         Payment createdPayment = null;
         PayPalResponseDTO ppr=new PayPalResponseDTO();
         try {
-            createdPayment = payment.create(apiContext);
+            createdPayment = payment.create(API_CONTEXT);
 
             ppr.setApprovalUrl(createdPayment.getLinks().get(PAYPAL_APPROVAL_URL_INDEX).getHref());
             ppr.setId(createdPayment.getId());
@@ -124,7 +133,6 @@ public class PaymentServiceImpl implements PaymentService{
         String token = request.getToken();
         MyPayment myPayment = myPaymentRepository.findByPaymentId(paymentId);
 
-        APIContext apiContext = new APIContext(PAYPAL_CLIENTID, PAYPAL_SECRET, MODE);
 
         Payment payment = new Payment();
         payment.setId(paymentId);
@@ -133,7 +141,7 @@ public class PaymentServiceImpl implements PaymentService{
         paymentExecution.setPayerId(payerId);
 
         try {
-            Payment executedPayment = payment.execute(apiContext, paymentExecution);
+            Payment executedPayment = payment.execute(API_CONTEXT, paymentExecution);
 
             Authorization authorization = executedPayment.getTransactions().get(0).getRelatedResources().get(0).getAuthorization();
 
@@ -144,18 +152,18 @@ public class PaymentServiceImpl implements PaymentService{
 
             capture.setIsFinalCapture(true);
 
-            Capture responseCapture = authorization.capture(apiContext, capture);
+            Capture responseCapture = authorization.capture(API_CONTEXT, capture);
 
             LOGGER.info("Capture id=" + responseCapture.getId() + " and status=" + responseCapture.getState());
 
-            myPayment.setSuccessful(true);
+            myPayment.setStatus(PayPalPaymentStatus.SUCCESSFUL);
             myPaymentRepository.save(myPayment);
 
             LOGGER.info("Executed payment - Request: \n" + Payment.getLastRequest());
             LOGGER.info("Executed payment - Response: \n" + Payment.getLastResponse());
 
         } catch (PayPalRESTException e) {
-            myPayment.setSuccessful(false);
+            myPayment.setStatus(PayPalPaymentStatus.ERROR);
             myPaymentRepository.save(myPayment);
             return notifyNc(myPayment.getRedirectUrl()+"/false");
         }
@@ -166,9 +174,16 @@ public class PaymentServiceImpl implements PaymentService{
     @Override
     public String cancelPayment(Long id) {
         MyPayment payment = myPaymentRepository.getOne(id);
-        payment.setSuccessful(false);
+        payment.setStatus(PayPalPaymentStatus.CANCELED);
         myPaymentRepository.save(payment);
-        return payment.getRedirectUrl();
+        return notifyNc(payment.getRedirectUrl()+"/false");
+    }
+
+    @Override
+    public void cancelSubscription(Long id) {
+        Subscription subscription = subscriptionRepository.getOne(id);
+        subscription.setStatus(SubscriptionStatus.CANCELED);
+        subscriptionRepository.save(subscription);
     }
 
 
@@ -188,7 +203,19 @@ public class PaymentServiceImpl implements PaymentService{
         String redirectUrl=amountAndUrlDTO.getRedirectUrl();
         String sellerEmail = amountAndUrlDTO.getSellerEmail();
 
-        MyPayment myPayment=new MyPayment();
+        LOGGER.info(String.format("Creating plan: %s   %s   %s",request.getTipCiklusa(),request.getPeriod(),request.getBrojCiklusa()));
+
+        Seller seller = sellerRepository.findBySellerEmail(sellerEmail);
+        Subscription subscription=new Subscription();
+        subscription.setItemId(UUID.fromString(request.getCasopisUuid()));
+        subscription.setAmount(amount);
+        subscription.setCycles(request.getBrojCiklusa());
+        subscription.setFrequency(request.getPeriod());
+        subscription.setFrequencyInterval(request.getUcestalostPerioda());
+        subscription.setSeller(seller);
+        subscription.setType(request.getTipCiklusa());
+
+        subscription=subscriptionRepository.save(subscription);
 
         Plan plan = new Plan();
 
@@ -200,25 +227,25 @@ public class PaymentServiceImpl implements PaymentService{
 
         plan.setName("Item "+request.getCasopisUuid()+" plan");
 
-        plan.setType(PLAN_TYPE);
+        plan.setType(request.getTipCiklusa());
         plan.setState(PLAN_STATE);
 
         MerchantPreferences merchantPreferences=new MerchantPreferences();
         merchantPreferences.setMaxFailAttempts("3");
-        merchantPreferences.setCancelUrl(SUBSCRIPTION_CANCEL);
-        merchantPreferences.setReturnUrl(SUBSCRIPTION_CONFIRM);
+        merchantPreferences.setCancelUrl(SUBSCRIPTION_CANCEL+"/"+subscription.getId());
+        merchantPreferences.setReturnUrl(SUBSCRIPTION_CONFIRM+"/"+subscription.getId());
         merchantPreferences.setInitialFailAmountAction(INITIAL_FAIL_AMOUNT_ACTION);
 
         PaymentDefinition paymentDefinition = new PaymentDefinition();
         paymentDefinition.setName("Regular payment definition for "+request.getCasopisUuid());
         paymentDefinition.setType(PAYMENT_DEF_TYPE);
-        paymentDefinition.setCycles("0");
+        paymentDefinition.setCycles(request.getBrojCiklusa().toString());
         Currency currency=new com.paypal.api.payments.Currency();
         currency.setCurrency("EUR");
         currency.setValue(amount.toString());
         paymentDefinition.setAmount(currency);
-        paymentDefinition.setFrequencyInterval("6");
-        paymentDefinition.setFrequency(PLAN_FREQUENCY);
+        paymentDefinition.setFrequencyInterval(request.getUcestalostPerioda().toString());
+        paymentDefinition.setFrequency(request.getPeriod());
 
         List<PaymentDefinition> paymentDefinitions=new ArrayList<>();
         paymentDefinitions.add(paymentDefinition);
@@ -249,6 +276,9 @@ public class PaymentServiceImpl implements PaymentService{
             e.printStackTrace();
         }
 
+        subscription.setPlanId(plan.getId());
+        subscriptionRepository.save(subscription);
+
         return createdPlan;
     }
 
@@ -267,6 +297,7 @@ public class PaymentServiceImpl implements PaymentService{
             if (planId==null){
                 Plan plan = createBillingPlan(request,amountAndUrlDTO);
                 planId=plan.getId();
+
             }
 
             Agreement agreement = new Agreement();
@@ -310,19 +341,104 @@ public class PaymentServiceImpl implements PaymentService{
     }
 
     @Override
-    public void executeSubAgreement(String token) {
-
+    public void executeSubAgreement(Long subscriptionId,String token) {
+        Subscription subscription = subscriptionRepository.getOne(subscriptionId);
         Agreement agreement =  new Agreement();
         agreement.setToken(token);
         APIContext apiContext = new APIContext(PAYPAL_CLIENTID, PAYPAL_SECRET, MODE);
 
         try {
             Agreement activeAgreement = agreement.execute(apiContext, agreement.getToken());
+            subscription.setAgreementId(activeAgreement.getId());
+            subscription.setStatus(SubscriptionStatus.ACTIVE);
+            subscriptionRepository.save(subscription);
             LOGGER.info("Agreement created with ID " + activeAgreement.getId());
         } catch (PayPalRESTException e) {
             LOGGER.error(e.getMessage());
         }
     }
+
+    @Override
+    public void updateStatusOrRetryCapture() {
+
+        LOGGER.info("Checking if all payments have been captured...");
+        List<MyPayment> payments = myPaymentRepository.findAllByStatus(PayPalPaymentStatus.CREATED);
+        payments.parallelStream().forEach(myPayment -> {
+            Payment payment = null;
+            try {
+                payment = Payment.get(API_CONTEXT, myPayment.getPaymentId());
+
+                LOGGER.info("Payment id: "+payment.getId());
+                LOGGER.info("Payment state: "+payment.getState());
+                String state = payment.getState().toUpperCase();
+                if (state.equalsIgnoreCase("APPROVED")){
+                    if (payment.getTransactions().get(0).getRelatedResources().isEmpty()) {
+                        LOGGER.info("Trying to recapture payment with paypal paymentId: " + payment.getId());
+                        ExecutePaymentRequest request = new ExecutePaymentRequest();
+                        request.setPayerID(payment.getPayer().getPayerInfo().getPayerId());
+                        request.setPaymentID(payment.getId());
+                        executePayment(request);
+                        return;
+                    }
+                    Authorization authorization=payment.getTransactions().get(0).getRelatedResources().get(0).getAuthorization();
+                    authorization = Authorization.get(API_CONTEXT,authorization.getId());
+                    if(authorization.getState().equalsIgnoreCase("CAPTURED")){
+                        myPayment.setStatus(PayPalPaymentStatus.SUCCESSFUL);
+                        myPaymentRepository.save(myPayment);
+                    }else if (authorization.getState().equalsIgnoreCase("AUTHORIZED")) {
+                        LOGGER.info("Trying to recapture payment with paypal paymentId: " + payment.getId());
+                        ExecutePaymentRequest request = new ExecutePaymentRequest();
+                        request.setPayerID(payment.getPayer().getPayerInfo().getPayerId());
+                        request.setPaymentID(payment.getId());
+                        executePayment(request);
+                    }else{
+                        LOGGER.info("Setting status to FAILED of payment with paypal paymentId: " + payment.getId());
+                        myPayment.setStatus(PayPalPaymentStatus.FAILED);
+                        myPaymentRepository.save(myPayment);
+                    }
+                }
+            } catch (PayPalRESTException e) {
+                e.printStackTrace();
+            }
+
+        });
+
+
+
+
+    }
+
+
+    @Scheduled(fixedRate = 100000)
+    public void changeStatus() {
+        updateStatusOrRetryCapture();
+    }
+
+    @Override
+    public void updateIntegratedSoftwareStatus() {
+        LOGGER.info("Checking if payment is recorded on seller software...");
+        List<MyPayment> payments = myPaymentRepository.findAllByStatusAndCheckedStatus(PayPalPaymentStatus.SUCCESSFUL,false);
+        payments.parallelStream().forEach(payment -> {
+
+            LOGGER.info("Founded payment: " + payment.getId() + " ,status: " + payment.getStatus());
+            LOGGER.info("Getting status on url: " + payment.getRedirectUrl());
+            ResponseEntity<Boolean> resp = restTemplate.getForEntity(payment.getRedirectUrl(),Boolean.class);
+            if(resp.getBody()) {
+                payment.setCheckedStatus(true);
+                myPaymentRepository.save(payment);
+            }else{
+                LOGGER.info("Posting status on seller app on url: " + payment.getRedirectUrl());
+                restTemplate.postForEntity(payment.getRedirectUrl()+"/true",null,String.class);
+            }
+        });
+
+    }
+
+    @Scheduled(fixedRate = 10000)
+    public void checkIntegratedSoftwareStatus() {
+        updateIntegratedSoftwareStatus();
+    }
+
 
 
 }

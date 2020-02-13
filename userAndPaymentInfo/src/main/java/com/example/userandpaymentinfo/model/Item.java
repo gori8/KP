@@ -20,7 +20,7 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "naziv", unique = true, nullable = false)
+    @Column(name = "naziv", unique = false, nullable = false)
     private String naziv;
 
     @Column(name = "uuid", unique = true, nullable = false)
@@ -30,8 +30,6 @@ public class Item {
     @Column(name = "redirectUrl", unique = false, nullable = true)
     private String redirectUrl;
 
-    @Column(name = "check_status_url", unique = false, nullable = true)
-    private String checkStatusUrl;
 
     @ManyToMany
     @JsonIgnore

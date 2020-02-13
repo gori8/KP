@@ -130,7 +130,7 @@ public class CasopisServiceImpl implements CasopisService {
             casopisDTO.getIzdanja().add(izdanjeDTO);
         }
 
-        return (List<CasopisDTO>) casopisiMap.values();
+        return new ArrayList<>(casopisiMap.values());
     }
 
     @Override

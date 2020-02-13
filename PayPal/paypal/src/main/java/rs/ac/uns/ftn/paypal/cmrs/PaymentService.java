@@ -14,10 +14,16 @@ public interface PaymentService {
 
     String cancelPayment(Long id);
 
+    void cancelSubscription(Long id);
+
     Plan createBillingPlan(CreatePaymentOrSubRequest request, AmountAndUrlDTO amountAndUrlDTO);
 
     String activateSubscription(CreatePaymentOrSubRequest request);
 
-    void executeSubAgreement(String token);
+    void executeSubAgreement(Long subscriptionId,String token);
+
+    void updateStatusOrRetryCapture();
+
+    void updateIntegratedSoftwareStatus();
 }
 

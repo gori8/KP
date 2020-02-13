@@ -22,6 +22,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rs.ac.uns.ftn.url.PccDTO;
+import rs.ac.uns.ftn.url.PccEntity;
 import rs.ac.uns.ftn.url.TransactionStatus;
 import rs.ac.uns.ftn.url.UrlClass;
 
@@ -287,6 +288,8 @@ public class PaymentServiceImpl implements PaymentService {
         pccDTO.setBankCode(BANK_CODE);
         pccDTO.setAmount(amount);
 
+        LOGGER.info(pccDTO.getValidTo().toString());
+
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
@@ -300,7 +303,7 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     @Override
-    public TransactionStatus pccAnswer(PccDTO pccDTO) throws ParseException {
+    public PccEntity pccAnswer(PccDTO pccDTO) throws ParseException {
 
         Transaction transaction = new Transaction();
 
@@ -313,6 +316,10 @@ public class PaymentServiceImpl implements PaymentService {
         Client client = clientRepository.findByMerchantId("pcc");
         Account recipientAccount=client.getAccount();
 
+        PccEntity pccEntity=new PccEntity();
+        Date timestamp=new Date();
+        pccEntity.setIssuerTimeStamp(timestamp);
+
         if (card == null) {
             LOGGER.error("Could not find card with provided pan number: " + pccDTO.getPan());
             LOGGER.info("Returning error-url to Bank Microservice");
@@ -322,7 +329,9 @@ public class PaymentServiceImpl implements PaymentService {
             transaction.setRecipient(recipientAccount);
             transactionService.save(transaction);
 
-            return TransactionStatus.ERROR;
+            pccEntity.setIssuerOrderId(transaction.getId());
+            pccEntity.setStatus(TransactionStatus.ERROR);
+            return pccEntity;
         }
 
         if (!card.getSecurityCode().toString().equals(pccDTO.getSecurityCode().toString())) {
@@ -333,7 +342,9 @@ public class PaymentServiceImpl implements PaymentService {
             transaction.setRecipient(recipientAccount);
             transactionService.save(transaction);
 
-            return TransactionStatus.ERROR;
+            pccEntity.setIssuerOrderId(transaction.getId());
+            pccEntity.setStatus(TransactionStatus.ERROR);
+            return pccEntity;
         }
 
         if(!card.getValidTo().toString().equals(pccDTO.getValidTo().toString())) {
@@ -344,7 +355,9 @@ public class PaymentServiceImpl implements PaymentService {
             transaction.setRecipient(recipientAccount);
             transactionService.save(transaction);
 
-            return TransactionStatus.ERROR;
+            pccEntity.setIssuerOrderId(transaction.getId());
+            pccEntity.setStatus(TransactionStatus.ERROR);
+            return pccEntity;
         }
 
         LOGGER.info("Provided Card Data is valid.");
@@ -361,7 +374,7 @@ public class PaymentServiceImpl implements PaymentService {
         if (account.getAmount().compareTo(pccDTO.getAmount()) < 0) {
             LOGGER.error("There is not enough funds on Card.");
             transaction.setValid(false);
-            ret = TransactionStatus.FAILED;
+            pccEntity.setStatus(TransactionStatus.FAILED);
         } else {
             account.setAmount(account.getAmount().subtract(pccDTO.getAmount()));
             recipientAccount.setAmount(recipientAccount.getAmount().add(pccDTO.getAmount()));
@@ -370,10 +383,11 @@ public class PaymentServiceImpl implements PaymentService {
 
             transaction.setValid(true);
 
-            ret = TransactionStatus.SUCCESSFUL;
+            pccEntity.setStatus(TransactionStatus.SUCCESSFUL);
         }
-        transactionService.save(transaction);
+        transaction = transactionService.save(transaction);
+        pccEntity.setIssuerOrderId(transaction.getId());
         LOGGER.info("Payment transaction is saved in bank database.");
-        return ret;
+        return pccEntity;
     }
 }

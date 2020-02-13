@@ -1,15 +1,14 @@
 package rs.ac.uns.ftn.paypal.cmrs;
 
-
 import lombok.Data;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.UUID;
 
-@Entity
 @Data
-public class MyPayment{
+@Entity
+public class Subscription {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,7 +19,14 @@ public class MyPayment{
     @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Seller seller;
 
-    private String paymentId;
+    private String planId;
+
+    private String agreementId;
+
+    private String type;
+    private Long cycles;
+    private Long frequencyInterval;
+    private String frequency;
 
     private String redirectUrl;
 
@@ -29,7 +35,7 @@ public class MyPayment{
     private UUID itemId;
 
     @Column(name = "status", nullable = false)
-    private PayPalPaymentStatus status=PayPalPaymentStatus.CREATED;
+    private SubscriptionStatus status=SubscriptionStatus.CREATED;
 
     @Column(name = "checked_status", unique = false, nullable = false)
     private Boolean checkedStatus=false;
