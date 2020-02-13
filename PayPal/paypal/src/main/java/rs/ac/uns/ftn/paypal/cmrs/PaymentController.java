@@ -29,7 +29,7 @@ public class PaymentController {
 
     @PostMapping
     public String create(@RequestBody CreatePaymentOrSubRequest request) {
-        System.out.println(request);
+        System.out.println("Item: "+request.getCasopisUuid());
         return "\""+paymentService.createPayment(request).getApprovalUrl()+"\"";
     }
 

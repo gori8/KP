@@ -7,666 +7,725 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::        (v2.2.2.RELEASE)
 
-2020-01-31 08:36:41.020  INFO 6748 --- [           main] rs.ac.uns.ftn.paypal.PaypalApplication   : No active profile set, falling back to default profiles: default
-2020-01-31 08:36:47.903  INFO 6748 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2020-01-31 08:36:49.856  INFO 6748 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1921ms. Found 3 JPA repository interfaces.
-2020-01-31 08:36:51.137  WARN 6748 --- [           main] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
-2020-01-31 08:36:52.357  INFO 6748 --- [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=e30a7701-ccd1-311c-936c-c8a73cbe98cf
-2020-01-31 08:36:54.608  INFO 6748 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-31 08:36:56.669  INFO 6748 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8094 (http)
-2020-01-31 08:36:56.776  INFO 6748 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2020-01-31 08:36:56.802  INFO 6748 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
-2020-01-31 08:36:57.385  INFO 6748 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2020-01-31 08:36:57.409  INFO 6748 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 16203 ms
-2020-01-31 08:36:58.391  WARN 6748 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
-2020-01-31 08:36:58.391  INFO 6748 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-2020-01-31 08:36:58.490  INFO 6748 --- [           main] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@1ddae9b5
-2020-01-31 08:37:01.932  INFO 6748 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2020-01-31 08:37:02.504  INFO 6748 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.9.Final}
-2020-01-31 08:37:03.522  INFO 6748 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
-2020-01-31 08:37:04.326  INFO 6748 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2020-01-31 08:37:05.662  INFO 6748 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2020-01-31 08:37:05.749  INFO 6748 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2020-01-31 08:37:10.436  INFO 6748 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2020-01-31 08:37:10.461  INFO 6748 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2020-01-31 08:37:13.965  WARN 6748 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
-2020-01-31 08:37:13.965  INFO 6748 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-2020-01-31 08:37:14.326  WARN 6748 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2020-01-31 08:37:15.172  INFO 6748 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-01-31 08:37:16.580  INFO 6748 --- [           main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
-2020-01-31 08:37:16.784  WARN 6748 --- [           main] ockingLoadBalancerClientRibbonWarnLogger : You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
-2020-01-31 08:37:16.972  INFO 6748 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
-2020-01-31 08:37:17.214  INFO 6748 --- [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
-2020-01-31 08:37:17.516  INFO 6748 --- [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
-2020-01-31 08:37:17.859  INFO 6748 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
-2020-01-31 08:37:17.859  INFO 6748 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2020-02-11 18:43:06.609  INFO 4386 --- [           main] rs.ac.uns.ftn.paypal.PaypalApplication   : No active profile set, falling back to default profiles: default
+2020-02-11 18:43:09.379  INFO 4386 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-02-11 18:43:10.078  INFO 4386 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 679ms. Found 3 JPA repository interfaces.
+2020-02-11 18:43:10.436  WARN 4386 --- [           main] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2020-02-11 18:43:10.973  INFO 4386 --- [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=e30a7701-ccd1-311c-936c-c8a73cbe98cf
+2020-02-11 18:43:11.675  INFO 4386 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-02-11 18:43:12.472  INFO 4386 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8094 (http)
+2020-02-11 18:43:12.514  INFO 4386 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-02-11 18:43:12.514  INFO 4386 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2020-02-11 18:43:12.736  INFO 4386 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-02-11 18:43:12.736  INFO 4386 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 6045 ms
+2020-02-11 18:43:13.028  WARN 4386 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-02-11 18:43:13.028  INFO 4386 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-02-11 18:43:13.068  INFO 4386 --- [           main] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@9bd0fa6
+2020-02-11 18:43:14.418  INFO 4386 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-02-11 18:43:14.686  INFO 4386 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.9.Final}
+2020-02-11 18:43:15.523  INFO 4386 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-02-11 18:43:16.043  INFO 4386 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-02-11 18:43:16.522  INFO 4386 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-02-11 18:43:16.570  INFO 4386 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2020-02-11 18:43:18.510  INFO 4386 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-02-11 18:43:18.518  INFO 4386 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-02-11 18:43:19.778  WARN 4386 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-02-11 18:43:19.778  INFO 4386 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-02-11 18:43:19.904  WARN 4386 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-02-11 18:43:20.210  INFO 4386 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-02-11 18:43:20.798  INFO 4386 --- [           main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2020-02-11 18:43:20.866  WARN 4386 --- [           main] ockingLoadBalancerClientRibbonWarnLogger : You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2020-02-11 18:43:20.919  INFO 4386 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-02-11 18:43:20.970  INFO 4386 --- [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2020-02-11 18:43:21.091  INFO 4386 --- [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2020-02-11 18:43:21.230  INFO 4386 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2020-02-11 18:43:21.231  INFO 4386 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
 WARNING: An illegal reflective access operation has occurred
 WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (jar:file:/home/antolovic/KP_SEP/KP/PayPal/paypal/target/paypal.jar!/BOOT-INF/lib/xstream-1.4.11.1.jar!/) to field java.util.TreeMap.comparator
 WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
 WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
 WARNING: All illegal access operations will be denied in a future release
-2020-01-31 08:37:18.523  INFO 6748 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
-2020-01-31 08:37:18.524  INFO 6748 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
-2020-01-31 08:37:19.173  INFO 6748 --- [           main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
-2020-01-31 08:37:19.316  INFO 6748 --- [           main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
-2020-01-31 08:37:19.316  INFO 6748 --- [           main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
-2020-01-31 08:37:19.317  INFO 6748 --- [           main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
-2020-01-31 08:37:19.317  INFO 6748 --- [           main] com.netflix.discovery.DiscoveryClient    : Application is null : false
-2020-01-31 08:37:19.317  INFO 6748 --- [           main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
-2020-01-31 08:37:19.317  INFO 6748 --- [           main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
-2020-01-31 08:37:19.317  INFO 6748 --- [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
-2020-01-31 08:37:19.866  INFO 6748 --- [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200
-2020-01-31 08:37:19.873  INFO 6748 --- [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 1
-2020-01-31 08:37:19.883  INFO 6748 --- [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
-2020-01-31 08:37:19.900  INFO 6748 --- [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1580456239899 with initial instances count: 1
-2020-01-31 08:37:19.907  INFO 6748 --- [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application PAYPAL with eureka with status UP
-2020-01-31 08:37:19.908  INFO 6748 --- [           main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1580456239908, current=UP, previous=STARTING]
-2020-01-31 08:37:19.912  INFO 6748 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_PAYPAL/paypal:1b6ebe922b09669d680c5970b33a0aae: registering service...
-2020-01-31 08:37:19.991  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if all payments have been captured...
-2020-01-31 08:37:20.079  INFO 6748 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_PAYPAL/paypal:1b6ebe922b09669d680c5970b33a0aae - registration status: 204
-2020-01-31 08:37:20.257  INFO 6748 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8094 (http) with context path ''
-2020-01-31 08:37:20.258  INFO 6748 --- [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8094
-2020-01-31 08:37:20.271  INFO 6748 --- [           main] rs.ac.uns.ftn.paypal.PaypalApplication   : Started PaypalApplication in 45.505 seconds (JVM running for 48.332)
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=?
-2020-01-31 08:37:20.579  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-2020-01-31 08:37:29.992  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-2020-01-31 08:37:39.992  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-2020-01-31 08:37:49.992  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-2020-01-31 08:37:59.992  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-2020-01-31 08:38:09.991  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-2020-01-31 08:38:19.992  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-2020-01-31 08:38:29.992  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-2020-01-31 08:38:39.992  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-2020-01-31 08:38:49.992  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-2020-01-31 08:38:59.975  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if all payments have been captured...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=?
-2020-01-31 08:38:59.991  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-2020-01-31 08:39:09.992  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-2020-01-31 08:39:12.323  INFO 6748 --- [nio-8094-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2020-01-31 08:39:12.324  INFO 6748 --- [nio-8094-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2020-01-31 08:39:12.334  INFO 6748 --- [nio-8094-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 10 ms
-rs.ac.uns.ftn.paypal.dto.CreatePaymentOrSubRequest@497cc49d
-UUID: 25b4d21b-5a91-49a6-a092-6538c75fd540
-http://localhost:8090/api/amountandurl/25b4d21b-5a91-49a6-a092-6538c75fd540
-Email: kickapoo889@gmail.com
-Hibernate: select seller0_.id as id1_1_, seller0_.can_subscribe as can_subs2_1_, seller0_.merchant_id as merchant3_1_, seller0_.paypal_email as paypal_e4_1_, seller0_.plan_id as plan_id5_1_, seller0_.seller_email as seller_e6_1_ from seller seller0_ where seller0_.seller_email=?
-Hibernate: select next_val as id_val from hibernate_sequence for update
-Hibernate: update hibernate_sequence set next_val= ? where next_val=?
-Hibernate: insert into my_payment (amount, checked_status, item_id, payment_id, redirect_url, seller_id, status, id) values (?, ?, ?, ?, ?, ?, ?, ?)
-Hibernate: update my_payment set amount=?, checked_status=?, item_id=?, payment_id=?, redirect_url=?, seller_id=?, status=? where id=?
-2020-01-31 08:39:19.991  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-2020-01-31 08:39:29.992  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-Hibernate: select mypayment0_.id as id1_0_0_, mypayment0_.amount as amount2_0_0_, mypayment0_.checked_status as checked_3_0_0_, mypayment0_.item_id as item_id4_0_0_, mypayment0_.payment_id as payment_5_0_0_, mypayment0_.redirect_url as redirect6_0_0_, mypayment0_.seller_id as seller_i8_0_0_, mypayment0_.status as status7_0_0_, seller1_.id as id1_1_1_, seller1_.can_subscribe as can_subs2_1_1_, seller1_.merchant_id as merchant3_1_1_, seller1_.paypal_email as paypal_e4_1_1_, seller1_.plan_id as plan_id5_1_1_, seller1_.seller_email as seller_e6_1_1_ from my_payment mypayment0_ left outer join seller seller1_ on mypayment0_.seller_id=seller1_.id where mypayment0_.id=?
-Hibernate: update my_payment set amount=?, checked_status=?, item_id=?, payment_id=?, redirect_url=?, seller_id=?, status=? where id=?
-2020-01-31 08:39:39.991  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-2020-01-31 08:39:49.992  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-2020-01-31 08:39:59.992  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-rs.ac.uns.ftn.paypal.dto.CreatePaymentOrSubRequest@19fca716
-UUID: 25b4d21b-5a91-49a6-a092-6538c75fd540
-http://localhost:8090/api/amountandurl/25b4d21b-5a91-49a6-a092-6538c75fd540
-Email: kickapoo889@gmail.com
-Hibernate: select seller0_.id as id1_1_, seller0_.can_subscribe as can_subs2_1_, seller0_.merchant_id as merchant3_1_, seller0_.paypal_email as paypal_e4_1_, seller0_.plan_id as plan_id5_1_, seller0_.seller_email as seller_e6_1_ from seller seller0_ where seller0_.seller_email=?
-Hibernate: select next_val as id_val from hibernate_sequence for update
-Hibernate: update hibernate_sequence set next_val= ? where next_val=?
-Hibernate: insert into my_payment (amount, checked_status, item_id, payment_id, redirect_url, seller_id, status, id) values (?, ?, ?, ?, ?, ?, ?, ?)
-Hibernate: update my_payment set amount=?, checked_status=?, item_id=?, payment_id=?, redirect_url=?, seller_id=?, status=? where id=?
-2020-01-31 08:40:09.991  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.payment_id=?
-Hibernate: select seller0_.id as id1_1_0_, seller0_.can_subscribe as can_subs2_1_0_, seller0_.merchant_id as merchant3_1_0_, seller0_.paypal_email as paypal_e4_1_0_, seller0_.plan_id as plan_id5_1_0_, seller0_.seller_email as seller_e6_1_0_ from seller seller0_ where seller0_.id=?
-2020-01-31 08:40:19.991  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-2020-01-31 08:40:22.547  INFO 6748 --- [nio-8094-exec-6] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Capture id=6A049510TC5631710 and status=completed
-Hibernate: update my_payment set amount=?, checked_status=?, item_id=?, payment_id=?, redirect_url=?, seller_id=?, status=? where id=?
-2020-01-31 08:40:22.552  INFO 6748 --- [nio-8094-exec-6] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Executed payment - Request: 
+2020-02-11 18:43:21.505  INFO 4386 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2020-02-11 18:43:21.505  INFO 4386 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2020-02-11 18:43:21.762  INFO 4386 --- [           main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-02-11 18:43:21.793  INFO 4386 --- [           main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2020-02-11 18:43:21.793  INFO 4386 --- [           main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2020-02-11 18:43:21.793  INFO 4386 --- [           main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2020-02-11 18:43:21.793  INFO 4386 --- [           main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2020-02-11 18:43:21.793  INFO 4386 --- [           main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2020-02-11 18:43:21.794  INFO 4386 --- [           main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2020-02-11 18:43:21.794  INFO 4386 --- [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2020-02-11 18:43:21.909  INFO 4386 --- [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2020-02-11 18:43:21.911  INFO 4386 --- [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 1
+2020-02-11 18:43:21.913  INFO 4386 --- [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2020-02-11 18:43:21.917  INFO 4386 --- [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1581443001916 with initial instances count: 0
+2020-02-11 18:43:21.919  INFO 4386 --- [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application PAYPAL with eureka with status UP
+2020-02-11 18:43:21.920  INFO 4386 --- [           main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1581443001920, current=UP, previous=STARTING]
+2020-02-11 18:43:21.922  INFO 4386 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_PAYPAL/paypal:a945fd158f5e5bd5844c35a4b6f863eb: registering service...
+2020-02-11 18:43:21.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if all payments have been captured...
+2020-02-11 18:43:22.000  INFO 4386 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8094 (http) with context path ''
+2020-02-11 18:43:22.001  INFO 4386 --- [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8094
+2020-02-11 18:43:22.009  INFO 4386 --- [           main] rs.ac.uns.ftn.paypal.PaypalApplication   : Started PaypalApplication in 17.538 seconds (JVM running for 19.075)
+2020-02-11 18:43:22.032  INFO 4386 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_PAYPAL/paypal:a945fd158f5e5bd5844c35a4b6f863eb - registration status: 204
+2020-02-11 18:43:22.159  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:43:31.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:43:41.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:43:51.912  INFO 4386 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2020-02-11 18:43:51.912  INFO 4386 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2020-02-11 18:43:51.912  INFO 4386 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2020-02-11 18:43:51.912  INFO 4386 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2020-02-11 18:43:51.913  INFO 4386 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2020-02-11 18:43:51.913  INFO 4386 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+2020-02-11 18:43:51.913  INFO 4386 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2020-02-11 18:43:51.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:43:52.049  INFO 4386 --- [freshExecutor-0] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2020-02-11 18:44:01.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:44:11.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:44:21.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:44:31.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:44:41.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:44:51.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:45:01.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if all payments have been captured...
+2020-02-11 18:45:01.942  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:45:11.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:45:21.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:45:31.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:45:41.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:45:51.939  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:46:01.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:46:11.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:46:21.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:46:31.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:46:41.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if all payments have been captured...
+2020-02-11 18:46:41.942  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:46:51.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:47:01.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:47:11.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:47:21.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:47:31.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:47:41.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:47:51.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:48:01.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:48:11.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:48:21.796  INFO 4386 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-02-11 18:48:21.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if all payments have been captured...
+2020-02-11 18:48:21.942  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:48:31.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:48:41.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:48:51.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:49:01.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:49:11.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:49:21.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:49:31.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:49:41.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:49:51.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:50:01.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if all payments have been captured...
+2020-02-11 18:50:01.942  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:50:11.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:50:21.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:50:31.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:50:41.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:50:51.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:51:01.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:51:11.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:51:21.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:51:31.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:51:41.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if all payments have been captured...
+2020-02-11 18:51:41.942  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:51:49.355  INFO 4386 --- [nio-8094-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-02-11 18:51:49.355  INFO 4386 --- [nio-8094-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-02-11 18:51:49.371  INFO 4386 --- [nio-8094-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 16 ms
+Item: 64df0f3b-50c2-4a98-8279-797ace42f035
+UUID: 64df0f3b-50c2-4a98-8279-797ace42f035
+https://localhost:8771/userandpayment/api/amountandurl/64df0f3b-50c2-4a98-8279-797ace42f035
+Email: urednik1@gmail.com
+2020-02-11 18:51:49.953 ERROR 4386 --- [nio-8094-exec-2] com.paypal.base.HttpConnection           : Caught exception while handling error response
+
+java.net.UnknownHostException: api.sandbox.paypal.com
+	at java.base/java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:220) ~[na:na]
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:403) ~[na:na]
+	at java.base/java.net.Socket.connect(Socket.java:609) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketImpl.connect(SSLSocketImpl.java:285) ~[na:na]
+	at java.base/sun.net.NetworkClient.doConnect(NetworkClient.java:177) ~[na:na]
+	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:474) ~[na:na]
+	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:569) ~[na:na]
+	at java.base/sun.net.www.protocol.https.HttpsClient.<init>(HttpsClient.java:265) ~[na:na]
+	at java.base/sun.net.www.protocol.https.HttpsClient.New(HttpsClient.java:372) ~[na:na]
+	at java.base/sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.getNewHttpClient(AbstractDelegateHttpsURLConnection.java:191) ~[na:na]
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1227) ~[na:na]
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1081) ~[na:na]
+	at java.base/sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:177) ~[na:na]
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1587) ~[na:na]
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1515) ~[na:na]
+	at java.base/java.net.HttpURLConnection.getResponseCode(HttpURLConnection.java:527) ~[na:na]
+	at java.base/sun.net.www.protocol.https.HttpsURLConnectionImpl.getResponseCode(HttpsURLConnectionImpl.java:334) ~[na:na]
+	at com.paypal.base.HttpConnection.executeWithStream(HttpConnection.java:147) ~[rest-api-sdk-1.14.0.jar!/:na]
+	at com.paypal.base.HttpConnection.execute(HttpConnection.java:65) ~[rest-api-sdk-1.14.0.jar!/:na]
+	at com.paypal.base.rest.OAuthTokenCredential.generateAccessToken(OAuthTokenCredential.java:383) ~[rest-api-sdk-1.14.0.jar!/:na]
+	at com.paypal.base.rest.OAuthTokenCredential.getAccessToken(OAuthTokenCredential.java:230) ~[rest-api-sdk-1.14.0.jar!/:na]
+	at com.paypal.base.rest.APIContext.fetchAccessToken(APIContext.java:303) ~[rest-api-sdk-1.14.0.jar!/:na]
+	at com.paypal.base.rest.PayPalResource.configureAndExecute(PayPalResource.java:282) ~[rest-api-sdk-1.14.0.jar!/:na]
+	at com.paypal.base.rest.PayPalResource.configureAndExecute(PayPalResource.java:228) ~[rest-api-sdk-1.14.0.jar!/:na]
+	at com.paypal.api.payments.Payment.create(Payment.java:149) ~[rest-api-sdk-1.14.0.jar!/:na]
+	at rs.ac.uns.ftn.paypal.cmrs.PaymentServiceImpl.createPayment(PaymentServiceImpl.java:109) ~[classes!/:0.0.1-SNAPSHOT]
+	at rs.ac.uns.ftn.paypal.cmrs.PaymentController.create(PaymentController.java:33) ~[classes!/:0.0.1-SNAPSHOT]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:888) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:793) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:108) ~[spring-boot-actuator-2.2.2.RELEASE.jar!/:2.2.2.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:526) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:367) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:860) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1591) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+
+2020-02-11 18:51:49.954 ERROR 4386 --- [nio-8094-exec-2] com.paypal.base.HttpConnection           :  Retry  No : 1...
+2020-02-11 18:51:50.959 ERROR 4386 --- [nio-8094-exec-2] com.paypal.base.HttpConnection           : Caught exception while handling error response
+
+java.net.UnknownHostException: api.sandbox.paypal.com
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:na]
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490) ~[na:na]
+	at java.base/sun.net.www.protocol.http.HttpURLConnection$10.run(HttpURLConnection.java:1969) ~[na:na]
+	at java.base/sun.net.www.protocol.http.HttpURLConnection$10.run(HttpURLConnection.java:1964) ~[na:na]
+	at java.base/java.security.AccessController.doPrivileged(Native Method) ~[na:na]
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getChainedException(HttpURLConnection.java:1963) ~[na:na]
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1531) ~[na:na]
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1515) ~[na:na]
+	at java.base/java.net.HttpURLConnection.getResponseCode(HttpURLConnection.java:527) ~[na:na]
+	at java.base/sun.net.www.protocol.https.HttpsURLConnectionImpl.getResponseCode(HttpsURLConnectionImpl.java:334) ~[na:na]
+	at com.paypal.base.HttpConnection.executeWithStream(HttpConnection.java:147) ~[rest-api-sdk-1.14.0.jar!/:na]
+	at com.paypal.base.HttpConnection.execute(HttpConnection.java:65) ~[rest-api-sdk-1.14.0.jar!/:na]
+	at com.paypal.base.rest.OAuthTokenCredential.generateAccessToken(OAuthTokenCredential.java:383) ~[rest-api-sdk-1.14.0.jar!/:na]
+	at com.paypal.base.rest.OAuthTokenCredential.getAccessToken(OAuthTokenCredential.java:230) ~[rest-api-sdk-1.14.0.jar!/:na]
+	at com.paypal.base.rest.APIContext.fetchAccessToken(APIContext.java:303) ~[rest-api-sdk-1.14.0.jar!/:na]
+	at com.paypal.base.rest.PayPalResource.configureAndExecute(PayPalResource.java:282) ~[rest-api-sdk-1.14.0.jar!/:na]
+	at com.paypal.base.rest.PayPalResource.configureAndExecute(PayPalResource.java:228) ~[rest-api-sdk-1.14.0.jar!/:na]
+	at com.paypal.api.payments.Payment.create(Payment.java:149) ~[rest-api-sdk-1.14.0.jar!/:na]
+	at rs.ac.uns.ftn.paypal.cmrs.PaymentServiceImpl.createPayment(PaymentServiceImpl.java:109) ~[classes!/:0.0.1-SNAPSHOT]
+	at rs.ac.uns.ftn.paypal.cmrs.PaymentController.create(PaymentController.java:33) ~[classes!/:0.0.1-SNAPSHOT]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:888) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:793) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:108) ~[spring-boot-actuator-2.2.2.RELEASE.jar!/:2.2.2.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:526) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:367) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:860) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1591) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+Caused by: java.net.UnknownHostException: api.sandbox.paypal.com
+	at java.base/java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:220) ~[na:na]
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:403) ~[na:na]
+	at java.base/java.net.Socket.connect(Socket.java:609) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketImpl.connect(SSLSocketImpl.java:285) ~[na:na]
+	at java.base/sun.net.NetworkClient.doConnect(NetworkClient.java:177) ~[na:na]
+	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:474) ~[na:na]
+	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:569) ~[na:na]
+	at java.base/sun.net.www.protocol.https.HttpsClient.<init>(HttpsClient.java:265) ~[na:na]
+	at java.base/sun.net.www.protocol.https.HttpsClient.New(HttpsClient.java:372) ~[na:na]
+	at java.base/sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.getNewHttpClient(AbstractDelegateHttpsURLConnection.java:191) ~[na:na]
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1227) ~[na:na]
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1081) ~[na:na]
+	at java.base/sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:177) ~[na:na]
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1587) ~[na:na]
+	... 67 common frames omitted
+
+2020-02-11 18:51:50.960 ERROR 4386 --- [nio-8094-exec-2] com.paypal.base.HttpConnection           :  Retry  No : 2...
+2020-02-11 18:51:51.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+response-code: 0	details: null
+	at com.paypal.base.rest.PayPalRESTException.createFromHttpErrorException(PayPalRESTException.java:72)
+	at com.paypal.base.rest.OAuthTokenCredential.generateAccessToken(OAuthTokenCredential.java:401)
+	at com.paypal.base.rest.OAuthTokenCredential.getAccessToken(OAuthTokenCredential.java:230)
+	at com.paypal.base.rest.APIContext.fetchAccessToken(APIContext.java:303)
+	at com.paypal.base.rest.PayPalResource.configureAndExecute(PayPalResource.java:282)
+	at com.paypal.base.rest.PayPalResource.configureAndExecute(PayPalResource.java:228)
+	at com.paypal.api.payments.Payment.create(Payment.java:149)
+	at rs.ac.uns.ftn.paypal.cmrs.PaymentServiceImpl.createPayment(PaymentServiceImpl.java:109)
+	at rs.ac.uns.ftn.paypal.cmrs.PaymentController.create(PaymentController.java:33)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:888)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:793)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:108)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:526)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:367)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:860)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1591)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: com.paypal.base.exception.HttpErrorException: retry fails..  check log for more information
+	at com.paypal.base.HttpConnection.executeWithStream(HttpConnection.java:184)
+	at com.paypal.base.HttpConnection.execute(HttpConnection.java:65)
+	at com.paypal.base.rest.OAuthTokenCredential.generateAccessToken(OAuthTokenCredential.java:383)
+	... 61 more
+Caused by: java.net.UnknownHostException: api.sandbox.paypal.com
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection$10.run(HttpURLConnection.java:1969)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection$10.run(HttpURLConnection.java:1964)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getChainedException(HttpURLConnection.java:1963)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1531)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1515)
+	at java.base/java.net.HttpURLConnection.getResponseCode(HttpURLConnection.java:527)
+	at java.base/sun.net.www.protocol.https.HttpsURLConnectionImpl.getResponseCode(HttpsURLConnectionImpl.java:334)
+	at com.paypal.base.HttpConnection.executeWithStream(HttpConnection.java:147)
+	... 63 more
+Caused by: java.net.UnknownHostException: api.sandbox.paypal.com
+	at java.base/java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:220)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:403)
+	at java.base/java.net.Socket.connect(Socket.java:609)
+	at java.base/sun.security.ssl.SSLSocketImpl.connect(SSLSocketImpl.java:285)
+	at java.base/sun.net.NetworkClient.doConnect(NetworkClient.java:177)
+	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:474)
+	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:569)
+	at java.base/sun.net.www.protocol.https.HttpsClient.<init>(HttpsClient.java:265)
+	at java.base/sun.net.www.protocol.https.HttpsClient.New(HttpsClient.java:372)
+	at java.base/sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.getNewHttpClient(AbstractDelegateHttpsURLConnection.java:191)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1227)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1081)
+	at java.base/sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:177)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1587)
+	... 67 more
+2020-02-11 18:51:51.991 ERROR 4386 --- [nio-8094-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException] with root cause
+
+java.lang.NullPointerException: null
+	at rs.ac.uns.ftn.paypal.cmrs.PaymentServiceImpl.createPayment(PaymentServiceImpl.java:121) ~[classes!/:0.0.1-SNAPSHOT]
+	at rs.ac.uns.ftn.paypal.cmrs.PaymentController.create(PaymentController.java:33) ~[classes!/:0.0.1-SNAPSHOT]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:888) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:793) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:108) ~[spring-boot-actuator-2.2.2.RELEASE.jar!/:2.2.2.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:526) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:367) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:860) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1591) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+
+2020-02-11 18:52:01.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:52:11.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:52:21.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:52:31.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:52:41.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+Item: 64df0f3b-50c2-4a98-8279-797ace42f035
+UUID: 64df0f3b-50c2-4a98-8279-797ace42f035
+https://localhost:8771/userandpayment/api/amountandurl/64df0f3b-50c2-4a98-8279-797ace42f035
+Email: urednik1@gmail.com
+2020-02-11 18:52:51.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:53:01.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:53:11.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:53:18.467  INFO 4386 --- [nio-8094-exec-4] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Capture id=9XM89428VC309072J and status=completed
+2020-02-11 18:53:18.480  INFO 4386 --- [nio-8094-exec-4] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Executed payment - Request: 
 {
   "amount": {
     "currency": "USD",
-    "total": "1.00"
+    "total": "5.00"
   },
   "is_final_capture": true
 }
-2020-01-31 08:40:22.553  INFO 6748 --- [nio-8094-exec-6] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Executed payment - Response: 
-{"id":"6A049510TC5631710","amount":{"total":"1.00","currency":"USD"},"state":"completed","reason_code":"NONE","custom":"","transaction_fee":{"value":"0.33","currency":"USD"},"is_final_capture":true,"parent_payment":"PAYID-LYZ5TUI3VC04865LP7513352","invoice_number":"","create_time":"2020-01-31T07:40:21Z","update_time":"2020-01-31T07:40:21Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/capture/6A049510TC5631710","rel":"self","method":"GET"},{"href":"https://api.sandbox.paypal.com/v1/payments/capture/6A049510TC5631710/refund","rel":"refund","method":"POST"},{"href":"https://api.sandbox.paypal.com/v1/payments/authorization/0R4058156Y740745J","rel":"authorization","method":"GET"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LYZ5TUI3VC04865LP7513352","rel":"parent_payment","method":"GET"}]}
-2020-01-31 08:40:29.992  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-Hibernate: select seller0_.id as id1_1_0_, seller0_.can_subscribe as can_subs2_1_0_, seller0_.merchant_id as merchant3_1_0_, seller0_.paypal_email as paypal_e4_1_0_, seller0_.plan_id as plan_id5_1_0_, seller0_.seller_email as seller_e6_1_0_ from seller seller0_ where seller0_.id=?
-2020-01-31 08:40:30.000  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Founded payment: 20 ,status: SUCCESSFUL
-2020-01-31 08:40:30.000  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Getting status on url: https://localhost:9000/webshop/payed/user/25b4d21b-5a91-49a6-a092-6538c75fd540
-Hibernate: select mypayment0_.id as id1_0_1_, mypayment0_.amount as amount2_0_1_, mypayment0_.checked_status as checked_3_0_1_, mypayment0_.item_id as item_id4_0_1_, mypayment0_.payment_id as payment_5_0_1_, mypayment0_.redirect_url as redirect6_0_1_, mypayment0_.seller_id as seller_i8_0_1_, mypayment0_.status as status7_0_1_, seller1_.id as id1_1_0_, seller1_.can_subscribe as can_subs2_1_0_, seller1_.merchant_id as merchant3_1_0_, seller1_.paypal_email as paypal_e4_1_0_, seller1_.plan_id as plan_id5_1_0_, seller1_.seller_email as seller_e6_1_0_ from my_payment mypayment0_ left outer join seller seller1_ on mypayment0_.seller_id=seller1_.id where mypayment0_.id=?
-Hibernate: update my_payment set amount=?, checked_status=?, item_id=?, payment_id=?, redirect_url=?, seller_id=?, status=? where id=?
-2020-01-31 08:40:39.975  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if all payments have been captured...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=?
-2020-01-31 08:40:39.991  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-2020-01-31 08:40:49.991  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-2020-01-31 08:40:59.991  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-http://localhost:8090/api/amountandurl/87db176a-28e3-4f66-9c4d-3261d93c7ad7
-Hibernate: select seller0_.id as id1_1_, seller0_.can_subscribe as can_subs2_1_, seller0_.merchant_id as merchant3_1_, seller0_.paypal_email as paypal_e4_1_, seller0_.plan_id as plan_id5_1_, seller0_.seller_email as seller_e6_1_ from seller seller0_ where seller0_.seller_email=?
-2020-01-31 08:41:03.701  INFO 6748 --- [nio-8094-exec-8] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Creating plan: INFINITE   YEAR   0
-Hibernate: select seller0_.id as id1_1_, seller0_.can_subscribe as can_subs2_1_, seller0_.merchant_id as merchant3_1_, seller0_.paypal_email as paypal_e4_1_, seller0_.plan_id as plan_id5_1_, seller0_.seller_email as seller_e6_1_ from seller seller0_ where seller0_.seller_email=?
-Hibernate: select next_val as id_val from hibernate_sequence for update
-Hibernate: update hibernate_sequence set next_val= ? where next_val=?
-Hibernate: insert into subscription (agreement_id, amount, checked_status, cycles, frequency, frequency_interval, item_id, plan_id, redirect_url, seller_id, status, type, id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-2020-01-31 08:41:06.501  INFO 6748 --- [nio-8094-exec-8] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Plan state = CREATED
-2020-01-31 08:41:09.991  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-2020-01-31 08:41:19.991  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-2020-01-31 08:41:29.992  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-2020-01-31 08:41:39.991  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-Hibernate: select subscripti0_.id as id1_2_0_, subscripti0_.agreement_id as agreemen2_2_0_, subscripti0_.amount as amount3_2_0_, subscripti0_.checked_status as checked_4_2_0_, subscripti0_.cycles as cycles5_2_0_, subscripti0_.frequency as frequenc6_2_0_, subscripti0_.frequency_interval as frequenc7_2_0_, subscripti0_.item_id as item_id8_2_0_, subscripti0_.plan_id as plan_id9_2_0_, subscripti0_.redirect_url as redirec10_2_0_, subscripti0_.seller_id as seller_13_2_0_, subscripti0_.status as status11_2_0_, subscripti0_.type as type12_2_0_, seller1_.id as id1_1_1_, seller1_.can_subscribe as can_subs2_1_1_, seller1_.merchant_id as merchant3_1_1_, seller1_.paypal_email as paypal_e4_1_1_, seller1_.plan_id as plan_id5_1_1_, seller1_.seller_email as seller_e6_1_1_ from subscription subscripti0_ left outer join seller seller1_ on subscripti0_.seller_id=seller1_.id where subscripti0_.id=?
-Hibernate: update subscription set agreement_id=?, amount=?, checked_status=?, cycles=?, frequency=?, frequency_interval=?, item_id=?, plan_id=?, redirect_url=?, seller_id=?, status=?, type=? where id=?
-2020-01-31 08:41:44.630  INFO 6748 --- [nio-8094-exec-9] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Agreement created with ID I-E27YUJPENVXD
-2020-01-31 08:41:49.991  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-2020-01-31 08:41:59.991  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-2020-01-31 08:42:09.991  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-2020-01-31 08:42:19.320  INFO 6748 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
-2020-01-31 08:42:19.975  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if all payments have been captured...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=?
-2020-01-31 08:42:19.991  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-2020-01-31 08:42:29.992  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-2020-01-31 08:42:39.991  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-2020-01-31 08:42:49.991  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-2020-01-31 08:42:59.992  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-2020-01-31 08:43:09.992  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-2020-01-31 08:43:19.992  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-2020-01-31 08:43:29.991  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-2020-01-31 08:43:39.991  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-2020-01-31 08:43:49.991  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-2020-01-31 08:43:59.975  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if all payments have been captured...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=?
-2020-01-31 08:43:59.992  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-2020-01-31 08:44:09.991  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-2020-01-31 08:44:19.991  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-2020-01-31 08:44:29.991  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-2020-01-31 08:44:39.992  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-2020-01-31 08:44:49.991  INFO 6748 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-Hibernate: select mypayment0_.id as id1_0_, mypayment0_.amount as amount2_0_, mypayment0_.checked_status as checked_3_0_, mypayment0_.item_id as item_id4_0_, mypayment0_.payment_id as payment_5_0_, mypayment0_.redirect_url as redirect6_0_, mypayment0_.seller_id as seller_i8_0_, mypayment0_.status as status7_0_ from my_payment mypayment0_ where mypayment0_.status=? and mypayment0_.checked_status=?
-2020-01-31 08:44:52.165  INFO 6748 --- [extShutdownHook] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application PAYPAL with eureka with status DOWN
-2020-01-31 08:44:52.166  WARN 6748 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1580456692166, current=DOWN, previous=UP]
-2020-01-31 08:44:52.166  INFO 6748 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_PAYPAL/paypal:1b6ebe922b09669d680c5970b33a0aae: registering service...
-2020-01-31 08:44:52.177  INFO 6748 --- [extShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'taskScheduler'
-2020-01-31 08:44:52.179  INFO 6748 --- [extShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
-2020-01-31 08:44:52.179 ERROR 6748 --- [nfoReplicator-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
+2020-02-11 18:53:18.481  INFO 4386 --- [nio-8094-exec-4] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Executed payment - Response: 
+{"id":"9XM89428VC309072J","amount":{"total":"5.00","currency":"USD"},"state":"completed","reason_code":"NONE","custom":"","transaction_fee":{"value":"0.45","currency":"USD"},"is_final_capture":true,"parent_payment":"PAYID-LZBOT4I4KW76342P3797694L","invoice_number":"","create_time":"2020-02-11T17:53:17Z","update_time":"2020-02-11T17:53:17Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/capture/9XM89428VC309072J","rel":"self","method":"GET"},{"href":"https://api.sandbox.paypal.com/v1/payments/capture/9XM89428VC309072J/refund","rel":"refund","method":"POST"},{"href":"https://api.sandbox.paypal.com/v1/payments/authorization/1MC67401D09803821","rel":"authorization","method":"GET"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LZBOT4I4KW76342P3797694L","rel":"parent_payment","method":"GET"}]}
+2020-02-11 18:53:21.798  INFO 4386 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-02-11 18:53:21.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if all payments have been captured...
+2020-02-11 18:53:21.947 ERROR 4386 --- [   scheduling-1] o.s.s.s.TaskUtils$LoggingErrorHandler    : Unexpected error occurred in scheduled task
 
-com.sun.jersey.api.client.ClientHandlerException: org.apache.http.NoHttpResponseException: localhost:8761 failed to respond
-	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:187) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
-	at com.sun.jersey.api.client.filter.GZIPContentEncodingFilter.handle(GZIPContentEncodingFilter.java:123) ~[jersey-client-1.19.1.jar!/:1.19.1]
-	at com.netflix.discovery.EurekaIdentityHeaderFilter.handle(EurekaIdentityHeaderFilter.java:27) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.sun.jersey.api.client.Client.handle(Client.java:652) ~[jersey-client-1.19.1.jar!/:1.19.1]
-	at com.sun.jersey.api.client.WebResource.handle(WebResource.java:682) ~[jersey-client-1.19.1.jar!/:1.19.1]
-	at com.sun.jersey.api.client.WebResource.access$200(WebResource.java:74) ~[jersey-client-1.19.1.jar!/:1.19.1]
-	at com.sun.jersey.api.client.WebResource$Builder.post(WebResource.java:570) ~[jersey-client-1.19.1.jar!/:1.19.1]
-	at com.netflix.discovery.shared.transport.jersey.AbstractJerseyEurekaHttpClient.register(AbstractJerseyEurekaHttpClient.java:56) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.MetricsCollectingEurekaHttpClient.execute(MetricsCollectingEurekaHttpClient.java:73) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.execute(RedirectingEurekaHttpClient.java:89) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:120) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.DiscoveryClient.register(DiscoveryClient.java:847) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.InstanceInfoReplicator.run(InstanceInfoReplicator.java:121) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.InstanceInfoReplicator$1.run(InstanceInfoReplicator.java:101) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[na:na]
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
-	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304) ~[na:na]
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
-	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
-Caused by: org.apache.http.NoHttpResponseException: localhost:8761 failed to respond
-	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:141) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:56) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:259) ~[httpcore-4.4.12.jar!/:4.4.12]
-	at org.apache.http.impl.AbstractHttpClientConnection.receiveResponseHeader(AbstractHttpClientConnection.java:294) ~[httpcore-4.4.12.jar!/:4.4.12]
-	at org.apache.http.impl.conn.DefaultClientConnection.receiveResponseHeader(DefaultClientConnection.java:257) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.conn.AbstractClientConnAdapter.receiveResponseHeader(AbstractClientConnAdapter.java:230) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:273) ~[httpcore-4.4.12.jar!/:4.4.12]
-	at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:125) ~[httpcore-4.4.12.jar!/:4.4.12]
-	at org.apache.http.impl.client.DefaultRequestDirector.tryExecute(DefaultRequestDirector.java:679) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:481) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:835) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:118) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:56) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:173) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
-	... 28 common frames omitted
-
-2020-01-31 08:44:52.180  WARN 6748 --- [nfoReplicator-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: org.apache.http.NoHttpResponseException: localhost:8761 failed to respond
-2020-01-31 08:44:52.186 ERROR 6748 --- [nfoReplicator-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
-
-com.sun.jersey.api.client.ClientHandlerException: java.net.ConnectException: Connection refused (Connection refused)
-	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:187) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
-	at com.sun.jersey.api.client.filter.GZIPContentEncodingFilter.handle(GZIPContentEncodingFilter.java:123) ~[jersey-client-1.19.1.jar!/:1.19.1]
-	at com.netflix.discovery.EurekaIdentityHeaderFilter.handle(EurekaIdentityHeaderFilter.java:27) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.sun.jersey.api.client.Client.handle(Client.java:652) ~[jersey-client-1.19.1.jar!/:1.19.1]
-	at com.sun.jersey.api.client.WebResource.handle(WebResource.java:682) ~[jersey-client-1.19.1.jar!/:1.19.1]
-	at com.sun.jersey.api.client.WebResource.access$200(WebResource.java:74) ~[jersey-client-1.19.1.jar!/:1.19.1]
-	at com.sun.jersey.api.client.WebResource$Builder.post(WebResource.java:570) ~[jersey-client-1.19.1.jar!/:1.19.1]
-	at com.netflix.discovery.shared.transport.jersey.AbstractJerseyEurekaHttpClient.register(AbstractJerseyEurekaHttpClient.java:56) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.MetricsCollectingEurekaHttpClient.execute(MetricsCollectingEurekaHttpClient.java:73) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.executeOnNewServer(RedirectingEurekaHttpClient.java:118) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.execute(RedirectingEurekaHttpClient.java:79) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:120) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.DiscoveryClient.register(DiscoveryClient.java:847) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.InstanceInfoReplicator.run(InstanceInfoReplicator.java:121) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.InstanceInfoReplicator$1.run(InstanceInfoReplicator.java:101) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[na:na]
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
-	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304) ~[na:na]
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
-	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
-Caused by: java.net.ConnectException: Connection refused (Connection refused)
-	at java.base/java.net.PlainSocketImpl.socketConnect(Native Method) ~[na:na]
-	at java.base/java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:399) ~[na:na]
-	at java.base/java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:242) ~[na:na]
-	at java.base/java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:224) ~[na:na]
-	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:403) ~[na:na]
-	at java.base/java.net.Socket.connect(Socket.java:609) ~[na:na]
-	at org.apache.http.conn.scheme.PlainSocketFactory.connectSocket(PlainSocketFactory.java:121) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:180) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:144) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:134) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:605) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:440) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:835) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:118) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:56) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:173) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
-	... 29 common frames omitted
-
-2020-01-31 08:44:52.186  WARN 6748 --- [nfoReplicator-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
-2020-01-31 08:44:52.186  INFO 6748 --- [extShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2020-01-31 08:44:52.187  WARN 6748 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_PAYPAL/paypal:1b6ebe922b09669d680c5970b33a0aae - registration failed Cannot execute request on any known server
-
-com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
-	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.DiscoveryClient.register(DiscoveryClient.java:847) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.InstanceInfoReplicator.run(InstanceInfoReplicator.java:121) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.InstanceInfoReplicator$1.run(InstanceInfoReplicator.java:101) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[na:na]
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
-	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304) ~[na:na]
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
-	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
-
-2020-01-31 08:44:52.187  WARN 6748 --- [nfoReplicator-0] c.n.discovery.InstanceInfoReplicator     : There was a problem with the instance info replicator
-
-com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
-	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.DiscoveryClient.register(DiscoveryClient.java:847) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.InstanceInfoReplicator.run(InstanceInfoReplicator.java:121) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.InstanceInfoReplicator$1.run(InstanceInfoReplicator.java:101) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[na:na]
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
-	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304) ~[na:na]
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
-	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
-
-2020-01-31 08:44:52.196  INFO 6748 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
-2020-01-31 08:44:53.023 ERROR 6748 --- [tbeatExecutor-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
-
-com.sun.jersey.api.client.ClientHandlerException: java.net.ConnectException: Connection refused (Connection refused)
-	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:187) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
-	at com.sun.jersey.api.client.filter.GZIPContentEncodingFilter.handle(GZIPContentEncodingFilter.java:123) ~[jersey-client-1.19.1.jar!/:1.19.1]
-	at com.netflix.discovery.EurekaIdentityHeaderFilter.handle(EurekaIdentityHeaderFilter.java:27) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.sun.jersey.api.client.Client.handle(Client.java:652) ~[jersey-client-1.19.1.jar!/:1.19.1]
-	at com.sun.jersey.api.client.WebResource.handle(WebResource.java:682) ~[jersey-client-1.19.1.jar!/:1.19.1]
-	at com.sun.jersey.api.client.WebResource.access$200(WebResource.java:74) ~[jersey-client-1.19.1.jar!/:1.19.1]
-	at com.sun.jersey.api.client.WebResource$Builder.put(WebResource.java:529) ~[jersey-client-1.19.1.jar!/:1.19.1]
-	at com.netflix.discovery.shared.transport.jersey.AbstractJerseyEurekaHttpClient.sendHeartBeat(AbstractJerseyEurekaHttpClient.java:102) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.MetricsCollectingEurekaHttpClient.execute(MetricsCollectingEurekaHttpClient.java:73) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.executeOnNewServer(RedirectingEurekaHttpClient.java:118) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.execute(RedirectingEurekaHttpClient.java:79) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:120) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.DiscoveryClient.renew(DiscoveryClient.java:864) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.DiscoveryClient$HeartbeatThread.run(DiscoveryClient.java:1423) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[na:na]
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
-	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
-Caused by: java.net.ConnectException: Connection refused (Connection refused)
-	at java.base/java.net.PlainSocketImpl.socketConnect(Native Method) ~[na:na]
-	at java.base/java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:399) ~[na:na]
-	at java.base/java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:242) ~[na:na]
-	at java.base/java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:224) ~[na:na]
-	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:403) ~[na:na]
-	at java.base/java.net.Socket.connect(Socket.java:609) ~[na:na]
-	at org.apache.http.conn.scheme.PlainSocketFactory.connectSocket(PlainSocketFactory.java:121) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:180) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:144) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:134) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:605) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:440) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:835) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:118) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:56) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:173) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
-	... 27 common frames omitted
-
-2020-01-31 08:44:53.024  WARN 6748 --- [tbeatExecutor-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
-2020-01-31 08:44:53.025 ERROR 6748 --- [tbeatExecutor-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_PAYPAL/paypal:1b6ebe922b09669d680c5970b33a0aae - was unable to send heartbeat!
-
-com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
-	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.DiscoveryClient.renew(DiscoveryClient.java:864) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.DiscoveryClient$HeartbeatThread.run(DiscoveryClient.java:1423) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[na:na]
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
-	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
-
-2020-01-31 08:44:54.028 ERROR 6748 --- [tbeatExecutor-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
-
-com.sun.jersey.api.client.ClientHandlerException: java.net.ConnectException: Connection refused (Connection refused)
-	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:187) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
-	at com.sun.jersey.api.client.filter.GZIPContentEncodingFilter.handle(GZIPContentEncodingFilter.java:123) ~[jersey-client-1.19.1.jar!/:1.19.1]
-	at com.netflix.discovery.EurekaIdentityHeaderFilter.handle(EurekaIdentityHeaderFilter.java:27) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.sun.jersey.api.client.Client.handle(Client.java:652) ~[jersey-client-1.19.1.jar!/:1.19.1]
-	at com.sun.jersey.api.client.WebResource.handle(WebResource.java:682) ~[jersey-client-1.19.1.jar!/:1.19.1]
-	at com.sun.jersey.api.client.WebResource.access$200(WebResource.java:74) ~[jersey-client-1.19.1.jar!/:1.19.1]
-	at com.sun.jersey.api.client.WebResource$Builder.put(WebResource.java:529) ~[jersey-client-1.19.1.jar!/:1.19.1]
-	at com.netflix.discovery.shared.transport.jersey.AbstractJerseyEurekaHttpClient.sendHeartBeat(AbstractJerseyEurekaHttpClient.java:102) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.MetricsCollectingEurekaHttpClient.execute(MetricsCollectingEurekaHttpClient.java:73) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.executeOnNewServer(RedirectingEurekaHttpClient.java:118) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.execute(RedirectingEurekaHttpClient.java:79) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:120) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.DiscoveryClient.renew(DiscoveryClient.java:864) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.DiscoveryClient$HeartbeatThread.run(DiscoveryClient.java:1423) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[na:na]
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
-	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
-Caused by: java.net.ConnectException: Connection refused (Connection refused)
-	at java.base/java.net.PlainSocketImpl.socketConnect(Native Method) ~[na:na]
-	at java.base/java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:399) ~[na:na]
-	at java.base/java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:242) ~[na:na]
-	at java.base/java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:224) ~[na:na]
-	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:403) ~[na:na]
-	at java.base/java.net.Socket.connect(Socket.java:609) ~[na:na]
-	at org.apache.http.conn.scheme.PlainSocketFactory.connectSocket(PlainSocketFactory.java:121) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:180) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:144) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:134) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:605) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:440) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:835) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:118) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:56) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:173) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
-	... 27 common frames omitted
-
-2020-01-31 08:44:54.029  WARN 6748 --- [tbeatExecutor-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
-2020-01-31 08:44:54.029 ERROR 6748 --- [tbeatExecutor-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_PAYPAL/paypal:1b6ebe922b09669d680c5970b33a0aae - was unable to send heartbeat!
-
-com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
-	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.DiscoveryClient.renew(DiscoveryClient.java:864) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.DiscoveryClient$HeartbeatThread.run(DiscoveryClient.java:1423) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[na:na]
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
-	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
-
-2020-01-31 08:44:55.033 ERROR 6748 --- [tbeatExecutor-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
-
-com.sun.jersey.api.client.ClientHandlerException: java.net.ConnectException: Connection refused (Connection refused)
-	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:187) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
-	at com.sun.jersey.api.client.filter.GZIPContentEncodingFilter.handle(GZIPContentEncodingFilter.java:123) ~[jersey-client-1.19.1.jar!/:1.19.1]
-	at com.netflix.discovery.EurekaIdentityHeaderFilter.handle(EurekaIdentityHeaderFilter.java:27) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.sun.jersey.api.client.Client.handle(Client.java:652) ~[jersey-client-1.19.1.jar!/:1.19.1]
-	at com.sun.jersey.api.client.WebResource.handle(WebResource.java:682) ~[jersey-client-1.19.1.jar!/:1.19.1]
-	at com.sun.jersey.api.client.WebResource.access$200(WebResource.java:74) ~[jersey-client-1.19.1.jar!/:1.19.1]
-	at com.sun.jersey.api.client.WebResource$Builder.put(WebResource.java:529) ~[jersey-client-1.19.1.jar!/:1.19.1]
-	at com.netflix.discovery.shared.transport.jersey.AbstractJerseyEurekaHttpClient.sendHeartBeat(AbstractJerseyEurekaHttpClient.java:102) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.MetricsCollectingEurekaHttpClient.execute(MetricsCollectingEurekaHttpClient.java:73) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.executeOnNewServer(RedirectingEurekaHttpClient.java:118) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.execute(RedirectingEurekaHttpClient.java:79) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:120) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.DiscoveryClient.renew(DiscoveryClient.java:864) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.DiscoveryClient$HeartbeatThread.run(DiscoveryClient.java:1423) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[na:na]
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
-	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
-Caused by: java.net.ConnectException: Connection refused (Connection refused)
-	at java.base/java.net.PlainSocketImpl.socketConnect(Native Method) ~[na:na]
-	at java.base/java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:399) ~[na:na]
-	at java.base/java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:242) ~[na:na]
-	at java.base/java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:224) ~[na:na]
-	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:403) ~[na:na]
-	at java.base/java.net.Socket.connect(Socket.java:609) ~[na:na]
-	at org.apache.http.conn.scheme.PlainSocketFactory.connectSocket(PlainSocketFactory.java:121) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:180) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:144) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:134) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:605) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:440) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:835) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:118) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:56) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:173) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
-	... 27 common frames omitted
-
-2020-01-31 08:44:55.033  WARN 6748 --- [tbeatExecutor-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
-2020-01-31 08:44:55.034 ERROR 6748 --- [tbeatExecutor-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_PAYPAL/paypal:1b6ebe922b09669d680c5970b33a0aae - was unable to send heartbeat!
-
-com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
-	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.DiscoveryClient.renew(DiscoveryClient.java:864) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.DiscoveryClient$HeartbeatThread.run(DiscoveryClient.java:1423) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[na:na]
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
-	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
-
-2020-01-31 08:44:55.198  INFO 6748 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : Unregistering ...
-2020-01-31 08:44:55.205 ERROR 6748 --- [extShutdownHook] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
-
-com.sun.jersey.api.client.ClientHandlerException: java.net.ConnectException: Connection refused (Connection refused)
-	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:187) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
-	at com.sun.jersey.api.client.filter.GZIPContentEncodingFilter.handle(GZIPContentEncodingFilter.java:123) ~[jersey-client-1.19.1.jar!/:1.19.1]
-	at com.netflix.discovery.EurekaIdentityHeaderFilter.handle(EurekaIdentityHeaderFilter.java:27) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.sun.jersey.api.client.Client.handle(Client.java:652) ~[jersey-client-1.19.1.jar!/:1.19.1]
-	at com.sun.jersey.api.client.WebResource.handle(WebResource.java:682) ~[jersey-client-1.19.1.jar!/:1.19.1]
-	at com.sun.jersey.api.client.WebResource.access$200(WebResource.java:74) ~[jersey-client-1.19.1.jar!/:1.19.1]
-	at com.sun.jersey.api.client.WebResource$Builder.delete(WebResource.java:591) ~[jersey-client-1.19.1.jar!/:1.19.1]
-	at com.netflix.discovery.shared.transport.jersey.AbstractJerseyEurekaHttpClient.cancel(AbstractJerseyEurekaHttpClient.java:76) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.MetricsCollectingEurekaHttpClient.execute(MetricsCollectingEurekaHttpClient.java:73) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.executeOnNewServer(RedirectingEurekaHttpClient.java:118) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.execute(RedirectingEurekaHttpClient.java:79) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:120) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.DiscoveryClient.unregister(DiscoveryClient.java:941) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.DiscoveryClient.shutdown(DiscoveryClient.java:919) ~[eureka-client-1.9.13.jar!/:1.9.13]
+java.lang.IllegalArgumentException: paymentId cannot be null
+	at com.paypal.api.payments.Payment.get(Payment.java:181) ~[rest-api-sdk-1.14.0.jar!/:na]
+	at rs.ac.uns.ftn.paypal.cmrs.PaymentServiceImpl.lambda$updateStatusOrRetryCapture$0(PaymentServiceImpl.java:369) ~[classes!/:0.0.1-SNAPSHOT]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183) ~[na:na]
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1654) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachTask.compute(ForEachOps.java:290) ~[na:na]
+	at java.base/java.util.concurrent.CountedCompleter.exec(CountedCompleter.java:746) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:290) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.doInvoke(ForkJoinTask.java:408) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.invoke(ForkJoinTask.java:736) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateParallel(ForEachOps.java:159) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateParallel(ForEachOps.java:173) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:233) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:497) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:661) ~[na:na]
+	at rs.ac.uns.ftn.paypal.cmrs.PaymentServiceImpl.updateStatusOrRetryCapture(PaymentServiceImpl.java:366) ~[classes!/:0.0.1-SNAPSHOT]
+	at rs.ac.uns.ftn.paypal.cmrs.PaymentServiceImpl.changeStatus(PaymentServiceImpl.java:414) ~[classes!/:0.0.1-SNAPSHOT]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
 	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
-	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:389) ~[spring-beans-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeDestroyMethods(InitDestroyAnnotationBeanPostProcessor.java:347) ~[spring-beans-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeDestruction(InitDestroyAnnotationBeanPostProcessor.java:177) ~[spring-beans-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:242) ~[spring-beans-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.beans.factory.support.DisposableBeanAdapter.run(DisposableBeanAdapter.java:235) ~[spring-beans-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.cloud.context.scope.GenericScope$BeanLifecycleWrapper.destroy(GenericScope.java:403) ~[spring-cloud-context-2.2.1.RELEASE.jar!/:2.2.1.RELEASE]
-	at org.springframework.cloud.context.scope.GenericScope.destroy(GenericScope.java:142) ~[spring-cloud-context-2.2.1.RELEASE.jar!/:2.2.1.RELEASE]
-	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:258) ~[spring-beans-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroyBean(DefaultSingletonBeanRegistry.java:571) ~[spring-beans-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingleton(DefaultSingletonBeanRegistry.java:543) ~[spring-beans-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingleton(DefaultListableBeanFactory.java:1072) ~[spring-beans-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingletons(DefaultSingletonBeanRegistry.java:504) ~[spring-beans-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingletons(DefaultListableBeanFactory.java:1065) ~[spring-beans-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.context.support.AbstractApplicationContext.destroyBeans(AbstractApplicationContext.java:1060) ~[spring-context-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1029) ~[spring-context-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.context.support.AbstractApplicationContext$1.run(AbstractApplicationContext.java:948) ~[spring-context-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-Caused by: java.net.ConnectException: Connection refused (Connection refused)
-	at java.base/java.net.PlainSocketImpl.socketConnect(Native Method) ~[na:na]
-	at java.base/java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:399) ~[na:na]
-	at java.base/java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:242) ~[na:na]
-	at java.base/java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:224) ~[na:na]
-	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:403) ~[na:na]
-	at java.base/java.net.Socket.connect(Socket.java:609) ~[na:na]
-	at org.apache.http.conn.scheme.PlainSocketFactory.connectSocket(PlainSocketFactory.java:121) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:180) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:144) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:134) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:605) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:440) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:835) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:118) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:56) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:173) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
-	... 42 common frames omitted
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84) ~[spring-context-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54) ~[spring-context-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[na:na]
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305) ~[na:na]
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
 
-2020-01-31 08:44:55.206  WARN 6748 --- [extShutdownHook] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
-2020-01-31 08:44:55.207 ERROR 6748 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_PAYPAL/paypal:1b6ebe922b09669d680c5970b33a0aae - de-registration failedCannot execute request on any known server
+2020-02-11 18:53:21.948  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:53:21.957  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Founded payment: 13 ,status: SUCCESSFUL
+2020-02-11 18:53:21.958  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Getting status on url: https://localhost:8080/payment/payed/author/64df0f3b-50c2-4a98-8279-797ace42f035/37203
+2020-02-11 18:53:31.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:53:41.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:53:51.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:54:01.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:54:11.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:54:21.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:54:31.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:54:41.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:54:51.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:55:01.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if all payments have been captured...
+2020-02-11 18:55:01.945 ERROR 4386 --- [   scheduling-1] o.s.s.s.TaskUtils$LoggingErrorHandler    : Unexpected error occurred in scheduled task
 
-com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
-	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.DiscoveryClient.unregister(DiscoveryClient.java:941) ~[eureka-client-1.9.13.jar!/:1.9.13]
-	at com.netflix.discovery.DiscoveryClient.shutdown(DiscoveryClient.java:919) ~[eureka-client-1.9.13.jar!/:1.9.13]
+java.lang.IllegalArgumentException: paymentId cannot be null
+	at com.paypal.api.payments.Payment.get(Payment.java:181) ~[rest-api-sdk-1.14.0.jar!/:na]
+	at rs.ac.uns.ftn.paypal.cmrs.PaymentServiceImpl.lambda$updateStatusOrRetryCapture$0(PaymentServiceImpl.java:369) ~[classes!/:0.0.1-SNAPSHOT]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183) ~[na:na]
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1654) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachTask.compute(ForEachOps.java:290) ~[na:na]
+	at java.base/java.util.concurrent.CountedCompleter.exec(CountedCompleter.java:746) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:290) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.doInvoke(ForkJoinTask.java:408) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.invoke(ForkJoinTask.java:736) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateParallel(ForEachOps.java:159) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateParallel(ForEachOps.java:173) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:233) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:497) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:661) ~[na:na]
+	at rs.ac.uns.ftn.paypal.cmrs.PaymentServiceImpl.updateStatusOrRetryCapture(PaymentServiceImpl.java:366) ~[classes!/:0.0.1-SNAPSHOT]
+	at rs.ac.uns.ftn.paypal.cmrs.PaymentServiceImpl.changeStatus(PaymentServiceImpl.java:414) ~[classes!/:0.0.1-SNAPSHOT]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
 	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
-	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:389) ~[spring-beans-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeDestroyMethods(InitDestroyAnnotationBeanPostProcessor.java:347) ~[spring-beans-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeDestruction(InitDestroyAnnotationBeanPostProcessor.java:177) ~[spring-beans-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:242) ~[spring-beans-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.beans.factory.support.DisposableBeanAdapter.run(DisposableBeanAdapter.java:235) ~[spring-beans-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.cloud.context.scope.GenericScope$BeanLifecycleWrapper.destroy(GenericScope.java:403) ~[spring-cloud-context-2.2.1.RELEASE.jar!/:2.2.1.RELEASE]
-	at org.springframework.cloud.context.scope.GenericScope.destroy(GenericScope.java:142) ~[spring-cloud-context-2.2.1.RELEASE.jar!/:2.2.1.RELEASE]
-	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:258) ~[spring-beans-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroyBean(DefaultSingletonBeanRegistry.java:571) ~[spring-beans-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingleton(DefaultSingletonBeanRegistry.java:543) ~[spring-beans-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingleton(DefaultListableBeanFactory.java:1072) ~[spring-beans-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingletons(DefaultSingletonBeanRegistry.java:504) ~[spring-beans-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingletons(DefaultListableBeanFactory.java:1065) ~[spring-beans-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.context.support.AbstractApplicationContext.destroyBeans(AbstractApplicationContext.java:1060) ~[spring-context-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1029) ~[spring-context-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.context.support.AbstractApplicationContext$1.run(AbstractApplicationContext.java:948) ~[spring-context-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84) ~[spring-context-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54) ~[spring-context-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[na:na]
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305) ~[na:na]
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
 
-2020-01-31 08:44:55.220  INFO 6748 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
-2020-01-31 08:44:55.220  INFO 6748 --- [extShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2020-01-31 08:44:55.230  INFO 6748 --- [extShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-02-11 18:55:01.945  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:55:11.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:55:21.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:55:31.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:55:41.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:55:51.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:56:01.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:56:11.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:56:21.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:56:31.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:56:41.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if all payments have been captured...
+2020-02-11 18:56:41.941 ERROR 4386 --- [   scheduling-1] o.s.s.s.TaskUtils$LoggingErrorHandler    : Unexpected error occurred in scheduled task
+
+java.lang.IllegalArgumentException: paymentId cannot be null
+	at com.paypal.api.payments.Payment.get(Payment.java:181) ~[rest-api-sdk-1.14.0.jar!/:na]
+	at rs.ac.uns.ftn.paypal.cmrs.PaymentServiceImpl.lambda$updateStatusOrRetryCapture$0(PaymentServiceImpl.java:369) ~[classes!/:0.0.1-SNAPSHOT]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183) ~[na:na]
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1654) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachTask.compute(ForEachOps.java:290) ~[na:na]
+	at java.base/java.util.concurrent.CountedCompleter.exec(CountedCompleter.java:746) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:290) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.doInvoke(ForkJoinTask.java:408) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.invoke(ForkJoinTask.java:736) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateParallel(ForEachOps.java:159) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateParallel(ForEachOps.java:173) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:233) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:497) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:661) ~[na:na]
+	at rs.ac.uns.ftn.paypal.cmrs.PaymentServiceImpl.updateStatusOrRetryCapture(PaymentServiceImpl.java:366) ~[classes!/:0.0.1-SNAPSHOT]
+	at rs.ac.uns.ftn.paypal.cmrs.PaymentServiceImpl.changeStatus(PaymentServiceImpl.java:414) ~[classes!/:0.0.1-SNAPSHOT]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84) ~[spring-context-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54) ~[spring-context-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[na:na]
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305) ~[na:na]
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+
+2020-02-11 18:56:41.942  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:56:51.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:57:01.939  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:57:11.939  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:57:21.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:57:31.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:57:41.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:57:51.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:58:01.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:58:11.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:58:21.799  INFO 4386 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-02-11 18:58:21.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if all payments have been captured...
+2020-02-11 18:58:21.946 ERROR 4386 --- [   scheduling-1] o.s.s.s.TaskUtils$LoggingErrorHandler    : Unexpected error occurred in scheduled task
+
+java.lang.IllegalArgumentException: paymentId cannot be null
+	at com.paypal.api.payments.Payment.get(Payment.java:181) ~[rest-api-sdk-1.14.0.jar!/:na]
+	at rs.ac.uns.ftn.paypal.cmrs.PaymentServiceImpl.lambda$updateStatusOrRetryCapture$0(PaymentServiceImpl.java:369) ~[classes!/:0.0.1-SNAPSHOT]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183) ~[na:na]
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1654) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachTask.compute(ForEachOps.java:290) ~[na:na]
+	at java.base/java.util.concurrent.CountedCompleter.exec(CountedCompleter.java:746) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:290) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.doInvoke(ForkJoinTask.java:408) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.invoke(ForkJoinTask.java:736) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateParallel(ForEachOps.java:159) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateParallel(ForEachOps.java:173) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:233) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:497) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:661) ~[na:na]
+	at rs.ac.uns.ftn.paypal.cmrs.PaymentServiceImpl.updateStatusOrRetryCapture(PaymentServiceImpl.java:366) ~[classes!/:0.0.1-SNAPSHOT]
+	at rs.ac.uns.ftn.paypal.cmrs.PaymentServiceImpl.changeStatus(PaymentServiceImpl.java:414) ~[classes!/:0.0.1-SNAPSHOT]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84) ~[spring-context-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54) ~[spring-context-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[na:na]
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305) ~[na:na]
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+
+2020-02-11 18:58:21.946  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:58:31.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:58:41.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:58:51.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:59:01.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:59:11.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:59:21.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:59:31.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:59:41.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 18:59:51.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 19:00:01.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if all payments have been captured...
+2020-02-11 19:00:01.944 ERROR 4386 --- [   scheduling-1] o.s.s.s.TaskUtils$LoggingErrorHandler    : Unexpected error occurred in scheduled task
+
+java.lang.IllegalArgumentException: paymentId cannot be null
+	at com.paypal.api.payments.Payment.get(Payment.java:181) ~[rest-api-sdk-1.14.0.jar!/:na]
+	at rs.ac.uns.ftn.paypal.cmrs.PaymentServiceImpl.lambda$updateStatusOrRetryCapture$0(PaymentServiceImpl.java:369) ~[classes!/:0.0.1-SNAPSHOT]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183) ~[na:na]
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1654) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachTask.compute(ForEachOps.java:290) ~[na:na]
+	at java.base/java.util.concurrent.CountedCompleter.exec(CountedCompleter.java:746) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:290) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.doInvoke(ForkJoinTask.java:408) ~[na:na]
+	at java.base/java.util.concurrent.ForkJoinTask.invoke(ForkJoinTask.java:736) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateParallel(ForEachOps.java:159) ~[na:na]
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateParallel(ForEachOps.java:173) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:233) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:497) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:661) ~[na:na]
+	at rs.ac.uns.ftn.paypal.cmrs.PaymentServiceImpl.updateStatusOrRetryCapture(PaymentServiceImpl.java:366) ~[classes!/:0.0.1-SNAPSHOT]
+	at rs.ac.uns.ftn.paypal.cmrs.PaymentServiceImpl.changeStatus(PaymentServiceImpl.java:414) ~[classes!/:0.0.1-SNAPSHOT]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84) ~[spring-context-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54) ~[spring-context-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[na:na]
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305) ~[na:na]
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+
+2020-02-11 19:00:01.944  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 19:00:11.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 19:00:21.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 19:00:31.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 19:00:41.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 19:00:51.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 19:01:01.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 19:01:11.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-11 19:01:21.938  INFO 4386 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...

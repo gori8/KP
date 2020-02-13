@@ -196,12 +196,12 @@ public class PaymentServiceImpl implements PaymentService {
 
     }
 
-    @Scheduled(fixedRate = 10000)
+    @Scheduled(fixedRate = 60000)
     public void changeStatus() {
         updateStatus();
     }
 
-    @Scheduled(fixedRate = 10000)
+    @Scheduled(fixedRate = 60000)
     public void checkIntegratedSoftwareStatus() {
         updateIntegratedSoftwareStatus();
     }

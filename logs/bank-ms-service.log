@@ -7,360 +7,127 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::        (v2.2.1.RELEASE)
 
-2020-01-31 08:36:40.721  INFO 6750 --- [           main] r.a.uns.ftn.kp.bankms.BankMsApplication  : No active profile set, falling back to default profiles: default
-2020-01-31 08:36:47.783  INFO 6750 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
-2020-01-31 08:36:49.484  INFO 6750 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1625ms. Found 2 repository interfaces.
-2020-01-31 08:36:51.128  WARN 6750 --- [           main] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
-2020-01-31 08:36:52.406  INFO 6750 --- [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=a8dafe2b-ff57-3cc8-bef1-443bef0efa1f
-2020-01-31 08:36:54.762  INFO 6750 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$1ecf67a5] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-31 08:36:55.083  INFO 6750 --- [           main] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
-2020-01-31 08:36:55.271  INFO 6750 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-31 08:36:58.572  INFO 6750 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8092 (http)
-2020-01-31 08:36:58.655  INFO 6750 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2020-01-31 08:36:58.666  INFO 6750 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.27]
-2020-01-31 08:36:58.996  INFO 6750 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2020-01-31 08:36:59.009  INFO 6750 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 18116 ms
-2020-01-31 08:37:00.162  WARN 6750 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
-2020-01-31 08:37:00.181  INFO 6750 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-2020-01-31 08:37:00.267  INFO 6750 --- [           main] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@2ad3a1bb
-2020-01-31 08:37:05.837  INFO 6750 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2020-01-31 08:37:06.264  INFO 6750 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.8.Final}
-2020-01-31 08:37:06.946  INFO 6750 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
-2020-01-31 08:37:07.662  INFO 6750 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2020-01-31 08:37:08.603  INFO 6750 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2020-01-31 08:37:08.745  INFO 6750 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2020-01-31 08:37:13.339  INFO 6750 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2020-01-31 08:37:13.372  INFO 6750 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2020-01-31 08:37:18.408  WARN 6750 --- [           main] o.s.d.rest.webmvc.halbrowser.HalBrowser  : ---
-2020-01-31 08:37:18.408  WARN 6750 --- [           main] o.s.d.rest.webmvc.halbrowser.HalBrowser  : Spring Data REST HAL Browser is deprecated! Prefer the HAL Explorer (artifactId: spring-data-rest-hal-explorer)!
-2020-01-31 08:37:18.408  WARN 6750 --- [           main] o.s.d.rest.webmvc.halbrowser.HalBrowser  : ---
-2020-01-31 08:37:18.473  WARN 6750 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
-2020-01-31 08:37:18.474  INFO 6750 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-2020-01-31 08:37:18.800  WARN 6750 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2020-01-31 08:37:19.369  INFO 6750 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-01-31 08:37:21.264  INFO 6750 --- [           main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
-2020-01-31 08:37:21.762  WARN 6750 --- [           main] ockingLoadBalancerClientRibbonWarnLogger : You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
-2020-01-31 08:37:21.941  INFO 6750 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
-2020-01-31 08:37:22.091  INFO 6750 --- [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
-2020-01-31 08:37:22.235  INFO 6750 --- [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
-2020-01-31 08:37:22.438  INFO 6750 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
-2020-01-31 08:37:22.438  INFO 6750 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2020-02-01 09:46:06.154  INFO 2916 --- [           main] r.a.uns.ftn.kp.bankms.BankMsApplication  : No active profile set, falling back to default profiles: default
+2020-02-01 09:46:14.809  INFO 2916 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-02-01 09:46:16.805  INFO 2916 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1918ms. Found 2 repository interfaces.
+2020-02-01 09:46:18.702  WARN 2916 --- [           main] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2020-02-01 09:46:20.520  INFO 2916 --- [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=a8dafe2b-ff57-3cc8-bef1-443bef0efa1f
+2020-02-01 09:46:22.917  INFO 2916 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$52c6669d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-02-01 09:46:23.287  INFO 2916 --- [           main] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2020-02-01 09:46:23.609  INFO 2916 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-02-01 09:46:28.912  INFO 2916 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8092 (http)
+2020-02-01 09:46:29.111  INFO 2916 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-02-01 09:46:29.113  INFO 2916 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.27]
+2020-02-01 09:46:30.491  INFO 2916 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-02-01 09:46:30.492  INFO 2916 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 24051 ms
+2020-02-01 09:46:30.971  WARN 2916 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-02-01 09:46:30.972  INFO 2916 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-02-01 09:46:31.055  INFO 2916 --- [           main] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@3b1bb3ab
+2020-02-01 09:46:38.342  INFO 2916 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-02-01 09:46:39.156  INFO 2916 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.8.Final}
+2020-02-01 09:46:40.556  INFO 2916 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-02-01 09:46:43.823  INFO 2916 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-02-01 09:46:45.982  INFO 2916 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-02-01 09:46:46.095  INFO 2916 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2020-02-01 09:46:51.432  INFO 2916 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-02-01 09:46:51.457  INFO 2916 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-02-01 09:46:58.445  WARN 2916 --- [           main] o.s.d.rest.webmvc.halbrowser.HalBrowser  : ---
+2020-02-01 09:46:58.445  WARN 2916 --- [           main] o.s.d.rest.webmvc.halbrowser.HalBrowser  : Spring Data REST HAL Browser is deprecated! Prefer the HAL Explorer (artifactId: spring-data-rest-hal-explorer)!
+2020-02-01 09:46:58.446  WARN 2916 --- [           main] o.s.d.rest.webmvc.halbrowser.HalBrowser  : ---
+2020-02-01 09:46:58.657  WARN 2916 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-02-01 09:46:58.672  INFO 2916 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-02-01 09:46:59.628  WARN 2916 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-02-01 09:47:00.256  INFO 2916 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-02-01 09:47:02.627  INFO 2916 --- [           main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2020-02-01 09:47:03.139  WARN 2916 --- [           main] ockingLoadBalancerClientRibbonWarnLogger : You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2020-02-01 09:47:03.447  INFO 2916 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-02-01 09:47:03.653  INFO 2916 --- [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2020-02-01 09:47:03.893  INFO 2916 --- [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2020-02-01 09:47:04.180  INFO 2916 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2020-02-01 09:47:04.180  INFO 2916 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
 WARNING: An illegal reflective access operation has occurred
 WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (jar:file:/home/antolovic/KP_SEP/KP/banka/bank-ms/target/bank-ms.jar!/BOOT-INF/lib/xstream-1.4.11.1.jar!/) to field java.util.TreeMap.comparator
 WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
 WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
 WARNING: All illegal access operations will be denied in a future release
-2020-01-31 08:37:22.786  INFO 6750 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
-2020-01-31 08:37:22.787  INFO 6750 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
-2020-01-31 08:37:23.113  INFO 6750 --- [           main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
-2020-01-31 08:37:23.174  INFO 6750 --- [           main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
-2020-01-31 08:37:23.174  INFO 6750 --- [           main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
-2020-01-31 08:37:23.174  INFO 6750 --- [           main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
-2020-01-31 08:37:23.174  INFO 6750 --- [           main] com.netflix.discovery.DiscoveryClient    : Application is null : false
-2020-01-31 08:37:23.174  INFO 6750 --- [           main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
-2020-01-31 08:37:23.174  INFO 6750 --- [           main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
-2020-01-31 08:37:23.175  INFO 6750 --- [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
-2020-01-31 08:37:23.554  INFO 6750 --- [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200
-2020-01-31 08:37:23.560  INFO 6750 --- [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 1
-2020-01-31 08:37:23.566  INFO 6750 --- [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
-2020-01-31 08:37:23.572  INFO 6750 --- [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1580456243571 with initial instances count: 1
-2020-01-31 08:37:23.583  INFO 6750 --- [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application BANK with eureka with status UP
-2020-01-31 08:37:23.585  INFO 6750 --- [           main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1580456243585, current=UP, previous=STARTING]
-2020-01-31 08:37:23.592  INFO 6750 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BANK/bank:fd50b9d04b0968b6a6f187221aa41da1: registering service...
-2020-01-31 08:37:23.625  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:37:23.680  INFO 6750 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BANK/bank:fd50b9d04b0968b6a6f187221aa41da1 - registration status: 204
-2020-01-31 08:37:23.723  INFO 6750 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8092 (http) with context path ''
-2020-01-31 08:37:23.725  INFO 6750 --- [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8092
-2020-01-31 08:37:23.796  INFO 6750 --- [           main] r.a.uns.ftn.kp.bankms.BankMsApplication  : Started BankMsApplication in 49.088 seconds (JVM running for 51.859)
-2020-01-31 08:37:23.966  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:37:23.975  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:37:24.885  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:37:24.886  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:37:24.940  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:37:33.615  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:37:33.620  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:37:33.620  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:37:33.682  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:37:33.688  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:37:33.690  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:37:43.615  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:37:43.622  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:37:43.622  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:37:43.667  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:37:43.673  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:37:43.676  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:37:53.615  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:37:53.617  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:37:53.617  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:37:53.655  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:37:53.664  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:37:53.667  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:37:57.748  INFO 6750 --- [nio-8092-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2020-01-31 08:37:57.748  INFO 6750 --- [nio-8092-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2020-01-31 08:37:57.773  INFO 6750 --- [nio-8092-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 25 ms
-https://localhost:4300/banka/card/2a88faa3-42aa-4a05-9333-2898af26c118
-2020-01-31 08:38:03.615  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:38:03.621  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:38:03.621  INFO 6750 --- [onPool-worker-5] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 15 ,status: CREATED ,url: https://localhost:4300/banka/card/2a88faa3-42aa-4a05-9333-2898af26c118
-2020-01-31 08:38:03.621  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:38:03.656  INFO 6750 --- [onPool-worker-5] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/2a88faa3-42aa-4a05-9333-2898af26c118 ,status: CREATED
-2020-01-31 08:38:03.660  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:38:03.681  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:38:03.684  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:38:13.614  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:38:13.617  INFO 6750 --- [onPool-worker-5] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:38:13.617  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:38:13.617  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 15 ,status: CREATED ,url: https://localhost:4300/banka/card/2a88faa3-42aa-4a05-9333-2898af26c118
-2020-01-31 08:38:13.653  INFO 6750 --- [onPool-worker-5] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:38:13.656  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:38:13.684  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/2a88faa3-42aa-4a05-9333-2898af26c118 ,status: CREATED
-2020-01-31 08:38:13.688  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:38:23.614  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:38:23.617  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:38:23.617  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:38:23.667  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:38:23.667  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:38:23.670  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:38:23.672  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 15 ,status: SUCCESSFUL
-2020-01-31 08:38:23.672  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Getting status on url: https://localhost:9000/webshop/payed/user/78883515-6971-4c14-8f56-a2e3fb41ac6f
-2020-01-31 08:38:33.615  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:38:33.620  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:38:33.620  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:38:33.645  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:38:33.648  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:38:33.650  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:38:43.615  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:38:43.617  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:38:43.617  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:38:43.647  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:38:43.647  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:38:43.650  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:38:53.614  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:38:53.617  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:38:53.617  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:38:53.645  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:38:53.649  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:38:53.651  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:39:03.615  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:39:03.619  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:39:03.620  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:39:03.645  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:39:03.645  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:39:03.648  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:39:13.614  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:39:13.621  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:39:13.621  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:39:13.672  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:39:13.673  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:39:13.675  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:39:23.614  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:39:23.616  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:39:23.616  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:39:23.641  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:39:23.641  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:39:23.643  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:39:33.615  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:39:33.620  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:39:33.620  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:39:33.655  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:39:33.656  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:39:33.659  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:39:43.614  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:39:43.619  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:39:43.620  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:39:43.642  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:39:43.642  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:39:43.644  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:39:53.615  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:39:53.616  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:39:53.616  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:39:53.638  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:39:53.638  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:39:53.641  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:40:03.615  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:40:03.620  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:40:03.620  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:40:03.643  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:40:03.643  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:40:03.646  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:40:13.615  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:40:13.620  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:40:13.620  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:40:13.649  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:40:13.649  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:40:13.651  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:40:23.615  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:40:23.617  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:40:23.617  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:40:23.641  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:40:23.649  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:40:23.651  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:40:33.614  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:40:33.619  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:40:33.619  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:40:33.642  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:40:33.642  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:40:33.644  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:40:43.614  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:40:43.619  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:40:43.619  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:40:43.641  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:40:43.642  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:40:43.644  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:40:53.614  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:40:53.620  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:40:53.620  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:40:53.642  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:40:53.642  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:40:53.644  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:41:03.615  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:41:03.620  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:41:03.620  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:41:03.641  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:41:03.645  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:41:03.647  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:41:13.614  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:41:13.619  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:41:13.619  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:41:13.641  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:41:13.641  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:41:13.643  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:41:23.615  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:41:23.619  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:41:23.619  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:41:23.672  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:41:23.672  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:41:23.675  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:41:33.615  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:41:33.620  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:41:33.620  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:41:33.649  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:41:33.650  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:41:33.652  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:41:43.615  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:41:43.620  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:41:43.620  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:41:43.654  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:41:43.654  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:41:43.656  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:41:53.614  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:41:53.620  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:41:53.620  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:41:53.646  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:41:53.646  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:41:53.648  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:42:03.615  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:42:03.620  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:42:03.620  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:42:03.658  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:42:03.658  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:42:03.660  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:42:13.615  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:42:13.618  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:42:13.618  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:42:13.636  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:42:13.641  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:42:13.643  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:42:23.178  INFO 6750 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
-2020-01-31 08:42:23.614  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:42:23.619  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:42:23.619  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:42:23.651  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:42:23.654  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:42:23.656  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:42:33.615  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:42:33.617  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:42:33.617  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:42:33.636  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:42:33.637  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:42:33.638  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:42:43.615  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:42:43.620  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:42:43.620  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:42:43.639  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:42:43.639  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:42:43.640  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:42:53.615  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:42:53.620  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:42:53.620  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:42:53.649  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:42:53.656  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:42:53.658  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:43:03.615  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:43:03.619  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:43:03.619  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:43:03.641  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:43:03.641  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:43:03.643  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:43:13.615  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:43:13.619  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:43:13.619  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:43:13.639  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:43:13.639  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:43:13.641  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:43:23.614  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:43:23.616  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:43:23.616  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:43:23.634  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:43:23.634  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:43:23.636  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:43:33.614  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:43:33.619  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:43:33.619  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:43:33.671  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:43:33.671  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:43:33.673  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:43:43.614  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:43:43.619  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:43:43.619  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:43:43.649  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:43:43.649  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:43:43.652  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:43:53.614  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:43:53.619  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:43:53.619  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:43:53.639  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:43:53.640  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:43:53.641  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:44:03.614  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:44:03.619  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:44:03.619  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:44:03.637  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:44:03.637  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:44:03.639  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:44:13.614  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:44:13.619  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:44:13.619  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:44:13.638  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:44:13.638  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:44:13.641  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:44:23.614  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:44:23.619  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:44:23.619  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:44:23.639  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:44:23.643  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:44:23.644  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:44:33.614  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:44:33.619  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:44:33.619  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:44:33.645  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:44:33.645  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:44:33.647  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:44:43.614  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
-2020-01-31 08:44:43.619  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 8 ,status: CREATED ,url: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27
-2020-01-31 08:44:43.619  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Founded payment: 9 ,status: CREATED ,url: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d
-2020-01-31 08:44:43.641  INFO 6750 --- [onPool-worker-3] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/0087d8ea-db1f-481c-9dfb-e11ffa4c4c27 ,status: CREATED
-2020-01-31 08:44:43.641  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Payment with that url from bank: https://localhost:4300/banka/card/3a9c2980-402f-4afc-9b9d-6f25061f0a4d ,status: CREATED
-2020-01-31 08:44:43.643  INFO 6750 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-01-31 08:44:52.184  INFO 6750 --- [extShutdownHook] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application BANK with eureka with status DOWN
-2020-01-31 08:44:52.185  WARN 6750 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1580456692185, current=DOWN, previous=UP]
-2020-01-31 08:44:52.185  INFO 6750 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BANK/bank:fd50b9d04b0968b6a6f187221aa41da1: registering service...
-2020-01-31 08:44:52.194  INFO 6750 --- [extShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'taskScheduler'
-2020-01-31 08:44:52.199  INFO 6750 --- [extShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
-2020-01-31 08:44:52.202  INFO 6750 --- [extShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2020-01-31 08:44:52.202 ERROR 6750 --- [nfoReplicator-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
+2020-02-01 09:47:04.693  INFO 2916 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2020-02-01 09:47:04.694  INFO 2916 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2020-02-01 09:47:05.343  INFO 2916 --- [           main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-02-01 09:47:05.431  INFO 2916 --- [           main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2020-02-01 09:47:05.432  INFO 2916 --- [           main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2020-02-01 09:47:05.432  INFO 2916 --- [           main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2020-02-01 09:47:05.432  INFO 2916 --- [           main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2020-02-01 09:47:05.432  INFO 2916 --- [           main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2020-02-01 09:47:05.432  INFO 2916 --- [           main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2020-02-01 09:47:05.433  INFO 2916 --- [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2020-02-01 09:47:05.972  INFO 2916 --- [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2020-02-01 09:47:05.992  INFO 2916 --- [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 1
+2020-02-01 09:47:06.008  INFO 2916 --- [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2020-02-01 09:47:06.038  INFO 2916 --- [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1580546826037 with initial instances count: 3
+2020-02-01 09:47:06.064  INFO 2916 --- [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application BANK with eureka with status UP
+2020-02-01 09:47:06.065  INFO 2916 --- [           main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1580546826065, current=UP, previous=STARTING]
+2020-02-01 09:47:06.070  INFO 2916 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BANK/bank:dc6994ad781371cd6eb686ade0e0ed22: registering service...
+2020-02-01 09:47:06.145  INFO 2916 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
+2020-02-01 09:47:06.189  INFO 2916 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BANK/bank:dc6994ad781371cd6eb686ade0e0ed22 - registration status: 204
+2020-02-01 09:47:06.314  INFO 2916 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8092 (http) with context path ''
+2020-02-01 09:47:06.315  INFO 2916 --- [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8092
+2020-02-01 09:47:06.341  INFO 2916 --- [           main] r.a.uns.ftn.kp.bankms.BankMsApplication  : Started BankMsApplication in 69.439 seconds (JVM running for 72.652)
+2020-02-01 09:47:06.639  INFO 2916 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-01 09:48:06.130  INFO 2916 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
+2020-02-01 09:48:06.142  INFO 2916 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-01 09:49:06.130  INFO 2916 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
+2020-02-01 09:49:06.142  INFO 2916 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-01 09:50:06.130  INFO 2916 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
+2020-02-01 09:50:06.142  INFO 2916 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-01 09:51:06.130  INFO 2916 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
+2020-02-01 09:51:06.142  INFO 2916 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-01 09:52:05.438  INFO 2916 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-02-01 09:52:06.130  INFO 2916 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
+2020-02-01 09:52:06.142  INFO 2916 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-01 09:53:06.130  INFO 2916 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
+2020-02-01 09:53:06.142  INFO 2916 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-01 09:54:06.130  INFO 2916 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
+2020-02-01 09:54:06.142  INFO 2916 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-01 09:54:09.025  INFO 2916 --- [nio-8092-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-02-01 09:54:09.025  INFO 2916 --- [nio-8092-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-02-01 09:54:09.046  INFO 2916 --- [nio-8092-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 21 ms
+2020-02-01 09:55:06.130  INFO 2916 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
+2020-02-01 09:55:06.142  INFO 2916 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-01 09:56:06.130  INFO 2916 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
+2020-02-01 09:56:06.142  INFO 2916 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-01 09:57:05.439  INFO 2916 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-02-01 09:57:06.130  INFO 2916 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
+2020-02-01 09:57:06.142  INFO 2916 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-01 09:58:06.130  INFO 2916 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
+2020-02-01 09:58:06.142  INFO 2916 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-01 09:59:06.130  INFO 2916 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
+2020-02-01 09:59:06.142  INFO 2916 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-01 10:00:06.130  INFO 2916 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
+2020-02-01 10:00:06.142  INFO 2916 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-01 10:01:06.130  INFO 2916 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
+2020-02-01 10:01:06.142  INFO 2916 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-01 10:02:05.440  INFO 2916 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-02-01 10:02:06.131  INFO 2916 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
+2020-02-01 10:02:06.142  INFO 2916 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-01 10:03:06.130  INFO 2916 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
+2020-02-01 10:03:06.176  INFO 2916 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-01 10:04:06.131  INFO 2916 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
+2020-02-01 10:04:06.147  INFO 2916 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-01 10:05:06.130  INFO 2916 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
+2020-02-01 10:05:06.142  INFO 2916 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-01 10:06:06.130  INFO 2916 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
+2020-02-01 10:06:06.142  INFO 2916 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-01 10:07:05.441  INFO 2916 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-02-01 10:07:06.130  INFO 2916 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if bank status is changed...
+2020-02-01 10:07:06.142  INFO 2916 --- [   scheduling-1] r.a.u.f.k.b.payment.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-01 10:07:44.147  INFO 2916 --- [extShutdownHook] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application BANK with eureka with status DOWN
+2020-02-01 10:07:44.148  WARN 2916 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1580548064148, current=DOWN, previous=UP]
+2020-02-01 10:07:44.149  INFO 2916 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BANK/bank:dc6994ad781371cd6eb686ade0e0ed22: registering service...
+2020-02-01 10:07:44.171  INFO 2916 --- [extShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'taskScheduler'
+2020-02-01 10:07:44.209  INFO 2916 --- [extShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-02-01 10:07:44.223 ERROR 2916 --- [nfoReplicator-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
 
-com.sun.jersey.api.client.ClientHandlerException: org.apache.http.NoHttpResponseException: localhost:8761 failed to respond
+com.sun.jersey.api.client.ClientHandlerException: java.net.ConnectException: Connection refused (Connection refused)
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:187) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
 	at com.sun.jersey.api.client.filter.GZIPContentEncodingFilter.handle(GZIPContentEncodingFilter.java:123) ~[jersey-client-1.19.1.jar!/:1.19.1]
 	at com.netflix.discovery.EurekaIdentityHeaderFilter.handle(EurekaIdentityHeaderFilter.java:27) ~[eureka-client-1.9.13.jar!/:1.9.13]
@@ -390,26 +157,27 @@ com.sun.jersey.api.client.ClientHandlerException: org.apache.http.NoHttpResponse
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
 	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
-Caused by: org.apache.http.NoHttpResponseException: localhost:8761 failed to respond
-	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:141) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:56) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:259) ~[httpcore-4.4.12.jar!/:4.4.12]
-	at org.apache.http.impl.AbstractHttpClientConnection.receiveResponseHeader(AbstractHttpClientConnection.java:294) ~[httpcore-4.4.12.jar!/:4.4.12]
-	at org.apache.http.impl.conn.DefaultClientConnection.receiveResponseHeader(DefaultClientConnection.java:257) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.conn.AbstractClientConnAdapter.receiveResponseHeader(AbstractClientConnAdapter.java:230) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:273) ~[httpcore-4.4.12.jar!/:4.4.12]
-	at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:125) ~[httpcore-4.4.12.jar!/:4.4.12]
-	at org.apache.http.impl.client.DefaultRequestDirector.tryExecute(DefaultRequestDirector.java:679) ~[httpclient-4.5.10.jar!/:4.5.10]
-	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:481) ~[httpclient-4.5.10.jar!/:4.5.10]
+Caused by: java.net.ConnectException: Connection refused (Connection refused)
+	at java.base/java.net.PlainSocketImpl.socketConnect(Native Method) ~[na:na]
+	at java.base/java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:399) ~[na:na]
+	at java.base/java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:242) ~[na:na]
+	at java.base/java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:224) ~[na:na]
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:403) ~[na:na]
+	at java.base/java.net.Socket.connect(Socket.java:609) ~[na:na]
+	at org.apache.http.conn.scheme.PlainSocketFactory.connectSocket(PlainSocketFactory.java:121) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:180) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:144) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:134) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:605) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:440) ~[httpclient-4.5.10.jar!/:4.5.10]
 	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:835) ~[httpclient-4.5.10.jar!/:4.5.10]
 	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:118) ~[httpclient-4.5.10.jar!/:4.5.10]
 	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:56) ~[httpclient-4.5.10.jar!/:4.5.10]
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:173) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
 	... 28 common frames omitted
 
-2020-01-31 08:44:52.203  WARN 6750 --- [nfoReplicator-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: org.apache.http.NoHttpResponseException: localhost:8761 failed to respond
-2020-01-31 08:44:52.206  INFO 6750 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
-2020-01-31 08:44:52.207 ERROR 6750 --- [nfoReplicator-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
+2020-02-01 10:07:44.226  WARN 2916 --- [nfoReplicator-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
+2020-02-01 10:07:44.242 ERROR 2916 --- [nfoReplicator-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
 
 com.sun.jersey.api.client.ClientHandlerException: java.net.ConnectException: Connection refused (Connection refused)
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:187) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
@@ -461,8 +229,9 @@ Caused by: java.net.ConnectException: Connection refused (Connection refused)
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:173) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
 	... 29 common frames omitted
 
-2020-01-31 08:44:52.207  WARN 6750 --- [nfoReplicator-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
-2020-01-31 08:44:52.207  WARN 6750 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BANK/bank:fd50b9d04b0968b6a6f187221aa41da1 - registration failed Cannot execute request on any known server
+2020-02-01 10:07:44.243  WARN 2916 --- [nfoReplicator-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
+2020-02-01 10:07:44.247  INFO 2916 --- [extShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-02-01 10:07:44.256  WARN 2916 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BANK/bank:dc6994ad781371cd6eb686ade0e0ed22 - registration failed Cannot execute request on any known server
 
 com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
 	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-1.9.13.jar!/:1.9.13]
@@ -480,7 +249,7 @@ com.netflix.discovery.shared.transport.TransportException: Cannot execute reques
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
 	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
 
-2020-01-31 08:44:52.208  WARN 6750 --- [nfoReplicator-0] c.n.discovery.InstanceInfoReplicator     : There was a problem with the instance info replicator
+2020-02-01 10:07:44.257  WARN 2916 --- [nfoReplicator-0] c.n.discovery.InstanceInfoReplicator     : There was a problem with the instance info replicator
 
 com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
 	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-1.9.13.jar!/:1.9.13]
@@ -498,8 +267,210 @@ com.netflix.discovery.shared.transport.TransportException: Cannot execute reques
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
 	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
 
-2020-01-31 08:44:52.208  INFO 6750 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : Unregistering ...
-2020-01-31 08:44:52.212 ERROR 6750 --- [extShutdownHook] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
+2020-02-01 10:07:44.273  INFO 2916 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2020-02-01 10:07:45.054 ERROR 2916 --- [tbeatExecutor-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
+
+com.sun.jersey.api.client.ClientHandlerException: java.net.ConnectException: Connection refused (Connection refused)
+	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:187) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
+	at com.sun.jersey.api.client.filter.GZIPContentEncodingFilter.handle(GZIPContentEncodingFilter.java:123) ~[jersey-client-1.19.1.jar!/:1.19.1]
+	at com.netflix.discovery.EurekaIdentityHeaderFilter.handle(EurekaIdentityHeaderFilter.java:27) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.sun.jersey.api.client.Client.handle(Client.java:652) ~[jersey-client-1.19.1.jar!/:1.19.1]
+	at com.sun.jersey.api.client.WebResource.handle(WebResource.java:682) ~[jersey-client-1.19.1.jar!/:1.19.1]
+	at com.sun.jersey.api.client.WebResource.access$200(WebResource.java:74) ~[jersey-client-1.19.1.jar!/:1.19.1]
+	at com.sun.jersey.api.client.WebResource$Builder.put(WebResource.java:529) ~[jersey-client-1.19.1.jar!/:1.19.1]
+	at com.netflix.discovery.shared.transport.jersey.AbstractJerseyEurekaHttpClient.sendHeartBeat(AbstractJerseyEurekaHttpClient.java:102) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.MetricsCollectingEurekaHttpClient.execute(MetricsCollectingEurekaHttpClient.java:73) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.executeOnNewServer(RedirectingEurekaHttpClient.java:118) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.execute(RedirectingEurekaHttpClient.java:79) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:120) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.DiscoveryClient.renew(DiscoveryClient.java:864) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.DiscoveryClient$HeartbeatThread.run(DiscoveryClient.java:1423) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[na:na]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+Caused by: java.net.ConnectException: Connection refused (Connection refused)
+	at java.base/java.net.PlainSocketImpl.socketConnect(Native Method) ~[na:na]
+	at java.base/java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:399) ~[na:na]
+	at java.base/java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:242) ~[na:na]
+	at java.base/java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:224) ~[na:na]
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:403) ~[na:na]
+	at java.base/java.net.Socket.connect(Socket.java:609) ~[na:na]
+	at org.apache.http.conn.scheme.PlainSocketFactory.connectSocket(PlainSocketFactory.java:121) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:180) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:144) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:134) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:605) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:440) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:835) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:118) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:56) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:173) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
+	... 27 common frames omitted
+
+2020-02-01 10:07:45.055  WARN 2916 --- [tbeatExecutor-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
+2020-02-01 10:07:45.055 ERROR 2916 --- [tbeatExecutor-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BANK/bank:dc6994ad781371cd6eb686ade0e0ed22 - was unable to send heartbeat!
+
+com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.DiscoveryClient.renew(DiscoveryClient.java:864) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.DiscoveryClient$HeartbeatThread.run(DiscoveryClient.java:1423) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[na:na]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+
+2020-02-01 10:07:46.058 ERROR 2916 --- [tbeatExecutor-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
+
+com.sun.jersey.api.client.ClientHandlerException: java.net.ConnectException: Connection refused (Connection refused)
+	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:187) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
+	at com.sun.jersey.api.client.filter.GZIPContentEncodingFilter.handle(GZIPContentEncodingFilter.java:123) ~[jersey-client-1.19.1.jar!/:1.19.1]
+	at com.netflix.discovery.EurekaIdentityHeaderFilter.handle(EurekaIdentityHeaderFilter.java:27) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.sun.jersey.api.client.Client.handle(Client.java:652) ~[jersey-client-1.19.1.jar!/:1.19.1]
+	at com.sun.jersey.api.client.WebResource.handle(WebResource.java:682) ~[jersey-client-1.19.1.jar!/:1.19.1]
+	at com.sun.jersey.api.client.WebResource.access$200(WebResource.java:74) ~[jersey-client-1.19.1.jar!/:1.19.1]
+	at com.sun.jersey.api.client.WebResource$Builder.put(WebResource.java:529) ~[jersey-client-1.19.1.jar!/:1.19.1]
+	at com.netflix.discovery.shared.transport.jersey.AbstractJerseyEurekaHttpClient.sendHeartBeat(AbstractJerseyEurekaHttpClient.java:102) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.MetricsCollectingEurekaHttpClient.execute(MetricsCollectingEurekaHttpClient.java:73) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.executeOnNewServer(RedirectingEurekaHttpClient.java:118) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.execute(RedirectingEurekaHttpClient.java:79) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:120) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.DiscoveryClient.renew(DiscoveryClient.java:864) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.DiscoveryClient$HeartbeatThread.run(DiscoveryClient.java:1423) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[na:na]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+Caused by: java.net.ConnectException: Connection refused (Connection refused)
+	at java.base/java.net.PlainSocketImpl.socketConnect(Native Method) ~[na:na]
+	at java.base/java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:399) ~[na:na]
+	at java.base/java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:242) ~[na:na]
+	at java.base/java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:224) ~[na:na]
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:403) ~[na:na]
+	at java.base/java.net.Socket.connect(Socket.java:609) ~[na:na]
+	at org.apache.http.conn.scheme.PlainSocketFactory.connectSocket(PlainSocketFactory.java:121) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:180) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:144) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:134) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:605) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:440) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:835) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:118) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:56) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:173) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
+	... 27 common frames omitted
+
+2020-02-01 10:07:46.059  WARN 2916 --- [tbeatExecutor-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
+2020-02-01 10:07:46.059 ERROR 2916 --- [tbeatExecutor-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BANK/bank:dc6994ad781371cd6eb686ade0e0ed22 - was unable to send heartbeat!
+
+com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.DiscoveryClient.renew(DiscoveryClient.java:864) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.DiscoveryClient$HeartbeatThread.run(DiscoveryClient.java:1423) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[na:na]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+
+2020-02-01 10:07:47.062 ERROR 2916 --- [tbeatExecutor-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
+
+com.sun.jersey.api.client.ClientHandlerException: java.net.ConnectException: Connection refused (Connection refused)
+	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:187) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
+	at com.sun.jersey.api.client.filter.GZIPContentEncodingFilter.handle(GZIPContentEncodingFilter.java:123) ~[jersey-client-1.19.1.jar!/:1.19.1]
+	at com.netflix.discovery.EurekaIdentityHeaderFilter.handle(EurekaIdentityHeaderFilter.java:27) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.sun.jersey.api.client.Client.handle(Client.java:652) ~[jersey-client-1.19.1.jar!/:1.19.1]
+	at com.sun.jersey.api.client.WebResource.handle(WebResource.java:682) ~[jersey-client-1.19.1.jar!/:1.19.1]
+	at com.sun.jersey.api.client.WebResource.access$200(WebResource.java:74) ~[jersey-client-1.19.1.jar!/:1.19.1]
+	at com.sun.jersey.api.client.WebResource$Builder.put(WebResource.java:529) ~[jersey-client-1.19.1.jar!/:1.19.1]
+	at com.netflix.discovery.shared.transport.jersey.AbstractJerseyEurekaHttpClient.sendHeartBeat(AbstractJerseyEurekaHttpClient.java:102) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.MetricsCollectingEurekaHttpClient.execute(MetricsCollectingEurekaHttpClient.java:73) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.executeOnNewServer(RedirectingEurekaHttpClient.java:118) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.execute(RedirectingEurekaHttpClient.java:79) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:120) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.DiscoveryClient.renew(DiscoveryClient.java:864) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.DiscoveryClient$HeartbeatThread.run(DiscoveryClient.java:1423) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[na:na]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+Caused by: java.net.ConnectException: Connection refused (Connection refused)
+	at java.base/java.net.PlainSocketImpl.socketConnect(Native Method) ~[na:na]
+	at java.base/java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:399) ~[na:na]
+	at java.base/java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:242) ~[na:na]
+	at java.base/java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:224) ~[na:na]
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:403) ~[na:na]
+	at java.base/java.net.Socket.connect(Socket.java:609) ~[na:na]
+	at org.apache.http.conn.scheme.PlainSocketFactory.connectSocket(PlainSocketFactory.java:121) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:180) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:144) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:134) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:605) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:440) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:835) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:118) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:56) ~[httpclient-4.5.10.jar!/:4.5.10]
+	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:173) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
+	... 27 common frames omitted
+
+2020-02-01 10:07:47.063  WARN 2916 --- [tbeatExecutor-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
+2020-02-01 10:07:47.064 ERROR 2916 --- [tbeatExecutor-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BANK/bank:dc6994ad781371cd6eb686ade0e0ed22 - was unable to send heartbeat!
+
+com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.DiscoveryClient.renew(DiscoveryClient.java:864) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at com.netflix.discovery.DiscoveryClient$HeartbeatThread.run(DiscoveryClient.java:1423) ~[eureka-client-1.9.13.jar!/:1.9.13]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[na:na]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+
+2020-02-01 10:07:47.276  INFO 2916 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : Unregistering ...
+2020-02-01 10:07:47.286 ERROR 2916 --- [extShutdownHook] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
 
 com.sun.jersey.api.client.ClientHandlerException: java.net.ConnectException: Connection refused (Connection refused)
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:187) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
@@ -564,8 +535,8 @@ Caused by: java.net.ConnectException: Connection refused (Connection refused)
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:173) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
 	... 42 common frames omitted
 
-2020-01-31 08:44:52.212  WARN 6750 --- [extShutdownHook] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
-2020-01-31 08:44:52.215 ERROR 6750 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BANK/bank:fd50b9d04b0968b6a6f187221aa41da1 - de-registration failedCannot execute request on any known server
+2020-02-01 10:07:47.287  WARN 2916 --- [extShutdownHook] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
+2020-02-01 10:07:47.288 ERROR 2916 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BANK/bank:dc6994ad781371cd6eb686ade0e0ed22 - de-registration failedCannot execute request on any known server
 
 com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
 	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-1.9.13.jar!/:1.9.13]
@@ -596,6 +567,6 @@ com.netflix.discovery.shared.transport.TransportException: Cannot execute reques
 	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1029) ~[spring-context-5.2.1.RELEASE.jar!/:5.2.1.RELEASE]
 	at org.springframework.context.support.AbstractApplicationContext$1.run(AbstractApplicationContext.java:948) ~[spring-context-5.2.1.RELEASE.jar!/:5.2.1.RELEASE]
 
-2020-01-31 08:44:52.232  INFO 6750 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
-2020-01-31 08:44:52.233  INFO 6750 --- [extShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2020-01-31 08:44:52.268  INFO 6750 --- [extShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-02-01 10:07:47.349  INFO 2916 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
+2020-02-01 10:07:47.350  INFO 2916 --- [extShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-02-01 10:07:47.422  INFO 2916 --- [extShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

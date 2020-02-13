@@ -113,7 +113,6 @@ public class InfoServiceImpl implements InfoService{
         Item c = itemRepository.findOneByUuid(uuid);
         System.out.println(redirectUrlDTO.getId());
         c.setRedirectUrl(redirectUrlDTO.getRedirectUrl());
-        c.setCheckStatusUrl(redirectUrlDTO.getCheckStatusUrl());
 
         itemRepository.save(c);
 
