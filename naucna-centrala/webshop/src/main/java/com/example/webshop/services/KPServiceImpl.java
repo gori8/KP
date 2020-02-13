@@ -73,7 +73,7 @@ public class KPServiceImpl implements KPService {
                 ResponseEntity<Boolean> responseReg = restTemplate.postForEntity(response.getBody().getRegisterUrl(),entityReg,Boolean.class);
                 if(responseReg.getBody()){
                     System.out.println("User registered successfully");
-                    response=
+                    response =
                             restTemplate.postForEntity(UrlClass.USER_AND_PAYMENT_URL + "add", entity, ReturnLinksDTO.class);
                 }else{
                     throw new Exception();
