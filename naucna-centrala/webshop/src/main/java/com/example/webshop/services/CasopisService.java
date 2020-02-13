@@ -2,6 +2,7 @@ package com.example.webshop.services;
 
 import com.example.webshop.dto.CasopisDTO;
 import com.example.webshop.dto.IzdanjeDTO;
+import com.example.webshop.dto.PlanDTO;
 import com.example.webshop.dto.TaskLinkDTO;
 
 import java.util.List;
@@ -16,4 +17,6 @@ public interface CasopisService {
     public List<CasopisDTO> getBoughtItems(String username);
 
     public List<IzdanjeDTO> getBoughtItemsForCasopis(String username, Long casopisId);
+
+    public void setPlans(List<PlanDTO> dto, Long casopisId);
 }

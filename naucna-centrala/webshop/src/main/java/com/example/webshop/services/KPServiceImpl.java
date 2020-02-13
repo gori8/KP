@@ -46,8 +46,7 @@ public class KPServiceImpl implements KPService {
         Casopis casopis = casopisRepository.getOne(casopisId);
 
         ItemDTO dto = new ItemDTO();
-        dto.setNaziv(casopis.getNaziv());
-        dto.setAmount(casopis.getClanarina());
+        dto.setNaziv(casopis.getNaziv()+"");
         dto.setRedirectUrl(UrlClass.REDIRECT_URL_REGISTRATION);
         dto.setNaciniPlacanja(new ArrayList<>());
         dto.setEmail(casopis.getGlavniUrednik().getEmail());

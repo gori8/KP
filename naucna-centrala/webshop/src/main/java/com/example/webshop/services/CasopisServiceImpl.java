@@ -2,14 +2,13 @@ package com.example.webshop.services;
 
 import com.example.webshop.dto.CasopisDTO;
 import com.example.webshop.dto.IzdanjeDTO;
+import com.example.webshop.dto.PlanDTO;
 import com.example.webshop.dto.TaskLinkDTO;
-import com.example.webshop.model.Casopis;
-import com.example.webshop.model.Izdanje;
-import com.example.webshop.model.Korisnik;
-import com.example.webshop.model.Link;
+import com.example.webshop.model.*;
 import com.example.webshop.repository.CasopisRepository;
 import com.example.webshop.repository.KorisnikRepository;
 import com.example.webshop.repository.NacinPlacanjaRepository;
+import com.example.webshop.repository.PlanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +28,9 @@ public class CasopisServiceImpl implements CasopisService {
 
     @Autowired
     CasopisRepository casopisRepository;
+
+    @Autowired
+    PlanRepository planRepository;
 
     @Override
     public List<TaskLinkDTO> getTasks(String username){
@@ -57,7 +59,6 @@ public class CasopisServiceImpl implements CasopisService {
         CasopisDTO dto = new CasopisDTO();
         dto.setNaziv(casopis.getNaziv());
         dto.setAktiviran(casopis.getAktiviran());
-        dto.setClanarina(casopis.getClanarina());
         dto.setId(casopis.getId());
         dto.setIssn(casopis.getIssn());
         dto.setKomeSeNaplacuje(casopis.getKomeSeNaplacuje());
@@ -71,13 +72,11 @@ public class CasopisServiceImpl implements CasopisService {
         CasopisDTO dto = new CasopisDTO();
         dto.setNaziv(casopis.getNaziv());
         dto.setAktiviran(casopis.getAktiviran());
-        dto.setClanarina(casopis.getClanarina());
         dto.setId(casopis.getId());
         dto.setIssn(casopis.getIssn());
         dto.setKomeSeNaplacuje(casopis.getKomeSeNaplacuje());
         dto.setIzdanja(new ArrayList<>());
         dto.setUrednik(casopis.getGlavniUrednik().getUsername());
-        dto.setUuid(casopis.getUuid().toString());
         for (Izdanje izdanje:casopis.getIzdanja()) {
             IzdanjeDTO izdanjeDTO = new IzdanjeDTO();
             izdanjeDTO.setBroj(izdanje.getBroj());
@@ -119,13 +118,11 @@ public class CasopisServiceImpl implements CasopisService {
                 casopisDTO = new CasopisDTO();
                 casopisDTO.setNaziv(casopis.getNaziv());
                 casopisDTO.setAktiviran(casopis.getAktiviran());
-                casopisDTO.setClanarina(casopis.getClanarina());
                 casopisDTO.setId(casopis.getId());
                 casopisDTO.setIssn(casopis.getIssn());
                 casopisDTO.setKomeSeNaplacuje(casopis.getKomeSeNaplacuje());
                 casopisDTO.setIzdanja(new ArrayList<>());
                 casopisDTO.setUrednik(casopis.getGlavniUrednik().getUsername());
-                casopisDTO.setUuid(casopis.getUuid().toString());
 
                 casopisiMap.put(casopisDTO.getId(),casopisDTO);
             }
@@ -157,5 +154,25 @@ public class CasopisServiceImpl implements CasopisService {
         }
 
         return ret;
+    }
+
+    @Override
+    public void setPlans(List<PlanDTO> dto, Long casopisId){
+        Casopis casopis = casopisRepository.getOne(casopisId);
+
+        List<Plan> planovi = new ArrayList<>();
+        for (PlanDTO p:dto) {
+            Plan plan = new Plan();
+            plan.setPeriod(p.getPeriod());
+            plan.setUcestalostPerioda(p.getUcestalostPerioda());
+            plan.setCena(p.getCena());
+            plan.setCasopis(casopis);
+            plan = planRepository.save(plan);
+
+            planovi.add(plan);
+        }
+
+        casopis.setPlanovi(planovi);
+        casopisRepository.save(casopis);
     }
 }

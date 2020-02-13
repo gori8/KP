@@ -112,6 +112,18 @@ public class WebShopController {
         return true;
     }
 
+    @PostMapping(path = "/newPaper/plans/{processId}", produces = "application/json")
+    @PreAuthorize("hasRole('UREDNIK')")
+    public @ResponseBody Boolean setPlans(@RequestBody List<PlanDTO> dto, @PathVariable String processId) {
+
+        Long casopisId = (Long)runtimeService.getVariable(processId,"id");
+        casopisService.setPlans(dto,casopisId);
+
+        kpService.createLinks(casopisId);
+
+        return true;
+    }
+
     @GetMapping(path = "/sciencefields", produces = "application/json")
     public @ResponseBody List<NaucnaOblastDTO> getNaucneOblasti(){
         List<NaucnaOblast> noList = naucnaOblastRepository.findAll();

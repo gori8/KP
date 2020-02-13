@@ -19,15 +19,8 @@ public class Casopis {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "uuid", unique = true, nullable = true)
-    @Type(type="org.hibernate.type.UUIDCharType")
-    private UUID uuid;
-
     @Column(name = "naziv", unique = false, nullable = false)
     private String naziv;
-
-    @Column(name = "clanarina", unique = false, nullable = false)
-    private BigDecimal clanarina;
 
     @Column(name = "komeSeNaplacuje", unique = false, nullable = false)
     private String komeSeNaplacuje;
@@ -59,6 +52,9 @@ public class Casopis {
 
     @OneToMany(mappedBy = "casopis")
     protected List<Link> linkovi = new ArrayList<>();
+
+    @OneToMany(mappedBy = "casopis")
+    protected List<Plan> planovi = new ArrayList<>();
 
     @OneToMany(mappedBy = "casopis")
     protected List<Izdanje> izdanja = new ArrayList<>();
