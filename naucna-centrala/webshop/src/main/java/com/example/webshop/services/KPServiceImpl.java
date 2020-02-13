@@ -39,15 +39,14 @@ public class KPServiceImpl implements KPService {
     KorisnikRepository korisnikRepository;
 
     @Override
-    public void createLinks(Long casopisId) throws Exception {
-        Casopis casopis = casopisRepository.getOne(casopisId);
+    public void createLinks(Plan plan) throws Exception {
 
         ItemDTO dto = new ItemDTO();
-        dto.setNaziv(casopis.getNaziv()+"");
+        dto.setNaziv(plan.getCasopis().getNaziv()+", plan: "+plan.getPeriod()+" "+plan.getUcestalostPerioda());
         dto.setRedirectUrl(UrlClass.REDIRECT_URL_REGISTRATION);
         dto.setNaciniPlacanja(new ArrayList<>());
-        dto.setEmail(casopis.getGlavniUrednik().getEmail());
-        for (NacinPlacanja np:casopis.getNaciniPlacanja()) {
+        dto.setEmail(plan.getCasopis().getGlavniUrednik().getEmail());
+        for (NacinPlacanja np:plan.getCasopis().getNaciniPlacanja()) {
             dto.getNaciniPlacanja().add(np.getId());
         }
 
@@ -81,22 +80,34 @@ public class KPServiceImpl implements KPService {
         }
         ReturnLinksDTO responseBody = response.getBody();
 
-        casopis.setUuid(UUID.fromString(responseBody.getUuid()));
+        plan.setUuid(UUID.fromString(responseBody.getUuid()));
 
         if(response.getStatusCode().value()==200) {
             for (LinkDTO linkDTO : responseBody.getLinks()) {
+                boolean flag = false;
+                for (Link l:plan.getCasopis().getLinkovi()) {
+                    if(l.getNacinPlacanja()==linkDTO.getNacinPlacanjaId()){
+                        flag = true;
+                        break;
+                    }
+                }
+
+                if(flag){
+                    continue;
+                }
+
                 Link link = new Link();
-                link.setCasopis(casopis);
+                link.setCasopis(plan.getCasopis());
                 link.setUrl(linkDTO.getLink());
                 link.setCompleted(false);
                 link.setNacinPlacanja(linkDTO.getNacinPlacanjaId());
                 link = linkRepository.save(link);
 
-                casopis.getLinkovi().add(link);
+                plan.getCasopis().getLinkovi().add(link);
             }
         }
 
-        casopisRepository.save(casopis);
+        casopisRepository.save(plan.getCasopis());
     }
 
     public String completePayment(String uuid, Long nacinPlacanjaId){

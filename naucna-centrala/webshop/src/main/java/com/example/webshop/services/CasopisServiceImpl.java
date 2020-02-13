@@ -157,7 +157,7 @@ public class CasopisServiceImpl implements CasopisService {
     }
 
     @Override
-    public void setPlans(List<PlanDTO> dto, Long casopisId){
+    public List<Plan> setPlans(List<PlanDTO> dto, Long casopisId){
         Casopis casopis = casopisRepository.getOne(casopisId);
 
         List<Plan> planovi = new ArrayList<>();
@@ -174,5 +174,7 @@ public class CasopisServiceImpl implements CasopisService {
 
         casopis.setPlanovi(planovi);
         casopisRepository.save(casopis);
+
+        return planovi;
     }
 }

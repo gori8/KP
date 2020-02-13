@@ -77,6 +77,15 @@ export class EndpointsService {
     return this.http.post(`${BASE_URL}/newPaper/uredniciRecenzenti/${processId}`, body,{
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
+        'responseType': 'text'
+       })
+    });
+  }
+
+  submitPlans(body,processId): Observable<any>{
+    return this.http.post(`${BASE_URL}/newPaper/plans/${processId}`, body,{
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
        })
     });
   }
