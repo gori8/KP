@@ -3,10 +3,7 @@ package com.example.userandpaymentinfo.service;
 import com.example.userandpaymentinfo.dto.*;
 import com.example.userandpaymentinfo.model.*;
 import com.example.userandpaymentinfo.repository.*;
-import com.netflix.discovery.converters.Auto;
-import org.hibernate.annotations.Check;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -133,16 +130,24 @@ public class InfoServiceImpl implements InfoService{
     }
 
     @Override
-    public ReturnLinksDTO register(CreateLinksDTO dto){
+    public void register(RegisterDTO dto) {
+        Seller seller = new Seller();
+        seller.setEmail(dto.getEmail());
+        seller = sellerRepository.save(seller);
+    }
+
+    @Override
+    public ReturnLinksDTO add(CreateLinksDTO dto){
        // ConverterAES converter = new ConverterAES();
 
         ReturnLinksDTO ret = new ReturnLinksDTO();
 
         Seller seller = sellerRepository.findOneByEmail(dto.getEmail());
         if(seller == null){
-            seller = new Seller();
+            ret.setRegisterUrl(UrlClass.USER_AND_PAYMENT_URL+"register");
+            /*seller = new Seller();
             seller.setEmail(dto.getEmail());
-            seller = sellerRepository.save(seller);
+            seller = sellerRepository.save(seller);*/
         }
 
         Item item = new Item();

@@ -11,10 +11,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import rs.ac.uns.ftn.url.*;
@@ -42,7 +39,7 @@ public class KPServiceImpl implements KPService {
     KorisnikRepository korisnikRepository;
 
     @Override
-    public void createLinks(Long casopisId){
+    public void createLinks(Long casopisId) throws Exception {
         Casopis casopis = casopisRepository.getOne(casopisId);
 
         ItemDTO dto = new ItemDTO();
@@ -59,10 +56,30 @@ public class KPServiceImpl implements KPService {
         headers.setContentType(MediaType.APPLICATION_JSON);
 
         HttpEntity<ItemDTO> entity = new HttpEntity<ItemDTO>(dto, headers);
+        ResponseEntity<ReturnLinksDTO> response=null;
 
-        ResponseEntity<ReturnLinksDTO> response =
-                restTemplate.postForEntity(UrlClass.USER_AND_PAYMENT_URL+"register",entity,ReturnLinksDTO.class);
+        try {
+             response=
+                    restTemplate.postForEntity(UrlClass.USER_AND_PAYMENT_URL + "add", entity, ReturnLinksDTO.class);
 
+        }catch (Exception e) {
+            if(response.getStatusCode()== HttpStatus.valueOf(401)){
+                System.out.println("User is not registered");
+                System.out.println("Trying to register user...");
+                ReturnLinksDTO responseBody = response.getBody();
+                HttpHeaders headersReg = new HttpHeaders();
+                headers.setContentType(MediaType.APPLICATION_JSON);
+                HttpEntity<ItemDTO> entityReg = new HttpEntity<ItemDTO>(dto, headersReg);
+                ResponseEntity<Boolean> responseReg = restTemplate.postForEntity(response.getBody().getRegisterUrl(),entityReg,Boolean.class);
+                if(responseReg.getBody()){
+                    System.out.println("User registered successfully");
+                    response=
+                            restTemplate.postForEntity(UrlClass.USER_AND_PAYMENT_URL + "add", entity, ReturnLinksDTO.class);
+                }else{
+                    throw new Exception();
+                }
+            }
+        }
         ReturnLinksDTO responseBody = response.getBody();
 
         casopis.setUuid(UUID.fromString(responseBody.getUuid()));
