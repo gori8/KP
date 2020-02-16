@@ -15,6 +15,7 @@ import { IzdanjeRegistracijaComponent } from './components/izdanje-registracija/
 import { IzdanjaCasopisaComponent } from './components/izdanja-casopisa/izdanja-casopisa.component';
 import { PaymentResponseComponent } from './components/payment-response/payment-response.component';
 import { KupljeniPredmetiComponent } from './components/kupljeni-predmeti/kupljeni-predmeti.component';
+import { AddPlansComponent } from './components/add-plans/add-plans.component';
 
 const routes: Routes = [
   { path : "", component : HomeComponent },
@@ -31,7 +32,8 @@ const routes: Routes = [
   { path : "number/:casopisId", component : IzdanjeRegistracijaComponent, canActivate:[AuthGuard] },
   { path : "papers/:id/numbers", component : IzdanjaCasopisaComponent},
   { path : "paymentresponse/:message", component : PaymentResponseComponent, canActivate:[AuthGuard]},
-  { path : "bought", component : KupljeniPredmetiComponent, canActivate:[AuthGuard]}
+  { path : "bought", component : KupljeniPredmetiComponent, canActivate:[AuthGuard]},
+  { path : "addPlans/:processId", component : AddPlansComponent, canActivate:[AuthGuard]}
 ];
 
 @NgModule({

@@ -2,11 +2,12 @@ package com.example.webshop.services;
 
 import com.example.webshop.dto.IzdanjeDTO;
 import com.example.webshop.model.Casopis;
+import com.example.webshop.model.Plan;
 import org.springframework.http.ResponseEntity;
 
 public interface KPService {
 
-    public void createLinks(Long casopisId) throws Exception;
+    public void createLinks(Plan plan) throws Exception;
 
     public String completePayment(String uuid, Long nacinPlacanjaId);
 

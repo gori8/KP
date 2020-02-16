@@ -64,7 +64,7 @@ public class InfoController {
         ReturnLinksDTO ret =infoService.add(dto);
 
         if(ret.getRegisterUrl()!=null){
-            ResponseEntity.status(401).body(ret);
+            return ResponseEntity.status(401).body(ret);
         }
 
         if(ret.getLinks().isEmpty()){

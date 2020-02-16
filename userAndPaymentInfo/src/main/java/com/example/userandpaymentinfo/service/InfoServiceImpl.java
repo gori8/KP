@@ -145,6 +145,7 @@ public class InfoServiceImpl implements InfoService{
         Seller seller = sellerRepository.findOneByEmail(dto.getEmail());
         if(seller == null){
             ret.setRegisterUrl(UrlClass.USER_AND_PAYMENT_URL+"register");
+            return ret;
             /*seller = new Seller();
             seller.setEmail(dto.getEmail());
             seller = sellerRepository.save(seller);*/

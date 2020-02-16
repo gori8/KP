@@ -15,5 +15,4 @@ public interface CasopisRepository extends JpaRepository<Casopis, Long> {
     @Query(value = "SELECT c FROM Casopis c WHERE c.aktiviran=1")
     List<Casopis> findAllActive();
 
-    Casopis findOneByUuid(UUID uuid);
 }

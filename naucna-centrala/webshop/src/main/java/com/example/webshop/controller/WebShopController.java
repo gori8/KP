@@ -90,16 +90,11 @@ public class WebShopController {
 
     @PostMapping(path = "/newPaper/uredniciRecenzenti/{processId}", produces = "application/json")
     @PreAuthorize("hasRole('UREDNIK')")
-    public @ResponseBody Boolean newPaperUredniciRecenzentiSubmit(@RequestBody UredniciRecenzentiDTO dto, @PathVariable String processId) {
+    public @ResponseBody String newPaperUredniciRecenzentiSubmit(@RequestBody UredniciRecenzentiDTO dto, @PathVariable String processId) {
 
         if(dto.getRecenzenti().size() < 2){
-            return false;
+            return null;
         }
-
-        Long casopisId = (Long)runtimeService.getVariable(processId,"id");
-
-        kpService.createLinks(casopisId);
-
         HashMap<String, Object> map = new HashMap<>();
 
         map.put("urednici",dto.getUrednici());
@@ -108,6 +103,20 @@ public class WebShopController {
         Task task = taskService.createTaskQuery().processInstanceId(processId).list().get(0);
         runtimeService.setVariable(processId, "uredniciRecenzenti", dto);
         formService.submitTaskForm(task.getId(), map);
+
+        return "\""+processId+"\"";
+    }
+
+    @PostMapping(path = "/newPaper/plans/{processId}", produces = "application/json")
+    @PreAuthorize("hasRole('UREDNIK')")
+    public @ResponseBody Boolean setPlans(@RequestBody List<PlanDTO> dto, @PathVariable String processId) throws Exception {
+
+        Long casopisId = (Long)runtimeService.getVariable(processId,"id");
+        List<Plan> planovi = casopisService.setPlans(dto,casopisId);
+
+        for (Plan plan:planovi) {
+            kpService.createLinks(plan);
+        }
 
         return true;
     }

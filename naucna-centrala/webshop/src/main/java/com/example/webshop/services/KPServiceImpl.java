@@ -2,10 +2,7 @@ package com.example.webshop.services;
 
 import com.example.webshop.dto.*;
 import com.example.webshop.model.*;
-import com.example.webshop.repository.CasopisRepository;
-import com.example.webshop.repository.IzdanjeRepository;
-import com.example.webshop.repository.KorisnikRepository;
-import com.example.webshop.repository.LinkRepository;
+import com.example.webshop.repository.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.boot.configurationprocessor.json.JSONException;
@@ -13,6 +10,7 @@ import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 import rs.ac.uns.ftn.url.*;
 
@@ -38,17 +36,22 @@ public class KPServiceImpl implements KPService {
     @Autowired
     KorisnikRepository korisnikRepository;
 
+    @Autowired
+    PlanRepository planRepository;
+
+    @Autowired
+    ObjectMapper objectMapper;
+
     @Override
-    public void createLinks(Long casopisId) throws Exception {
-        Casopis casopis = casopisRepository.getOne(casopisId);
+    public void createLinks(Plan plan) throws Exception {
 
         ItemDTO dto = new ItemDTO();
-        dto.setNaziv(casopis.getNaziv());
-        dto.setAmount(casopis.getClanarina());
+        dto.setNaziv(plan.getCasopis().getNaziv()+", plan: "+plan.getPeriod()+" "+plan.getUcestalostPerioda());
         dto.setRedirectUrl(UrlClass.REDIRECT_URL_REGISTRATION);
         dto.setNaciniPlacanja(new ArrayList<>());
-        dto.setEmail(casopis.getGlavniUrednik().getEmail());
-        for (NacinPlacanja np:casopis.getNaciniPlacanja()) {
+        dto.setEmail(plan.getCasopis().getGlavniUrednik().getEmail());
+        dto.setAmount(plan.getCena());
+        for (NacinPlacanja np:plan.getCasopis().getNaciniPlacanja()) {
             dto.getNaciniPlacanja().add(np.getId());
         }
 
@@ -59,49 +62,66 @@ public class KPServiceImpl implements KPService {
         ResponseEntity<ReturnLinksDTO> response=null;
 
         try {
-             response=
+            response =
                     restTemplate.postForEntity(UrlClass.USER_AND_PAYMENT_URL + "add", entity, ReturnLinksDTO.class);
-
-        }catch (Exception e) {
-            if(response.getStatusCode()== HttpStatus.valueOf(401)){
+            System.out.println("STATUS CODE: " + response.getStatusCodeValue());
+        }catch(HttpClientErrorException e) {
+            //e.printStackTrace();
+            if (e.getStatusCode() == HttpStatus.valueOf(401))
+            {
                 System.out.println("User is not registered");
                 System.out.println("Trying to register user...");
-                ReturnLinksDTO responseBody = response.getBody();
+                ReturnLinksDTO responseBody = objectMapper.readValue(e.getResponseBodyAsString(),ReturnLinksDTO.class);
                 HttpHeaders headersReg = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_JSON);
-                HttpEntity<ItemDTO> entityReg = new HttpEntity<ItemDTO>(dto, headersReg);
-                ResponseEntity<Boolean> responseReg = restTemplate.postForEntity(response.getBody().getRegisterUrl(),entityReg,Boolean.class);
-                if(responseReg.getBody()){
+                RegisterDTO registerDTO = new RegisterDTO();
+                registerDTO.setEmail(plan.getCasopis().getGlavniUrednik().getEmail());
+                HttpEntity<RegisterDTO> entityReg = new HttpEntity<RegisterDTO>(registerDTO, headersReg);
+                ResponseEntity<Boolean> responseReg = restTemplate.postForEntity(responseBody.getRegisterUrl(), entityReg, Boolean.class);
+                if (responseReg.getBody()) {
                     System.out.println("User registered successfully");
                     response =
                             restTemplate.postForEntity(UrlClass.USER_AND_PAYMENT_URL + "add", entity, ReturnLinksDTO.class);
-                }else{
+                } else {
                     throw new Exception();
                 }
             }
         }
         ReturnLinksDTO responseBody = response.getBody();
 
-        casopis.setUuid(UUID.fromString(responseBody.getUuid()));
+        plan.setUuid(UUID.fromString(responseBody.getUuid()));
 
         if(response.getStatusCode().value()==200) {
             for (LinkDTO linkDTO : responseBody.getLinks()) {
+                boolean flag = false;
+                for (Link l:plan.getCasopis().getLinkovi()) {
+                    if(l.getNacinPlacanja()==linkDTO.getNacinPlacanjaId()){
+                        flag = true;
+                        break;
+                    }
+                }
+
+                if(flag){
+                    continue;
+                }
+
                 Link link = new Link();
-                link.setCasopis(casopis);
+                link.setCasopis(plan.getCasopis());
                 link.setUrl(linkDTO.getLink());
                 link.setCompleted(false);
                 link.setNacinPlacanja(linkDTO.getNacinPlacanjaId());
                 link = linkRepository.save(link);
 
-                casopis.getLinkovi().add(link);
+                plan.getCasopis().getLinkovi().add(link);
             }
         }
 
-        casopisRepository.save(casopis);
+        casopisRepository.save(plan.getCasopis());
     }
 
     public String completePayment(String uuid, Long nacinPlacanjaId){
-        Link link = linkRepository.findOneByCasopisUuidAndNacinPlacanja(UUID.fromString(uuid),nacinPlacanjaId);
+        Plan plan = planRepository.findOneByUuid(UUID.fromString(uuid));
+        Link link = linkRepository.findOneByCasopisUuidAndNacinPlacanja(plan.getCasopis().getId(),nacinPlacanjaId);
         link.setCompleted(true);
         linkRepository.save(link);
 
@@ -133,7 +153,7 @@ public class KPServiceImpl implements KPService {
         HttpEntity<ItemDTO> entity = new HttpEntity<ItemDTO>(itemDTO, headers);
 
         ResponseEntity<ReturnLinksDTO> response =
-                restTemplate.postForEntity(UrlClass.USER_AND_PAYMENT_URL+"register",entity,ReturnLinksDTO.class);
+                restTemplate.postForEntity(UrlClass.USER_AND_PAYMENT_URL+"add",entity,ReturnLinksDTO.class);
 
         ReturnLinksDTO responseBody = response.getBody();
 

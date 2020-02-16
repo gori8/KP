@@ -65,7 +65,7 @@ public class UserServiceImpl implements  UserService {
 
         ret.setId(casopisId);
         ret.setNaziv(casopis.getNaziv());
-        ret.setClanarina(casopis.getClanarina());
+        //ret.setClanarina(casopis.getClanarina());
         ret.setKomeSeNaplacuje(casopis.getKomeSeNaplacuje());
         for (NaucnaOblast no:casopis.getNaucneOblasti()) {
             ret.getNaucneOblasti().add(no.getId());
@@ -87,7 +87,6 @@ public class UserServiceImpl implements  UserService {
             CasopisDTO dto = new CasopisDTO();
             dto.setId(casopis.getId());
             dto.setNaziv(casopis.getNaziv());
-            dto.setClanarina(casopis.getClanarina());
             dto.setIssn(casopis.getIssn());
             dto.setAktiviran(casopis.getAktiviran());
             dto.setKomeSeNaplacuje(casopis.getKomeSeNaplacuje());
@@ -106,11 +105,9 @@ public class UserServiceImpl implements  UserService {
             CasopisDTO dto = new CasopisDTO();
             dto.setId(casopis.getId());
             dto.setNaziv(casopis.getNaziv());
-            dto.setClanarina(casopis.getClanarina());
             dto.setIssn(casopis.getIssn());
             dto.setAktiviran(casopis.getAktiviran());
             dto.setKomeSeNaplacuje(casopis.getKomeSeNaplacuje());
-            dto.setUuid(casopis.getUuid().toString());
 
             for (NacinPlacanja np:casopis.getNaciniPlacanja()) {
                 if(np.getId()==2){

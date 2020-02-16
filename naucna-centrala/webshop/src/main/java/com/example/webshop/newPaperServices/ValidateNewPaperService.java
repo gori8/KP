@@ -57,7 +57,7 @@ public class ValidateNewPaperService  implements JavaDelegate {
                     casopis.setNaziv(formField.getFieldValue());
                 }
             }
-            if(formField.getFieldId().equals("clanarina")) {
+            /*if(formField.getFieldId().equals("clanarina")) {
                 if(formField.getFieldValue()==null || formField.getFieldValue().trim().equals("")){
                     System.out.println(2);
                     validation = false;
@@ -73,7 +73,7 @@ public class ValidateNewPaperService  implements JavaDelegate {
                         break;
                     }
                 }
-            }
+            }*/
             if(formField.getFieldId().equals("komeSeNaplacuje")) {
                 if(!formField.getFieldValue().equals("Citalac") && !formField.getFieldValue().equals("Autor")){
                     System.out.println(4);
@@ -115,7 +115,6 @@ public class ValidateNewPaperService  implements JavaDelegate {
         }
 
         if(casopis.getNaucneOblasti().size()==0){
-            System.out.println(7);
             validation=false;
         }else{
             String naucneOblasti = "";
@@ -130,7 +129,6 @@ public class ValidateNewPaperService  implements JavaDelegate {
         }
 
         if(casopis.getNaciniPlacanja().size()==0){
-            System.out.println(8);
             validation=false;
         }else{
             String naciniPlacanja = "";
