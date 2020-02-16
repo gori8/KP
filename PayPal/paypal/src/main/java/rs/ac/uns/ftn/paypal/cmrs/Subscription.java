@@ -24,8 +24,11 @@ public class Subscription {
     private String agreementId;
 
     private String type;
+
     private Long cycles;
+
     private Long frequencyInterval;
+
     private String frequency;
 
     private String redirectUrl;

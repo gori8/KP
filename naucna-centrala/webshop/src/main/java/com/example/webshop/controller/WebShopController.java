@@ -104,7 +104,7 @@ public class WebShopController {
         runtimeService.setVariable(processId, "uredniciRecenzenti", dto);
         formService.submitTaskForm(task.getId(), map);
 
-        return processId;
+        return "\""+processId+"\"";
     }
 
     @PostMapping(path = "/newPaper/plans/{processId}", produces = "application/json")
