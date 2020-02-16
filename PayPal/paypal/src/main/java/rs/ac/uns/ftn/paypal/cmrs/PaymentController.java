@@ -6,10 +6,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import rs.ac.uns.ftn.paypal.dto.CreatePaymentOrSubRequest;
-import rs.ac.uns.ftn.paypal.dto.CreatePaymentOrSubResponse;
-import rs.ac.uns.ftn.paypal.dto.ExecutePaymentRequest;
-import rs.ac.uns.ftn.paypal.dto.RegistrationDTO;
+import rs.ac.uns.ftn.paypal.dto.*;
+import rs.ac.uns.ftn.url.PayPalSubscriptionDTO;
 import rs.ac.uns.ftn.url.UrlClass;
 
 import java.net.URI;
@@ -26,6 +24,9 @@ public class PaymentController {
 
     @Autowired
     SellerRepository sellerRepository;
+
+    @Autowired
+    SubPlanRepository subPlanRepository;
 
     @PostMapping
     public String create(@RequestBody CreatePaymentOrSubRequest request) {
@@ -50,8 +51,17 @@ public class PaymentController {
         return ResponseEntity.status(HttpStatus.FOUND).headers(httpHeaders).build();
     }
 
+    @RequestMapping(value = "/plan", method = RequestMethod.POST)
+    public ResponseEntity<String> createPlan(@RequestBody PayPalSubscriptionDTO request) {
+        return new ResponseEntity<String>("\""+paymentService.createSubPlanUrl(request)+"\"", HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/subscription", method = RequestMethod.POST)
-    public ResponseEntity<String> createSubscription(@RequestBody CreatePaymentOrSubRequest request) {
+    public ResponseEntity<String> createSubscription(@RequestBody SubPlanDTO subPlanRequest) {
+        CreatePaymentOrSubRequest request = new CreatePaymentOrSubRequest();
+        SubPlan subPlan = subPlanRepository.findOneByPlanId(UUID.fromString(subPlanRequest.getPlanId()));
+        request.setBrojCiklusa(subPlan.getUcestalostPerioda().longValue());
+        request.setCasopisUuid();
         return new ResponseEntity<String>("\""+paymentService.activateSubscription(request)+"\"", HttpStatus.OK);
     }
 
