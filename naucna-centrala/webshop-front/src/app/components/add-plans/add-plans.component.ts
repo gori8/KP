@@ -22,15 +22,22 @@ export class AddPlansComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.addPlan();
     this.processId = this.activatedRoute.snapshot.paramMap.get('processId');
   }
 
   addPlan(){
     this.planovi.push("");
-    this.planoviModel.push(null);
+    this.planoviModel.push(
+      {
+        period:null,
+        ucestalostPerioda:null,
+        cena:null
+      }
+    );
   }
 
-  removeUrednik(){
+  removePlan(){
     var index = this.planovi.length-1;
     this.planovi.splice(index,1);
     this.planoviModel.splice(index,1);

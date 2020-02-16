@@ -215,4 +215,21 @@ public class KPServiceImpl implements KPService {
             return UrlClass.FRON_WEBSHOP+"paymentresponse/failed";
         }
     }
+
+    @Override
+    public String callPayPalSubscription(PlanDTO dto){
+        PayPalSubscriptionDTO ppsDTO = new PayPalSubscriptionDTO();
+        ppsDTO.setCena(dto.getCena());
+        ppsDTO.setPeriod(dto.getPeriod());
+        ppsDTO.setUcestalostPerioda(dto.getUcestalostPerioda());
+        ppsDTO.setRedirectUrl();
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        HttpEntity<PayPalSubscriptionDTO> entity = new HttpEntity<PayPalSubscriptionDTO>(ppsDTO, headers);
+
+        ResponseEntity<String> response
+                = restTemplate.postForEntity(UrlClass.,entity,String.class);
+    }
 }
