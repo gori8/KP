@@ -23,6 +23,7 @@ import { IzdanjaCasopisaComponent } from './components/izdanja-casopisa/izdanja-
 import { PaymentResponseComponent } from './components/payment-response/payment-response.component';
 import { KupljeniPredmetiComponent } from './components/kupljeni-predmeti/kupljeni-predmeti.component';
 import { AddPlansComponent } from './components/add-plans/add-plans.component';
+import { SelectPlanComponent } from './components/select-plan/select-plan.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -84,6 +85,7 @@ const customNotifierOptions: NotifierOptions = {
     PaymentResponseComponent,
     KupljeniPredmetiComponent,
     AddPlansComponent,
+    SelectPlanComponent,
   ],
   imports: [
     BrowserModule,

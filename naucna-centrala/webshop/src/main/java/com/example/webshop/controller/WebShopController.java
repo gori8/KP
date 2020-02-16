@@ -19,8 +19,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import rs.ac.uns.ftn.url.SubDateDTO;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -396,6 +400,11 @@ public class WebShopController {
         return new ResponseEntity<>(casopisService.getPaper(id),HttpStatus.OK);
     }
 
+    @GetMapping(path = "/plans/{casopisId}", produces = "application/json")
+    public ResponseEntity<List<PlanDTO>> getPlansForPaper(@PathVariable("casopisId") Long casopisId){
+        return new ResponseEntity<List<PlanDTO>>(casopisService.getPlansForPaper(casopisId),HttpStatus.OK);
+    }
+
     @PostMapping(path = "/numbers", produces = "application/json")
     @PreAuthorize("hasRole('UREDNIK')")
     public ResponseEntity<Long> addNewNumber(@RequestBody IzdanjeDTO dto){
@@ -448,5 +457,23 @@ public class WebShopController {
             }
         }
         return ResponseEntity.ok(false);
+    }
+
+    @RequestMapping(value = "paypalSubscription/init", method = RequestMethod.POST)
+    @PreAuthorize("hasRole('USER')")
+    public  ResponseEntity<String> callPayPalSubscription(@RequestBody CallPayPalSubscriptionDTO dto){
+
+        return new ResponseEntity<String>("\""+kpService.callPayPalSubscription(dto)+"\"",HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "paypalSubscription/completed/{username}/{uuid}/{success}", method = RequestMethod.POST)
+    public ResponseEntity<String> donePayPalSubscription(@PathVariable("username")String username,
+                                                         @PathVariable("uuid")String uuid,
+                                                         @PathVariable("success")Boolean success,
+                                                         @RequestBody SubDateDTO subDateDTO) throws ParseException {
+
+        Date datumIsticanja=new SimpleDateFormat("yyyy-MM-dd").parse(subDateDTO.getDate());
+
+        return new ResponseEntity<String>(kpService.donePayPalSubsctiption(uuid,success,username,datumIsticanja),HttpStatus.OK);
     }
 }

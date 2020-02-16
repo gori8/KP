@@ -14,6 +14,7 @@ public class UrlClass {
     public static final String DOBAVI_CASOPIS_NA_NC_DEMO = "https://localhost:9000/nc/casopis/";//NC-DEMO
     public static final String REDIRECT_URL_REGISTRATION = "https://localhost:9000/webshop/payments/complete/";
     public static final String REDIRECT_URL_REGISTRATION_IGOR = "https://localhost:8080/payment/payments/complete/";
+    public static final String WEBSHOP_URL= "https://localhost:9000/webshop/";
 
     public static final String USER_AND_PAYMENT_URL = "https://localhost:8771/userandpayment/api/";
     public static final String BANKMS_URL = "https://localhost:8771/bank/api/bankms/";

@@ -42,6 +42,9 @@ public class KPServiceImpl implements KPService {
     @Autowired
     ObjectMapper objectMapper;
 
+    @Autowired
+    PretplataRepository pretplataRepository;
+
     @Override
     public void createLinks(Plan plan) throws Exception {
 
@@ -227,12 +230,12 @@ public class KPServiceImpl implements KPService {
     }
 
     @Override
-    public String callPayPalSubscription(PlanDTO dto){
+    public String callPayPalSubscription(CallPayPalSubscriptionDTO dto){
         PayPalSubscriptionDTO ppsDTO = new PayPalSubscriptionDTO();
         ppsDTO.setCena(dto.getCena());
         ppsDTO.setPeriod(dto.getPeriod());
         ppsDTO.setUcestalostPerioda(dto.getUcestalostPerioda());
-        ppsDTO.setRedirectUrl();
+        ppsDTO.setRedirectUrl(UrlClass.WEBSHOP_URL+"paypalSubscription/completed/"+dto.getUsername()+"/"+dto.getUuid());
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -240,6 +243,39 @@ public class KPServiceImpl implements KPService {
         HttpEntity<PayPalSubscriptionDTO> entity = new HttpEntity<PayPalSubscriptionDTO>(ppsDTO, headers);
 
         ResponseEntity<String> response
-                = restTemplate.postForEntity(UrlClass.,entity,String.class);
+                = restTemplate.postForEntity(UrlClass.PAYPAL_URL+"plan",entity,String.class);
+
+        return response.getBody();
+    }
+
+    @Override
+    public String donePayPalSubsctiption(String uuid, Boolean success, String username, Date datumIsticanja){
+        if (success) {
+            UUID realUuid = UUID.fromString(uuid);
+            Plan plan = planRepository.findOneByUuid(realUuid);
+
+            if(plan==null){
+                return UrlClass.FRON_WEBSHOP+"paymentresponse/failed";
+            }
+
+            Korisnik korisnik = korisnikRepository.findOneByUsername(username);
+
+            Pretplata pretplata = new Pretplata();
+
+            pretplata.setPretplatnik(korisnik);
+            pretplata.setPlan(plan);
+            pretplata.setDatumIsticanja(datumIsticanja);
+            pretplata = pretplataRepository.save(pretplata);
+
+            korisnik.getPretplate().add(pretplata);
+            korisnik = korisnikRepository.save(korisnik);
+
+            plan.getPretplate().add(pretplata);
+            plan = planRepository.save(plan);
+
+            return UrlClass.FRON_WEBSHOP+"paymentresponse/success";
+        } else {
+            return UrlClass.FRON_WEBSHOP+"paymentresponse/failed";
+        }
     }
 }

@@ -123,6 +123,20 @@ export class EndpointsService {
     return this.http.get(`${BASE_URL}/numberOfTasks/${username}`);
   }
 
+  getPlansForPaper(id): Observable<any>{
+    return this.http.get(`${BASE_URL}/plans/${id}`);
+  }
+
+  submitSubscription(body): Observable<any>{
+
+    return this.http.post(`${BASE_URL}/paypalSubscription/init`,body, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'responseType': 'text'
+      })
+    });
+  }
+
   getTasks(username): Observable<any>{
     return this.http.get(`${BASE_URL}/tasks/${username}`);
   }

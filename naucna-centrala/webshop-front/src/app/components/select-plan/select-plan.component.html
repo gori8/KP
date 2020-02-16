@@ -1,0 +1,34 @@
+<div class="darkbackground"> 
+  <div class="container">
+      <div class="row ml-auto mr-auto">
+          <div class="col col-md-3"></div>
+          <div class="col col-md-6 mt-3">
+          
+              <!--FORM-->
+              <form #form="ngForm" ngNativeValidate (ngSubmit)="onSubmit(form)">
+                <h2 class="mb-3 text-light mt-3">Izaberite plan pretplate</h2>
+                
+                <div class="form-group">
+                    <label class="text-light" for="plan">Plan pretplate</label>
+                    <select name="plan" (change)="setBody($event.target.value)" id="plan" class="form-control" required>
+                      <option *ngFor="let p of planovi" value="p">
+                        {{p.ucestalostPerioda}} {{p.period}}
+                      </option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="text-light" for="cena">Cena:</label>
+                  <h6 *ngIf="body.cena!=null" id="cena">{{body.cena}}$</h6>
+                </div>
+
+                <!--BUTTON-->
+                <button type="submit" [hidden]="hidden" class="btn btn-primary mt-3 mb-4" >Potvrdi</button>
+                <div [hidden]="!hidden" class="lds-roller mt-3"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+              </form>
+
+          </div>
+          <div class="col col-md-3"></div>
+      </div>
+  </div>    
+</div>

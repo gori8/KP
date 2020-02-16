@@ -177,4 +177,22 @@ public class CasopisServiceImpl implements CasopisService {
 
         return planovi;
     }
+
+    @Override
+    public List<PlanDTO> getPlansForPaper(Long casopisId){
+        List<Plan> planList = planRepository.findAllByCasopisId(casopisId);
+        List<PlanDTO> ret = new ArrayList<>();
+
+        for (Plan plan:planList) {
+            PlanDTO dto = new PlanDTO();
+            dto.setCena(plan.getCena());
+            dto.setPeriod(plan.getPeriod());
+            dto.setUcestalostPerioda(plan.getUcestalostPerioda());
+            dto.setUuid(plan.getUuid().toString());
+
+            ret.add(dto);
+        }
+
+        return ret;
+    }
 }

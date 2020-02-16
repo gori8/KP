@@ -5,6 +5,8 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -30,4 +32,7 @@ public class Plan {
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Casopis casopis;
+
+    @OneToMany(mappedBy = "plan")
+    protected List<Pretplata> pretplate = new ArrayList<>();
 }

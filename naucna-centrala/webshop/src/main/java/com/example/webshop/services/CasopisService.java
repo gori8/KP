@@ -20,4 +20,6 @@ public interface CasopisService {
     public List<IzdanjeDTO> getBoughtItemsForCasopis(String username, Long casopisId);
 
     public List<Plan> setPlans(List<PlanDTO> dto, Long casopisId);
+
+    public List<PlanDTO> getPlansForPaper(Long casopisId);
 }
