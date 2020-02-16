@@ -33,9 +33,4 @@ export class AllPapersComponent implements OnInit {
       }
     )
   }
-
-  paypalSubscription(uuid){
-    window.location.href = `https://localhost:4200/paypal/subscription/${uuid}`;
-  }
-
 }

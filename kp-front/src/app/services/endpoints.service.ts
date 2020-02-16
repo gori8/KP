@@ -32,6 +32,10 @@ export class EndpointsService {
     return this.http.get(`${BASE_URL_USER_AND_PAYMENT}/form/${name}/${uuid}`);
   }
 
+  public getPlan(uuid): Observable<any> {
+    return this.http.get(`${BASE_URL_USER_AND_PAYMENT}/plan/${uuid}`);
+  }
+
   public registerOnMs(body,msUrl): Observable<any>{
 
     return this.http.post(msUrl,body, {

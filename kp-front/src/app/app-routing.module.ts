@@ -7,7 +7,7 @@ import { PaypalSubscriptionComponent } from './components/paypal-subscription/pa
 const routes: Routes = [
   { path: 'paymentform/:nacinPlacanja/:uuid', component: FormaPlacanjaComponent },
   { path: ':uuid', component: IzborPlacanjaComponent },
-  { path: 'paypal/subscription/:uuid', component: PaypalSubscriptionComponent }
+  { path: 'plan/:uuid', component: PaypalSubscriptionComponent }
 ];
 
 @NgModule({

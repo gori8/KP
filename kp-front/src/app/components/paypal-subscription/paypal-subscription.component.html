@@ -3,13 +3,13 @@
         <div class="row mt-5">
             <div class="col md-3"></div>
             <div class="col md-6 mt-5 mb-5">
-                <h1 class="text-light mb-5">PayPal Donacija</h1>
+                <h1 class="text-light mb-5">PayPal Pretplata</h1>
 
                 <form #form="ngForm" ngNativeValidate (ngSubmit)="onSubmit(form)">
 
                     <div class="form-group">
-                        <label class="text-light" for="tipCiklusa">Tip ciklusa: </label>
-                        <select name="tipCiklusa" id="tipCiklusa" class="form-control" [(ngModel)]="body.tipCiklusa" required>
+                        <label class="text-light" for="type">Tip ciklusa: </label>
+                        <select name="type" id="type" class="form-control" [(ngModel)]="body.type" required>
                             <option value="INFINITE">
                                 Infinite
                             </option>
@@ -19,19 +19,19 @@
                         </select>
                     </div>
 
-                    <div class="form-group" *ngIf="body.tipCiklusa=='FIXED'">
-                        <label class="text-light" for="brojCiklusa">Broj ciklusa: </label>
-                        <input name="brojCiklusa" [(ngModel)]="body.brojCiklusa" id="brojCiklusa" type="number" class="form-control" required/>
+                    <div class="form-group" *ngIf="body.type=='FIXED'">
+                        <label class="text-light" for="numCicles">Broj ciklusa: </label>
+                        <input name="numCicles" [(ngModel)]="body.numCicles" id="numCicles" type="number" class="form-control" required/>
                     </div>
 
                     <label class="text-light">Period: </label>
                     <div class="row">
                         <div class="form-group col">
-                            <input name="brojPeriod" [(ngModel)]="body.ucestalostPerioda" id="brojPeriod" type="number" class="form-control" required/>
+                            <input name="brojPeriod" [(ngModel)]="plan.ucestalostPerioda" id="brojPeriod" type="number" class="form-control" readonly required/>
                         </div>
 
                         <div class="form-group col">
-                            <select name="period" id="period" class="form-control" [(ngModel)]="body.period" required>
+                            <select name="period" id="period" class="form-control" [(ngModel)]="plan.period" readonly required>
                                 <option value="DAY">
                                     Dan
                                 </option>
@@ -46,6 +46,11 @@
                                 </option>
                             </select>
                         </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="text-light" for="cena">Cena po ciklusu: </label>
+                        <input name="cena" [(ngModel)]="plan.cena" id="cena" type="number" class="form-control" readonly required/>
                     </div>
                     
                     <button id="submit" [hidden]="hidden" class="btn btn-primary mt-4">Potvrdi</button>

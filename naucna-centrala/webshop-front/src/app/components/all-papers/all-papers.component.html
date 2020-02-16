@@ -31,7 +31,7 @@
           <div class="row">
             <ng-container *ngIf="currentUser$ | async as user">
               <button class="btn btn-outline-light ml-3 custom" *ngIf="user.role=='Registrovani korisnik'">Pretplati se</button>
-              <button (click)="paypalSubscription(c.uuid)" class="btn btn-primary ml-3" *ngIf="user.role=='Registrovani korisnik' && c.paypalSubscription==true"><i class="fab fa-paypal"></i> Donacija</button>
+              <button routerLink="/paypalSubscription/{{c.id}}" class="btn btn-primary ml-3" *ngIf="user.role=='Registrovani korisnik' && c.paypalSubscription==true"><i class="fab fa-paypal"></i> Pretplata</button>
             </ng-container>
           </div>
         </div>

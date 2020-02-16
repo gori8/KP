@@ -10,11 +10,15 @@ import { EndpointsService } from 'src/app/services/endpoints.service';
 export class PaypalSubscriptionComponent implements OnInit {
 
   private body={
-    "tipCiklusa":"INFINITE",
-    "brojCiklusa":0,
-    "period":"DAY",
-    "casopisUuid":null,
-    "ucestalostPerioda":1
+    type:"INFINITE",
+    numCicles:0,
+    planId:null
+  }
+
+  private plan={
+    period:null,
+    ucestalostPerioda:null,
+    cena:null
   }
 
   private hidden = false;
@@ -22,14 +26,26 @@ export class PaypalSubscriptionComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private endpoints: EndpointsService) { }
 
   ngOnInit() {
-    this.body.casopisUuid=this.activatedRoute.snapshot.paramMap.get('uuid');
+    this.body.planId=this.activatedRoute.snapshot.paramMap.get('uuid');
+    this.getPlan(this.body.planId);
+  }
+
+  getPlan(uuid){
+    this.endpoints.getPlan(uuid).subscribe(
+      res => {
+          this.plan = res;
+      },
+      err => {
+        console.log(err);  
+      }
+    );
   }
 
   onSubmit(form){
     this.hidden=true;
     if(form.valid===true){
-      if(this.body.tipCiklusa=="INFINITE"){
-        this.body.brojCiklusa=0;
+      if(this.body.type=="INFINITE"){
+        this.body.numCicles=0;
       }
       console.log(this.body);
     
