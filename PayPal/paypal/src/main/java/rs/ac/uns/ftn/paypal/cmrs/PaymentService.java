@@ -5,6 +5,7 @@ import rs.ac.uns.ftn.paypal.dto.CreatePaymentOrSubRequest;
 import rs.ac.uns.ftn.paypal.dto.CreatePaymentOrSubResponse;
 import rs.ac.uns.ftn.paypal.dto.ExecutePaymentRequest;
 import rs.ac.uns.ftn.url.AmountAndUrlDTO;
+import rs.ac.uns.ftn.url.PayPalSubscriptionDTO;
 
 public interface PaymentService {
 
@@ -25,5 +26,7 @@ public interface PaymentService {
     void updateStatusOrRetryCapture();
 
     void updateIntegratedSoftwareStatus();
+
+    String createSubPlanUrl(PayPalSubscriptionDTO request);
 }
 

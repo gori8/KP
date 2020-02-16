@@ -21,4 +21,6 @@ public class PayPalSubscriptionDTO {
     private BigDecimal cena;
 
     private String redirectUrl;
+
+    private String planUuid;
 }

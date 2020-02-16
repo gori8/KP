@@ -19,6 +19,8 @@ import org.springframework.web.client.RestTemplate;
 import rs.ac.uns.ftn.paypal.dto.*;
 import rs.ac.uns.ftn.paypal.utils.MyPaymentUtils;
 import rs.ac.uns.ftn.url.AmountAndUrlDTO;
+import rs.ac.uns.ftn.url.PayPalSubscriptionDTO;
+import rs.ac.uns.ftn.url.UrlClass;
 import rs.ac.uns.ftn.url.UrlDTO;
 
 import java.io.UnsupportedEncodingException;
@@ -65,6 +67,9 @@ public class PaymentServiceImpl implements PaymentService{
 
     @Autowired
     SubscriptionRepository subscriptionRepository;
+
+    @Autowired
+    SubPlanRepository subPlanRepository;
 
 
     @Override
@@ -437,6 +442,17 @@ public class PaymentServiceImpl implements PaymentService{
     @Scheduled(fixedRate = 10000)
     public void checkIntegratedSoftwareStatus() {
         updateIntegratedSoftwareStatus();
+    }
+
+    @Override
+    public String createSubPlanUrl(PayPalSubscriptionDTO request){
+        SubPlan subPlan = new SubPlan();
+        subPlan.setCena(request.getCena());
+        subPlan.setPeriod(request.getPeriod());
+        subPlan.setUcestalostPerioda(request.getUcestalostPerioda());
+        subPlan.setPlanId(UUID.randomUUID());
+        subPlanRepository.save(subPlan);
+        return UrlClass.FRONT_KP+"/plan/"+subPlan.getPlanId();
     }
 
 
