@@ -446,15 +446,11 @@ public class WebShopController {
     public ResponseEntity<Boolean> getPayed(@PathVariable("username")String username, @PathVariable("uuid")String uuid) {
         List<CasopisDTO> casopisList=casopisService.getBoughtItems(username);
         for(CasopisDTO casopis : casopisList){
-            if(casopis.getUuid().equals(uuid)){
-                return ResponseEntity.ok(true);
-            }else{
                 for(IzdanjeDTO izdanje : casopis.getIzdanja()){
                     if(izdanje.getUuid().equals(uuid)){
                         return ResponseEntity.ok(true);
                     }
                 }
-            }
         }
         return ResponseEntity.ok(false);
     }

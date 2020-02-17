@@ -1,7 +1,6 @@
 package rs.ac.uns.ftn.paypal.cmrs;
 
 
-import com.netflix.discovery.converters.Auto;
 import com.paypal.api.payments.*;
 import com.paypal.api.payments.Currency;
 import com.paypal.base.rest.APIContext;
@@ -18,19 +17,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import rs.ac.uns.ftn.paypal.dto.*;
 import rs.ac.uns.ftn.paypal.utils.MyPaymentUtils;
-import rs.ac.uns.ftn.url.AmountAndUrlDTO;
-import rs.ac.uns.ftn.url.PayPalSubscriptionDTO;
-import rs.ac.uns.ftn.url.UrlClass;
-import rs.ac.uns.ftn.url.UrlDTO;
+import rs.ac.uns.ftn.url.*;
 
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.net.MalformedURLException;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalUnit;
 import java.util.*;
 
 @Service
@@ -200,12 +193,23 @@ public class PaymentServiceImpl implements PaymentService{
         return redirectUrl.getBody();
     }
 
+    private String notifyNcSubscription(String url, Date date){
+        HttpHeaders headers=new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        SubDateDTO subDateDTO = new SubDateDTO();
+        String pattern = "yyyy-MM-dd";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        subDateDTO.setDate(simpleDateFormat.format(date));
+        HttpEntity entity=new HttpEntity(subDateDTO,headers);
+        ResponseEntity<String> redirectUrl=restTemplate.postForEntity(url,entity,String.class);
+        return redirectUrl.getBody();
+    }
+
 
     @Override
-    public Plan createBillingPlan(CreatePaymentOrSubRequest request, AmountAndUrlDTO amountAndUrlDTO) {
+    public Plan createBillingPlan(CreatePaymentOrSubRequest request, AmountAndUrlDTO amountAndUrlDTO, BigDecimal cena, String finishRedirectUrl) {
 
-        BigDecimal amount=amountAndUrlDTO.getAmount();
-        String redirectUrl=amountAndUrlDTO.getRedirectUrl();
+        BigDecimal amount=cena;
         String sellerEmail = amountAndUrlDTO.getSellerEmail();
 
         LOGGER.info(String.format("Creating plan: %s   %s   %s",request.getTipCiklusa(),request.getPeriod(),request.getBrojCiklusa()));
@@ -219,6 +223,7 @@ public class PaymentServiceImpl implements PaymentService{
         subscription.setFrequencyInterval(request.getUcestalostPerioda());
         subscription.setSeller(seller);
         subscription.setType(request.getTipCiklusa());
+        subscription.setRedirectUrl(finishRedirectUrl);
 
         subscription=subscriptionRepository.save(subscription);
 
@@ -246,7 +251,7 @@ public class PaymentServiceImpl implements PaymentService{
         paymentDefinition.setType(PAYMENT_DEF_TYPE);
         paymentDefinition.setCycles(request.getBrojCiklusa().toString());
         Currency currency=new com.paypal.api.payments.Currency();
-        currency.setCurrency("EUR");
+        currency.setCurrency("USD");
         currency.setValue(amount.toString());
         paymentDefinition.setAmount(currency);
         paymentDefinition.setFrequencyInterval(request.getUcestalostPerioda().toString());
@@ -281,29 +286,36 @@ public class PaymentServiceImpl implements PaymentService{
             e.printStackTrace();
         }
 
-        subscription.setPlanId(plan.getId());
+        subscription.setPlanId(createdPlan.getId());
         subscriptionRepository.save(subscription);
 
         return createdPlan;
     }
 
     @Override
-    public String activateSubscription(CreatePaymentOrSubRequest request) {
+    public String activateSubscription(SubPlanDTO subPlanRequest) {
+        CreatePaymentOrSubRequest request = new CreatePaymentOrSubRequest();
+        SubPlan subPlan = subPlanRepository.findOneByPlanId(UUID.fromString(subPlanRequest.getPlanId()));
+        if(subPlanRequest.getType().equals("INFINITE")) {
+            request.setBrojCiklusa(0L);
+        }else{
+            request.setBrojCiklusa(subPlanRequest.getNumCycles());
+        }
+        request.setCasopisUuid(subPlan.getItemUuid().toString());
+        request.setTipCiklusa(subPlanRequest.getType());
+        request.setPeriod(subPlan.getPeriod());
+        request.setUcestalostPerioda(subPlan.getUcestalostPerioda().longValue());
+
         AmountAndUrlDTO amountAndUrlDTO=MyPaymentUtils.getAmountAndRedirectUrl(restTemplate,request.getCasopisUuid());
 
-        BigDecimal amount=amountAndUrlDTO.getAmount();
-        String redirectUrl=amountAndUrlDTO.getRedirectUrl();
         String sellerEmail = amountAndUrlDTO.getSellerEmail();
 
         Seller seller = sellerRepository.findBySellerEmail(sellerEmail);
 
         if(seller.getCanSubscribe()){
-            String planId = seller.getPlanId();
-            if (planId==null){
-                Plan plan = createBillingPlan(request,amountAndUrlDTO);
-                planId=plan.getId();
+            Plan billingPlan = createBillingPlan(request,amountAndUrlDTO,subPlan.getCena(),subPlan.getRedirectUrl());
+            String planId=billingPlan.getId();
 
-            }
 
             Agreement agreement = new Agreement();
             agreement.setName("Subscription for plan "+planId);
@@ -346,7 +358,7 @@ public class PaymentServiceImpl implements PaymentService{
     }
 
     @Override
-    public void executeSubAgreement(Long subscriptionId,String token) {
+    public String executeSubAgreement(Long subscriptionId, String token) {
         Subscription subscription = subscriptionRepository.getOne(subscriptionId);
         Agreement agreement =  new Agreement();
         agreement.setToken(token);
@@ -358,8 +370,29 @@ public class PaymentServiceImpl implements PaymentService{
             subscription.setStatus(SubscriptionStatus.ACTIVE);
             subscriptionRepository.save(subscription);
             LOGGER.info("Agreement created with ID " + activeAgreement.getId());
+
+            Date date = new Date();
+            Long dayMilis = 1000L * 60 * 60 * 24;
+
+            switch (subscription.getFrequency()){
+                case "DAY" :{
+                    date = new Date(date.getTime() + ( dayMilis * subscription.getFrequencyInterval() * subscription.getCycles()));
+                } break;
+                case "WEEK" :{
+                    date = new Date(date.getTime() + ( dayMilis * subscription.getFrequencyInterval() * subscription.getCycles() * 7));
+                } break;
+                case "MONTH" :{
+                    date = new Date(date.getTime() + ( dayMilis * subscription.getFrequencyInterval() * subscription.getCycles() * 30));
+                } break;
+                case "YEAR" :{
+                    date = new Date(date.getTime() + ( dayMilis * subscription.getFrequencyInterval() * subscription.getCycles() * 365));
+                } break;
+            }
+
+            return notifyNcSubscription(subscription.getRedirectUrl()+"/true",date);
         } catch (PayPalRESTException e) {
             LOGGER.error(e.getMessage());
+            return "error";
         }
     }
 
@@ -414,7 +447,7 @@ public class PaymentServiceImpl implements PaymentService{
     }
 
 
-    @Scheduled(fixedRate = 100000)
+    @Scheduled(fixedRate = 60000)
     public void changeStatus() {
         updateStatusOrRetryCapture();
     }
@@ -439,7 +472,7 @@ public class PaymentServiceImpl implements PaymentService{
 
     }
 
-    @Scheduled(fixedRate = 10000)
+    @Scheduled(fixedRate = 60000)
     public void checkIntegratedSoftwareStatus() {
         updateIntegratedSoftwareStatus();
     }
@@ -451,7 +484,9 @@ public class PaymentServiceImpl implements PaymentService{
         subPlan.setPeriod(request.getPeriod());
         subPlan.setUcestalostPerioda(request.getUcestalostPerioda());
         subPlan.setPlanId(UUID.randomUUID());
-        subPlanRepository.save(subPlan);
+        subPlan.setItemUuid(UUID.fromString(request.getPlanUuid()));
+        subPlan.setRedirectUrl(request.getRedirectUrl());
+        subPlan = subPlanRepository.save(subPlan);
         return UrlClass.FRONT_KP+"/plan/"+subPlan.getPlanId();
     }
 

@@ -5,16 +5,18 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class SubPlanDTO {
+public class ViewPlanDTO {
 
-    private String planId;
+    private String period;
 
-    private Long numCycles;
+    private Integer ucestalostPerioda;
 
-    private String type;
+    private BigDecimal cena;
 
 }

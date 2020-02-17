@@ -236,6 +236,7 @@ public class KPServiceImpl implements KPService {
         ppsDTO.setPeriod(dto.getPeriod());
         ppsDTO.setUcestalostPerioda(dto.getUcestalostPerioda());
         ppsDTO.setRedirectUrl(UrlClass.WEBSHOP_URL+"paypalSubscription/completed/"+dto.getUsername()+"/"+dto.getUuid());
+        ppsDTO.setPlanUuid(dto.getUuid());
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);

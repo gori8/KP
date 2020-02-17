@@ -4,8 +4,11 @@ import com.paypal.api.payments.Plan;
 import rs.ac.uns.ftn.paypal.dto.CreatePaymentOrSubRequest;
 import rs.ac.uns.ftn.paypal.dto.CreatePaymentOrSubResponse;
 import rs.ac.uns.ftn.paypal.dto.ExecutePaymentRequest;
+import rs.ac.uns.ftn.paypal.dto.SubPlanDTO;
 import rs.ac.uns.ftn.url.AmountAndUrlDTO;
 import rs.ac.uns.ftn.url.PayPalSubscriptionDTO;
+
+import java.math.BigDecimal;
 
 public interface PaymentService {
 
@@ -17,11 +20,11 @@ public interface PaymentService {
 
     void cancelSubscription(Long id);
 
-    Plan createBillingPlan(CreatePaymentOrSubRequest request, AmountAndUrlDTO amountAndUrlDTO);
+    Plan createBillingPlan(CreatePaymentOrSubRequest request, AmountAndUrlDTO amountAndUrlDTO, BigDecimal cena, String finishRedirectUrl);
 
-    String activateSubscription(CreatePaymentOrSubRequest request);
+    String activateSubscription(SubPlanDTO subPlanRequest);
 
-    void executeSubAgreement(Long subscriptionId,String token);
+    String executeSubAgreement(Long subscriptionId, String token);
 
     void updateStatusOrRetryCapture();
 

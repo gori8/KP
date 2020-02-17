@@ -1,5 +1,6 @@
 package rs.ac.uns.ftn.paypal.cmrs;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.paypal.api.payments.Plan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -7,11 +8,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import rs.ac.uns.ftn.paypal.dto.*;
+import rs.ac.uns.ftn.url.ObjectMapperUtils;
 import rs.ac.uns.ftn.url.PayPalSubscriptionDTO;
 import rs.ac.uns.ftn.url.UrlClass;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.security.DrbgParameters;
 import java.util.UUID;
 
 @RequestMapping("/api/paypal")
@@ -53,22 +56,18 @@ public class PaymentController {
 
     @RequestMapping(value = "/plan", method = RequestMethod.POST)
     public ResponseEntity<String> createPlan(@RequestBody PayPalSubscriptionDTO request) {
-        return new ResponseEntity<String>("\""+paymentService.createSubPlanUrl(request)+"\"", HttpStatus.OK);
+        return new ResponseEntity<String>(paymentService.createSubPlanUrl(request), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/subscription", method = RequestMethod.POST)
-    public ResponseEntity<String> createSubscription(@RequestBody SubPlanDTO subPlanRequest) {
-        CreatePaymentOrSubRequest request = new CreatePaymentOrSubRequest();
-        SubPlan subPlan = subPlanRepository.findOneByPlanId(UUID.fromString(subPlanRequest.getPlanId()));
-        request.setBrojCiklusa(subPlan.getUcestalostPerioda().longValue());
-        request.setCasopisUuid();
+    public ResponseEntity<String> createSubscription(@RequestBody SubPlanDTO request) {
         return new ResponseEntity<String>("\""+paymentService.activateSubscription(request)+"\"", HttpStatus.OK);
     }
 
     @RequestMapping(value = "/subscription/confirm/{id}")
     public ResponseEntity confirmSubscription(@PathVariable String id,@RequestParam("token")String token) throws URISyntaxException {
-        paymentService.executeSubAgreement(Long.parseLong(id),token);
-        URI redirectUrl = new URI("https://localhost:4500/paymentresponse/success");
+        String url = paymentService.executeSubAgreement(Long.parseLong(id),token);
+        URI redirectUrl = new URI(url);
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setLocation(redirectUrl);
         return ResponseEntity.status(HttpStatus.FOUND).headers(httpHeaders).build();
@@ -81,6 +80,12 @@ public class PaymentController {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setLocation(redirectUrl);
         return ResponseEntity.status(HttpStatus.FOUND).headers(httpHeaders).build();
+    }
+
+    @RequestMapping(value = "/plan/{id}")
+    public ResponseEntity getPlanViewData(@PathVariable("id") String id){
+        SubPlan subPlan = subPlanRepository.findOneByPlanId(UUID.fromString(id));
+        return ResponseEntity.ok(ObjectMapperUtils.map(subPlan,ViewPlanDTO.class));
     }
 
 }

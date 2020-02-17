@@ -25,10 +25,5 @@ public class Seller {
     @Column(name = "can_subscribe", nullable = false)
     private Boolean canSubscribe;
 
-    @Column(name = "plan_id", unique = true)
-    private String planId;
-
-
-
 
 }

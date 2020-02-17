@@ -30,4 +30,9 @@ public class SubPlan {
     @Column(name = "plan_id", unique = false, nullable = false)
     private UUID planId;
 
+    @org.hibernate.annotations.Type(type="org.hibernate.type.UUIDCharType")
+    @Column(name = "item_id", unique = false, nullable = false)
+    private UUID itemUuid;
+
+    private String redirectUrl;
 }

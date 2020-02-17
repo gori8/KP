@@ -28,6 +28,7 @@ public class MyPayment{
     @Column(name = "item_id", unique = false, nullable = false)
     private UUID itemId;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
     private PayPalPaymentStatus status=PayPalPaymentStatus.CREATED;
 
