@@ -241,4 +241,20 @@ public class CasopisServiceImpl implements CasopisService {
 
         return ret;
     }
+
+    @Override
+    public List<Long> getBoughtPapers(String username){
+        Korisnik korisnik = korisnikRepository.findOneByUsername(username);
+        List<Long> ret = new ArrayList<>();
+
+        for (Pretplata pretplata:korisnik.getPretplate()) {
+            if(pretplata.getDatumIsticanja().before(new Date())){
+                continue;
+            }
+
+            ret.add(pretplata.getPlan().getCasopis().getId());
+        }
+
+        return ret;
+    }
 }
