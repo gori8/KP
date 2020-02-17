@@ -30,8 +30,8 @@ export class BankaFormComponent implements OnInit {
   }
 
   onSubmit(paymentForm:NgForm){
-    this.hidden=true;
     if(paymentForm.valid===true){
+      this.hidden=true;
       this.endpoints.paymentConfirmed(this.formModel,this.transaction).subscribe(
         res => {
             console.log(res);

@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+    background-image: url("assets/img/background.jpg");
+    background-size: auto;
+}
+
+.clicker { 
+    -moz-transition: all .2s ease-in;
+    -o-transition: all .2s ease-in;
+    -webkit-transition: all .2s ease-in;
+    transition: all .2s ease-in;
+    color: white !important;
+}
+
+.clicker:hover { 
+    color: rgba($color: #00cc22, $alpha: 1.0) !important;
+}
