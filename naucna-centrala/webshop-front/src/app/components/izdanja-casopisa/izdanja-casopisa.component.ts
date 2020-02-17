@@ -30,7 +30,7 @@ export class IzdanjaCasopisaComponent implements OnInit {
         this.casopis = res
 
         var user = this.authenticationService.currentUserValue;
-        if(user.role=="Registrovani korisnik"){
+        if(user != null && user.role=="Registrovani korisnik"){
           this.getBought(id,user.username);
         }
       },

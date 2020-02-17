@@ -21,7 +21,7 @@ export class AllPapersComponent implements OnInit {
   ngOnInit() {
     this.getAllPapers();
 
-    if(this.authenticationService.currentUserValue.role=="Registrovani korisnik"){
+    if(this.authenticationService.currentUserValue != null && this.authenticationService.currentUserValue.role=="Registrovani korisnik"){
       this.getBoughtPapers(this.authenticationService.currentUserValue.username);
     }
   }

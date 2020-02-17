@@ -35,7 +35,7 @@ const routes: Routes = [
   { path : "paymentresponse/:message", component : PaymentResponseComponent, canActivate:[AuthGuard]},
   { path : "bought", component : KupljeniPredmetiComponent, canActivate:[AuthGuard] },
   { path : "addPlans/:processId", component : AddPlansComponent, canActivate:[AuthGuard] },
-  { path : "paypalSubscription/:casopisId", component : SelectPlanComponent, canActivate:[AuthGuard] }
+  { path : "subscription/:casopisId/:type", component : SelectPlanComponent, canActivate:[AuthGuard] },
 ];
 
 @NgModule({

@@ -127,14 +127,23 @@ export class EndpointsService {
     return this.http.get(`${BASE_URL}/plans/${id}`);
   }
 
-  submitSubscription(body): Observable<any>{
+  submitSubscription(body,type): Observable<any>{
 
-    return this.http.post(`${BASE_URL}/paypalSubscription/init`,body, {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'responseType': 'text'
-      })
-    });
+    if(type=="paypal"){
+      return this.http.post(`${BASE_URL}/paypalSubscription/init`,body, {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'responseType': 'text'
+        })
+      });
+    }else{
+      return this.http.post(`${BASE_URL}/pay/${body.uuid}/${body.username}`,null, {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'responseType': 'text'
+        })
+      });
+    }
   }
 
   getTasks(username): Observable<any>{
