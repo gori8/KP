@@ -22,6 +22,7 @@ import rs.ac.uns.ftn.url.*;
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.net.MalformedURLException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
@@ -193,7 +194,7 @@ public class PaymentServiceImpl implements PaymentService{
         return redirectUrl.getBody();
     }
 
-    private String notifyNcSubscription(String url, Date date){
+    private String notifyNcSubscription(Subscription subscription, String url, Date date){
         HttpHeaders headers=new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         SubDateDTO subDateDTO = new SubDateDTO();
@@ -201,8 +202,10 @@ public class PaymentServiceImpl implements PaymentService{
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
         subDateDTO.setDate(simpleDateFormat.format(date));
         HttpEntity entity=new HttpEntity(subDateDTO,headers);
-        ResponseEntity<String> redirectUrl=restTemplate.postForEntity(url,entity,String.class);
-        return redirectUrl.getBody();
+        ResponseEntity<SubRedirectUrlDTO> redirectUrl=restTemplate.postForEntity(url,entity,SubRedirectUrlDTO.class);
+        subscription.setOtherAppSubId(redirectUrl.getBody().getPretplataId());
+        subscriptionRepository.save(subscription);
+        return redirectUrl.getBody().getRedirectUrl();
     }
 
 
@@ -372,25 +375,35 @@ public class PaymentServiceImpl implements PaymentService{
             LOGGER.info("Agreement created with ID " + activeAgreement.getId());
 
             Date date = new Date();
-            Long dayMilis = 1000L * 60 * 60 * 24;
+            if(subscription.getCycles()!=0L) {
+                Long dayMilis = 1000L * 60 * 60 * 24;
 
-            switch (subscription.getFrequency()){
-                case "DAY" :{
-                    date = new Date(date.getTime() + ( dayMilis * subscription.getFrequencyInterval() * subscription.getCycles()));
-                } break;
-                case "WEEK" :{
-                    date = new Date(date.getTime() + ( dayMilis * subscription.getFrequencyInterval() * subscription.getCycles() * 7));
-                } break;
-                case "MONTH" :{
-                    date = new Date(date.getTime() + ( dayMilis * subscription.getFrequencyInterval() * subscription.getCycles() * 30));
-                } break;
-                case "YEAR" :{
-                    date = new Date(date.getTime() + ( dayMilis * subscription.getFrequencyInterval() * subscription.getCycles() * 365));
-                } break;
+                switch (subscription.getFrequency()) {
+                    case "DAY": {
+                        date = new Date(date.getTime() + (dayMilis * (subscription.getFrequencyInterval() * subscription.getCycles() + 2)));
+                    }
+                    break;
+                    case "WEEK": {
+                        date = new Date(date.getTime() + (dayMilis * (subscription.getFrequencyInterval() * subscription.getCycles() * 7 + 2)));
+                    }
+                    break;
+                    case "MONTH": {
+                        date = new Date(date.getTime() + (dayMilis * (subscription.getFrequencyInterval() * subscription.getCycles() * 30 + 2)));
+                    }
+                    break;
+                    case "YEAR": {
+                        date = new Date(date.getTime() + (dayMilis * (subscription.getFrequencyInterval() * subscription.getCycles() * 365 + 2)));
+                    }
+                    break;
+                }
+
+            }else{
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                date = simpleDateFormat.parse("9999-12-12");
             }
 
-            return notifyNcSubscription(subscription.getRedirectUrl()+"/true",date);
-        } catch (PayPalRESTException e) {
+            return notifyNcSubscription(subscription,subscription.getRedirectUrl()+"/true",date);
+        } catch (PayPalRESTException | ParseException e) {
             LOGGER.error(e.getMessage());
             return "error";
         }

@@ -33,6 +33,8 @@ public class Subscription {
 
     private String redirectUrl;
 
+    private Long otherAppSubId;
+
     @org.hibernate.annotations.Type(type="org.hibernate.type.UUIDCharType")
     @Column(name = "item_id", unique = false, nullable = false)
     private UUID itemId;

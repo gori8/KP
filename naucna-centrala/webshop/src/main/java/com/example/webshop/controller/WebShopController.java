@@ -3,6 +3,7 @@ package com.example.webshop.controller;
 import com.example.webshop.dto.*;
 import com.example.webshop.model.*;
 import com.example.webshop.repository.CasopisRepository;
+import com.example.webshop.repository.KorisnikRepository;
 import com.example.webshop.repository.NacinPlacanjaRepository;
 import com.example.webshop.repository.NaucnaOblastRepository;
 import com.example.webshop.services.CasopisService;
@@ -62,6 +63,10 @@ public class WebShopController {
 
     @Autowired
     CasopisRepository casopisRepository;
+
+    @Autowired
+    KorisnikRepository korisnikRepository;
+
 
     @GetMapping(path = "/registration", produces = "application/json")
     public @ResponseBody String registrationStart() {
@@ -445,7 +450,6 @@ public class WebShopController {
 
     @RequestMapping(value = "/payed/{username}/{uuid}/{success}", method = RequestMethod.POST)
     public ResponseEntity<String> changePayed(@PathVariable("username")String username, @PathVariable("uuid")String uuid, @PathVariable("success")Boolean success) {
-
         return new ResponseEntity<>(kpService.changePayed(uuid,success,username),HttpStatus.OK);
     }
 
@@ -459,6 +463,15 @@ public class WebShopController {
                     }
                 }
         }
+
+        Korisnik korisnik = korisnikRepository.findOneByUsername(username);
+
+        for(Pretplata pretplata : korisnik.getPretplate()){
+            if(pretplata.getPlan().getUuid().toString().equals(uuid)){
+                return ResponseEntity.ok(true);
+            }
+        }
+
         return ResponseEntity.ok(false);
     }
 
@@ -474,6 +487,7 @@ public class WebShopController {
                                                          @PathVariable("uuid")String uuid,
                                                          @PathVariable("success")Boolean success,
                                                          @RequestBody SubDateDTO subDateDTO) throws ParseException {
+
 
         Date datumIsticanja=new SimpleDateFormat("yyyy-MM-dd").parse(subDateDTO.getDate());
 

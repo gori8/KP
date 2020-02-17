@@ -210,12 +210,51 @@ public class KPServiceImpl implements KPService {
         if (success) {
             UUID realUuid = UUID.fromString(uuid);
             Izdanje izdanje = izdanjeRepository.findOneByUuid(realUuid);
+            Korisnik korisnik = korisnikRepository.findOneByUsername(username);
+
 
             if(izdanje==null){
-                return UrlClass.FRON_WEBSHOP+"paymentresponse/failed";
+                Plan plan = planRepository.findOneByUuid(realUuid);
+
+                if(plan==null){
+                    return UrlClass.FRON_WEBSHOP+"paymentresponse/failed";
+                }
+
+                Pretplata pretplata = new Pretplata();
+
+                Date date = new Date();
+                Long dayMilis = 1000L * 60 * 60 * 24;
+
+                switch (plan.getPeriod()){
+                    case "DAY" :{
+                        date = new Date(date.getTime() + ( dayMilis * plan.getUcestalostPerioda() ));
+                    } break;
+                    case "WEEK" :{
+                        date = new Date(date.getTime() + ( dayMilis * plan.getUcestalostPerioda() * 7 ));
+                    } break;
+                    case "MONTH" :{
+                        date = new Date(date.getTime() + ( dayMilis * plan.getUcestalostPerioda() * 30 ));
+                    } break;
+                    case "YEAR" :{
+                        date = new Date(date.getTime() + ( dayMilis * plan.getUcestalostPerioda() * 365));
+                    } break;
+                }
+
+                Long time = date.getTime();
+                date = new Date(time - time % (24 * 60 * 60 * 1000));
+                date = new Date(date.getTime() + 23 * 60 * 60 * 1000);
+
+                pretplata.setDatumIsticanja(date);
+                pretplata.setPlan(plan);
+                pretplata.setPretplatnik(korisnik);
+                pretplata = pretplataRepository.save(pretplata);
+                korisnik.getPretplate().add(pretplata);
+                korisnikRepository.save(korisnik);
+                plan.getPretplate().add(pretplata);
+                planRepository.save(plan);
+                return UrlClass.FRON_WEBSHOP+"paymentresponse/success";
             }
 
-            Korisnik korisnik = korisnikRepository.findOneByUsername(username);
 
             izdanje.getKupci().add(korisnik);
             izdanje = izdanjeRepository.save(izdanje);

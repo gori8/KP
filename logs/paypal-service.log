@@ -7,117 +7,111 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::        (v2.2.2.RELEASE)
 
-2020-02-17 01:14:59.119  INFO 3015 --- [           main] rs.ac.uns.ftn.paypal.PaypalApplication   : No active profile set, falling back to default profiles: default
-2020-02-17 01:15:06.006  INFO 3015 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2020-02-17 01:15:07.607  INFO 3015 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1567ms. Found 4 JPA repository interfaces.
-2020-02-17 01:15:08.746  WARN 3015 --- [           main] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
-2020-02-17 01:15:09.844  INFO 3015 --- [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=2b319be8-97fb-32d6-83eb-d7a6ecffe23f
-2020-02-17 01:15:12.018  INFO 3015 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-02-17 01:15:14.466  INFO 3015 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8094 (http)
-2020-02-17 01:15:14.565  INFO 3015 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2020-02-17 01:15:14.568  INFO 3015 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
-2020-02-17 01:15:15.056  INFO 3015 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2020-02-17 01:15:15.076  INFO 3015 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 15754 ms
-2020-02-17 01:15:15.979  WARN 3015 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
-2020-02-17 01:15:15.993  INFO 3015 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-2020-02-17 01:15:16.141  INFO 3015 --- [           main] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@4bf3798b
-2020-02-17 01:15:19.919  INFO 3015 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2020-02-17 01:15:20.438  INFO 3015 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.9.Final}
-2020-02-17 01:15:21.197  INFO 3015 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
-2020-02-17 01:15:22.058  INFO 3015 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2020-02-17 01:15:23.273  INFO 3015 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2020-02-17 01:15:23.337  INFO 3015 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2020-02-17 01:15:28.893  INFO 3015 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2020-02-17 01:15:28.946  INFO 3015 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2020-02-17 01:15:34.869  WARN 3015 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
-2020-02-17 01:15:34.869  INFO 3015 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-2020-02-17 01:15:35.403  WARN 3015 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2020-02-17 01:15:36.494  INFO 3015 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-02-17 01:15:38.645  INFO 3015 --- [           main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
-2020-02-17 01:15:39.045  WARN 3015 --- [           main] ockingLoadBalancerClientRibbonWarnLogger : You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
-2020-02-17 01:15:39.233  INFO 3015 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
-2020-02-17 01:15:39.550  INFO 3015 --- [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
-2020-02-17 01:15:39.869  INFO 3015 --- [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
-2020-02-17 01:15:40.410  INFO 3015 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
-2020-02-17 01:15:40.411  INFO 3015 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2020-02-17 04:45:53.134  INFO 30827 --- [           main] rs.ac.uns.ftn.paypal.PaypalApplication   : No active profile set, falling back to default profiles: default
+2020-02-17 04:46:00.252  INFO 30827 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-02-17 04:46:01.910  INFO 30827 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1595ms. Found 4 JPA repository interfaces.
+2020-02-17 04:46:03.044  WARN 30827 --- [           main] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2020-02-17 04:46:04.293  INFO 30827 --- [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=2b319be8-97fb-32d6-83eb-d7a6ecffe23f
+2020-02-17 04:46:06.839  INFO 30827 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-02-17 04:46:09.071  INFO 30827 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8094 (http)
+2020-02-17 04:46:09.174  INFO 30827 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-02-17 04:46:09.175  INFO 30827 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2020-02-17 04:46:09.566  INFO 30827 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-02-17 04:46:09.594  INFO 30827 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 16218 ms
+2020-02-17 04:46:10.598  WARN 30827 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-02-17 04:46:10.607  INFO 30827 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-02-17 04:46:10.683  INFO 30827 --- [           main] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@7e3f95fe
+2020-02-17 04:46:14.748  INFO 30827 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-02-17 04:46:15.200  INFO 30827 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.9.Final}
+2020-02-17 04:46:16.139  INFO 30827 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-02-17 04:46:17.018  INFO 30827 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-02-17 04:46:18.431  INFO 30827 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-02-17 04:46:18.542  INFO 30827 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2020-02-17 04:46:25.141  INFO 30827 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-02-17 04:46:25.216  INFO 30827 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-02-17 04:46:29.918  WARN 30827 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-02-17 04:46:29.919  INFO 30827 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-02-17 04:46:30.412  WARN 30827 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-02-17 04:46:31.203  INFO 30827 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-02-17 04:46:32.609  INFO 30827 --- [           main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2020-02-17 04:46:32.929  WARN 30827 --- [           main] ockingLoadBalancerClientRibbonWarnLogger : You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2020-02-17 04:46:33.081  INFO 30827 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-02-17 04:46:33.221  INFO 30827 --- [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2020-02-17 04:46:33.404  INFO 30827 --- [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2020-02-17 04:46:33.783  INFO 30827 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2020-02-17 04:46:33.783  INFO 30827 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
 WARNING: An illegal reflective access operation has occurred
 WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (jar:file:/home/antolovic/KP_SEP/KP/PayPal/paypal/target/paypal.jar!/BOOT-INF/lib/xstream-1.4.11.1.jar!/) to field java.util.TreeMap.comparator
 WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
 WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
 WARNING: All illegal access operations will be denied in a future release
-2020-02-17 01:15:41.143  INFO 3015 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
-2020-02-17 01:15:41.148  INFO 3015 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
-2020-02-17 01:15:42.262  INFO 3015 --- [           main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
-2020-02-17 01:15:42.451  INFO 3015 --- [           main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
-2020-02-17 01:15:42.454  INFO 3015 --- [           main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
-2020-02-17 01:15:42.454  INFO 3015 --- [           main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
-2020-02-17 01:15:42.454  INFO 3015 --- [           main] com.netflix.discovery.DiscoveryClient    : Application is null : false
-2020-02-17 01:15:42.454  INFO 3015 --- [           main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
-2020-02-17 01:15:42.455  INFO 3015 --- [           main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
-2020-02-17 01:15:42.455  INFO 3015 --- [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
-2020-02-17 01:15:43.442  INFO 3015 --- [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200
-2020-02-17 01:15:43.467  INFO 3015 --- [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 1
-2020-02-17 01:15:43.489  INFO 3015 --- [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
-2020-02-17 01:15:43.505  INFO 3015 --- [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1581898543503 with initial instances count: 1
-2020-02-17 01:15:43.522  INFO 3015 --- [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application PAYPAL with eureka with status UP
-2020-02-17 01:15:43.528  INFO 3015 --- [           main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1581898543528, current=UP, previous=STARTING]
-2020-02-17 01:15:43.543  INFO 3015 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_PAYPAL/paypal:12858db9c0fb05bd86f541b41785ff56: registering service...
-2020-02-17 01:15:43.638  INFO 3015 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if all payments have been captured...
-2020-02-17 01:15:43.702  INFO 3015 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_PAYPAL/paypal:12858db9c0fb05bd86f541b41785ff56 - registration status: 204
-2020-02-17 01:15:43.830  INFO 3015 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8094 (http) with context path ''
-2020-02-17 01:15:43.831  INFO 3015 --- [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8094
-2020-02-17 01:15:44.014  INFO 3015 --- [           main] rs.ac.uns.ftn.paypal.PaypalApplication   : Started PaypalApplication in 50.79 seconds (JVM running for 53.914)
-2020-02-17 01:15:44.160  INFO 3015 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-02-17 01:16:25.268  INFO 3015 --- [nio-8094-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2020-02-17 01:16:25.268  INFO 3015 --- [nio-8094-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2020-02-17 01:16:25.276  INFO 3015 --- [nio-8094-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
+2020-02-17 04:46:34.476  INFO 30827 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2020-02-17 04:46:34.476  INFO 30827 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2020-02-17 04:46:35.218  INFO 30827 --- [           main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-02-17 04:46:35.261  INFO 30827 --- [           main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2020-02-17 04:46:35.269  INFO 30827 --- [           main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2020-02-17 04:46:35.270  INFO 30827 --- [           main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2020-02-17 04:46:35.270  INFO 30827 --- [           main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2020-02-17 04:46:35.270  INFO 30827 --- [           main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2020-02-17 04:46:35.271  INFO 30827 --- [           main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2020-02-17 04:46:35.271  INFO 30827 --- [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2020-02-17 04:46:35.742  INFO 30827 --- [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2020-02-17 04:46:35.799  INFO 30827 --- [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 1
+2020-02-17 04:46:35.818  INFO 30827 --- [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2020-02-17 04:46:35.837  INFO 30827 --- [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1581911195835 with initial instances count: 1
+2020-02-17 04:46:35.841  INFO 30827 --- [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application PAYPAL with eureka with status UP
+2020-02-17 04:46:35.842  INFO 30827 --- [           main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1581911195842, current=UP, previous=STARTING]
+2020-02-17 04:46:35.874  INFO 30827 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_PAYPAL/paypal:589dca67a65ad931313893d5f0092c7a: registering service...
+2020-02-17 04:46:35.925  INFO 30827 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if all payments have been captured...
+2020-02-17 04:46:35.988  INFO 30827 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_PAYPAL/paypal:589dca67a65ad931313893d5f0092c7a - registration status: 204
+2020-02-17 04:46:36.148  INFO 30827 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8094 (http) with context path ''
+2020-02-17 04:46:36.149  INFO 30827 --- [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8094
+2020-02-17 04:46:36.341  INFO 30827 --- [           main] rs.ac.uns.ftn.paypal.PaypalApplication   : Started PaypalApplication in 49.066 seconds (JVM running for 52.07)
+2020-02-17 04:46:36.583  INFO 30827 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-17 04:47:35.910  INFO 30827 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if all payments have been captured...
+2020-02-17 04:47:35.925  INFO 30827 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-17 04:48:29.437  INFO 30827 --- [nio-8094-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-02-17 04:48:29.437  INFO 30827 --- [nio-8094-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-02-17 04:48:29.445  INFO 30827 --- [nio-8094-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
+Item: 59d79904-25af-475f-9752-483da5182f52
+UUID: 59d79904-25af-475f-9752-483da5182f52
 http://localhost:8090/api/amountandurl/59d79904-25af-475f-9752-483da5182f52
-2020-02-17 01:16:32.683  INFO 3015 --- [nio-8094-exec-4] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Creating plan: FIXED   DAY   5
-2020-02-17 01:16:36.713  INFO 3015 --- [nio-8094-exec-4] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Plan state = CREATED
-2020-02-17 01:16:43.630  INFO 3015 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if all payments have been captured...
-2020-02-17 01:16:43.637  INFO 3015 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-02-17 01:17:11.409  INFO 3015 --- [nio-8094-exec-5] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Agreement created with ID I-7P8RA9KNF9HY
-2020-02-17 01:17:43.630  INFO 3015 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if all payments have been captured...
-2020-02-17 01:17:43.637  INFO 3015 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-02-17 01:18:43.630  INFO 3015 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if all payments have been captured...
-2020-02-17 01:18:43.637  INFO 3015 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-02-17 01:19:43.630  INFO 3015 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if all payments have been captured...
-2020-02-17 01:19:43.637  INFO 3015 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-02-17 01:20:42.462  INFO 3015 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
-2020-02-17 01:20:43.630  INFO 3015 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if all payments have been captured...
-2020-02-17 01:20:43.637  INFO 3015 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-02-17 01:21:43.630  INFO 3015 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if all payments have been captured...
-2020-02-17 01:21:43.637  INFO 3015 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-02-17 01:22:43.630  INFO 3015 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if all payments have been captured...
-2020-02-17 01:22:43.637  INFO 3015 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-02-17 01:23:43.630  INFO 3015 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if all payments have been captured...
-2020-02-17 01:23:43.637  INFO 3015 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-02-17 01:24:43.630  INFO 3015 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if all payments have been captured...
-2020-02-17 01:24:43.637  INFO 3015 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-02-17 01:25:42.463  INFO 3015 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
-2020-02-17 01:25:43.630  INFO 3015 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if all payments have been captured...
-2020-02-17 01:25:43.637  INFO 3015 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-02-17 01:26:43.630  INFO 3015 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if all payments have been captured...
-2020-02-17 01:26:43.637  INFO 3015 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-02-17 01:27:43.630  INFO 3015 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if all payments have been captured...
-2020-02-17 01:27:43.637  INFO 3015 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-02-17 01:28:43.630  INFO 3015 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if all payments have been captured...
-2020-02-17 01:28:43.637  INFO 3015 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-02-17 01:29:43.630  INFO 3015 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if all payments have been captured...
-2020-02-17 01:29:43.637  INFO 3015 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-02-17 01:30:42.464  INFO 3015 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
-2020-02-17 01:30:43.630  INFO 3015 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if all payments have been captured...
-2020-02-17 01:30:43.638  INFO 3015 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-02-17 01:31:43.630  INFO 3015 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if all payments have been captured...
-2020-02-17 01:31:43.637  INFO 3015 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-02-17 01:32:43.630  INFO 3015 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if all payments have been captured...
-2020-02-17 01:32:43.637  INFO 3015 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
-2020-02-17 01:33:33.619  INFO 3015 --- [extShutdownHook] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application PAYPAL with eureka with status DOWN
-2020-02-17 01:33:33.619  WARN 3015 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1581899613619, current=DOWN, previous=UP]
-2020-02-17 01:33:33.619  INFO 3015 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_PAYPAL/paypal:12858db9c0fb05bd86f541b41785ff56: registering service...
-2020-02-17 01:33:33.628  INFO 3015 --- [extShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'taskScheduler'
-2020-02-17 01:33:33.636  INFO 3015 --- [extShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
-2020-02-17 01:33:33.635 ERROR 3015 --- [nfoReplicator-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
+Email: shekrba@gmail.com
+2020-02-17 04:48:35.910  INFO 30827 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if all payments have been captured...
+2020-02-17 04:48:37.275  INFO 30827 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Payment id: PAYID-LZFA2EA51R63154BE419252C
+2020-02-17 04:48:37.276  INFO 30827 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Payment state: created
+2020-02-17 04:48:37.277  INFO 30827 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-17 04:49:35.910  INFO 30827 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if all payments have been captured...
+2020-02-17 04:49:37.529  INFO 30827 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Payment id: PAYID-LZFA2EA51R63154BE419252C
+2020-02-17 04:49:37.530  INFO 30827 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Payment state: created
+2020-02-17 04:49:37.530  INFO 30827 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+Item: 59d79904-25af-475f-9752-483da5182f52
+UUID: 59d79904-25af-475f-9752-483da5182f52
+http://localhost:8090/api/amountandurl/59d79904-25af-475f-9752-483da5182f52
+Email: shekrba@gmail.com
+2020-02-17 04:50:15.216  INFO 30827 --- [nio-8094-exec-5] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Capture id=76H60241BE603851V and status=completed
+2020-02-17 04:50:15.225  INFO 30827 --- [nio-8094-exec-5] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Executed payment - Request: 
+{
+  "amount": {
+    "currency": "USD",
+    "total": "2.00"
+  },
+  "is_final_capture": true
+}
+2020-02-17 04:50:15.226  INFO 30827 --- [nio-8094-exec-5] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Executed payment - Response: 
+{"id":"76H60241BE603851V","amount":{"total":"2.00","currency":"USD"},"state":"completed","reason_code":"NONE","custom":"","transaction_fee":{"value":"0.36","currency":"USD"},"is_final_capture":true,"parent_payment":"PAYID-LZFA2YA77J19266EG2991800","invoice_number":"","create_time":"2020-02-17T03:50:13Z","update_time":"2020-02-17T03:50:13Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/capture/76H60241BE603851V","rel":"self","method":"GET"},{"href":"https://api.sandbox.paypal.com/v1/payments/capture/76H60241BE603851V/refund","rel":"refund","method":"POST"},{"href":"https://api.sandbox.paypal.com/v1/payments/authorization/23755802PK1264507","rel":"authorization","method":"GET"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-LZFA2YA77J19266EG2991800","rel":"parent_payment","method":"GET"}]}
+2020-02-17 04:50:35.910  INFO 30827 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if all payments have been captured...
+2020-02-17 04:50:37.222  INFO 30827 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Payment id: PAYID-LZFA2EA51R63154BE419252C
+2020-02-17 04:50:37.222  INFO 30827 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Payment state: created
+2020-02-17 04:50:37.223  INFO 30827 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Checking if payment is recorded on seller software...
+2020-02-17 04:50:37.231  INFO 30827 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Founded payment: 27 ,status: SUCCESSFUL
+2020-02-17 04:50:37.232  INFO 30827 --- [   scheduling-1] r.a.u.f.paypal.cmrs.PaymentServiceImpl   : Getting status on url: https://localhost:9000/webshop/payed/user/59d79904-25af-475f-9752-483da5182f52
+2020-02-17 04:51:20.647  INFO 30827 --- [extShutdownHook] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application PAYPAL with eureka with status DOWN
+2020-02-17 04:51:20.647  WARN 30827 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1581911480647, current=DOWN, previous=UP]
+2020-02-17 04:51:20.647  INFO 30827 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_PAYPAL/paypal:589dca67a65ad931313893d5f0092c7a: registering service...
+2020-02-17 04:51:20.654  INFO 30827 --- [extShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'taskScheduler'
+2020-02-17 04:51:20.655  INFO 30827 --- [extShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-02-17 04:51:20.663 ERROR 30827 --- [nfoReplicator-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
 
 com.sun.jersey.api.client.ClientHandlerException: org.apache.http.NoHttpResponseException: localhost:8761 failed to respond
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:187) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
@@ -166,8 +160,8 @@ Caused by: org.apache.http.NoHttpResponseException: localhost:8761 failed to res
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:173) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
 	... 28 common frames omitted
 
-2020-02-17 01:33:33.636  WARN 3015 --- [nfoReplicator-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: org.apache.http.NoHttpResponseException: localhost:8761 failed to respond
-2020-02-17 01:33:33.639 ERROR 3015 --- [nfoReplicator-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
+2020-02-17 04:51:20.664  WARN 30827 --- [nfoReplicator-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: org.apache.http.NoHttpResponseException: localhost:8761 failed to respond
+2020-02-17 04:51:20.667 ERROR 30827 --- [nfoReplicator-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
 
 com.sun.jersey.api.client.ClientHandlerException: java.net.ConnectException: Connection refused (Connection refused)
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:187) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
@@ -219,8 +213,8 @@ Caused by: java.net.ConnectException: Connection refused (Connection refused)
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:173) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
 	... 29 common frames omitted
 
-2020-02-17 01:33:33.639  WARN 3015 --- [nfoReplicator-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
-2020-02-17 01:33:33.640  WARN 3015 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_PAYPAL/paypal:12858db9c0fb05bd86f541b41785ff56 - registration failed Cannot execute request on any known server
+2020-02-17 04:51:20.667  WARN 30827 --- [nfoReplicator-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
+2020-02-17 04:51:20.668  WARN 30827 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_PAYPAL/paypal:589dca67a65ad931313893d5f0092c7a - registration failed Cannot execute request on any known server
 
 com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
 	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-1.9.13.jar!/:1.9.13]
@@ -238,7 +232,7 @@ com.netflix.discovery.shared.transport.TransportException: Cannot execute reques
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
 	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
 
-2020-02-17 01:33:33.641  WARN 3015 --- [nfoReplicator-0] c.n.discovery.InstanceInfoReplicator     : There was a problem with the instance info replicator
+2020-02-17 04:51:20.668  WARN 30827 --- [nfoReplicator-0] c.n.discovery.InstanceInfoReplicator     : There was a problem with the instance info replicator
 
 com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
 	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-1.9.13.jar!/:1.9.13]
@@ -256,9 +250,9 @@ com.netflix.discovery.shared.transport.TransportException: Cannot execute reques
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
 	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
 
-2020-02-17 01:33:33.644  INFO 3015 --- [extShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2020-02-17 01:33:33.668  INFO 3015 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
-2020-02-17 01:33:34.061 ERROR 3015 --- [tbeatExecutor-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
+2020-02-17 04:51:20.678  INFO 30827 --- [extShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-02-17 04:51:20.685  INFO 30827 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2020-02-17 04:51:21.311 ERROR 30827 --- [tbeatExecutor-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
 
 com.sun.jersey.api.client.ClientHandlerException: java.net.ConnectException: Connection refused (Connection refused)
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:187) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
@@ -308,8 +302,8 @@ Caused by: java.net.ConnectException: Connection refused (Connection refused)
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:173) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
 	... 27 common frames omitted
 
-2020-02-17 01:33:34.061  WARN 3015 --- [tbeatExecutor-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
-2020-02-17 01:33:34.061 ERROR 3015 --- [tbeatExecutor-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_PAYPAL/paypal:12858db9c0fb05bd86f541b41785ff56 - was unable to send heartbeat!
+2020-02-17 04:51:21.312  WARN 30827 --- [tbeatExecutor-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
+2020-02-17 04:51:21.313 ERROR 30827 --- [tbeatExecutor-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_PAYPAL/paypal:589dca67a65ad931313893d5f0092c7a - was unable to send heartbeat!
 
 com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
 	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-1.9.13.jar!/:1.9.13]
@@ -325,7 +319,7 @@ com.netflix.discovery.shared.transport.TransportException: Cannot execute reques
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
 	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
 
-2020-02-17 01:33:35.063 ERROR 3015 --- [tbeatExecutor-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
+2020-02-17 04:51:22.316 ERROR 30827 --- [tbeatExecutor-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
 
 com.sun.jersey.api.client.ClientHandlerException: java.net.ConnectException: Connection refused (Connection refused)
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:187) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
@@ -375,8 +369,8 @@ Caused by: java.net.ConnectException: Connection refused (Connection refused)
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:173) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
 	... 27 common frames omitted
 
-2020-02-17 01:33:35.063  WARN 3015 --- [tbeatExecutor-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
-2020-02-17 01:33:35.063 ERROR 3015 --- [tbeatExecutor-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_PAYPAL/paypal:12858db9c0fb05bd86f541b41785ff56 - was unable to send heartbeat!
+2020-02-17 04:51:22.317  WARN 30827 --- [tbeatExecutor-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
+2020-02-17 04:51:22.318 ERROR 30827 --- [tbeatExecutor-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_PAYPAL/paypal:589dca67a65ad931313893d5f0092c7a - was unable to send heartbeat!
 
 com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
 	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-1.9.13.jar!/:1.9.13]
@@ -392,7 +386,7 @@ com.netflix.discovery.shared.transport.TransportException: Cannot execute reques
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
 	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
 
-2020-02-17 01:33:36.064 ERROR 3015 --- [tbeatExecutor-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
+2020-02-17 04:51:23.323 ERROR 30827 --- [tbeatExecutor-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
 
 com.sun.jersey.api.client.ClientHandlerException: java.net.ConnectException: Connection refused (Connection refused)
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:187) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
@@ -442,8 +436,8 @@ Caused by: java.net.ConnectException: Connection refused (Connection refused)
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:173) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
 	... 27 common frames omitted
 
-2020-02-17 01:33:36.065  WARN 3015 --- [tbeatExecutor-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
-2020-02-17 01:33:36.065 ERROR 3015 --- [tbeatExecutor-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_PAYPAL/paypal:12858db9c0fb05bd86f541b41785ff56 - was unable to send heartbeat!
+2020-02-17 04:51:23.324  WARN 30827 --- [tbeatExecutor-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
+2020-02-17 04:51:23.324 ERROR 30827 --- [tbeatExecutor-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_PAYPAL/paypal:589dca67a65ad931313893d5f0092c7a - was unable to send heartbeat!
 
 com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
 	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-1.9.13.jar!/:1.9.13]
@@ -459,8 +453,8 @@ com.netflix.discovery.shared.transport.TransportException: Cannot execute reques
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
 	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
 
-2020-02-17 01:33:36.669  INFO 3015 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : Unregistering ...
-2020-02-17 01:33:36.672 ERROR 3015 --- [extShutdownHook] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
+2020-02-17 04:51:23.687  INFO 30827 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : Unregistering ...
+2020-02-17 04:51:23.694 ERROR 30827 --- [extShutdownHook] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/}
 
 com.sun.jersey.api.client.ClientHandlerException: java.net.ConnectException: Connection refused (Connection refused)
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:187) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
@@ -525,8 +519,8 @@ Caused by: java.net.ConnectException: Connection refused (Connection refused)
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:173) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
 	... 42 common frames omitted
 
-2020-02-17 01:33:36.672  WARN 3015 --- [extShutdownHook] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
-2020-02-17 01:33:36.673 ERROR 3015 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_PAYPAL/paypal:12858db9c0fb05bd86f541b41785ff56 - de-registration failedCannot execute request on any known server
+2020-02-17 04:51:23.695  WARN 30827 --- [extShutdownHook] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
+2020-02-17 04:51:23.697 ERROR 30827 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_PAYPAL/paypal:589dca67a65ad931313893d5f0092c7a - de-registration failedCannot execute request on any known server
 
 com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
 	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-1.9.13.jar!/:1.9.13]
@@ -557,6 +551,6 @@ com.netflix.discovery.shared.transport.TransportException: Cannot execute reques
 	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1029) ~[spring-context-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
 	at org.springframework.context.support.AbstractApplicationContext$1.run(AbstractApplicationContext.java:948) ~[spring-context-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
 
-2020-02-17 01:33:36.685  INFO 3015 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
-2020-02-17 01:33:36.690  INFO 3015 --- [extShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2020-02-17 01:33:36.707  INFO 3015 --- [extShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-02-17 04:51:23.730  INFO 30827 --- [extShutdownHook] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
+2020-02-17 04:51:23.732  INFO 30827 --- [extShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-02-17 04:51:23.798  INFO 30827 --- [extShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
