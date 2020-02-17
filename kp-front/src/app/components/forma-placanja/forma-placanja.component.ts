@@ -76,12 +76,8 @@ export class FormaPlacanjaComponent implements OnInit {
         if(this.json.header !== undefined){
           this.header = this.json.header;
         }
-        
-        if(this.json.image!=null){
-          var type = this.json.image.split('.')[1];
-          this.imageType = `data:image/${type};base64,`
-          this.getImage(this.nacinPlacana,this.json.image);
-        }
+
+        this.image = this.sanitizer.bypassSecurityTrustUrl(this.imageType + this.json.encodeImage);
       },
 
       err => {
@@ -89,13 +85,6 @@ export class FormaPlacanjaComponent implements OnInit {
         alert("Error while getting a payment form");
       }
     );
-  }
-
-  getImage(folder,name){  
-    this.endpoints.getImage(folder,name)
-        .subscribe((data :any ) => {
-            this.image = this.sanitizer.bypassSecurityTrustUrl(this.imageType + data.content);
-    });
   }
 
   onSubmit(paymentForm){

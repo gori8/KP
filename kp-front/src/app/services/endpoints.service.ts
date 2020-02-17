@@ -45,10 +45,6 @@ export class EndpointsService {
     });
   } 
 
-  public getImage(folder,name) : Observable<any> {
-    return this.http.get(`${BASE_URL_USER_AND_PAYMENT}/image/${folder}/${name}`);
-  }
-
   public paymentRegistrationCompleted(body): Observable<any>{
 
     return this.http.post(`${BASE_URL_USER_AND_PAYMENT}/registration/complete`,body, {

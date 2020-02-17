@@ -91,12 +91,7 @@ public class InfoController {
     }
 
     @RequestMapping(value = "/form/{folder}/{uuid}", method = RequestMethod.GET)
-    public ResponseEntity<Object> getForm(@PathVariable("folder") String folder,@PathVariable("uuid") String uuid) {
+    public ResponseEntity<Object> getForm(@PathVariable("folder") Long folder,@PathVariable("uuid") String uuid) {
         return new ResponseEntity<>(infoService.getForm(folder,uuid),HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/image/{folder}/{name}", method = RequestMethod.GET)
-    public ResponseEntity<Map<String, String>> getImage(@PathVariable("folder") String folder, @PathVariable("name") String name){
-        return new ResponseEntity<>(infoService.getImage(folder,name),HttpStatus.OK);
     }
 }

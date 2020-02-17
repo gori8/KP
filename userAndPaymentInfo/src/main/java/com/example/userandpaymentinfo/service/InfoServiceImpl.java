@@ -213,36 +213,20 @@ public class InfoServiceImpl implements InfoService{
     }
 
     @Override
-    public Object getForm(String folder,String uuid){
-        JSONParser parser = new JSONParser();
+    public Object getForm(Long nacinPlacanjId,String uuid){
+        String url = nacinPlacanjaRepository.getOne(nacinPlacanjId).getFormUrl();
 
-        try {
-            Object obj = parser.parse(new FileReader("userAndPaymentInfo/src/main/resources/json/"+folder+"/form.json"));
-            JSONObject jsonObject = (JSONObject) obj;
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
 
-            String email = itemRepository.findOneByUuid(UUID.fromString(uuid)).getSeller().getEmail();
-            jsonObject.put("sellerEmail", email);
+        ResponseEntity<Object> response =
+                restTemplate.getForEntity(url,Object.class);
 
-            return jsonObject;
+        JSONObject jsonObject = (JSONObject) response.getBody();
 
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
+        String email = itemRepository.findOneByUuid(UUID.fromString(uuid)).getSeller().getEmail();
+        jsonObject.put("sellerEmail", email);
 
-    @Override
-    public Map<String,String> getImage(String folder,String name){
-        try {
-            File file = new File("userAndPaymentInfo/src/main/resources/json/"+folder+"/images/"+name);
-            String encodeImage = Base64.getEncoder().withoutPadding().encodeToString(Files.readAllBytes(file.toPath()));
-            Map<String, String> jsonMap = new HashMap<>();
-            jsonMap.put("content", encodeImage);
-
-            return jsonMap;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
+        return jsonObject;
     }
 }

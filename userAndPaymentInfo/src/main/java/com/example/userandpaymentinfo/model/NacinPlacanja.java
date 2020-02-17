@@ -24,6 +24,9 @@ public class NacinPlacanja {
     @Column(name = "checkUrl", unique = true, nullable = false)
     private String checkUrl;
 
+    @Column(name = "formUrl", unique = true, nullable = false)
+    private String formUrl;
+
     @ManyToMany(mappedBy = "nacinPlacanjaList")
     private
     List<Item> itemList = new ArrayList<>();

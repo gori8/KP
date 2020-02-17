@@ -20,6 +20,5 @@ public interface InfoService {
     ReturnLinksDTO add(CreateLinksDTO dto);
 
     public String registrationCompleted(RegistrationCompletedDTO dto);
-    public Object getForm(String folder, String uuid);
-    public Map<String,String> getImage(String folder, String name);
+    public Object getForm(Long nacinPlacanjaId, String uuid);
 }
