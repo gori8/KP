@@ -249,33 +249,37 @@ public class KPServiceImpl implements KPService {
     }
 
     @Override
-    public String donePayPalSubsctiption(String uuid, Boolean success, String username, Date datumIsticanja){
+    public SubRedirectUrlDTO donePayPalSubsctiption(String uuid, Boolean success, String username, Date datumIsticanja){
+        SubRedirectUrlDTO ret = new SubRedirectUrlDTO();
         if (success) {
             UUID realUuid = UUID.fromString(uuid);
             Plan plan = planRepository.findOneByUuid(realUuid);
 
             if(plan==null){
-                return UrlClass.FRON_WEBSHOP+"paymentresponse/failed";
+                ret.setRedirectUrl(UrlClass.FRON_WEBSHOP+"paymentresponse/failed");
+            }else{
+                Korisnik korisnik = korisnikRepository.findOneByUsername(username);
+
+                Pretplata pretplata = new Pretplata();
+
+                pretplata.setPretplatnik(korisnik);
+                pretplata.setPlan(plan);
+                pretplata.setDatumIsticanja(datumIsticanja);
+                pretplata = pretplataRepository.save(pretplata);
+
+                korisnik.getPretplate().add(pretplata);
+                korisnik = korisnikRepository.save(korisnik);
+
+                plan.getPretplate().add(pretplata);
+                plan = planRepository.save(plan);
+
+                ret.setPretplataId(pretplata.getId());
+                ret.setRedirectUrl(UrlClass.FRON_WEBSHOP+"paymentresponse/success");
             }
 
-            Korisnik korisnik = korisnikRepository.findOneByUsername(username);
-
-            Pretplata pretplata = new Pretplata();
-
-            pretplata.setPretplatnik(korisnik);
-            pretplata.setPlan(plan);
-            pretplata.setDatumIsticanja(datumIsticanja);
-            pretplata = pretplataRepository.save(pretplata);
-
-            korisnik.getPretplate().add(pretplata);
-            korisnik = korisnikRepository.save(korisnik);
-
-            plan.getPretplate().add(pretplata);
-            plan = planRepository.save(plan);
-
-            return UrlClass.FRON_WEBSHOP+"paymentresponse/success";
         } else {
-            return UrlClass.FRON_WEBSHOP+"paymentresponse/failed";
+            ret.setRedirectUrl(UrlClass.FRON_WEBSHOP+"paymentresponse/failed");
         }
+        return ret;
     }
 }

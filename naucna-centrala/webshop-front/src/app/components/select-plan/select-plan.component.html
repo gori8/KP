@@ -9,9 +9,9 @@
                 <h2 class="mb-3 text-light mt-3">Izaberite plan pretplate</h2>
                 
                 <div class="form-group">
-                    <label class="text-light" for="plan">Plan pretplate</label>
-                    <select name="plan" (change)="setBody($event.target.value)" id="plan" class="form-control" required>
-                      <option *ngFor="let p of planovi" value="p">
+                    <label class="text-light" for="plan">Plan pretplate:</label>
+                    <select name="plan" [(ngModel)]="initValue" (change)="setBody($event.target.value)" id="plan" class="form-control" required>
+                      <option *ngFor="let p of planovi" value="{{p.uuid}}">
                         {{p.ucestalostPerioda}} {{p.period}}
                       </option>
                     </select>
@@ -19,7 +19,7 @@
 
                 <div class="form-group">
                   <label class="text-light" for="cena">Cena:</label>
-                  <h6 *ngIf="body.cena!=null" id="cena">{{body.cena}}$</h6>
+                  <h4 class="text-light" *ngIf="body.cena!=null" id="cena">{{body.cena}} $</h4>
                 </div>
 
                 <!--BUTTON-->

@@ -20,6 +20,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import rs.ac.uns.ftn.url.SubDateDTO;
+import rs.ac.uns.ftn.url.SubRedirectUrlDTO;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -467,13 +468,13 @@ public class WebShopController {
     }
 
     @RequestMapping(value = "paypalSubscription/completed/{username}/{uuid}/{success}", method = RequestMethod.POST)
-    public ResponseEntity<String> donePayPalSubscription(@PathVariable("username")String username,
+    public ResponseEntity<SubRedirectUrlDTO> donePayPalSubscription(@PathVariable("username")String username,
                                                          @PathVariable("uuid")String uuid,
                                                          @PathVariable("success")Boolean success,
                                                          @RequestBody SubDateDTO subDateDTO) throws ParseException {
 
         Date datumIsticanja=new SimpleDateFormat("yyyy-MM-dd").parse(subDateDTO.getDate());
 
-        return new ResponseEntity<String>(kpService.donePayPalSubsctiption(uuid,success,username,datumIsticanja),HttpStatus.OK);
+        return new ResponseEntity<SubRedirectUrlDTO>(kpService.donePayPalSubsctiption(uuid,success,username,datumIsticanja),HttpStatus.OK);
     }
 }

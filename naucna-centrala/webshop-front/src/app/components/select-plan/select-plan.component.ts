@@ -14,10 +14,12 @@ export class SelectPlanComponent implements OnInit {
   private body={
     period:null,
     ucestalostPerioda:null,
-    cena:null,
+    cena:0,
     username:null,
     uuid:null
   };
+
+  private initValue=null;
 
   private hidden=false;
 
@@ -43,11 +45,16 @@ export class SelectPlanComponent implements OnInit {
     );
   }
 
-  setBody(plan) {
+  setBody(uuid) {
+    let plan = this.planovi.find(element=>element.uuid==uuid)
+    
     this.body.cena=plan.cena;
     this.body.period=plan.period;
     this.body.ucestalostPerioda=plan.ucestalostPerioda;
     this.body.uuid=plan.uuid;
+
+    console.log(this.body);
+    
  }
 
   onSubmit(form:NgForm){

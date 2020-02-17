@@ -9,6 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class SubDateDTO {
-    private String date;
+public class SubRedirectUrlDTO {
+    private String redirectUrl;
+    private Long pretplataId;
 }
