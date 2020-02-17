@@ -12,6 +12,7 @@ export class AllPapersComponent implements OnInit {
 
   currentUser$: Observable<any>;
   private casopisi = [];
+  private pretplaceniCasopisi = [];
 
   constructor(private endpoints:EndpointsService,private authenticationService: AuthenticationService) {
     this.currentUser$=this.authenticationService.currentUser;
@@ -19,14 +20,27 @@ export class AllPapersComponent implements OnInit {
 
   ngOnInit() {
     this.getAllPapers();
+
+    if(this.authenticationService.currentUserValue.role=="Registrovani korisnik"){
+      this.getBoughtPapers(this.authenticationService.currentUserValue.username);
+    }
+  }
+
+  getBoughtPapers(username){
+    this.endpoints.getBoughtPapers(username).subscribe(
+      res => {
+          this.pretplaceniCasopisi = res;
+      },
+      err => {
+        console.log(err); 
+      }
+    )
   }
 
   getAllPapers(){
     this.endpoints.getAllPapers().subscribe(
       res => {
           this.casopisi = res;
-          console.log(res);
-          
       },
       err => {
         console.log(err); 

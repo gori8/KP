@@ -391,6 +391,12 @@ public class WebShopController {
         return userService.getAllPapers();
     }
 
+    @GetMapping(path = "/boughtPapers/{username}", produces = "application/json")
+    @PreAuthorize("hasRole('USER')")
+    public @ResponseBody List<Long> getBoughtPapers(@PathVariable("username") String username) {
+        return casopisService.getBoughtPapers(username);
+    }
+
     @PostMapping(path = "/payments/complete/{uuid}/{nacinPlacanjaId}", produces = "application/json")
     public ResponseEntity completePayment(@PathVariable("uuid") String uuid,@PathVariable("nacinPlacanjaId") Long nacinPlacanjaId) {
         return new ResponseEntity(kpService.completePayment(uuid,nacinPlacanjaId),HttpStatus.OK);

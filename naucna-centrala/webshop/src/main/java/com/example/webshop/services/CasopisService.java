@@ -22,4 +22,6 @@ public interface CasopisService {
     public List<Plan> setPlans(List<PlanDTO> dto, Long casopisId);
 
     public List<PlanDTO> getPlansForPaper(Long casopisId);
+
+    public List<Long> getBoughtPapers(String username);
 }

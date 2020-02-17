@@ -149,6 +149,10 @@ export class EndpointsService {
     return this.http.get(`${BASE_URL}/papers`);
   }
 
+  getBoughtPapers(username): Observable<any>{
+    return this.http.get(`${BASE_URL}/boughtPapers/${username}`);
+  }
+
   getBoughtItems(username): Observable<any>{
     return this.http.get(`${BASE_URL}/bought/${username}`);
   }
