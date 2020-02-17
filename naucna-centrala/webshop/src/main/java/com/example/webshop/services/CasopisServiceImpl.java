@@ -12,10 +12,7 @@ import com.example.webshop.repository.PlanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class CasopisServiceImpl implements CasopisService {
@@ -99,38 +96,73 @@ public class CasopisServiceImpl implements CasopisService {
         Korisnik korisnik = korisnikRepository.findOneByUsername(username);
 
         HashMap<Long,CasopisDTO> casopisiMap = new HashMap<>();
+        Date today = new Date();
 
-        for (Izdanje izdanje:korisnik.getCasopisiKupci()) {
-            IzdanjeDTO izdanjeDTO = new IzdanjeDTO();
-            izdanjeDTO.setBroj(izdanje.getBroj());
-            izdanjeDTO.setCasopisId(izdanje.getCasopis().getId());
-            izdanjeDTO.setCena(izdanje.getCena());
-            izdanjeDTO.setId(izdanje.getId());
-            izdanjeDTO.setNaziv(izdanje.getNaziv());
-            izdanjeDTO.setDatumIzdanja(izdanje.getDatumIzdanja());
-            izdanjeDTO.setUuid(izdanje.getUuid().toString());
+        for (Pretplata pretplata: korisnik.getPretplate()) {
+            Casopis casopis = pretplata.getPlan().getCasopis();
 
-            Casopis casopis = izdanje.getCasopis();
-            CasopisDTO casopisDTO;
-            if(casopisiMap.containsKey(casopis.getId())){
-                casopisDTO = casopisiMap.get(casopis.getId());
-            }else{
-                casopisDTO = new CasopisDTO();
-                casopisDTO.setNaziv(casopis.getNaziv());
-                casopisDTO.setAktiviran(casopis.getAktiviran());
-                casopisDTO.setId(casopis.getId());
-                casopisDTO.setIssn(casopis.getIssn());
-                casopisDTO.setKomeSeNaplacuje(casopis.getKomeSeNaplacuje());
-                casopisDTO.setIzdanja(new ArrayList<>());
-                casopisDTO.setUrednik(casopis.getGlavniUrednik().getUsername());
+            if(pretplata.getDatumIsticanja().before(today)){
+                for (Izdanje izdanje:korisnik.getCasopisiKupci()) {
+                    if(izdanje.getCasopis().getId()==casopis.getId()){
+                        IzdanjeDTO izdanjeDTO = createIzdanjeDTO(izdanje);
 
-                casopisiMap.put(casopisDTO.getId(),casopisDTO);
+                        CasopisDTO casopisDTO;
+                        if(casopisiMap.containsKey(casopis.getId())){
+                            casopisDTO = casopisiMap.get(casopis.getId());
+                        }else{
+
+                            casopisDTO = createCasopisDTO(casopis);
+                            casopisiMap.put(casopisDTO.getId(),casopisDTO);
+                        }
+
+                        casopisDTO.getIzdanja().add(izdanjeDTO);
+                    }
+                }
             }
+            else{
+                for (Izdanje izdanje:casopis.getIzdanja()) {
+                    IzdanjeDTO izdanjeDTO = createIzdanjeDTO(izdanje);
 
-            casopisDTO.getIzdanja().add(izdanjeDTO);
+                    CasopisDTO casopisDTO;
+                    if(casopisiMap.containsKey(casopis.getId())){
+                        casopisDTO = casopisiMap.get(casopis.getId());
+                    }else{
+                        casopisDTO = createCasopisDTO(casopis);
+                        casopisiMap.put(casopisDTO.getId(),casopisDTO);
+                    }
+
+                    casopisDTO.getIzdanja().add(izdanjeDTO);
+                }
+            }
         }
 
         return new ArrayList<>(casopisiMap.values());
+    }
+
+    public CasopisDTO createCasopisDTO(Casopis casopis){
+        CasopisDTO casopisDTO = new CasopisDTO();
+        casopisDTO.setNaziv(casopis.getNaziv());
+        casopisDTO.setAktiviran(casopis.getAktiviran());
+        casopisDTO.setId(casopis.getId());
+        casopisDTO.setIssn(casopis.getIssn());
+        casopisDTO.setKomeSeNaplacuje(casopis.getKomeSeNaplacuje());
+        casopisDTO.setIzdanja(new ArrayList<>());
+        casopisDTO.setUrednik(casopis.getGlavniUrednik().getUsername());
+
+        return casopisDTO;
+    }
+
+    public IzdanjeDTO createIzdanjeDTO(Izdanje izdanje){
+        IzdanjeDTO izdanjeDTO = new IzdanjeDTO();
+        izdanjeDTO.setBroj(izdanje.getBroj());
+        izdanjeDTO.setCasopisId(izdanje.getCasopis().getId());
+        izdanjeDTO.setCena(izdanje.getCena());
+        izdanjeDTO.setId(izdanje.getId());
+        izdanjeDTO.setNaziv(izdanje.getNaziv());
+        izdanjeDTO.setDatumIzdanja(izdanje.getDatumIzdanja());
+        izdanjeDTO.setUuid(izdanje.getUuid().toString());
+
+        return izdanjeDTO;
     }
 
     @Override
