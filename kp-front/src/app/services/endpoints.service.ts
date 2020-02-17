@@ -33,7 +33,7 @@ export class EndpointsService {
   }
 
   public getPlan(uuid): Observable<any> {
-    return this.http.get(`${BASE_URL_USER_AND_PAYMENT}/plan/${uuid}`);
+    return this.http.get(`${BASE_URL_PAYPAL}/plan/${uuid}`);
   }
 
   public registerOnMs(body,msUrl): Observable<any>{

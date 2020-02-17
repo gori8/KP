@@ -6,6 +6,7 @@ import com.example.webshop.dto.PlanDTO;
 import com.example.webshop.model.Casopis;
 import com.example.webshop.model.Plan;
 import org.springframework.http.ResponseEntity;
+import rs.ac.uns.ftn.url.SubRedirectUrlDTO;
 
 import java.util.Date;
 
@@ -23,5 +24,5 @@ public interface KPService {
 
     public String callPayPalSubscription(CallPayPalSubscriptionDTO dto);
 
-    public String donePayPalSubsctiption(String uuid, Boolean success, String username, Date datumIsticanja);
+    public SubRedirectUrlDTO donePayPalSubsctiption(String uuid, Boolean success, String username, Date datumIsticanja);
 }

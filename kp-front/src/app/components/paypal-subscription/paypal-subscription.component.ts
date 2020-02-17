@@ -11,7 +11,7 @@ export class PaypalSubscriptionComponent implements OnInit {
 
   private body={
     type:"INFINITE",
-    numCicles:0,
+    numCycles:0,
     planId:null
   }
 
@@ -45,7 +45,7 @@ export class PaypalSubscriptionComponent implements OnInit {
     this.hidden=true;
     if(form.valid===true){
       if(this.body.type=="INFINITE"){
-        this.body.numCicles=0;
+        this.body.numCycles=0;
       }
       console.log(this.body);
     
