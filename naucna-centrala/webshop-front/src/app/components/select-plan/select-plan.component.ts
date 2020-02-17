@@ -25,11 +25,14 @@ export class SelectPlanComponent implements OnInit {
 
   private planovi=[];
 
+  private type=null;
+
   constructor(private activatedRoute: ActivatedRoute,
     private endpoints:EndpointsService,private router: Router,
     private authenticationService:AuthenticationService) { }
 
   ngOnInit() {
+    this.type = this.activatedRoute.snapshot.paramMap.get('type')
     this.getPlans(this.activatedRoute.snapshot.paramMap.get('casopisId'));
     this.body.username=this.authenticationService.currentUserValue.username;
   }
@@ -60,7 +63,7 @@ export class SelectPlanComponent implements OnInit {
   onSubmit(form:NgForm){
     this.hidden=true;
     if(form.valid===true){
-      this.endpoints.submitSubscription(this.body).subscribe(
+      this.endpoints.submitSubscription(this.body,this.type).subscribe(
         res => {
           window.location.href = res;
         },

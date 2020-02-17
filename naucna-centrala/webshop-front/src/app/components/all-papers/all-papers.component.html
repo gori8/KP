@@ -4,17 +4,13 @@
   </div>
   <div class="row ml-auto mr-auto">
     <div class="col col-md-3 mb-5 mr-5" *ngFor="let c of casopisi">
-      <div class="card bg-dark text-light" style="height: 32rem;width: 18rem;">
+      <div class="card bg-dark text-light" style="height: 29rem;width: 18rem;">
         <div class="text-center">
           <img src="assets/img/paper.png" class="card-img-top mt-4"  style="height: 8rem;width:8rem">
         </div>
         <div class="card-body">
           <h3 class="card-title">{{c.naziv}}</h3>
-          <table class="table text-light">
-            <tr>
-              <td>Članarina: </td>
-              <td>{{c.clanarina}} $</td>
-            </tr>
+          <table class="table text-light">  
             <tr>
               <td>Ko plaća članarinu: </td>
               <td>{{c.komeSeNaplacuje}}</td>
@@ -30,10 +26,10 @@
           </div>
           <div class="row">
             <ng-container *ngIf="currentUser$ | async as user">
-              <button class="btn btn-outline-light ml-3 custom" *ngIf="user.role=='Registrovani korisnik' && !pretplaceniCasopisi.contains(c.id)">Pretplati se</button>
-              <button routerLink="/paypalSubscription/{{c.id}}" class="btn btn-primary ml-3" *ngIf="user.role=='Registrovani korisnik' && c.paypalSubscription==true && !pretplaceniCasopisi.contains(c.id)"><i class="fab fa-paypal"></i> Pretplata</button>
+              <button routerLink="/subscription/{{c.id}}/regular" class="btn btn-outline-light ml-3 custom" *ngIf="user.role=='Registrovani korisnik' && !pretplaceniCasopisi.includes(c.id)">Pretplati se</button>
+              <button routerLink="/subscription/{{c.id}}/paypal" class="btn btn-primary ml-3" *ngIf="user.role=='Registrovani korisnik' && c.paypalSubscription==true && !pretplaceniCasopisi.includes(c.id)"><i class="fab fa-paypal"></i> Pretplata</button>
             
-              <label class="text-light ml-3" *ngIf="user.role=='Registrovani korisnik' && pretplaceniCasopisi.contains(c.id)">Pretplaćen</label>
+              <label class="text-light ml-3 mt-3" *ngIf="user.role=='Registrovani korisnik' && pretplaceniCasopisi.includes(c.id)">Pretplaćen</label>
             </ng-container>
           </div>
         </div>
