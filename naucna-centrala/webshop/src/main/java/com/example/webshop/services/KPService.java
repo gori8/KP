@@ -25,4 +25,6 @@ public interface KPService {
     public String callPayPalSubscription(CallPayPalSubscriptionDTO dto);
 
     public SubRedirectUrlDTO donePayPalSubsctiption(String uuid, Boolean success, String username, Date datumIsticanja);
+
+    public Boolean canceledPayPalSubsctiption(Long pretplataId, Date datumIsticanja);
 }

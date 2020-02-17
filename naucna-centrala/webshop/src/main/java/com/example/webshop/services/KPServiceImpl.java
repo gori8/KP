@@ -322,4 +322,18 @@ public class KPServiceImpl implements KPService {
         }
         return ret;
     }
+
+    @Override
+    public Boolean canceledPayPalSubsctiption(Long pretplataId, Date datumIsticanja){
+        Pretplata pretplata = pretplataRepository.getOne(pretplataId);
+
+        if(pretplata==null){
+            return false;
+        }
+
+        pretplata.setDatumIsticanja(datumIsticanja);
+        pretplata = pretplataRepository.save(pretplata);
+
+        return true;
+    }
 }
