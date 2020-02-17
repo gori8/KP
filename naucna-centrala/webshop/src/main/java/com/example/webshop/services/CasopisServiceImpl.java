@@ -98,26 +98,12 @@ public class CasopisServiceImpl implements CasopisService {
         HashMap<Long,CasopisDTO> casopisiMap = new HashMap<>();
         Date today = new Date();
 
+        //PRETPLATE
         for (Pretplata pretplata: korisnik.getPretplate()) {
             Casopis casopis = pretplata.getPlan().getCasopis();
 
             if(pretplata.getDatumIsticanja().before(today)){
-                for (Izdanje izdanje:korisnik.getCasopisiKupci()) {
-                    if(izdanje.getCasopis().getId()==casopis.getId()){
-                        IzdanjeDTO izdanjeDTO = createIzdanjeDTO(izdanje);
-
-                        CasopisDTO casopisDTO;
-                        if(casopisiMap.containsKey(casopis.getId())){
-                            casopisDTO = casopisiMap.get(casopis.getId());
-                        }else{
-
-                            casopisDTO = createCasopisDTO(casopis);
-                            casopisiMap.put(casopisDTO.getId(),casopisDTO);
-                        }
-
-                        casopisDTO.getIzdanja().add(izdanjeDTO);
-                    }
-                }
+                continue;
             }
             else{
                 for (Izdanje izdanje:casopis.getIzdanja()) {
@@ -131,6 +117,34 @@ public class CasopisServiceImpl implements CasopisService {
                         casopisiMap.put(casopisDTO.getId(),casopisDTO);
                     }
 
+                    casopisDTO.getIzdanja().add(izdanjeDTO);
+                }
+            }
+        }
+
+        //KUPLJENA IZDANJA
+        for (Izdanje izdanje:korisnik.getCasopisiKupci()) {
+            Casopis casopis = izdanje.getCasopis();
+            if(izdanje.getCasopis().getId()==casopis.getId()){
+                IzdanjeDTO izdanjeDTO = createIzdanjeDTO(izdanje);
+
+                CasopisDTO casopisDTO;
+                if(casopisiMap.containsKey(casopis.getId())){
+                    casopisDTO = casopisiMap.get(casopis.getId());
+                }else{
+
+                    casopisDTO = createCasopisDTO(casopis);
+                    casopisiMap.put(casopisDTO.getId(),casopisDTO);
+                }
+
+                boolean flag = true;
+                for (IzdanjeDTO izDTO: casopisDTO.getIzdanja()) {
+                    if(izDTO.getId() == izdanjeDTO.getId()){
+                        flag = false;
+                        break;
+                    }
+                }
+                if(flag){
                     casopisDTO.getIzdanja().add(izdanjeDTO);
                 }
             }
