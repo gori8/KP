@@ -34,7 +34,14 @@ export class AllPapersComponent implements OnInit {
           for(let pc of this.pretplaceniCasopisi){
             for(let c of this.casopisi){
               if(c.id==pc.id){
-                c["datumIsticanja"]=pc.datumIsticanja.split('T')[0];
+
+                //let date = pc.datumIsticanja.split('T')[0];
+                if(pc.datumIsticanja == '12.12.9999.'){
+                  c["datumIsticanja"]="daljnjeg.";
+                }else{
+                  //c["datumIsticanja"]=date;
+                  c["datumIsticanja"]=pc.datumIsticanja;
+                }
                 break;
               }
             }
