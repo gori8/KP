@@ -114,15 +114,16 @@ public class WebShopController {
         runtimeService.setVariable(processId, "uredniciRecenzenti", dto);
         formService.submitTaskForm(task.getId(), map);
 
-        return "\""+processId+"\"";
+        Long id = (Long)runtimeService.getVariable(processId, "id");
+
+        return "\""+id+"\"";
     }
 
-    @PostMapping(path = "/newPaper/plans/{processId}", produces = "application/json")
+    @PostMapping(path = "/newPaper/plans/{id}", produces = "application/json")
     @PreAuthorize("hasRole('UREDNIK')")
-    public @ResponseBody Boolean setPlans(@RequestBody List<PlanDTO> dto, @PathVariable String processId) throws Exception {
+    public @ResponseBody Boolean setPlans(@RequestBody List<PlanDTO> dto, @PathVariable Long id) throws Exception {
 
-        Long casopisId = (Long)runtimeService.getVariable(processId,"id");
-        List<Plan> planovi = casopisService.setPlans(dto,casopisId);
+        List<Plan> planovi = casopisService.setPlans(dto,id);
 
         for (Plan plan:planovi) {
             kpService.createLinks(plan);
@@ -233,12 +234,20 @@ public class WebShopController {
                 boolean flag = true;
 
                 Long id = (Long)runtimeService.getVariable(t.getProcessInstanceId(),"id");
-                for (Link link:casopisRepository.getOne(id).getLinkovi()) {
+
+                Casopis casopis = casopisRepository.getOne(id);
+
+                for (Link link:casopis.getLinkovi()) {
                     if (link.getCompleted() == false) {
                         flag = false;
                         break;
                     }
                 }
+
+                if(casopis.getPlanovi().isEmpty()){
+                    flag = false;
+                }
+
                 if(flag==false){
                     continue;
                 }
@@ -291,6 +300,12 @@ public class WebShopController {
     @GetMapping(path = "/tasksLinks/{username}", produces = "application/json")
     public @ResponseBody List<TaskLinkDTO> getTasksLinks(@PathVariable String username) {
         return casopisService.getTasks(username);
+    }
+
+    @PreAuthorize("hasRole('UREDNIK')")
+    @GetMapping(path = "/tasksPlans/{username}", produces = "application/json")
+    public @ResponseBody List<TaskLinkDTO> getTasksPlans(@PathVariable String username) {
+        return casopisService.getTasksPlans(username);
     }
 
     @PreAuthorize("hasRole('UREDNIK')")
@@ -398,7 +413,7 @@ public class WebShopController {
 
     @GetMapping(path = "/boughtPapers/{username}", produces = "application/json")
     @PreAuthorize("hasRole('USER')")
-    public @ResponseBody List<Long> getBoughtPapers(@PathVariable("username") String username) {
+    public @ResponseBody List<PretplaceniCasopisDTO> getBoughtPapers(@PathVariable("username") String username) {
         return casopisService.getBoughtPapers(username);
     }
 

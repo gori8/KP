@@ -82,8 +82,8 @@ export class EndpointsService {
     });
   }
 
-  submitPlans(body,processId): Observable<any>{
-    return this.http.post(`${BASE_URL}/newPaper/plans/${processId}`, body,{
+  submitPlans(body,id): Observable<any>{
+    return this.http.post(`${BASE_URL}/newPaper/plans/${id}`, body,{
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
        })
@@ -168,6 +168,10 @@ export class EndpointsService {
 
   getTasksLinks(username): Observable<any>{
     return this.http.get(`${BASE_URL}/tasksLinks/${username}`);
+  }
+
+  getTasksPlans(username): Observable<any>{
+    return this.http.get(`${BASE_URL}/tasksPlans/${username}`);
   }
 
   public pay(uapId,username): Observable<any>{

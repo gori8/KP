@@ -11,7 +11,7 @@ import { NgForm } from '@angular/forms';
 })
 export class AddPlansComponent implements OnInit {
 
-  private processId = null;
+  private id = null;
   private readonly notifier: NotifierService;
   private planovi = [];
   private hidden=false;
@@ -23,7 +23,7 @@ export class AddPlansComponent implements OnInit {
 
   ngOnInit() {
     this.addPlan();
-    this.processId = this.activatedRoute.snapshot.paramMap.get('processId');
+    this.id = this.activatedRoute.snapshot.paramMap.get('id');
   }
 
   addPlan(){
@@ -47,7 +47,7 @@ export class AddPlansComponent implements OnInit {
     this.hidden=true;
 
     if(form.valid===true){
-      this.endpoints.submitPlans(this.planoviModel,this.processId).subscribe(
+      this.endpoints.submitPlans(this.planoviModel,this.id).subscribe(
         res => {
           if(res == true){
             this.notifier.notify("success", "Uspešno dodati planovi plaćanja. Da bi časopis bio vidljiv mora biti odobren od strane administratora.");

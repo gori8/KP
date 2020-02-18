@@ -12,6 +12,7 @@ export class AdminTasksComponent implements OnInit {
 
   private tasks = [];
   private tasksLinks = [];
+  private tasksPlans = [];
   private numberOfTasks=0;
   
   constructor(private endpoints:EndpointsService,private authenticationService: AuthenticationService,private data:DataService) { }
@@ -24,6 +25,7 @@ export class AdminTasksComponent implements OnInit {
 
     if(this.authenticationService.currentUserValue.role=="Urednik"){
       this.getTasksLinks();
+      this.getTasksPlans();
     }
   }
 
@@ -31,6 +33,17 @@ export class AdminTasksComponent implements OnInit {
     this.endpoints.getTasksLinks(this.authenticationService.currentUserValue.username).subscribe(
       res => {
           this.tasksLinks = res;
+        },
+      err => {
+        console.log(err); 
+      }
+    )
+  }
+
+  getTasksPlans(){
+    this.endpoints.getTasksPlans(this.authenticationService.currentUserValue.username).subscribe(
+      res => {
+          this.tasksPlans = res;
         },
       err => {
         console.log(err); 

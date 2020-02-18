@@ -30,6 +30,15 @@ export class AllPapersComponent implements OnInit {
     this.endpoints.getBoughtPapers(username).subscribe(
       res => {
           this.pretplaceniCasopisi = res;
+
+          for(let pc of this.pretplaceniCasopisi){
+            for(let c of this.casopisi){
+              if(c.id==pc.id){
+                c["datumIsticanja"]=pc.datumIsticanja;
+                break;
+              }
+            }
+          }
       },
       err => {
         console.log(err); 

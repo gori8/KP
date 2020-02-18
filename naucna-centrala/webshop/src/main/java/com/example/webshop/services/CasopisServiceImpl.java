@@ -1,9 +1,6 @@
 package com.example.webshop.services;
 
-import com.example.webshop.dto.CasopisDTO;
-import com.example.webshop.dto.IzdanjeDTO;
-import com.example.webshop.dto.PlanDTO;
-import com.example.webshop.dto.TaskLinkDTO;
+import com.example.webshop.dto.*;
 import com.example.webshop.model.*;
 import com.example.webshop.repository.CasopisRepository;
 import com.example.webshop.repository.KorisnikRepository;
@@ -11,6 +8,7 @@ import com.example.webshop.repository.NacinPlacanjaRepository;
 import com.example.webshop.repository.PlanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import rs.ac.uns.ftn.url.UrlClass;
 
 import java.util.*;
 
@@ -45,6 +43,22 @@ public class CasopisServiceImpl implements CasopisService {
                     task.setNacinPlacanja(nacinPlacanjaRepository.getOne(link.getNacinPlacanja()).getNaziv());
                     ret.add(task);
                 }
+            }
+        }
+        return ret;
+    }
+
+    public List<TaskLinkDTO> getTasksPlans(String username){
+        Korisnik korisnik = korisnikRepository.findOneByUsername(username);
+
+        List<TaskLinkDTO> ret = new ArrayList<>();
+
+        for (Casopis casopis:korisnik.getCasopisiGlavni()) {
+            if(casopis.getPlanovi().isEmpty()){
+                TaskLinkDTO task = new TaskLinkDTO();
+                task.setLink(UrlClass.FRON_WEBSHOP+"addPlans/"+casopis.getId());
+                task.setCasopis(casopis.getNaziv());
+                ret.add(task);
             }
         }
         return ret;
@@ -243,16 +257,20 @@ public class CasopisServiceImpl implements CasopisService {
     }
 
     @Override
-    public List<Long> getBoughtPapers(String username){
+    public List<PretplaceniCasopisDTO> getBoughtPapers(String username){
         Korisnik korisnik = korisnikRepository.findOneByUsername(username);
-        List<Long> ret = new ArrayList<>();
+        List<PretplaceniCasopisDTO> ret = new ArrayList<>();
 
         for (Pretplata pretplata:korisnik.getPretplate()) {
             if(pretplata.getDatumIsticanja().before(new Date())){
                 continue;
             }
 
-            ret.add(pretplata.getPlan().getCasopis().getId());
+            PretplaceniCasopisDTO dto = new PretplaceniCasopisDTO();
+            dto.setId(pretplata.getPlan().getCasopis().getId());
+            dto.setDatumIsticanja(pretplata.getDatumIsticanja());
+
+            ret.add(dto);
         }
 
         return ret;

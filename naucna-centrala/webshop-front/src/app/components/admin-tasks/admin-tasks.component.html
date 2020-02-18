@@ -141,4 +141,21 @@
       </div>
     </div>
   </div>
+
+  <!--DODAVANJE PLANOVA U CASOPIS-->
+  <div class="card mt-5" *ngFor="let task of tasksPlans">
+    <div class="card-header">
+      <h5>Unos planova za plaćanje</h5>
+    </div>
+    <div class="card-body">
+      <div class="row ml-2">
+        <p>
+          Potrebno je uneti planove plaćanja za časopis {{task.casopis}}.
+        </p>
+      </div>
+      <div class="row mt-5 ml-2">
+        <a class="btn btn-primary" href="{{task.link}}">Prikaz forme</a>
+      </div>
+    </div>
+  </div>
 </div>
