@@ -64,7 +64,13 @@ public class MyPaymentUtils {
 
     public static AmountAndUrlDTO getAmountAndRedirectUrl(RestTemplate restTemplate, String casopisID){
         String url=UrlClass.DOBAVI_CENU_URL_SA_PAYMENT_INFO+casopisID;
-        System.out.println(url);
+        ResponseEntity<AmountAndUrlDTO> resp
+                = restTemplate.getForEntity(url, AmountAndUrlDTO.class);
+        return resp.getBody();
+    }
+
+    public static AmountAndUrlDTO getAmountAndRedirectUrlSub(RestTemplate restTemplate, String casopisID){
+        String url=UrlClass.DOBAVI_CENU_URL_SA_PAYMENT_INFO+"sub/"+casopisID;
         ResponseEntity<AmountAndUrlDTO> resp
                 = restTemplate.getForEntity(url, AmountAndUrlDTO.class);
         return resp.getBody();

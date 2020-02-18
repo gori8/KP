@@ -15,4 +15,5 @@ public class AmountAndUrlDTO {
     BigDecimal amount;
     String redirectUrl;
     String sellerEmail;
+    String itemUuid;
 }

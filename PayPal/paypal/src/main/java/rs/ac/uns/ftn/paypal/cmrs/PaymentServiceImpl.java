@@ -84,7 +84,7 @@ public class PaymentServiceImpl implements PaymentService{
 
         MyPayment myPayment=new MyPayment();
 
-        myPayment.setItemId(UUID.fromString(request.getCasopisUuid()));
+        myPayment.setItemId(UUID.fromString(amountAndUrlDTO.getItemUuid()));
 
         myPayment=myPaymentRepository.save(myPayment);
 
@@ -219,7 +219,7 @@ public class PaymentServiceImpl implements PaymentService{
 
         Seller seller = sellerRepository.findBySellerEmail(sellerEmail);
         Subscription subscription=new Subscription();
-        subscription.setItemId(UUID.fromString(request.getCasopisUuid()));
+        subscription.setItemId(UUID.fromString(amountAndUrlDTO.getItemUuid()));
         subscription.setAmount(amount);
         subscription.setCycles(request.getBrojCiklusa());
         subscription.setFrequency(request.getPeriod());
@@ -309,7 +309,7 @@ public class PaymentServiceImpl implements PaymentService{
         request.setPeriod(subPlan.getPeriod());
         request.setUcestalostPerioda(subPlan.getUcestalostPerioda().longValue());
 
-        AmountAndUrlDTO amountAndUrlDTO=MyPaymentUtils.getAmountAndRedirectUrl(restTemplate,request.getCasopisUuid());
+        AmountAndUrlDTO amountAndUrlDTO=MyPaymentUtils.getAmountAndRedirectUrlSub(restTemplate,request.getCasopisUuid());
 
         String sellerEmail = amountAndUrlDTO.getSellerEmail();
 

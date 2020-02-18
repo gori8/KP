@@ -4,8 +4,7 @@ package rs.ac.uns.ftn.fourthms.payment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import rs.ac.uns.ftn.fourthms.dto.PaymentDTO;
@@ -34,8 +33,8 @@ public class FourthMsController {
         return new ResponseEntity<>("\""+"https://localhost:4600/payment/"+request.getCasopisUuid()+"\"", HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/execute", method = RequestMethod.GET)
-    public ResponseEntity create(PaymentDTO dto) throws URISyntaxException {
+    @RequestMapping(value = "/execute", method = RequestMethod.POST)
+    public ResponseEntity create(@RequestBody PaymentDTO dto) throws URISyntaxException {
 
         LOGGER.info("Executing payment on forth micro service...");
 
@@ -49,10 +48,18 @@ public class FourthMsController {
         LOGGER.info("Buyer: "+dto.getBuyerId());
         LOGGER.info("Seller: "+resp.getBody().getSellerEmail());
         LOGGER.info("Amount: "+resp.getBody().getAmount());
-        LOGGER.info("Bought item UUID: "+dto.getUuid());
+        LOGGER.info("Bought item UUID: "+resp.getBody().getItemUuid());
 
         LOGGER.info("Payment executed...");
 
-        return new  ResponseEntity<String>("\""+resp.getBody().getRedirectUrl()+"/true\"",HttpStatus.OK);
+        return new  ResponseEntity<String>("\""+notifyNc(resp.getBody().getRedirectUrl()+"/true")+"\"",HttpStatus.OK);
+    }
+
+    private String notifyNc(String url){
+        HttpHeaders headers=new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity entity=new HttpEntity("",headers);
+        ResponseEntity<String> redirectUrl=restTemplate.postForEntity(url,entity,String.class);
+        return redirectUrl.getBody();
     }
 }

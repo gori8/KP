@@ -27,9 +27,8 @@ public class Item {
     @Type(type="org.hibernate.type.UUIDCharType")
     private UUID uuid;
 
-    @Column(name = "redirectUrl", unique = false, nullable = true)
-    private String redirectUrl;
-
+    @OneToMany(mappedBy = "item")
+    private List<RedUrl> redUrls = new ArrayList<>();
 
     @ManyToMany
     @JsonIgnore
