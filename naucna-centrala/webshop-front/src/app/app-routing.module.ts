@@ -34,7 +34,7 @@ const routes: Routes = [
   { path : "papers/:id/numbers", component : IzdanjaCasopisaComponent},
   { path : "paymentresponse/:message", component : PaymentResponseComponent, canActivate:[AuthGuard]},
   { path : "bought", component : KupljeniPredmetiComponent, canActivate:[AuthGuard] },
-  { path : "addPlans/:processId", component : AddPlansComponent, canActivate:[AuthGuard] },
+  { path : "addPlans/:id", component : AddPlansComponent, canActivate:[AuthGuard] },
   { path : "subscription/:casopisId/:type", component : SelectPlanComponent, canActivate:[AuthGuard] },
 ];
 

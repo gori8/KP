@@ -25,10 +25,7 @@ import rs.ac.uns.ftn.url.SubRedirectUrlDTO;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 @Controller
 @RequestMapping("/webshop")
@@ -125,7 +122,8 @@ public class WebShopController {
 
         List<Plan> planovi = casopisService.setPlans(dto,id);
 
-        for (Plan plan:planovi) {
+        for (Iterator<Plan> it = planovi.iterator(); it.hasNext();) {
+            Plan plan = it.next();
             kpService.createLinks(plan);
         }
 

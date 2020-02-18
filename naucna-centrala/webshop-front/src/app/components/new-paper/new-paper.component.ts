@@ -19,7 +19,7 @@ export class NewPaperComponent implements OnInit {
     },
     {
       fieldId:"clanarina",
-      fieldValue:""
+      fieldValue:1
     },
     {
       fieldId:"komeSeNaplacuje",
