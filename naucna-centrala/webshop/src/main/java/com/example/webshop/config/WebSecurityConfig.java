@@ -102,6 +102,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		web.ignoring().antMatchers(HttpMethod.GET,"/webshop/payed/**","/webshop/papers/**","/webshop/registration/**","/webshop/payments","/webshop/sciencefields","/","/images/**","/webjars/**", "/*.html", "/favicon.ico", "/**/*.html", "/**/*.css", "/**/*.js");
 
+		web.ignoring().antMatchers(HttpMethod.PUT, "/webshop/paypalSubscription/completed/**");
 	}
 
 	@Bean

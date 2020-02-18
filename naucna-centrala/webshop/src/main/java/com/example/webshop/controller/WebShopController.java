@@ -493,4 +493,16 @@ public class WebShopController {
 
         return new ResponseEntity<SubRedirectUrlDTO>(kpService.donePayPalSubsctiption(uuid,success,username,datumIsticanja),HttpStatus.OK);
     }
+
+    @RequestMapping(value = "paypalSubscription/completed/{username}/{uuid}/{pretplataId}", method = RequestMethod.PUT)
+    public ResponseEntity<Boolean> canceledPayPalSubscription(@PathVariable("username")String username,
+                                                                    @PathVariable("uuid")String uuid,
+                                                                    @PathVariable("pretplataId")Long pretplataId,
+                                                                    @RequestBody SubDateDTO subDateDTO) throws ParseException {
+
+
+        Date datumIsticanja=new SimpleDateFormat("yyyy-MM-dd").parse(subDateDTO.getDate());
+
+        return new ResponseEntity<Boolean>(kpService.canceledPayPalSubsctiption(pretplataId,datumIsticanja),HttpStatus.OK);
+    }
 }
