@@ -19,4 +19,6 @@ public class Seller {
 
     @OneToMany(mappedBy = "seller")
     protected List<Item> items = new ArrayList<>();
+
+    private String url;
 }

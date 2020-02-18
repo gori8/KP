@@ -58,6 +58,11 @@ public class InfoController {
         return new ResponseEntity<>(infoService.getAmountAndUrl(id),HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/amountandurl/sub/{id}", method = RequestMethod.GET)
+    public ResponseEntity<AmountAndUrlDTO> getUrlSub(@PathVariable("id") String id) {
+        return new ResponseEntity<>(infoService.getAmountAndUrlSub(id),HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public ResponseEntity add(@RequestBody CreateLinksDTO dto) {
 

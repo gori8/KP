@@ -59,7 +59,7 @@ public class PaymentServiceImpl implements PaymentService {
 
 
         Payment payment = new Payment();
-        payment.setItemUuid(UUID.fromString(kpRequestDto.getCasopisUuid()));
+        payment.setItemUuid(UUID.fromString(resp.getBody().getItemUuid()));
         payment.setAmount(resp.getBody().getAmount());
         payment.setStatus(PaymentStatus.CREATED_ON_KP);
         payment.setSellerEmail(resp.getBody().getSellerEmail());

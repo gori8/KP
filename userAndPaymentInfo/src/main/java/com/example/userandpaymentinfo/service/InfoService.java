@@ -15,6 +15,9 @@ public interface InfoService {
     public List<NacinPlacanjaDTO> getNacinePlacanjaZaCasopis(String casopisId);
     public UrlDTO getUrl(RedirectUrlDTO redirectUrlDTO);
     public AmountAndUrlDTO getAmountAndUrl(String id);
+
+    AmountAndUrlDTO getAmountAndUrlSub(String id);
+
     public void register(RegisterDTO dto);
 
     ReturnLinksDTO add(CreateLinksDTO dto);

@@ -23,6 +23,8 @@ public class Subscription {
 
     private String agreementId;
 
+    private String subscriptionId;
+
     private String type;
 
     private Long cycles;

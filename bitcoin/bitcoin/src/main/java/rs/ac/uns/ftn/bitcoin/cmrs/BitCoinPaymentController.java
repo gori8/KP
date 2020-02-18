@@ -49,7 +49,7 @@ public class BitCoinPaymentController {
     public ResponseEntity<?> getPaymentCanceled(@PathVariable Long paymentId) {
         BitCoinPayment bitCoinPayment=bitCoinPaymentService.getById(paymentId);
 
-        AmountAndUrlDTO amountAndUrlDTO=bitCoinPaymentService.getAmountAndRedirectUrl(bitCoinPayment.getItemId().toString());
+        AmountAndUrlDTO amountAndUrlDTO=bitCoinPaymentService.getAmountAndRedirectUrl(bitCoinPayment.getRedUrlUuid().toString());
 
         String url = bitCoinPaymentService.notifyNc(amountAndUrlDTO.getRedirectUrl()+"/false");
 
@@ -72,7 +72,7 @@ public class BitCoinPaymentController {
 
         BitCoinPayment bitCoinPayment=bitCoinPaymentService.getById(paymentId);
 
-        AmountAndUrlDTO amountAndUrlDTO=bitCoinPaymentService.getAmountAndRedirectUrl(bitCoinPayment.getItemId().toString());
+        AmountAndUrlDTO amountAndUrlDTO=bitCoinPaymentService.getAmountAndRedirectUrl(bitCoinPayment.getRedUrlUuid().toString());
 
         String url = bitCoinPaymentService.notifyNc(amountAndUrlDTO.getRedirectUrl()+"/true");
 

@@ -9,305 +9,81 @@
   Camunda BPM: (v7.12.0)
   Camunda BPM Spring Boot Starter: (v3.4.0)
 
-2020-02-17 04:45:50.623  INFO 30832 --- [           main] com.example.webshop.WebshopApplication   : Starting WebshopApplication v0.0.1-SNAPSHOT on antolovic-Lenovo-Legion-Y530-15ICH with PID 30832 (/home/antolovic/KP_SEP/KP/naucna-centrala/webshop/target/webshop.jar started by antolovic in /home/antolovic/KP_SEP/KP)
-2020-02-17 04:45:50.648  INFO 30832 --- [           main] com.example.webshop.WebshopApplication   : No active profile set, falling back to default profiles: default
-2020-02-17 04:45:56.924  INFO 30832 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2020-02-17 04:45:57.734  INFO 30832 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 767ms. Found 9 JPA repository interfaces.
-2020-02-17 04:46:00.881  INFO 30832 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-02-17 04:46:01.389  INFO 30832 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration$$EnhancerBySpringCGLIB$$a50fa020] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-02-17 04:46:01.429  INFO 30832 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-02-17 04:46:01.437  INFO 30832 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@560348e6' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-02-17 04:46:01.464  INFO 30832 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration$$EnhancerBySpringCGLIB$$c9e442d2] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-02-17 04:46:01.507  INFO 30832 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-02-17 04:46:03.816  INFO 30832 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9000 (https)
-2020-02-17 04:46:03.929  INFO 30832 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2020-02-17 04:46:03.934  INFO 30832 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
-2020-02-17 04:46:04.398  INFO 30832 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2020-02-17 04:46:04.398  INFO 30832 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 13301 ms
-2020-02-17 04:46:04.941  WARN 30832 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2020-02-17 04:46:06.135  INFO 30832 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2020-02-17 04:46:07.129  INFO 30832 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.9.Final}
-2020-02-17 04:46:08.366  INFO 30832 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
-2020-02-17 04:46:09.561  INFO 30832 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2020-02-17 04:46:10.982  INFO 30832 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2020-02-17 04:46:11.182  INFO 30832 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
-2020-02-17 04:46:20.663  INFO 30832 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2020-02-17 04:46:20.709  INFO 30832 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2020-02-17 04:46:28.267  INFO 30832 --- [           main] org.camunda.bpm.spring.boot              : STARTER-SB040 Setting up jobExecutor with corePoolSize=3, maxPoolSize:10
-2020-02-17 04:46:28.269  INFO 30832 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'camundaTaskExecutor'
-2020-02-17 04:46:28.878  INFO 30832 --- [           main] org.camunda.bpm.engine.cfg               : ENGINE-12003 Plugin 'CompositeProcessEnginePlugin[genericPropertiesConfiguration, camundaProcessEngineConfiguration, camundaDatasourceConfiguration, camundaJpaConfiguration, camundaJobConfiguration, camundaHistoryConfiguration, camundaMetricsConfiguration, camundaAuthorizationConfiguration, camundaDeploymentConfiguration, failedJobConfiguration, eventPublisherPlugin]' activated on process engine 'default'
-2020-02-17 04:46:34.137  WARN 30832 --- [           main] s.b.s.c.i.DefaultDeploymentConfiguration : unable to determine if resource URL [jar:file:/home/antolovic/KP_SEP/KP/naucna-centrala/webshop/target/webshop.jar!/BOOT-INF/lib/camunda-engine-dmn-7.12.0.jar!/META-INF/maven/org.camunda.bpm.dmn/] is a deployable resource
-2020-02-17 04:46:34.137  WARN 30832 --- [           main] s.b.s.c.i.DefaultDeploymentConfiguration : unable to determine if resource URL [jar:file:/home/antolovic/KP_SEP/KP/naucna-centrala/webshop/target/webshop.jar!/BOOT-INF/lib/camunda-engine-feel-api-7.12.0.jar!/META-INF/maven/org.camunda.bpm.dmn/] is a deployable resource
-2020-02-17 04:46:34.137  WARN 30832 --- [           main] s.b.s.c.i.DefaultDeploymentConfiguration : unable to determine if resource URL [jar:file:/home/antolovic/KP_SEP/KP/naucna-centrala/webshop/target/webshop.jar!/BOOT-INF/lib/camunda-engine-feel-juel-7.12.0.jar!/META-INF/maven/org.camunda.bpm.dmn/] is a deployable resource
-2020-02-17 04:46:34.137  INFO 30832 --- [           main] org.camunda.bpm.spring.boot              : STARTER-SB021 Auto-Deploying resources: [URL [jar:file:/home/antolovic/KP_SEP/KP/naucna-centrala/webshop/target/webshop.jar!/BOOT-INF/classes!/registracijaKorisnika.bpmn], URL [jar:file:/home/antolovic/KP_SEP/KP/naucna-centrala/webshop/target/webshop.jar!/BOOT-INF/classes!/noviCasopis.bpmn]]
-2020-02-17 04:46:34.141  INFO 30832 --- [           main] o.c.b.s.b.s.event.EventPublisherPlugin   : EVENTING-001: Initialized Camunda Spring Boot Eventing Engine Plugin.
-2020-02-17 04:46:34.143  INFO 30832 --- [           main] o.c.b.s.b.s.event.EventPublisherPlugin   : EVENTING-003: Task events will be published as Spring Events.
-2020-02-17 04:46:34.143  INFO 30832 --- [           main] o.c.b.s.b.s.event.EventPublisherPlugin   : EVENTING-005: Execution events will be published as Spring Events.
-2020-02-17 04:46:34.147  INFO 30832 --- [           main] o.c.b.s.b.s.event.EventPublisherPlugin   : EVENTING-007: History events will be published as Spring events.
+2020-02-18 01:24:39.576  INFO 16399 --- [           main] com.example.webshop.WebshopApplication   : Starting WebshopApplication v0.0.1-SNAPSHOT on antolovic-Lenovo-Legion-Y530-15ICH with PID 16399 (/home/antolovic/KP_SEP/KP/naucna-centrala/webshop/target/webshop.jar started by antolovic in /home/antolovic/KP_SEP/KP)
+2020-02-18 01:24:39.607  INFO 16399 --- [           main] com.example.webshop.WebshopApplication   : No active profile set, falling back to default profiles: default
+2020-02-18 01:24:47.413  INFO 16399 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-02-18 01:24:48.344  INFO 16399 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 884ms. Found 9 JPA repository interfaces.
+2020-02-18 01:24:51.757  INFO 16399 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-02-18 01:24:52.171  INFO 16399 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration$$EnhancerBySpringCGLIB$$96967b3b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-02-18 01:24:52.246  INFO 16399 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-02-18 01:24:52.252  INFO 16399 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@7f284218' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-02-18 01:24:52.297  INFO 16399 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration$$EnhancerBySpringCGLIB$$bb6b1ded] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-02-18 01:24:52.338  INFO 16399 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-02-18 01:24:54.650  INFO 16399 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9000 (https)
+2020-02-18 01:24:54.749  INFO 16399 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-02-18 01:24:54.759  INFO 16399 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2020-02-18 01:24:55.301  INFO 16399 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-02-18 01:24:55.311  INFO 16399 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 15195 ms
+2020-02-18 01:24:55.877  WARN 16399 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-02-18 01:24:57.245  INFO 16399 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-02-18 01:24:58.234  INFO 16399 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.9.Final}
+2020-02-18 01:24:59.857  INFO 16399 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-02-18 01:25:01.174  INFO 16399 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-02-18 01:25:02.895  INFO 16399 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-02-18 01:25:03.041  INFO 16399 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+2020-02-18 01:25:12.543  INFO 16399 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-02-18 01:25:12.581  INFO 16399 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-02-18 01:25:23.284  INFO 16399 --- [           main] org.camunda.bpm.spring.boot              : STARTER-SB040 Setting up jobExecutor with corePoolSize=3, maxPoolSize:10
+2020-02-18 01:25:23.286  INFO 16399 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'camundaTaskExecutor'
+2020-02-18 01:25:23.500  INFO 16399 --- [           main] org.camunda.bpm.engine.cfg               : ENGINE-12003 Plugin 'CompositeProcessEnginePlugin[genericPropertiesConfiguration, camundaProcessEngineConfiguration, camundaDatasourceConfiguration, camundaJpaConfiguration, camundaJobConfiguration, camundaHistoryConfiguration, camundaMetricsConfiguration, camundaAuthorizationConfiguration, camundaDeploymentConfiguration, failedJobConfiguration, eventPublisherPlugin]' activated on process engine 'default'
+2020-02-18 01:25:26.467  WARN 16399 --- [           main] s.b.s.c.i.DefaultDeploymentConfiguration : unable to determine if resource URL [jar:file:/home/antolovic/KP_SEP/KP/naucna-centrala/webshop/target/webshop.jar!/BOOT-INF/lib/camunda-engine-dmn-7.12.0.jar!/META-INF/maven/org.camunda.bpm.dmn/] is a deployable resource
+2020-02-18 01:25:26.468  WARN 16399 --- [           main] s.b.s.c.i.DefaultDeploymentConfiguration : unable to determine if resource URL [jar:file:/home/antolovic/KP_SEP/KP/naucna-centrala/webshop/target/webshop.jar!/BOOT-INF/lib/camunda-engine-feel-api-7.12.0.jar!/META-INF/maven/org.camunda.bpm.dmn/] is a deployable resource
+2020-02-18 01:25:26.469  WARN 16399 --- [           main] s.b.s.c.i.DefaultDeploymentConfiguration : unable to determine if resource URL [jar:file:/home/antolovic/KP_SEP/KP/naucna-centrala/webshop/target/webshop.jar!/BOOT-INF/lib/camunda-engine-feel-juel-7.12.0.jar!/META-INF/maven/org.camunda.bpm.dmn/] is a deployable resource
+2020-02-18 01:25:26.469  INFO 16399 --- [           main] org.camunda.bpm.spring.boot              : STARTER-SB021 Auto-Deploying resources: [URL [jar:file:/home/antolovic/KP_SEP/KP/naucna-centrala/webshop/target/webshop.jar!/BOOT-INF/classes!/registracijaKorisnika.bpmn], URL [jar:file:/home/antolovic/KP_SEP/KP/naucna-centrala/webshop/target/webshop.jar!/BOOT-INF/classes!/noviCasopis.bpmn]]
+2020-02-18 01:25:26.474  INFO 16399 --- [           main] o.c.b.s.b.s.event.EventPublisherPlugin   : EVENTING-001: Initialized Camunda Spring Boot Eventing Engine Plugin.
+2020-02-18 01:25:26.474  INFO 16399 --- [           main] o.c.b.s.b.s.event.EventPublisherPlugin   : EVENTING-003: Task events will be published as Spring Events.
+2020-02-18 01:25:26.474  INFO 16399 --- [           main] o.c.b.s.b.s.event.EventPublisherPlugin   : EVENTING-005: Execution events will be published as Spring Events.
+2020-02-18 01:25:26.479  INFO 16399 --- [           main] o.c.b.s.b.s.event.EventPublisherPlugin   : EVENTING-007: History events will be published as Spring events.
 WARNING: An illegal reflective access operation has occurred
 WARNING: Illegal reflective access by org.apache.ibatis.reflection.Reflector (jar:file:/home/antolovic/KP_SEP/KP/naucna-centrala/webshop/target/webshop.jar!/BOOT-INF/lib/mybatis-3.4.4.jar!/) to method java.lang.Object.finalize()
 WARNING: Please consider reporting this to the maintainers of org.apache.ibatis.reflection.Reflector
 WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
 WARNING: All illegal access operations will be denied in a future release
-2020-02-17 04:46:40.897  INFO 30832 --- [           main] org.camunda.bpm.engine                   : ENGINE-00001 Process Engine default created.
-2020-02-17 04:46:41.805  INFO 30832 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/**', OPTIONS], []
-2020-02-17 04:46:41.805  INFO 30832 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/webshop/paypalSubscription/completed/**', POST], []
-2020-02-17 04:46:41.805  INFO 30832 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/webshop/payed/**', POST], []
-2020-02-17 04:46:41.805  INFO 30832 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/webshop/payments/complete/**', POST], []
-2020-02-17 04:46:41.805  INFO 30832 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/auth/login', POST], []
-2020-02-17 04:46:41.805  INFO 30832 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/webshop/registration/**', POST], []
-2020-02-17 04:46:41.805  INFO 30832 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/webshop/payed/**', GET], []
-2020-02-17 04:46:41.805  INFO 30832 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/webshop/papers/**', GET], []
-2020-02-17 04:46:41.805  INFO 30832 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/webshop/registration/**', GET], []
-2020-02-17 04:46:41.806  INFO 30832 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/webshop/payments', GET], []
-2020-02-17 04:46:41.806  INFO 30832 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/webshop/sciencefields', GET], []
-2020-02-17 04:46:41.806  INFO 30832 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/', GET], []
-2020-02-17 04:46:41.806  INFO 30832 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/images/**', GET], []
-2020-02-17 04:46:41.806  INFO 30832 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/webjars/**', GET], []
-2020-02-17 04:46:41.806  INFO 30832 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/*.html', GET], []
-2020-02-17 04:46:41.806  INFO 30832 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/favicon.ico', GET], []
-2020-02-17 04:46:41.806  INFO 30832 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/**/*.html', GET], []
-2020-02-17 04:46:41.806  INFO 30832 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/**/*.css', GET], []
-2020-02-17 04:46:41.806  INFO 30832 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/**/*.js', GET], []
-2020-02-17 04:46:41.832  INFO 30832 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@70881123, org.springframework.security.web.context.SecurityContextPersistenceFilter@2bd8f7db, org.springframework.security.web.header.HeaderWriterFilter@4b7ed03e, org.springframework.security.web.authentication.logout.LogoutFilter@63e5b8aa, com.example.webshop.security.auth.TokenAuthenticationFilter@703fa45, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@30abf79c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3caee3a8, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5e905f2c, org.springframework.security.web.session.SessionManagementFilter@bbb6f0, org.springframework.security.web.access.ExceptionTranslationFilter@37c7766e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@62a6674f]
-2020-02-17 04:46:41.932  INFO 30832 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-02-17 04:46:42.177  INFO 30832 --- [           main] o.c.b.s.b.s.w.f.LazyInitRegistration     : lazy initialized org.camunda.bpm.spring.boot.starter.webapp.filter.LazyProcessEnginesFilter@24f870ee
-2020-02-17 04:46:42.253  INFO 30832 --- [           main] o.c.b.s.b.s.w.f.LazyInitRegistration     : lazy initialized org.camunda.bpm.spring.boot.starter.webapp.filter.LazySecurityFilter@3c78e551
-2020-02-17 04:46:42.706  WARN 30832 --- [           main] org.apache.tomcat.util.net.SSLUtilBase   : jsseUtil.trustedCertNotValid
-2020-02-17 04:46:42.719  INFO 30832 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9000 (https) with context path ''
-2020-02-17 04:46:42.721  INFO 30832 --- [           main] com.example.webshop.WebshopApplication   : Started WebshopApplication in 55.543 seconds (JVM running for 58.446)
-2020-02-17 04:46:42.722  INFO 30832 --- [           main] org.camunda.bpm.engine.jobexecutor       : ENGINE-14014 Starting up the JobExecutor[org.camunda.bpm.engine.spring.components.jobexecutor.SpringJobExecutor].
-2020-02-17 04:46:42.723  INFO 30832 --- [ingJobExecutor]] org.camunda.bpm.engine.jobexecutor       : ENGINE-14018 JobExecutor[org.camunda.bpm.engine.spring.components.jobexecutor.SpringJobExecutor] starting to acquire jobs
-2020-02-17 04:46:49.763  INFO 30832 --- [nio-9000-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2020-02-17 04:46:49.763  INFO 30832 --- [nio-9000-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2020-02-17 04:46:49.769  INFO 30832 --- [nio-9000-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
-2020-02-17 04:46:55.502 ERROR 30832 --- [nio-9000-exec-7] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.web.client.HttpClientErrorException$NotFound: 404 : [{"timestamp":"2020-02-17T03:46:55.467+0000","status":404,"error":"Not Found","message":"No message available","path":"/userandpayment/api/url"}]] with root cause
-
-org.springframework.web.client.HttpClientErrorException$NotFound: 404 : [{"timestamp":"2020-02-17T03:46:55.467+0000","status":404,"error":"Not Found","message":"No message available","path":"/userandpayment/api/url"}]
-	at org.springframework.web.client.HttpClientErrorException.create(HttpClientErrorException.java:113) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.web.client.DefaultResponseErrorHandler.handleError(DefaultResponseErrorHandler.java:170) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.web.client.DefaultResponseErrorHandler.handleError(DefaultResponseErrorHandler.java:112) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.web.client.ResponseErrorHandler.handleError(ResponseErrorHandler.java:63) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.web.client.RestTemplate.handleResponse(RestTemplate.java:785) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:743) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:677) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.web.client.RestTemplate.postForEntity(RestTemplate.java:452) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at com.example.webshop.services.KPServiceImpl.getRedirectUrl(KPServiceImpl.java:193) ~[classes!/:0.0.1-SNAPSHOT]
-	at com.example.webshop.controller.WebShopController.pay(WebShopController.java:447) ~[classes!/:0.0.1-SNAPSHOT]
-	at com.example.webshop.controller.WebShopController$$FastClassBySpringCGLIB$$5e7d229.invoke(<generated>) ~[classes!/:0.0.1-SNAPSHOT]
-	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:769) ~[spring-aop-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:747) ~[spring-aop-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.security.access.intercept.aopalliance.MethodSecurityInterceptor.invoke(MethodSecurityInterceptor.java:69) ~[spring-security-core-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:747) ~[spring-aop-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:689) ~[spring-aop-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at com.example.webshop.controller.WebShopController$$EnhancerBySpringCGLIB$$d69427c1.pay(<generated>) ~[classes!/:0.0.1-SNAPSHOT]
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:888) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:793) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.29.jar!/:9.0.29]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:92) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:320) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:127) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:91) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:137) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:111) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:170) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at com.example.webshop.security.auth.TokenAuthenticationFilter.doFilterInternal(TokenAuthenticationFilter.java:55) ~[classes!/:0.0.1-SNAPSHOT]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:116) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:74) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:105) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:215) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:178) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:526) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:367) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:860) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1591) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
-
-2020-02-17 04:47:18.045 ERROR 30832 --- [nio-9000-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.web.client.HttpClientErrorException$NotFound: 404 : [{"timestamp":"2020-02-17T03:47:18.041+0000","status":404,"error":"Not Found","message":"No message available","path":"/userandpayment/api/url"}]] with root cause
-
-org.springframework.web.client.HttpClientErrorException$NotFound: 404 : [{"timestamp":"2020-02-17T03:47:18.041+0000","status":404,"error":"Not Found","message":"No message available","path":"/userandpayment/api/url"}]
-	at org.springframework.web.client.HttpClientErrorException.create(HttpClientErrorException.java:113) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.web.client.DefaultResponseErrorHandler.handleError(DefaultResponseErrorHandler.java:170) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.web.client.DefaultResponseErrorHandler.handleError(DefaultResponseErrorHandler.java:112) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.web.client.ResponseErrorHandler.handleError(ResponseErrorHandler.java:63) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.web.client.RestTemplate.handleResponse(RestTemplate.java:785) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:743) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:677) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.web.client.RestTemplate.postForEntity(RestTemplate.java:452) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at com.example.webshop.services.KPServiceImpl.getRedirectUrl(KPServiceImpl.java:193) ~[classes!/:0.0.1-SNAPSHOT]
-	at com.example.webshop.controller.WebShopController.pay(WebShopController.java:447) ~[classes!/:0.0.1-SNAPSHOT]
-	at com.example.webshop.controller.WebShopController$$FastClassBySpringCGLIB$$5e7d229.invoke(<generated>) ~[classes!/:0.0.1-SNAPSHOT]
-	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:769) ~[spring-aop-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:747) ~[spring-aop-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.security.access.intercept.aopalliance.MethodSecurityInterceptor.invoke(MethodSecurityInterceptor.java:69) ~[spring-security-core-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:747) ~[spring-aop-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:689) ~[spring-aop-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at com.example.webshop.controller.WebShopController$$EnhancerBySpringCGLIB$$d69427c1.pay(<generated>) ~[classes!/:0.0.1-SNAPSHOT]
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:888) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:793) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.29.jar!/:9.0.29]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:92) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:320) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:127) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:91) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:137) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:111) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:170) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at com.example.webshop.security.auth.TokenAuthenticationFilter.doFilterInternal(TokenAuthenticationFilter.java:55) ~[classes!/:0.0.1-SNAPSHOT]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:116) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:74) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:105) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:215) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:178) ~[spring-security-web-5.1.5.RELEASE.jar!/:5.1.5.RELEASE]
-	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.2.RELEASE.jar!/:5.2.2.RELEASE]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:526) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:367) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:860) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1591) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.29.jar!/:9.0.29]
-	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
-
-2020-02-17 04:51:20.774  INFO 30832 --- [extShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
-2020-02-17 04:51:20.802  INFO 30832 --- [extShutdownHook] org.camunda.bpm.engine.jobexecutor       : ENGINE-14015 Shutting down the JobExecutor[org.camunda.bpm.engine.spring.components.jobexecutor.SpringJobExecutor]
-2020-02-17 04:51:20.802  INFO 30832 --- [ingJobExecutor]] org.camunda.bpm.engine.jobexecutor       : ENGINE-14020 JobExecutor[org.camunda.bpm.engine.spring.components.jobexecutor.SpringJobExecutor] stopped job acquisition
-2020-02-17 04:51:20.808  INFO 30832 --- [extShutdownHook] org.camunda.bpm.engine                   : ENGINE-00007 Process Engine default closed
-2020-02-17 04:51:20.809  INFO 30832 --- [extShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'camundaTaskExecutor'
-2020-02-17 04:51:20.811  INFO 30832 --- [extShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2020-02-17 04:51:20.815  INFO 30832 --- [extShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2020-02-17 04:51:20.843  INFO 30832 --- [extShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-02-18 01:25:30.925  INFO 16399 --- [           main] org.camunda.bpm.engine                   : ENGINE-00001 Process Engine default created.
+2020-02-18 01:25:31.199  INFO 16399 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/**', OPTIONS], []
+2020-02-18 01:25:31.200  INFO 16399 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/webshop/paypalSubscription/completed/**', POST], []
+2020-02-18 01:25:31.200  INFO 16399 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/webshop/payed/**', POST], []
+2020-02-18 01:25:31.200  INFO 16399 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/webshop/payments/complete/**', POST], []
+2020-02-18 01:25:31.200  INFO 16399 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/webshop/registration/complete/**', POST], []
+2020-02-18 01:25:31.200  INFO 16399 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/auth/login', POST], []
+2020-02-18 01:25:31.200  INFO 16399 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/webshop/registration/**', POST], []
+2020-02-18 01:25:31.200  INFO 16399 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/webshop/payed/**', GET], []
+2020-02-18 01:25:31.200  INFO 16399 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/webshop/papers/**', GET], []
+2020-02-18 01:25:31.200  INFO 16399 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/webshop/registration/**', GET], []
+2020-02-18 01:25:31.200  INFO 16399 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/webshop/payments', GET], []
+2020-02-18 01:25:31.200  INFO 16399 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/webshop/sciencefields', GET], []
+2020-02-18 01:25:31.200  INFO 16399 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/', GET], []
+2020-02-18 01:25:31.200  INFO 16399 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/images/**', GET], []
+2020-02-18 01:25:31.200  INFO 16399 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/webjars/**', GET], []
+2020-02-18 01:25:31.200  INFO 16399 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/*.html', GET], []
+2020-02-18 01:25:31.200  INFO 16399 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/favicon.ico', GET], []
+2020-02-18 01:25:31.200  INFO 16399 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/**/*.html', GET], []
+2020-02-18 01:25:31.200  INFO 16399 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/**/*.css', GET], []
+2020-02-18 01:25:31.200  INFO 16399 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/**/*.js', GET], []
+2020-02-18 01:25:31.229  INFO 16399 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@14f060b8, org.springframework.security.web.context.SecurityContextPersistenceFilter@62a6674f, org.springframework.security.web.header.HeaderWriterFilter@22791b75, org.springframework.security.web.authentication.logout.LogoutFilter@486bd064, com.example.webshop.security.auth.TokenAuthenticationFilter@7a0ab480, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@703fa45, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2725ca05, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@79df80a4, org.springframework.security.web.session.SessionManagementFilter@4837f97e, org.springframework.security.web.access.ExceptionTranslationFilter@50bc3219, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6d4a82]
+2020-02-18 01:25:31.311  INFO 16399 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-02-18 01:25:31.522  INFO 16399 --- [           main] o.c.b.s.b.s.w.f.LazyInitRegistration     : lazy initialized org.camunda.bpm.spring.boot.starter.webapp.filter.LazyProcessEnginesFilter@73d60e76
+2020-02-18 01:25:31.587  INFO 16399 --- [           main] o.c.b.s.b.s.w.f.LazyInitRegistration     : lazy initialized org.camunda.bpm.spring.boot.starter.webapp.filter.LazySecurityFilter@5c441290
+2020-02-18 01:25:31.987  WARN 16399 --- [           main] org.apache.tomcat.util.net.SSLUtilBase   : jsseUtil.trustedCertNotValid
+2020-02-18 01:25:32.001  INFO 16399 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9000 (https) with context path ''
+2020-02-18 01:25:32.002  INFO 16399 --- [           main] com.example.webshop.WebshopApplication   : Started WebshopApplication in 56.168 seconds (JVM running for 58.789)
+2020-02-18 01:25:32.003  INFO 16399 --- [           main] org.camunda.bpm.engine.jobexecutor       : ENGINE-14014 Starting up the JobExecutor[org.camunda.bpm.engine.spring.components.jobexecutor.SpringJobExecutor].
+2020-02-18 01:25:32.005  INFO 16399 --- [ingJobExecutor]] org.camunda.bpm.engine.jobexecutor       : ENGINE-14018 JobExecutor[org.camunda.bpm.engine.spring.components.jobexecutor.SpringJobExecutor] starting to acquire jobs
+2020-02-18 01:29:45.259  INFO 16399 --- [extShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-02-18 01:29:45.279  INFO 16399 --- [extShutdownHook] org.camunda.bpm.engine.jobexecutor       : ENGINE-14015 Shutting down the JobExecutor[org.camunda.bpm.engine.spring.components.jobexecutor.SpringJobExecutor]
+2020-02-18 01:29:45.280  INFO 16399 --- [ingJobExecutor]] org.camunda.bpm.engine.jobexecutor       : ENGINE-14020 JobExecutor[org.camunda.bpm.engine.spring.components.jobexecutor.SpringJobExecutor] stopped job acquisition
+2020-02-18 01:29:45.283  INFO 16399 --- [extShutdownHook] org.camunda.bpm.engine                   : ENGINE-00007 Process Engine default closed
+2020-02-18 01:29:45.283  INFO 16399 --- [extShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'camundaTaskExecutor'
+2020-02-18 01:29:45.285  INFO 16399 --- [extShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-02-18 01:29:45.288  INFO 16399 --- [extShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-02-18 01:29:45.322  INFO 16399 --- [extShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

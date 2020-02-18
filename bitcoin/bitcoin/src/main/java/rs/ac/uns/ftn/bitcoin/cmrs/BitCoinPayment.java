@@ -32,4 +32,8 @@ public class BitCoinPayment {
     @Column(name = "item_id",unique = false, nullable = false)
     private UUID itemId;
 
+    @org.hibernate.annotations.Type(type="org.hibernate.type.UUIDCharType")
+    @Column(name = "red_url_id",unique = false, nullable = false)
+    private UUID redUrlUuid;
+
 }

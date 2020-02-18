@@ -32,7 +32,6 @@ server:
       key-store-password: secret123
       trust-store: zuul-service/src/main/resources/truststore.jks
       trust-store-password: secret123
-      client-auth: need
 
 
 

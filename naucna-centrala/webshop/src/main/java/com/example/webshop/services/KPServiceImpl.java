@@ -79,6 +79,7 @@ public class KPServiceImpl implements KPService {
                 headers.setContentType(MediaType.APPLICATION_JSON);
                 RegisterDTO registerDTO = new RegisterDTO();
                 registerDTO.setEmail(plan.getCasopis().getGlavniUrednik().getEmail());
+                registerDTO.setUrl(UrlClass.REDIRECT_URL_REAL_REGISTRATION+plan.getId());
                 HttpEntity<RegisterDTO> entityReg = new HttpEntity<RegisterDTO>(registerDTO, headersReg);
                 ResponseEntity<Boolean> responseReg = restTemplate.postForEntity(responseBody.getRegisterUrl(), entityReg, Boolean.class);
                 if (responseReg.getBody()) {
@@ -123,7 +124,7 @@ public class KPServiceImpl implements KPService {
     }
 
     public String completePayment(String uuid, Long nacinPlacanjaId){
-        Plan plan = planRepository.findOneByUuid(UUID.fromString(uuid));
+        Plan plan = planRepository.getOne(Long.valueOf(uuid));
         Link link = linkRepository.findOneByCasopisUuidAndNacinPlacanja(plan.getCasopis().getId(),nacinPlacanjaId);
         link.setCompleted(true);
         linkRepository.save(link);

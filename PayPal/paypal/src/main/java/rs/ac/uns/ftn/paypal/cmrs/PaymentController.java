@@ -1,7 +1,11 @@
 package rs.ac.uns.ftn.paypal.cmrs;
 
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.paypal.api.payments.Plan;
+import com.google.gson.JsonObject;
+import com.paypal.api.payments.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -86,6 +90,21 @@ public class PaymentController {
     public ResponseEntity getPlanViewData(@PathVariable("id") String id){
         SubPlan subPlan = subPlanRepository.findOneByPlanId(UUID.fromString(id));
         return ResponseEntity.ok(ObjectMapperUtils.map(subPlan,ViewPlanDTO.class));
+    }
+
+
+    @Autowired
+    ObjectMapper objectMapper;
+
+    @RequestMapping(value = "/paypal-webhooks", method = RequestMethod.POST)
+    public ResponseEntity webhook(@RequestBody String eventJsonStr) throws JsonProcessingException {
+        System.out.println("POGODJEN!!!!");
+        System.out.println(eventJsonStr);
+        JsonNode jsonNode = objectMapper.readTree(eventJsonStr);
+        JsonNode resourceNode = jsonNode.get("resource");
+        Agreement agreement = objectMapper.treeToValue(resourceNode,Agreement.class);
+        System.out.println(agreement.getDescription());
+        return ResponseEntity.status(200).build();
     }
 
 }

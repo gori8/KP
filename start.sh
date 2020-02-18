@@ -8,3 +8,4 @@ java -jar banka/bank/target/bank.jar > logs/bank.log 2>&1 &
 java -jar naucna-centrala/webshop/target/webshop.jar > logs/webshop.log 2>&1 &
 java -jar banka/red-bank/target/red-bank.jar > logs/red-bank.log 2>&1 &
 java -jar pcc/target/pcc.jar > logs/pcc.log 2>&1 &
+java -jar fourth/fourth-ms/target/fourth-ms.jar > logs/fourth.log 2>&1 &

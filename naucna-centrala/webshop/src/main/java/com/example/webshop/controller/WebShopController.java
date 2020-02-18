@@ -402,7 +402,7 @@ public class WebShopController {
         return casopisService.getBoughtPapers(username);
     }
 
-    @PostMapping(path = "/payments/complete/{uuid}/{nacinPlacanjaId}", produces = "application/json")
+    @PostMapping(path = "/registration/complete/{uuid}/{nacinPlacanjaId}", produces = "application/json")
     public ResponseEntity completePayment(@PathVariable("uuid") String uuid,@PathVariable("nacinPlacanjaId") Long nacinPlacanjaId) {
         return new ResponseEntity(kpService.completePayment(uuid,nacinPlacanjaId),HttpStatus.OK);
     }

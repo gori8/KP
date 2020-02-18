@@ -36,6 +36,9 @@ public class InfoServiceImpl implements InfoService{
     @Autowired
     SellerRepository sellerRepository;
 
+    @Autowired
+    RedUrlRepository redUrlRepository;
+
     @Override
     public Item editCasopis(CasopisDTO casopisDTO) throws Exception {
 
@@ -48,7 +51,6 @@ public class InfoServiceImpl implements InfoService{
         newItem = new Item();
         newItem.setNaziv(casopisDTO.getNaziv());
         newItem.setUuid(UUID.randomUUID());
-        newItem.setRedirectUrl(casopisDTO.getRedirectUrl());
         newItem.setAmount(casopisDTO.getAmount());
     }
     else{
@@ -65,7 +67,19 @@ public class InfoServiceImpl implements InfoService{
         throw new Exception();
     }
 
-    return itemRepository.save(newItem);
+
+
+    Item item = itemRepository.save(newItem);
+
+    RedUrl redUrl = new RedUrl();
+    redUrl.setItem(item);
+    redUrl.setUrl(casopisDTO.getRedirectUrl());
+    item.getRedUrls().add(redUrl);
+    redUrl = redUrlRepository.save(redUrl);
+
+    item = itemRepository.save(item);
+
+    return item;
 
     }
 
@@ -76,7 +90,6 @@ public class InfoServiceImpl implements InfoService{
 
         updateItem.setNaziv(casopisDTO.getNaziv());
         updateItem.setAmount(casopisDTO.getAmount());
-        updateItem.setRedirectUrl(casopisDTO.getRedirectUrl());
 
         return itemRepository.save(updateItem);
 
@@ -90,7 +103,8 @@ public class InfoServiceImpl implements InfoService{
     @Override
     public List<NacinPlacanjaDTO> getNacinePlacanjaZaCasopis(String casopisId){
         UUID uuid = UUID.fromString(casopisId);
-        Item item = itemRepository.findOneByUuid(uuid);
+        RedUrl redUrl = redUrlRepository.findOneByUuid(uuid);
+        Item item = redUrl.getItem();
 
         List<NacinPlacanjaDTO> ret = new ArrayList<NacinPlacanjaDTO>();
 
@@ -106,14 +120,17 @@ public class InfoServiceImpl implements InfoService{
     @Override
     public UrlDTO getUrl(RedirectUrlDTO redirectUrlDTO){
         UUID uuid = UUID.fromString(redirectUrlDTO.getId());
-        System.out.println(redirectUrlDTO.getId());
         Item c = itemRepository.findOneByUuid(uuid);
-        System.out.println(redirectUrlDTO.getId());
-        c.setRedirectUrl(redirectUrlDTO.getRedirectUrl());
+
+        RedUrl redUrl = new RedUrl();
+        redUrl.setItem(c);
+        redUrl.setUrl(redirectUrlDTO.getRedirectUrl());
+        c.getRedUrls().add(redUrl);
+        redUrl = redUrlRepository.save(redUrl);
 
         itemRepository.save(c);
 
-        UrlDTO url = new UrlDTO(UrlClass.FRONT_KP+"/"+uuid.toString());
+        UrlDTO url = new UrlDTO(UrlClass.FRONT_KP+"/"+redUrl.getUuid().toString());
 
         return url;
     }
@@ -121,11 +138,24 @@ public class InfoServiceImpl implements InfoService{
     @Override
     public AmountAndUrlDTO getAmountAndUrl(String id) {
         UUID uuid = UUID.fromString(id);
+        RedUrl redUrl = redUrlRepository.findOneByUuid(uuid);
+        AmountAndUrlDTO dto=new AmountAndUrlDTO();
+        dto.setAmount(redUrl.getItem().getAmount());
+        dto.setRedirectUrl(redUrl.getUrl());
+        dto.setSellerEmail(redUrl.getItem().getSeller().getEmail());
+        dto.setItemUuid(redUrl.getItem().getUuid().toString());
+        return dto;
+    }
+
+    @Override
+    public AmountAndUrlDTO getAmountAndUrlSub(String id) {
+        UUID uuid = UUID.fromString(id);
         Item item = itemRepository.findOneByUuid(uuid);
         AmountAndUrlDTO dto=new AmountAndUrlDTO();
         dto.setAmount(item.getAmount());
-        dto.setRedirectUrl(item.getRedirectUrl());
+        dto.setRedirectUrl("stagod");
         dto.setSellerEmail(item.getSeller().getEmail());
+        dto.setItemUuid(item.getUuid().toString());
         return dto;
     }
 
@@ -133,6 +163,7 @@ public class InfoServiceImpl implements InfoService{
     public void register(RegisterDTO dto) {
         Seller seller = new Seller();
         seller.setEmail(dto.getEmail());
+        seller.setUrl(dto.getUrl());
         seller = sellerRepository.save(seller);
     }
 
@@ -155,7 +186,6 @@ public class InfoServiceImpl implements InfoService{
         item.setNaziv(dto.getNaziv());
         item.setAmount(dto.getAmount());
         item.setUuid(UUID.randomUUID());
-        item.setRedirectUrl(dto.getRedirectUrl()+item.getUuid());
         item.setSeller(seller);
         seller.getItems().add(item);
         ret.setUuid(item.getUuid().toString());
@@ -189,7 +219,17 @@ public class InfoServiceImpl implements InfoService{
             }
         }
 
+
         item = itemRepository.save(item);
+
+        RedUrl redUrl = new RedUrl();
+        redUrl.setItem(item);
+        redUrl.setUrl(dto.getRedirectUrl()+item.getUuid());
+        item.getRedUrls().add(redUrl);
+        redUrl = redUrlRepository.save(redUrl);
+
+        item = itemRepository.save(item);
+
         sellerRepository.save(seller);
 
         return ret;
@@ -199,7 +239,7 @@ public class InfoServiceImpl implements InfoService{
     public String registrationCompleted(RegistrationCompletedDTO dto){
 
         Item item = itemRepository.findOneByUuid(UUID.fromString(dto.getUuid()));
-        String url = item.getRedirectUrl()+"/"+dto.getNacinPlacanjaId();
+        String url = item.getSeller().getUrl()+"/"+dto.getNacinPlacanjaId();
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -219,10 +259,11 @@ public class InfoServiceImpl implements InfoService{
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
-        ResponseEntity<Object> response =
-                restTemplate.getForEntity(url,Object.class);
+        ResponseEntity<JSONObject> response =
+                restTemplate.getForEntity(url,JSONObject.class);
 
-        JSONObject jsonObject = (JSONObject) response.getBody();
+
+        JSONObject jsonObject = response.getBody();
 
         String email = itemRepository.findOneByUuid(UUID.fromString(uuid)).getSeller().getEmail();
         jsonObject.put("sellerEmail", email);

@@ -8,6 +8,7 @@ pkill -f bank.jar
 pkill -f webshop.jar
 pkill -f red-bank.jar
 pkill -f pcc.jar
+pkill -f fourth-ms.jar
 
 
 
