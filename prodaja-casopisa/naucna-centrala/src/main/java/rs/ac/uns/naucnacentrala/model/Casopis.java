@@ -82,14 +82,14 @@ public class Casopis implements Serializable {
 
     private String processInstanceId;
 
-    @Column(name = "uuid", unique = true, nullable = true)
-    @Type(type="org.hibernate.type.UUIDCharType")
-    private UUID uuid;
 
     @OneToMany(mappedBy = "casopis")
     protected List<Link> linkovi = new ArrayList<>();
 
     @OneToMany(mappedBy = "casopis")
     protected List<Paper> radovi = new ArrayList<>();
+
+    @OneToMany(mappedBy = "casopis")
+    private List<Plan> planovi = new ArrayList<>();
 
 }

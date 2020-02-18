@@ -9,4 +9,5 @@ import java.util.List;
 public class ReturnLinksDTO {
     private List<LinkDTO> links = new ArrayList<>();
     private String uuid;
+    private String registerUrl;
 }

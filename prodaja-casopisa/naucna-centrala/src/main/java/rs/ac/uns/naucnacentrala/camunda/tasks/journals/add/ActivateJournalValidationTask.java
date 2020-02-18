@@ -1,11 +1,15 @@
 package rs.ac.uns.naucnacentrala.camunda.tasks.journals.add;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rs.ac.uns.naucnacentrala.camunda.service.JournalService;
 import rs.ac.uns.naucnacentrala.dto.CasopisDTO;
+import rs.ac.uns.naucnacentrala.dto.KoautorDTO;
+import rs.ac.uns.naucnacentrala.dto.PlanDTO;
 import rs.ac.uns.naucnacentrala.model.Casopis;
 import rs.ac.uns.naucnacentrala.model.CasopisStatus;
 import rs.ac.uns.naucnacentrala.model.Link;
@@ -35,6 +39,9 @@ public class ActivateJournalValidationTask implements JavaDelegate {
 
     @Autowired
     PaymentService paymentService;
+
+    @Autowired
+    ObjectMapper objectMapper;
 
     @Override
     public void execute(DelegateExecution execution) throws Exception {
@@ -66,7 +73,11 @@ public class ActivateJournalValidationTask implements JavaDelegate {
 
         }
         execution.setVariable("flag_val",flag_val);
-        paymentService.createLinks(casopis.getId());
+        String plansJson = execution.getVariable("planovi").toString();
+        ArrayList<PlanDTO> plans = objectMapper.readValue(plansJson,new TypeReference<ArrayList<PlanDTO>>(){});
+        for (PlanDTO planDTO : plans) {
+            paymentService.createLinks(planDTO, casopis.getId());
+        }
         for(Link link : casopis.getLinkovi()){
             if(!link.getCompleted()){
                 casopis.setCasopisStatus(CasopisStatus.WAITING_FOR_INPUT);

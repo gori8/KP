@@ -7,26 +7,20 @@ import org.camunda.bpm.engine.TaskService;
 import org.camunda.bpm.engine.task.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.configurationprocessor.json.JSONException;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 import rs.ac.uns.ftn.url.UrlClass;
-import rs.ac.uns.naucnacentrala.dto.ItemDTO;
-import rs.ac.uns.naucnacentrala.dto.LinkDTO;
-import rs.ac.uns.naucnacentrala.dto.MappingClass;
-import rs.ac.uns.naucnacentrala.dto.ReturnLinksDTO;
+import rs.ac.uns.naucnacentrala.dto.*;
 import rs.ac.uns.naucnacentrala.model.*;
-import rs.ac.uns.naucnacentrala.repository.CasopisRepository;
-import rs.ac.uns.naucnacentrala.repository.LinkRepository;
-import rs.ac.uns.naucnacentrala.repository.UserRepository;
+import rs.ac.uns.naucnacentrala.repository.*;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 
 
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.UUID;
 
 @Service
@@ -47,18 +41,37 @@ public class PaymentServiceImpl implements PaymentService {
     @Autowired
     TaskService taskService;
 
+    @Autowired
+    PlanRepository planRepository;
+
+    @Autowired
+    ObjectMapper objectMapper;
+
+    @Autowired
+    PretplataRepository pretplataRepository;
+
     @Override
-    public void createLinks(Long casopisId){
+    public void createLinks(PlanDTO planDTO,Long casopisId) throws Exception {
         Casopis casopis = casopisRepository.getOne(casopisId);
+        User user = korisnikRepository.findByUsername(casopis.getGlavniUrednik());
+
+        Plan plan = new Plan();
+        plan.setPeriod(planDTO.getPeriod());
+        plan.setUcestalostPerioda(planDTO.getUcestalostPerioda());
+        plan.setCena(planDTO.getCena());
+        plan.setCasopis(casopis);
+        casopis.getPlanovi().add(plan);
+        plan = planRepository.save(plan);
+        casopis = casopisRepository.save(casopis);
+
 
         ItemDTO dto = new ItemDTO();
-        dto.setNaziv(casopis.getNaziv());
-        dto.setAmount(casopis.getCena());
-        dto.setRedirectUrl(UrlClass.REDIRECT_URL_REGISTRATION_IGOR);
+        dto.setNaziv(plan.getCasopis().getNaziv()+", plan: "+plan.getPeriod()+" "+plan.getUcestalostPerioda());
+        dto.setRedirectUrl(UrlClass.REDIRECT_URL_REGISTRATION);
         dto.setNaciniPlacanja(new ArrayList<>());
-        User glavniUrednik = korisnikRepository.findByUsername(casopis.getGlavniUrednik());
-        dto.setEmail(glavniUrednik.getEmail());
-        for (NacinPlacanja np:casopis.getNaciniPlacanja()) {
+        dto.setEmail(user.getEmail());
+        dto.setAmount(plan.getCena());
+        for (NacinPlacanja np:plan.getCasopis().getNaciniPlacanja()) {
             dto.getNaciniPlacanja().add(np.getId());
         }
 
@@ -66,34 +79,73 @@ public class PaymentServiceImpl implements PaymentService {
         headers.setContentType(MediaType.APPLICATION_JSON);
 
         HttpEntity<ItemDTO> entity = new HttpEntity<ItemDTO>(dto, headers);
+        ResponseEntity<ReturnLinksDTO> response=null;
 
-        ResponseEntity<ReturnLinksDTO> response =
-                restTemplate.postForEntity(UrlClass.USER_AND_PAYMENT_URL+"register",entity,ReturnLinksDTO.class);
-
+        try {
+            response =
+                    restTemplate.postForEntity(UrlClass.USER_AND_PAYMENT_URL + "add", entity, ReturnLinksDTO.class);
+            System.out.println("STATUS CODE: " + response.getStatusCodeValue());
+        }catch(HttpClientErrorException e) {
+            //e.printStackTrace();
+            if (e.getStatusCode() == HttpStatus.valueOf(401))
+            {
+                System.out.println("User is not registered");
+                System.out.println("Trying to register user...");
+                ReturnLinksDTO responseBody = objectMapper.readValue(e.getResponseBodyAsString(),ReturnLinksDTO.class);
+                HttpHeaders headersReg = new HttpHeaders();
+                headers.setContentType(MediaType.APPLICATION_JSON);
+                RegisterDTO registerDTO = new RegisterDTO();
+                registerDTO.setEmail(user.getEmail());
+                registerDTO.setUrl(UrlClass.REDIRECT_URL_REAL_REGISTRATION+plan.getId());
+                HttpEntity<RegisterDTO> entityReg = new HttpEntity<RegisterDTO>(registerDTO, headersReg);
+                ResponseEntity<Boolean> responseReg = restTemplate.postForEntity(responseBody.getRegisterUrl(), entityReg, Boolean.class);
+                if (responseReg.getBody()) {
+                    System.out.println("User registered successfully");
+                    response =
+                            restTemplate.postForEntity(UrlClass.USER_AND_PAYMENT_URL + "add", entity, ReturnLinksDTO.class);
+                } else {
+                    throw new Exception();
+                }
+            }
+        }
         ReturnLinksDTO responseBody = response.getBody();
 
-        casopis.setUuid(UUID.fromString(responseBody.getUuid()));
+        plan.setUuid(UUID.fromString(responseBody.getUuid()));
 
         if(response.getStatusCode().value()==200) {
             for (LinkDTO linkDTO : responseBody.getLinks()) {
+                boolean flag = false;
+                for (Link l:plan.getCasopis().getLinkovi()) {
+                    if(l.getNacinPlacanja()==linkDTO.getNacinPlacanjaId()){
+                        flag = true;
+                        break;
+                    }
+                }
+
+                if(flag){
+                    continue;
+                }
+
                 Link link = new Link();
-                link.setCasopis(casopis);
+                link.setCasopis(plan.getCasopis());
                 link.setUrl(linkDTO.getLink());
                 link.setCompleted(false);
                 link.setNacinPlacanja(linkDTO.getNacinPlacanjaId());
                 link = linkRepository.save(link);
 
-                casopis.getLinkovi().add(link);
+                plan.getCasopis().getLinkovi().add(link);
             }
         }
 
-        casopisRepository.save(casopis);
+        casopisRepository.save(plan.getCasopis());
     }
+
 
     @Override
     public String completeRegistration(String uuid, Long nacinPlacanjaId){
-        Casopis casopis = casopisRepository.findByUuid(UUID.fromString(uuid));
-        Link link = linkRepository.findOneByCasopisUuidAndNacinPlacanja(UUID.fromString(uuid),nacinPlacanjaId);
+        Plan plan = planRepository.findOneByUuid(UUID.fromString(uuid));
+        Casopis casopis = plan.getCasopis();
+        Link link = linkRepository.findOneByCasopisUuidAndNacinPlacanja(plan.getCasopis().getId(),nacinPlacanjaId);
         link.setCompleted(true);
         linkRepository.save(link);
 
@@ -154,28 +206,102 @@ public class PaymentServiceImpl implements PaymentService {
     @Override
     public String changePayed(String uuid, Boolean success, String username, String processInstanceId) {
         if (success) {
-            UUID realUuid = UUID.fromString(uuid);
-            Casopis casopis = casopisRepository.findByUuid(realUuid);
+            User korisnik = korisnikRepository.findByUsername(username);
 
-            if(casopis==null){
-                return UrlClass.FRON_WEBSHOP+"paymentresponse/failed";
+            Plan plan = planRepository.findOneByUuid(UUID.fromString(uuid));
+            if(!processInstanceId.equals("stagod")) {
+
+
+                if(plan==null){
+                    return UrlClass.FRON_WEBSHOP+"paymentresponse/failed";
+                }
+
+                Pretplata pretplata = new Pretplata();
+
+                Date date = new Date();
+                Long dayMilis = 1000L * 60 * 60 * 24;
+
+                switch (plan.getPeriod()){
+                    case "DAY" :{
+                        date = new Date(date.getTime() + ( dayMilis * plan.getUcestalostPerioda() ));
+                    } break;
+                    case "WEEK" :{
+                        date = new Date(date.getTime() + ( dayMilis * plan.getUcestalostPerioda() * 7 ));
+                    } break;
+                    case "MONTH" :{
+                        date = new Date(date.getTime() + ( dayMilis * plan.getUcestalostPerioda() * 30 ));
+                    } break;
+                    case "YEAR" :{
+                        date = new Date(date.getTime() + ( dayMilis * plan.getUcestalostPerioda() * 365));
+                    } break;
+                }
+
+                Long time = date.getTime();
+                date = new Date(time - time % (24 * 60 * 60 * 1000));
+                date = new Date(date.getTime() + 23 * 60 * 60 * 1000);
+
+                pretplata.setDatumIsticanja(date);
+                pretplata.setPlan(plan);
+                pretplata.setPretplatnik(korisnik);
+                pretplata = pretplataRepository.save(pretplata);
+                korisnik.getPretplate().add(pretplata);
+                korisnikRepository.save(korisnik);
+                plan.getPretplate().add(pretplata);
+                planRepository.save(plan);
+
+                Task task = taskService.createTaskQuery().active().processInstanceId(processInstanceId).taskDefinitionKey("placanje_pretplate").singleResult();
+
+                if (task != null) {
+                    taskService.complete(task.getId());
+                }
+
+                return UrlClass.FRON_WEBSHOP + "input/paper/" + processInstanceId;
+            }else{
+
+                if(plan==null){
+                    return UrlClass.FRON_WEBSHOP+"paymentresponse/failed";
+                }
+
+                Pretplata pretplata = new Pretplata();
+
+                Date date = new Date();
+                Long dayMilis = 1000L * 60 * 60 * 24;
+
+                switch (plan.getPeriod()){
+                    case "DAY" :{
+                        date = new Date(date.getTime() + ( dayMilis * plan.getUcestalostPerioda() ));
+                    } break;
+                    case "WEEK" :{
+                        date = new Date(date.getTime() + ( dayMilis * plan.getUcestalostPerioda() * 7 ));
+                    } break;
+                    case "MONTH" :{
+                        date = new Date(date.getTime() + ( dayMilis * plan.getUcestalostPerioda() * 30 ));
+                    } break;
+                    case "YEAR" :{
+                        date = new Date(date.getTime() + ( dayMilis * plan.getUcestalostPerioda() * 365));
+                    } break;
+                }
+
+                Long time = date.getTime();
+                date = new Date(time - time % (24 * 60 * 60 * 1000));
+                date = new Date(date.getTime() + 23 * 60 * 60 * 1000);
+
+                pretplata.setDatumIsticanja(date);
+                pretplata.setPlan(plan);
+                pretplata.setPretplatnik(korisnik);
+                pretplata = pretplataRepository.save(pretplata);
+                korisnik.getPretplate().add(pretplata);
+                korisnikRepository.save(korisnik);
+                plan.getPretplate().add(pretplata);
+                planRepository.save(plan);
+
+                return UrlClass.FRON_WEBSHOP+"paymentresponse/success";
             }
-
-            User user = korisnikRepository.findByUsername(username);
-
-            user.getKupljeniCasopisi().add(casopis);
-
-            korisnikRepository.save(user);
-
-            Task task = taskService.createTaskQuery().active().processInstanceId(processInstanceId).taskDefinitionKey("placanje_pretplate").singleResult();
-
-            if(task!=null){
-                taskService.complete(task.getId());
-            }
-
-            return UrlClass.FRON_WEBSHOP+"input/paper/"+processInstanceId;
         } else {
             return UrlClass.FRON_WEBSHOP+"paymentresponse/failed";
         }
     }
+
+
+
 }

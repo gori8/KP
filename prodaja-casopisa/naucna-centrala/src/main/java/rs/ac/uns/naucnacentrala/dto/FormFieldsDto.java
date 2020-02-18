@@ -6,6 +6,7 @@ import java.util.List;
 
 public class FormFieldsDto {
 
+	String taskName="wtv";
 	String taskId;
 	List<FormField> formFields;
 	String processInstanceId;
@@ -44,6 +45,12 @@ public class FormFieldsDto {
 	public void setProcessInstanceId(String processInstanceId) {
 		this.processInstanceId = processInstanceId;
 	}
-	
-	
+
+	public String getTaskName() {
+		return taskName;
+	}
+
+	public void setTaskName(String taskName) {
+		this.taskName = taskName;
+	}
 }

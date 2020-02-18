@@ -60,6 +60,7 @@ public class CamundaConfig {
         config.getCustomFormTypes().add(new MultiSelectionFormType("urednici-multi-select"));
         config.getCustomFormTypes().add(new MultiSelectionStringFormType("sel-recezenti-multi-select"));
         config.getCustomFormTypes().add(new JsonFormType("add-children"));
+        config.getCustomFormTypes().add(new JsonFormType("planovi-list"));
 
 
 

@@ -44,7 +44,9 @@ public class CamundaUtils {
     public FormFieldsDto createFormDTO(Task task, String processInstanceId){
         TaskFormData tfd = formService.getTaskFormData(task.getId());
         List<FormField> properties = tfd.getFormFields();
-        return new FormFieldsDto(task.getId(),processInstanceId,properties);
+        FormFieldsDto formFieldsDTO = new FormFieldsDto(task.getId(),processInstanceId,properties);
+        formFieldsDTO.setTaskName(task.getTaskDefinitionKey());
+        return formFieldsDTO;
     }
 
     public HashMap<String, Object> mapListToDto(List<FormSubmissionDto> list)

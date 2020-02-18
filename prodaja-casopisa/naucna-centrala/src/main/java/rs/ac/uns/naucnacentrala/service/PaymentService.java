@@ -1,9 +1,11 @@
 package rs.ac.uns.naucnacentrala.service;
 
 
+import rs.ac.uns.naucnacentrala.dto.PlanDTO;
+
 public interface PaymentService {
 
-    void createLinks(Long casopisId);
+    void createLinks(PlanDTO planDTO, Long casopisId) throws Exception;
 
     String completeRegistration(String uuid, Long nacinPlacanjaId);
 

@@ -92,11 +92,9 @@ public class User implements UserDetails {
     private List<Casopis> uredjujemCasopise=new ArrayList<>();
 
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "user_casopis",
-            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "casopis_id", referencedColumnName = "id"))
-    private List<Casopis> kupljeniCasopisi = new ArrayList<>();
+
+    @OneToMany(mappedBy = "pretplatnik")
+    protected List<Pretplata> pretplate = new ArrayList<>();
 
 
 

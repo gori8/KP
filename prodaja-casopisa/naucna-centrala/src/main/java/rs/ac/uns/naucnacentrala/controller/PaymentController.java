@@ -41,7 +41,7 @@ public class PaymentController {
     @PreAuthorize("hasRole('USER') or hasRole('AUTHORS')")
     public ResponseEntity<String> pay(@PathVariable("uapId") String uapId, @PathVariable("username") String username ) {
 
-        String url = kpService.getRedirectUrl(uapId,username,"nebitno");
+        String url = kpService.getRedirectUrl(uapId,username,"stagod");
         return new ResponseEntity<>("\""+url+"\"",HttpStatus.OK);
     }
 
