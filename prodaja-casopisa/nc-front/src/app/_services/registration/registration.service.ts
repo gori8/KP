@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 const BASE_REG_CONTROLLER_URL = "https://localhost:8080/restapi/registration"
@@ -28,6 +28,14 @@ export class RegistrationService {
 
   getNonActivatedUsers(): Observable<any>{
     return this.http.get(`${BASE_BPMN_CONTROLLER_URL}/admin/registration`);
+  }
+
+  submitPlans(body,id): Observable<any>{
+    return this.http.post(`${BASE_REG_CONTROLLER_URL}/newPaper/plans/${id}`, body,{
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+       })
+    });
   }
 
   

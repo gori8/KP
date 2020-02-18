@@ -27,6 +27,7 @@ import { ShowPdfComponent } from './show-pdf/show-pdf.component';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { ActiveTaskComponent } from './active-task/active-task.component';
 import { UserTasksComponent } from './user-tasks/user-tasks.component';
+import { AddPlansComponent } from './add-plans/add-plans.component';
 
 
 
@@ -51,7 +52,8 @@ import { UserTasksComponent } from './user-tasks/user-tasks.component';
     AuthorInputComponent,
     ShowPdfComponent,
     ActiveTaskComponent,
-    UserTasksComponent
+    UserTasksComponent,
+    AddPlansComponent
   ],
   imports: [
     BrowserModule,

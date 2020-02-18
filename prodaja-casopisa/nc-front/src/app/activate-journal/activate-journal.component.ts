@@ -71,8 +71,7 @@ export class ActivateJournalComponent implements OnInit {
                })
             },
         err => {
-                console.log(err);
-                this.router.navigate(['urednik/journals']);
+                this.router.navigate([`addPlans/${this.processInstanceID}`]);
               });
   }
 

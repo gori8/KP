@@ -17,6 +17,7 @@ import { AuthorInputComponent } from './author-input/author-input.component';
 import { ShowPdfComponent } from './show-pdf/show-pdf.component';
 import { UserTasksComponent } from './user-tasks/user-tasks.component';
 import { ActiveTaskComponent } from './active-task/active-task.component';
+import { AddPlansComponent } from './add-plans/add-plans.component';
 
 
 const routes: Routes = [
@@ -35,7 +36,8 @@ const routes: Routes = [
   { path: 'tasks', component: UserTasksComponent },
   { path: 'task/:taskID', component: ActiveTaskComponent },
 	{ path: 'login', component: LoginComponent },
-	{ path: '**', redirectTo: '' }
+  { path: '**', redirectTo: '' },
+  { path : "addPlans/:id", component : AddPlansComponent, canActivate:[AuthGuard] },
 ];
 
 @NgModule({
