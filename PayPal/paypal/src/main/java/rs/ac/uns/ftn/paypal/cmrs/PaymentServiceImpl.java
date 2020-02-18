@@ -21,6 +21,7 @@ import java.math.BigDecimal;
 import java.net.MalformedURLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 
@@ -150,13 +151,13 @@ public class PaymentServiceImpl implements PaymentService{
 
             Capture responseCapture = authorization.capture(API_CONTEXT, capture);
 
-            LOGGER.info("Capture id=" + responseCapture.getId() + " and status=" + responseCapture.getState());
+            LOGGER.info(LocalDateTime.now() + "      Capture id=" + responseCapture.getId() + " and status=" + responseCapture.getState());
 
             myPayment.setStatus(PayPalPaymentStatus.SUCCESSFUL);
             myPaymentRepository.save(myPayment);
 
-            LOGGER.info("Executed payment - Request: \n" + Payment.getLastRequest());
-            LOGGER.info("Executed payment - Response: \n" + Payment.getLastResponse());
+            LOGGER.info(LocalDateTime.now() + "      Executed payment - Request: \n" + Payment.getLastRequest());
+            LOGGER.info(LocalDateTime.now() + "      Executed payment - Response: \n" + Payment.getLastResponse());
 
         } catch (PayPalRESTException e) {
             myPayment.setStatus(PayPalPaymentStatus.ERROR);
@@ -181,7 +182,7 @@ public class PaymentServiceImpl implements PaymentService{
         Date date = new Date();
         date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'").parse(nextBillingDate);
         String dateStr = new SimpleDateFormat("yyyy-MM-dd").format(date);
-        LOGGER.info("Setting subscription expiration date to: "+dateStr);
+        LOGGER.info(LocalDateTime.now() + "      Setting subscription expiration date to: "+dateStr);
         subscription.setStatus(SubscriptionStatus.CANCELED);
         subscriptionRepository.save(subscription);
         notifyNcSubscriptionPut(subscription,subscription.getRedirectUrl()+"/"+subscription.getOtherAppSubId(),date);
@@ -239,7 +240,7 @@ public class PaymentServiceImpl implements PaymentService{
         BigDecimal amount=cena;
         String sellerEmail = amountAndUrlDTO.getSellerEmail();
 
-        LOGGER.info(String.format("Creating plan: %s   %s   %s",request.getTipCiklusa(),request.getPeriod(),request.getBrojCiklusa()));
+        LOGGER.info(String.format(LocalDateTime.now() + "      Creating plan: %s   %s   %s",request.getTipCiklusa(),request.getPeriod(),request.getBrojCiklusa()));
 
         Seller seller = sellerRepository.findBySellerEmail(sellerEmail);
         Subscription subscription=new Subscription();
@@ -308,7 +309,7 @@ public class PaymentServiceImpl implements PaymentService{
 
             // Activate plan
             createdPlan.update(apiContext, patchRequestList);
-            LOGGER.info("Plan state = " + createdPlan.getState());
+            LOGGER.info(LocalDateTime.now() + "      Plan state = " + createdPlan.getState());
         } catch (PayPalRESTException e) {
             e.printStackTrace();
         }
@@ -396,7 +397,7 @@ public class PaymentServiceImpl implements PaymentService{
             subscription.setAgreementId(activeAgreement.getId());
             subscription.setStatus(SubscriptionStatus.ACTIVE);
             subscriptionRepository.save(subscription);
-            LOGGER.info("Agreement created with ID " + activeAgreement.getId());
+            LOGGER.info(LocalDateTime.now() + "      Agreement created with ID " + activeAgreement.getId());
 
             Date date = new Date();
             if(subscription.getCycles()!=0L) {
@@ -436,19 +437,19 @@ public class PaymentServiceImpl implements PaymentService{
     @Override
     public void updateStatusOrRetryCapture() {
 
-        LOGGER.info("Checking if all payments have been captured...");
+        LOGGER.info(LocalDateTime.now() + "      Checking if all payments have been captured...");
         List<MyPayment> payments = myPaymentRepository.findAllByStatus(PayPalPaymentStatus.CREATED);
         payments.parallelStream().forEach(myPayment -> {
             Payment payment = null;
             try {
                 payment = Payment.get(API_CONTEXT, myPayment.getPaymentId());
 
-                LOGGER.info("Payment id: "+payment.getId());
-                LOGGER.info("Payment state: "+payment.getState());
+                LOGGER.info(LocalDateTime.now() + "      Payment id: "+payment.getId());
+                LOGGER.info(LocalDateTime.now() + "      Payment state: "+payment.getState());
                 String state = payment.getState().toUpperCase();
                 if (state.equalsIgnoreCase("APPROVED")){
                     if (payment.getTransactions().get(0).getRelatedResources().isEmpty()) {
-                        LOGGER.info("Trying to recapture payment with paypal paymentId: " + payment.getId());
+                        LOGGER.info(LocalDateTime.now() + "      Trying to recapture payment with paypal paymentId: " + payment.getId());
                         ExecutePaymentRequest request = new ExecutePaymentRequest();
                         request.setPayerID(payment.getPayer().getPayerInfo().getPayerId());
                         request.setPaymentID(payment.getId());
@@ -461,13 +462,13 @@ public class PaymentServiceImpl implements PaymentService{
                         myPayment.setStatus(PayPalPaymentStatus.SUCCESSFUL);
                         myPaymentRepository.save(myPayment);
                     }else if (authorization.getState().equalsIgnoreCase("AUTHORIZED")) {
-                        LOGGER.info("Trying to recapture payment with paypal paymentId: " + payment.getId());
+                        LOGGER.info(LocalDateTime.now() + "      Trying to recapture payment with paypal paymentId: " + payment.getId());
                         ExecutePaymentRequest request = new ExecutePaymentRequest();
                         request.setPayerID(payment.getPayer().getPayerInfo().getPayerId());
                         request.setPaymentID(payment.getId());
                         executePayment(request);
                     }else{
-                        LOGGER.info("Setting status to FAILED of payment with paypal paymentId: " + payment.getId());
+                        LOGGER.info(LocalDateTime.now() + "      Setting status to FAILED of payment with paypal paymentId: " + payment.getId());
                         myPayment.setStatus(PayPalPaymentStatus.FAILED);
                         myPaymentRepository.save(myPayment);
                     }
@@ -491,18 +492,18 @@ public class PaymentServiceImpl implements PaymentService{
 
     @Override
     public void updateIntegratedSoftwareStatus() {
-        LOGGER.info("Checking if payment is recorded on seller software...");
+        LOGGER.info(LocalDateTime.now() + "      Checking if payment is recorded on seller software...");
         List<MyPayment> payments = myPaymentRepository.findAllByStatusAndCheckedStatus(PayPalPaymentStatus.SUCCESSFUL,false);
         payments.parallelStream().forEach(payment -> {
 
-            LOGGER.info("Founded payment: " + payment.getId() + " ,status: " + payment.getStatus());
-            LOGGER.info("Getting status on url: " + payment.getRedirectUrl());
+            LOGGER.info(LocalDateTime.now() + "      Founded payment: " + payment.getId() + " ,status: " + payment.getStatus());
+            LOGGER.info(LocalDateTime.now() + "      Getting status on url: " + payment.getRedirectUrl());
             ResponseEntity<Boolean> resp = restTemplate.getForEntity(payment.getRedirectUrl(),Boolean.class);
             if(resp.getBody()) {
                 payment.setCheckedStatus(true);
                 myPaymentRepository.save(payment);
             }else{
-                LOGGER.info("Posting status on seller app on url: " + payment.getRedirectUrl());
+                LOGGER.info(LocalDateTime.now() + "      Posting status on seller app on url: " + payment.getRedirectUrl());
                 restTemplate.postForEntity(payment.getRedirectUrl()+"/true",null,String.class);
             }
         });
