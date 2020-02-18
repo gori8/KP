@@ -120,11 +120,8 @@ public class WebShopController {
     @PreAuthorize("hasRole('UREDNIK')")
     public @ResponseBody Boolean setPlans(@RequestBody List<PlanDTO> dto, @PathVariable Long id) throws Exception {
 
-        List<Plan> planovi = casopisService.setPlans(dto,id);
-
-        for (Iterator<Plan> it = planovi.iterator(); it.hasNext();) {
-            Plan plan = it.next();
-            kpService.createLinks(plan);
+        for (PlanDTO planDTO : dto) {
+            kpService.createLinks(planDTO,id);
         }
 
         return true;

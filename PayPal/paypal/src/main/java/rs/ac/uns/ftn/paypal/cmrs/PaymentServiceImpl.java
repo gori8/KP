@@ -8,10 +8,7 @@ import com.paypal.base.rest.PayPalRESTException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -179,9 +176,21 @@ public class PaymentServiceImpl implements PaymentService{
     }
 
     @Override
-    public void cancelSubscription(Long id) {
-        Subscription subscription = subscriptionRepository.getOne(id);
+    public void cancelSubscription(Agreement agreement, String nextBillingDate) throws ParseException {
+        Subscription subscription = subscriptionRepository.findOneByAgreementId(agreement.getId());
+        Date date = new Date();
+        date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'").parse(nextBillingDate);
+        String dateStr = new SimpleDateFormat("yyyy-MM-dd").format(date);
+        LOGGER.info("Setting subscription expiration date to: "+dateStr);
         subscription.setStatus(SubscriptionStatus.CANCELED);
+        subscriptionRepository.save(subscription);
+        notifyNcSubscriptionPut(subscription,subscription.getRedirectUrl()+"/"+subscription.getOtherAppSubId(),date);
+    }
+
+    @Override
+    public void rejectSubscription(Long id) {
+        Subscription subscription = subscriptionRepository.getOne(id);
+        subscription.setStatus(SubscriptionStatus.REJECTED);
         subscriptionRepository.save(subscription);
     }
 
@@ -194,7 +203,7 @@ public class PaymentServiceImpl implements PaymentService{
         return redirectUrl.getBody();
     }
 
-    private String notifyNcSubscription(Subscription subscription, String url, Date date){
+    private String notifyNcSubscriptionPost(Subscription subscription, String url, Date date){
         HttpHeaders headers=new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         SubDateDTO subDateDTO = new SubDateDTO();
@@ -202,11 +211,26 @@ public class PaymentServiceImpl implements PaymentService{
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
         subDateDTO.setDate(simpleDateFormat.format(date));
         HttpEntity entity=new HttpEntity(subDateDTO,headers);
-        ResponseEntity<SubRedirectUrlDTO> redirectUrl=restTemplate.postForEntity(url,entity,SubRedirectUrlDTO.class);
+        ResponseEntity<SubRedirectUrlDTO> redirectUrl;
+        redirectUrl=restTemplate.postForEntity(url,entity,SubRedirectUrlDTO.class);
         subscription.setOtherAppSubId(redirectUrl.getBody().getPretplataId());
         subscriptionRepository.save(subscription);
         return redirectUrl.getBody().getRedirectUrl();
     }
+
+    private Boolean notifyNcSubscriptionPut(Subscription subscription, String url, Date date){
+        HttpHeaders headers=new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        SubDateDTO subDateDTO = new SubDateDTO();
+        String pattern = "yyyy-MM-dd";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        subDateDTO.setDate(simpleDateFormat.format(date));
+        HttpEntity entity=new HttpEntity(subDateDTO,headers);
+        ResponseEntity<Boolean> redirectUrl;
+        redirectUrl=restTemplate.exchange(url, HttpMethod.PUT, entity, Boolean.class);
+        return redirectUrl.getBody();
+    }
+
 
 
     @Override
@@ -324,7 +348,7 @@ public class PaymentServiceImpl implements PaymentService{
             agreement.setName("Subscription for plan "+planId);
             agreement.setDescription("Subscription for item "+request.getCasopisUuid());
             Date now = new Date();
-            String agreementDate = now.toInstant().plus(2, ChronoUnit.DAYS).toString();
+            String agreementDate = now.toInstant().plus(25, ChronoUnit.HOURS).toString();
             agreement.setStartDate(agreementDate);
 
             Plan plan = new Plan();
@@ -402,7 +426,7 @@ public class PaymentServiceImpl implements PaymentService{
                 date = simpleDateFormat.parse("9999-12-12");
             }
 
-            return notifyNcSubscription(subscription,subscription.getRedirectUrl()+"/true",date);
+            return notifyNcSubscriptionPost(subscription,subscription.getRedirectUrl()+"/true",date);
         } catch (PayPalRESTException | ParseException e) {
             LOGGER.error(e.getMessage());
             return "error";

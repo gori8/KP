@@ -13,5 +13,5 @@ import java.util.Date;
 @NoArgsConstructor
 public class PretplaceniCasopisDTO {
     private Long id;
-    private Date datumIsticanja;
+    private String datumIsticanja;
 }

@@ -12,7 +12,7 @@ import java.util.Date;
 
 public interface KPService {
 
-    public void createLinks(Plan plan) throws Exception;
+    public void createLinks(PlanDTO planDTO, Long casopisId) throws Exception;
 
     public String completePayment(String uuid, Long nacinPlacanjaId);
 

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rs.ac.uns.ftn.url.UrlClass;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Service
@@ -268,7 +269,7 @@ public class CasopisServiceImpl implements CasopisService {
 
             PretplaceniCasopisDTO dto = new PretplaceniCasopisDTO();
             dto.setId(pretplata.getPlan().getCasopis().getId());
-            dto.setDatumIsticanja(pretplata.getDatumIsticanja());
+            dto.setDatumIsticanja(new SimpleDateFormat("dd.MM.yyyy.").format(pretplata.getDatumIsticanja()));
 
             ret.add(dto);
         }

@@ -46,7 +46,18 @@ public class KPServiceImpl implements KPService {
     PretplataRepository pretplataRepository;
 
     @Override
-    public void createLinks(Plan plan) throws Exception {
+    public void createLinks(PlanDTO planDTO,Long casopisId) throws Exception {
+        Casopis casopis = casopisRepository.getOne(casopisId);
+
+        Plan plan = new Plan();
+        plan.setPeriod(planDTO.getPeriod());
+        plan.setUcestalostPerioda(planDTO.getUcestalostPerioda());
+        plan.setCena(planDTO.getCena());
+        plan.setCasopis(casopis);
+        casopis.getPlanovi().add(plan);
+        plan = planRepository.save(plan);
+        casopis = casopisRepository.save(casopis);
+
 
         ItemDTO dto = new ItemDTO();
         dto.setNaziv(plan.getCasopis().getNaziv()+", plan: "+plan.getPeriod()+" "+plan.getUcestalostPerioda());

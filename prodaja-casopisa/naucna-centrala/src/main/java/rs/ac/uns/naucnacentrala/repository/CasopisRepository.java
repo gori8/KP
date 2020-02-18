@@ -1,0 +1,23 @@
+package rs.ac.uns.naucnacentrala.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import rs.ac.uns.naucnacentrala.model.Casopis;
+
+import java.util.List;
+import java.util.UUID;
+
+public interface CasopisRepository extends JpaRepository<Casopis,Long> {
+
+    public Casopis findByIssn(String issn);
+
+    public Casopis findByNaziv(String naziv);
+
+    public Casopis findByProcessInstanceId(String processInstanceId);
+
+    public List<Casopis> findByGlavniUrednik(String glavniUrednik);
+
+    public List<Casopis> findAllByEnabled(Boolean enabled);
+
+    Casopis findByUuid(UUID uuid);
+
+}

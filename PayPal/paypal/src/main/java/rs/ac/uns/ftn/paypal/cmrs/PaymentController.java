@@ -19,6 +19,7 @@ import rs.ac.uns.ftn.url.UrlClass;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.security.DrbgParameters;
+import java.text.ParseException;
 import java.util.UUID;
 
 @RequestMapping("/api/paypal")
@@ -79,7 +80,7 @@ public class PaymentController {
 
     @RequestMapping(value = "/subscription/cancel/{id}")
     public ResponseEntity cancelSubscription(@PathVariable String id,@RequestParam("token")String token) throws URISyntaxException {
-        paymentService.cancelSubscription(Long.parseLong(id));
+        paymentService.rejectSubscription(Long.parseLong(id));
         URI redirectUrl = new URI("https://localhost:4500");
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setLocation(redirectUrl);
@@ -97,14 +98,25 @@ public class PaymentController {
     ObjectMapper objectMapper;
 
     @RequestMapping(value = "/paypal-webhooks", method = RequestMethod.POST)
-    public ResponseEntity webhook(@RequestBody String eventJsonStr) throws JsonProcessingException {
-        System.out.println("POGODJEN!!!!");
+    public ResponseEntity webhook(@RequestBody String eventJsonStr) throws JsonProcessingException, ParseException {
         System.out.println(eventJsonStr);
         JsonNode jsonNode = objectMapper.readTree(eventJsonStr);
         JsonNode resourceNode = jsonNode.get("resource");
-        Agreement agreement = objectMapper.treeToValue(resourceNode,Agreement.class);
-        System.out.println(agreement.getDescription());
-        return ResponseEntity.status(200).build();
+        JsonNode agreementDetailsNode = resourceNode.get("agreement_details");
+        JsonNode nextBillingDateNode = agreementDetailsNode.get("next_billing_date");
+        JsonNode eventTypeNode = jsonNode.get("event_type");
+        String eventType = objectMapper.treeToValue(eventTypeNode,String.class);
+        System.out.println("Event type: "+eventType);
+        if(eventType.equals("BILLING.SUBSCRIPTION.CANCELLED")) {
+            Agreement agreement = objectMapper.treeToValue(resourceNode, Agreement.class);
+            String nextBillingDate = objectMapper.treeToValue(nextBillingDateNode, String.class);
+            paymentService.cancelSubscription(agreement,nextBillingDate);
+            return ResponseEntity.status(200).build();
+        }else if(eventType.equals("BILLING.SUBSCRIPTION.PAYMENT.FAILED")){
+            return ResponseEntity.status(200).build();
+        }else{
+            return  ResponseEntity.status(422).build();
+        }
     }
 
 }
