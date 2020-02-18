@@ -4,6 +4,8 @@ package rs.ac.uns.ftn.bitcoin.cmrs;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +17,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.time.LocalDateTime;
 import java.util.Base64;
 import java.util.UUID;
 
@@ -22,6 +25,8 @@ import java.util.UUID;
 @RequestMapping("/api/register")
 @CrossOrigin(origins = "*")
 public class RegistrationController {
+
+    private final Logger LOGGER = LoggerFactory.getLogger(RegistrationController.class);
 
     @Autowired
     SellerRepository sellerRepository;
@@ -32,6 +37,9 @@ public class RegistrationController {
         seller.setToken(registrationDTO.getToken());
         seller.setSellerEmail(registrationDTO.getSellerEmail());
         Long ret = sellerRepository.save(seller).getId();
+
+        LOGGER.info(LocalDateTime.now() + "     Registering seller    " + "mail:  " + seller.getSellerEmail() + "   token:   " + seller.getToken() +  "  on bitcoin microservice");
+        LOGGER.info(LocalDateTime.now() + "     Seller with mail:   " + seller.getSellerEmail() + " is successfully registered on bitcoin microservice.");
 
         return new ResponseEntity<Long>(ret, HttpStatus.OK);
     }

@@ -30,10 +30,12 @@ import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
+
 
 @Service
 public class PaymentServiceImpl implements PaymentService {
@@ -75,20 +77,20 @@ public class PaymentServiceImpl implements PaymentService {
         Payment payment = new Payment();
         Payment savedPayment = new Payment();
 
-        LOGGER.info("Processing request from Bank Microservice");
+        LOGGER.info(LocalDateTime.now() + "      Processing request from Bank Microservice");
 
         ExternalBankPaymentResponse response = new ExternalBankPaymentResponse();
 
-        LOGGER.info("Finding client that will receive payment");
+        LOGGER.info(LocalDateTime.now() + "      Finding client that will receive payment");
         Client client = clientService.findByMerchantId(kpRequestDto.getMerchantId());
 
         if (client == null) {
-            LOGGER.error("Client with provided merchant id does not exists");
+            LOGGER.error(LocalDateTime.now() + "      Client with provided merchant id does not exists");
             response.setUrl(NOT_FOUND);
         } else {
-            LOGGER.info("Client with provided merchant id was found");
+            LOGGER.info(LocalDateTime.now() + "      Client with provided merchant id was found");
 
-            LOGGER.info("Creating payment");
+            LOGGER.info(LocalDateTime.now() + "      Creating payment");
             payment.setUrl(generateRedirectUrl(generateRandomUrl()));
             payment.setAmount(kpRequestDto.getAmount());
             payment.setMerchant(client.getAccount());
@@ -100,15 +102,15 @@ public class PaymentServiceImpl implements PaymentService {
 
 
             savedPayment = paymentRepository.save(payment);
-            LOGGER.info("Payment saved in bank database");
+            LOGGER.info(LocalDateTime.now() + "      Payment saved in bank database");
         }
 
-        LOGGER.info("Generating response for Bank Microservice with payment url");
+        LOGGER.info(LocalDateTime.now() + "      Generating response for Bank Microservice with payment url");
 
         response.setUrl(savedPayment.getUrl());
         response.setId(savedPayment.getId());
 
-        LOGGER.info("Generated response: " + response.toString());
+        LOGGER.info(LocalDateTime.now() + "      Generated response: " + response.toString());
 
         return response;
     }
@@ -121,17 +123,17 @@ public class PaymentServiceImpl implements PaymentService {
 
         ExecuteTransactionResponse response = new ExecuteTransactionResponse();
 
-        LOGGER.info("Creating transaction");
+        LOGGER.info(LocalDateTime.now() + "      Creating transaction");
 
         Transaction transaction = new Transaction();
         String redirectUrl;
 
-        LOGGER.info("Trying to find payment on provided url..");
+        LOGGER.info(LocalDateTime.now() + "      Trying to find payment on provided url..");
         Payment payment = paymentRepository.findByUrl(UrlClass.FRONT_BANKE+"banka/card/"+url);
 
         if (payment == null) {
-            LOGGER.error("Could not find payment on provided url: " + url);
-            LOGGER.info("Returning error-url to Bank Microservice");
+            LOGGER.error(LocalDateTime.now() + "      Could not find payment on provided url: " + url);
+            LOGGER.info(LocalDateTime.now() + "      Returning error-url to Bank Microservice");
             transaction.setValid(false);
             transaction.setAmount(BigDecimal.valueOf(0));
             transactionService.save(transaction);
@@ -143,7 +145,7 @@ public class PaymentServiceImpl implements PaymentService {
             return response;
         }
 
-        LOGGER.info("Trying to find card with provided pan number..");
+        LOGGER.info(LocalDateTime.now() + "      Trying to find card with provided pan number..");
 
         Card card = cardService.findByPan(cardDataDto.getPan());
         System.out.println("PAN:    " + cardDataDto.getPan());
@@ -181,8 +183,8 @@ public class PaymentServiceImpl implements PaymentService {
 
                 return response;
             }
-            LOGGER.error("Could not find card with provided pan number: " + cardDataDto.getPan());
-            LOGGER.info("Returning error-url");
+            LOGGER.error(LocalDateTime.now() + "      Could not find card with provided pan number: " + cardDataDto.getPan());
+            LOGGER.info(LocalDateTime.now() + "      Returning error-url");
 
             transaction.setValid(false);
             transaction.setAmount(BigDecimal.valueOf(0));
@@ -197,8 +199,8 @@ public class PaymentServiceImpl implements PaymentService {
         }
 
         if (!card.getSecurityCode().toString().equals(cardDataDto.getSecurityCode().toString())) {
-            LOGGER.error("Provided Security Code does not match for provided Card.");
-            LOGGER.info("Returning error-url to Bank Microservice");
+            LOGGER.error(LocalDateTime.now() + "      Provided Security Code does not match for provided Card.");
+            LOGGER.info(LocalDateTime.now() + "      Returning error-url to Bank Microservice");
             transaction.setValid(false);
             transaction.setAmount(BigDecimal.valueOf(0));
             transaction.setRecipient(payment.getMerchant());
@@ -212,8 +214,8 @@ public class PaymentServiceImpl implements PaymentService {
         }
 
         if(!card.getValidTo().toString().equals(cardDataDto.getValidTo().toString())) {
-            LOGGER.error("Provided Valid to Date do not match for provided Card.");
-            LOGGER.info("Returning error-url to Bank Microservice");
+            LOGGER.error(LocalDateTime.now() + "      Provided Valid to Date do not match for provided Card.");
+            LOGGER.info(LocalDateTime.now() + "      Returning error-url to Bank Microservice");
             transaction.setValid(false);
             transaction.setAmount(BigDecimal.valueOf(0));
             transaction.setRecipient(payment.getMerchant());
@@ -226,7 +228,7 @@ public class PaymentServiceImpl implements PaymentService {
             return response;
         }
 
-        LOGGER.info("Provided Card Data is valid.");
+        LOGGER.info(LocalDateTime.now() + "      Provided Card Data is valid.");
 
         transaction.setRecipient(payment.getMerchant());
         transaction.setPayer(card.getAccount());
@@ -235,9 +237,9 @@ public class PaymentServiceImpl implements PaymentService {
         Account merchant = payment.getMerchant();
         Account account = card.getAccount();
 
-        LOGGER.info("Checking if there is enough funding for payment..");
+        LOGGER.info(LocalDateTime.now() + "      Checking if there is enough funding for payment..");
         if (account.getAmount().compareTo(payment.getAmount()) < 0) {
-            LOGGER.error("There is not enough funds on Card.");
+            LOGGER.error(LocalDateTime.now() + "      There is not enough funds on Card.");
             transaction.setValid(false);
             ResponseEntity<String> redirectUrlResponse
                     = restTemplate.getForEntity(payment.getFailedUrl(),String.class);
@@ -256,7 +258,7 @@ public class PaymentServiceImpl implements PaymentService {
             transaction.setValid(true);
         }
         transactionService.save(transaction);
-        LOGGER.info("Payment transaction is saved in bank database.");
+        LOGGER.info(LocalDateTime.now() + "      Payment transaction is saved in bank database.");
 
         response.setUrl(redirectUrl);
         response.setSuccessful(transaction.getValid());
@@ -314,8 +316,8 @@ public class PaymentServiceImpl implements PaymentService {
         Card card = cardService.findByPan(pccDTO.getPan());
         System.out.println("PAN:    " + pccDTO.getPan());
         System.out.println("CARD:   " + card);
-        LOGGER.info("Valid to sent:   "+pccDTO.getValidTo());
-        LOGGER.info("Valid to card:   "+card.getValidTo());
+        LOGGER.info(LocalDateTime.now() + "      Valid to sent:   "+pccDTO.getValidTo());
+        LOGGER.info(LocalDateTime.now() + "      Valid to card:   "+card.getValidTo());
 
         Client client = clientRepository.findByMerchantId("pcc");
         Account recipientAccount=client.getAccount();
@@ -325,8 +327,8 @@ public class PaymentServiceImpl implements PaymentService {
         pccEntity.setIssuerTimeStamp(timestamp);
 
         if (card == null) {
-            LOGGER.error("Could not find card with provided pan number: " + pccDTO.getPan());
-            LOGGER.info("Returning error-url to Bank Microservice");
+            LOGGER.error(LocalDateTime.now() + "      Could not find card with provided pan number: " + pccDTO.getPan());
+            LOGGER.info(LocalDateTime.now() + "      Returning error-url to Bank Microservice");
 
             transaction.setValid(false);
             transaction.setAmount(BigDecimal.valueOf(0));
@@ -339,8 +341,8 @@ public class PaymentServiceImpl implements PaymentService {
         }
 
         if (!card.getSecurityCode().toString().equals(pccDTO.getSecurityCode().toString())) {
-            LOGGER.error("Provided Security Code does not match for provided Card.");
-            LOGGER.info("Returning error-url to Bank Microservice");
+            LOGGER.error(LocalDateTime.now() + "      Provided Security Code does not match for provided Card.");
+            LOGGER.info(LocalDateTime.now() + "      Returning error-url to Bank Microservice");
             transaction.setValid(false);
             transaction.setAmount(BigDecimal.valueOf(0));
             transaction.setRecipient(recipientAccount);
@@ -352,8 +354,8 @@ public class PaymentServiceImpl implements PaymentService {
         }
 
         if(!card.getValidTo().toString().equals(pccDTO.getValidTo().toString())) {
-            LOGGER.error("Provided Valid to Date do not match for provided Card.");
-            LOGGER.info("Returning error-url to Bank Microservice");
+            LOGGER.error(LocalDateTime.now() + "      Provided Valid to Date do not match for provided Card.");
+            LOGGER.info(LocalDateTime.now() + "      Returning error-url to Bank Microservice");
             transaction.setValid(false);
             transaction.setAmount(BigDecimal.valueOf(0));
             transaction.setRecipient(recipientAccount);
@@ -364,7 +366,7 @@ public class PaymentServiceImpl implements PaymentService {
             return pccEntity;
         }
 
-        LOGGER.info("Provided Card Data is valid.");
+        LOGGER.info(LocalDateTime.now() + "      Provided Card Data is valid.");
 
 
         transaction.setRecipient(recipientAccount);
@@ -374,10 +376,10 @@ public class PaymentServiceImpl implements PaymentService {
         Account account = card.getAccount();
 
         TransactionStatus ret = null;
-        LOGGER.info("Checking if there is enough funding for payment..");
+        LOGGER.info(LocalDateTime.now() + "      Checking if there is enough funding for payment..");
 
         if (account.getAmount().compareTo(pccDTO.getAmount()) < 0) {
-            LOGGER.error("There is not enough funds on Card.");
+            LOGGER.error(LocalDateTime.now() + "      There is not enough funds on Card.");
             transaAESction.setValid(false);
             pccEntity.setStatus(TransactionStatus.FAILED);
         } else {
@@ -392,7 +394,7 @@ public class PaymentServiceImpl implements PaymentService {
         }
         transaction = transactionService.save(transaction);
         pccEntity.setIssuerOrderId(transaction.getId());
-        LOGGER.info("Payment transaction is saved in bank database.");
+        LOGGER.info(LocalDateTime.now() + "      Payment transaction is saved in bank database.");
         return pccEntity;
     }
 }

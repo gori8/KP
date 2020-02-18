@@ -3,6 +3,8 @@ package rs.ac.uns.ftn.fourthms.seller;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,12 +16,15 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.time.LocalDateTime;
 import java.util.Base64;
 
 @RestController
 @RequestMapping("/api/register")
 @CrossOrigin(origins = "*")
 public class RegistrationController {
+
+    private final Logger LOGGER = LoggerFactory.getLogger(RegistrationController.class);
 
     @Autowired
     SellerRepository sellerRepository;
@@ -40,6 +45,9 @@ public class RegistrationController {
         }catch (Exception e){
             e.printStackTrace();
         }
+
+        LOGGER.info(LocalDateTime.now() + "     Registering seller    " + "mail:  " + seller.getEmail() + "   name:   " + seller.getFirstName() + "   last name:   " + seller.getLastName() + "   merchant id:   " + seller.getMerchantId() + "  on fourth microservice");
+        LOGGER.info(LocalDateTime.now() + "     Seller with mail:   " + seller.getEmail() + " is successfully registered on fourth microservice.");
 
         return new ResponseEntity<Long>(ret, HttpStatus.OK);
     }

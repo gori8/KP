@@ -20,6 +20,7 @@ import rs.ac.uns.ftn.url.AmountAndUrlDTO;
 import rs.ac.uns.ftn.url.UrlClass;
 import rs.ac.uns.ftn.url.UrlDTO;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -50,6 +51,7 @@ public class PaymentServiceImpl implements PaymentService {
     @Override
     public String handleKpRequest(PaymentRequest kpRequestDto) {
 
+        LOGGER.info(LocalDateTime.now() + "      Preparing payment on bank microservice...");
 
         String fooResourceUrl1
                 = UrlClass.DOBAVI_CENU_URL_SA_PAYMENT_INFO + kpRequestDto.getCasopisUuid();
@@ -66,6 +68,8 @@ public class PaymentServiceImpl implements PaymentService {
         payment.setCheckStatusUrl(resp.getBody().getRedirectUrl());
 
         Payment savedPayment=paymentRepository.save(payment);
+
+        LOGGER.info(LocalDateTime.now() + "      Saving payment with  seller:   "+ payment.getSellerEmail() + "   item uuid:   " + payment.getItemUuid() + "   amount:  " + payment.getAmount() + "   on bank microservice...");
 
         PaymentResponse response1 = new PaymentResponse();
 

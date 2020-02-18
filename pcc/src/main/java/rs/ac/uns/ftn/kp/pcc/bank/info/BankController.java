@@ -1,5 +1,7 @@
 package rs.ac.uns.ftn.kp.pcc.bank.info;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +19,7 @@ import rs.ac.uns.ftn.url.TransactionStatus;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Locale;
 
@@ -24,6 +27,8 @@ import java.util.Locale;
 @RequestMapping("/api/pcc")
 //@CrossOrigin(origins = "*")
 public class BankController {
+
+    private final Logger LOGGER = LoggerFactory.getLogger(BankController.class);
 
     @Autowired
     BankRepository bankRepository;
@@ -41,6 +46,8 @@ public class BankController {
         bank.setBankCode(registrationDTO.getBankCode());
         bank.setBankUrl(registrationDTO.getBankUrl());
         Bank ret = bankRepository.save(bank);
+
+        LOGGER.info(LocalDateTime.now() + "      Registering bank with bank code:   " + registrationDTO.getBankCode() + "   bank url:  "  + registrationDTO.getBankUrl() + "   on pcc ...");
 
         return new ResponseEntity<Bank>(ret, HttpStatus.OK);
     }
@@ -83,6 +90,8 @@ public class BankController {
         transactionRequest.setAmount(requestFromAcquirer.getAmount());
         transactionRequest.setIssuerBankCode(requestFromAcquirer.getPan().substring(1,7));
         transactionRequest.setStatus(TransactionStatus.CREATED);
+
+        LOGGER.info(LocalDateTime.now() + "      Saving transaction request with Acquirer bank code:   " + requestFromAcquirer.getBankCode() + "   Issuer bank code:  "  + transactionRequest.getIssuerBankCode() + "    order id: " + transactionRequest.getIssuerOrderId() + "   on pcc ...");
 
         return pccEntityRepository.save(transactionRequest);
     }

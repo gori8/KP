@@ -13,6 +13,7 @@ import rs.ac.uns.ftn.url.AmountAndUrlDTO;
 import rs.ac.uns.ftn.url.UrlClass;
 
 import java.net.URISyntaxException;
+import java.time.LocalDateTime;
 
 @RequestMapping("/api/fourth")
 @RestController
@@ -21,14 +22,13 @@ public class FourthMsController {
 
     private final Logger LOGGER = LoggerFactory.getLogger(FourthMsController.class);
 
-
     @Autowired
     RestTemplate restTemplate;
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<String> postPreparePayment(@RequestBody PreparePaymentRequest request) {
 
-        LOGGER.info("Preparing payment on fourth micro service...");
+        LOGGER.info(LocalDateTime.now() + "      Preparing payment on fourth microservice...");
 
         return new ResponseEntity<>("\""+"https://localhost:4600/payment/"+request.getCasopisUuid()+"\"", HttpStatus.OK);
     }
@@ -36,7 +36,7 @@ public class FourthMsController {
     @RequestMapping(value = "/execute", method = RequestMethod.POST)
     public ResponseEntity create(@RequestBody PaymentDTO dto) throws URISyntaxException {
 
-        LOGGER.info("Executing payment on forth micro service...");
+        LOGGER.info(LocalDateTime.now() + "     Executing payment on forth microservice...");
 
         String fooResourceUrl1
                 = UrlClass.DOBAVI_CENU_URL_SA_PAYMENT_INFO + dto.getUuid();
@@ -44,13 +44,8 @@ public class FourthMsController {
         ResponseEntity<AmountAndUrlDTO> resp
                 = restTemplate.getForEntity(fooResourceUrl1, AmountAndUrlDTO.class);
 
-        LOGGER.info("Logging payment info:");
-        LOGGER.info("Buyer: "+dto.getBuyerId());
-        LOGGER.info("Seller: "+resp.getBody().getSellerEmail());
-        LOGGER.info("Amount: "+resp.getBody().getAmount());
-        LOGGER.info("Bought item UUID: "+resp.getBody().getItemUuid());
-
-        LOGGER.info("Payment executed...");
+        LOGGER.info(LocalDateTime.now() + "     Payment info for fourth microservice:  " + "Buyer:  "+dto.getBuyerId() + "   Seller: "+resp.getBody().getSellerEmail() + "   Amount: "+resp.getBody().getAmount() + "   Item:   " + resp.getBody().getItemUuid());
+        LOGGER.info(LocalDateTime.now() + "     Payment executed on fourth microservice...");
 
         return new  ResponseEntity<String>("\""+notifyNc(resp.getBody().getRedirectUrl()+"/true")+"\"",HttpStatus.OK);
     }
