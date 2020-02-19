@@ -24,4 +24,6 @@ public class CoinGateRequest {
 
     Long paymentId;
 
+    String email;
+
 }

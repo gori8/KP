@@ -451,7 +451,6 @@ public class WebShopController {
     }
 
     @RequestMapping(value = "/pay/{uapId}/{username}", method = RequestMethod.POST)
-    @PreAuthorize("hasRole('USER')")
     public ResponseEntity<String> pay(@PathVariable("uapId") String uapId, @PathVariable("username") String username ) {
 
         String url = kpService.getRedirectUrl(uapId,username);

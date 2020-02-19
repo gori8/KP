@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.Type;
 import org.springframework.stereotype.Service;
+import rs.ac.uns.ftn.url.ConverterAES;
 
 import javax.persistence.*;
 
@@ -28,11 +29,11 @@ public class Seller {
     @Column(name = "lastName", unique = false, nullable = false)
     private String lastName;
 
-    @Size(max = 30)
+    @Convert(converter = ConverterAES.class)
     @Column(name = "merchantId", unique = false, nullable = false)
     private String merchantId;
 
-    @Size(max = 100)
+    @Convert(converter = ConverterAES.class)
     @Column(name = "merchantPassword", unique = false, nullable = false)
     private String merchantPassword;
 

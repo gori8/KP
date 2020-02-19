@@ -59,6 +59,8 @@ public class BitCoinPaymentServiceImpl implements BitCoinPaymentService{
 
         coinGateRequest.setCancelUrl(UrlClass.CANCEL_URL_BTC + savedPayment.getId());
 
+        coinGateRequest.setEmail(amountAndUrlDTO.getSellerEmail());
+
         String rurl=amountAndUrlDTO.getRedirectUrl();
 
 
@@ -73,7 +75,7 @@ public class BitCoinPaymentServiceImpl implements BitCoinPaymentService{
     public BitCoinPayment saveFromResponse(CoinGateResponse response, CoinGateRequest coinGateRequest) {
         BitCoinPayment payment = bitCoinPaymentRepository.getOne(coinGateRequest.getPaymentId());
 
-        Seller seller = sellerRepository.findByToken(coinGateRequest.getToken());
+        Seller seller = sellerRepository.findBySellerEmail(coinGateRequest.getEmail());
 
         payment.setOrderId(response.getId());
         payment.setSellerEmail(seller.getSellerEmail());

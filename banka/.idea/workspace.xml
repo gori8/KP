@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7cc85f1f-109f-476a-a724-36a3acfcf1f6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../PayPal/paypal/src/main/java/rs/ac/uns/ftn/paypal/cmrs/Seller.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PayPal/paypal/src/main/java/rs/ac/uns/ftn/paypal/cmrs/Seller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bank-ms/src/main/java/rs/ac/uns/ftn/kp/bankms/model/Seller.java" beforeDir="false" afterPath="$PROJECT_DIR$/bank-ms/src/main/java/rs/ac/uns/ftn/kp/bankms/model/Seller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bitcoin/bitcoin/src/main/java/rs/ac/uns/ftn/bitcoin/cmrs/Seller.java" beforeDir="false" afterPath="$PROJECT_DIR$/../bitcoin/bitcoin/src/main/java/rs/ac/uns/ftn/bitcoin/cmrs/Seller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../logs/bank-ms-service.log" beforeDir="false" afterPath="$PROJECT_DIR$/../logs/bank-ms-service.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../logs/bank.log" beforeDir="false" afterPath="$PROJECT_DIR$/../logs/bank.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../logs/bitcoin-service.log" beforeDir="false" afterPath="$PROJECT_DIR$/../logs/bitcoin-service.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../logs/eureka-service.log" beforeDir="false" afterPath="$PROJECT_DIR$/../logs/eureka-service.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../logs/fourth.log" beforeDir="false" afterPath="$PROJECT_DIR$/../logs/fourth.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../logs/paypal-service.log" beforeDir="false" afterPath="$PROJECT_DIR$/../logs/paypal-service.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../logs/pcc.log" beforeDir="false" afterPath="$PROJECT_DIR$/../logs/pcc.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../logs/red-bank.log" beforeDir="false" afterPath="$PROJECT_DIR$/../logs/red-bank.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../logs/userandpaymentinfo-service.log" beforeDir="false" afterPath="$PROJECT_DIR$/../logs/userandpaymentinfo-service.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../logs/webshop.log" beforeDir="false" afterPath="$PROJECT_DIR$/../logs/webshop.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../logs/zuul-service.log" beforeDir="false" afterPath="$PROJECT_DIR$/../logs/zuul-service.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../naucna-centrala/webshop/src/main/java/com/example/webshop/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../naucna-centrala/webshop/src/main/java/com/example/webshop/config/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../naucna-centrala/webshop/src/main/java/com/example/webshop/controller/WebShopController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../naucna-centrala/webshop/src/main/java/com/example/webshop/controller/WebShopController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ssl/ms/truststore.jks" beforeDir="false" afterPath="$PROJECT_DIR$/../ssl/ms/truststore.jks" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1Y17bII09w8WtejVduiDrWYccal" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7cc85f1f-109f-476a-a724-36a3acfcf1f6" name="Default Changelist" comment="" />
+      <created>1582098316699</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1582098316699</updated>
+      <workItem from="1582098318179" duration="16000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>
