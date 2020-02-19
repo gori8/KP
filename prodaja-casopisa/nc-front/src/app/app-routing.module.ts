@@ -35,9 +35,9 @@ const routes: Routes = [
 	{ path: 'register', component: RegistrationComponent },
   { path: 'tasks', component: UserTasksComponent },
   { path: 'task/:taskID', component: ActiveTaskComponent },
-	{ path: 'login', component: LoginComponent },
-  { path: '**', redirectTo: '' },
+  { path: 'login', component: LoginComponent },
   { path : "addPlans/:id", component : AddPlansComponent, canActivate:[AuthGuard] },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

@@ -25,6 +25,13 @@ public class UrlClass {
     public static final String REDIRECT_URL_PAYMENT_IGOR = "https://localhost:8080/payment/payed/";
 
 
+    //NAUCNA CENTRALA 2
+    public static final String _2USER_AND_PAYMENT_URL = "https://192.168.43.161:8771/userandpayment/api/";
+    public static final String _2REDIRECT_URL_REGISTRATION = "https://192.168.43.86:8080/payment/payments/complete/";
+    public static final String _2REDIRECT_URL_REAL_REGISTRATION = "https://192.168.43.86:8080/payment/registration/complete/";
+    public static final String _2FRON_WEBSHOP = "https://localhost:4700/";
+    public static final String _2REDIRECT_URL_PAYMENT_IGOR = "https://192.168.43.86:8080/payment/payed/";
+    public static final String _2DOBAVI_KP_FRONT_URL_SA_NACINIMA_PLACANJA_FROM_PAYMENT_INFO = "https://192.168.43.161:8771/userandpayment/api/url";
 
     //frontovi
 

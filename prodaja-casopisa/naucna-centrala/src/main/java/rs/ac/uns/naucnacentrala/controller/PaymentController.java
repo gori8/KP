@@ -19,7 +19,7 @@ public class PaymentController {
     @Autowired
     PaymentService kpService;
 
-    @PostMapping(path = "/payments/complete/{uuid}/{nacinPlacanjaId}", produces = "application/json")
+    @PostMapping(path = "/payments/registration/{uuid}/{nacinPlacanjaId}", produces = "application/json")
     public ResponseEntity completeRegistration(@PathVariable("uuid") String uuid,@PathVariable("nacinPlacanjaId") Long nacinPlacanjaId) {
         return new ResponseEntity(kpService.completeRegistration(uuid,nacinPlacanjaId),HttpStatus.OK);
     }

@@ -40,7 +40,9 @@ export class ActivateJournalComponent implements OnInit {
     	this.bpmnService.getActiveTaskForm(this.processInstanceID).subscribe(
     		res => {
                if(res.taskName == 'unos_planova'){
-                 this.router.navigate([`addPlans/${res.processInstanceID}`]);
+                 console.log("USAO: PROCESSINSTANCEID: "+this.processInstanceID);
+                 
+                 this.router.navigate(['addPlans/'+this.processInstanceID]);
                }
                this.formFieldsDto = res;
                this.formFields = res.formFields;

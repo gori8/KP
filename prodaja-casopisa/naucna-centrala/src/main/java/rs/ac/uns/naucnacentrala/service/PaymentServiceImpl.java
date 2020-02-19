@@ -67,7 +67,7 @@ public class PaymentServiceImpl implements PaymentService {
 
         ItemDTO dto = new ItemDTO();
         dto.setNaziv(plan.getCasopis().getNaziv()+", plan: "+plan.getPeriod()+" "+plan.getUcestalostPerioda());
-        dto.setRedirectUrl(UrlClass.REDIRECT_URL_REGISTRATION);
+        dto.setRedirectUrl(UrlClass._2REDIRECT_URL_REGISTRATION);
         dto.setNaciniPlacanja(new ArrayList<>());
         dto.setEmail(user.getEmail());
         dto.setAmount(plan.getCena());
@@ -83,7 +83,7 @@ public class PaymentServiceImpl implements PaymentService {
 
         try {
             response =
-                    restTemplate.postForEntity(UrlClass.USER_AND_PAYMENT_URL + "add", entity, ReturnLinksDTO.class);
+                    restTemplate.postForEntity(UrlClass._2USER_AND_PAYMENT_URL + "add", entity, ReturnLinksDTO.class);
             System.out.println("STATUS CODE: " + response.getStatusCodeValue());
         }catch(HttpClientErrorException e) {
             //e.printStackTrace();
@@ -96,13 +96,13 @@ public class PaymentServiceImpl implements PaymentService {
                 headers.setContentType(MediaType.APPLICATION_JSON);
                 RegisterDTO registerDTO = new RegisterDTO();
                 registerDTO.setEmail(user.getEmail());
-                registerDTO.setUrl(UrlClass.REDIRECT_URL_REAL_REGISTRATION+plan.getId());
+                registerDTO.setUrl(UrlClass._2REDIRECT_URL_REAL_REGISTRATION+plan.getId());
                 HttpEntity<RegisterDTO> entityReg = new HttpEntity<RegisterDTO>(registerDTO, headersReg);
                 ResponseEntity<Boolean> responseReg = restTemplate.postForEntity(responseBody.getRegisterUrl(), entityReg, Boolean.class);
                 if (responseReg.getBody()) {
                     System.out.println("User registered successfully");
                     response =
-                            restTemplate.postForEntity(UrlClass.USER_AND_PAYMENT_URL + "add", entity, ReturnLinksDTO.class);
+                            restTemplate.postForEntity(UrlClass._2USER_AND_PAYMENT_URL + "add", entity, ReturnLinksDTO.class);
                 } else {
                     throw new Exception();
                 }
@@ -162,7 +162,7 @@ public class PaymentServiceImpl implements PaymentService {
             casopisRepository.save(casopis);
         }
 
-        return UrlClass.FRON_WEBSHOP+"urednik/journals";
+        return UrlClass._2FRON_WEBSHOP+"urednik/journals";
     }
 
 
@@ -171,7 +171,7 @@ public class PaymentServiceImpl implements PaymentService {
         ObjectMapper mapper = new ObjectMapper();
 
         MappingClass mc = new MappingClass();
-        mc.setRedirectUrl(UrlClass.REDIRECT_URL_PAYMENT_IGOR+username+"/"+uapId+"/"+processInstanceId);
+        mc.setRedirectUrl(UrlClass._2REDIRECT_URL_PAYMENT_IGOR+username+"/"+uapId+"/"+processInstanceId);
         mc.setId(uapId);
 
         String json="";
@@ -188,7 +188,7 @@ public class PaymentServiceImpl implements PaymentService {
         HttpEntity<String> entity = new HttpEntity<String>(json, headers);
 
         ResponseEntity<String> response
-                = restTemplate.postForEntity(UrlClass.DOBAVI_KP_FRONT_URL_SA_NACINIMA_PLACANJA_FROM_PAYMENT_INFO,entity,String.class);
+                = restTemplate.postForEntity(UrlClass._2DOBAVI_KP_FRONT_URL_SA_NACINIMA_PLACANJA_FROM_PAYMENT_INFO,entity,String.class);
 
         JSONObject actualObj=null;
         String ret = "";
@@ -213,7 +213,7 @@ public class PaymentServiceImpl implements PaymentService {
 
 
                 if(plan==null){
-                    return UrlClass.FRON_WEBSHOP+"paymentresponse/failed";
+                    return UrlClass._2FRON_WEBSHOP+"paymentresponse/failed";
                 }
 
                 Pretplata pretplata = new Pretplata();
@@ -255,11 +255,11 @@ public class PaymentServiceImpl implements PaymentService {
                     taskService.complete(task.getId());
                 }
 
-                return UrlClass.FRON_WEBSHOP + "input/paper/" + processInstanceId;
+                return UrlClass._2FRON_WEBSHOP + "input/paper/" + processInstanceId;
             }else{
 
                 if(plan==null){
-                    return UrlClass.FRON_WEBSHOP+"paymentresponse/failed";
+                    return UrlClass._2FRON_WEBSHOP+"paymentresponse/failed";
                 }
 
                 Pretplata pretplata = new Pretplata();
@@ -295,10 +295,10 @@ public class PaymentServiceImpl implements PaymentService {
                 plan.getPretplate().add(pretplata);
                 planRepository.save(plan);
 
-                return UrlClass.FRON_WEBSHOP+"paymentresponse/success";
+                return UrlClass._2FRON_WEBSHOP+"paymentresponse/success";
             }
         } else {
-            return UrlClass.FRON_WEBSHOP+"paymentresponse/failed";
+            return UrlClass._2FRON_WEBSHOP+"paymentresponse/failed";
         }
     }
 

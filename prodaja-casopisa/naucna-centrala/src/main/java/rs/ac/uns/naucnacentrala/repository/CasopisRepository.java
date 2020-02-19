@@ -18,6 +18,4 @@ public interface CasopisRepository extends JpaRepository<Casopis,Long> {
 
     public List<Casopis> findAllByEnabled(Boolean enabled);
 
-    Casopis findByUuid(UUID uuid);
-
 }
