@@ -241,7 +241,7 @@
       </ng-container>-->
 
 <div class="headerbg bg-light">
-  <h3 class="text-dark mt-5" *ngIf="radovi.length!=0">Rezultati pregrage:</h3>
+  <h3 class="text-dark mt-5" *ngIf="radovi.length!=0">Rezultati pretrage:</h3>
 </div>
 
 <div class="row mt-5" *ngFor="let item of radovi">  
@@ -254,7 +254,7 @@
       </div>
       <div class="card-body">
         <button class="btn btn-dark mr-auto">PDF</button>
-        <p class="ml-3 mr-3 mt-3 mb-3">{{item.sazetak}}</p>
+        <p class="ml-3 mr-3 mt-3 mb-3" [innerHTML]="item.sazetak"></p>
       </div>
       
     </div>

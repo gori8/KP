@@ -124,7 +124,7 @@ public class RadServiceImpl implements RadService {
         radElastic.setNaucnaOblast(naucnaOblast.getNaziv());
         radElastic.setAutor(rad.getAutor().getIme()+" "+rad.getAutor().getPrezime());
         radElastic.setKljucneReci(rad.getKljucneReci());
-        radElastic.setNazivCasopsa(izdanje.getCasopis().getNaziv());
+        radElastic.setNazivCasopisa(izdanje.getCasopis().getNaziv());
         radElastic.setNaslov(rad.getNaslov());
         radElastic.setApstrakt(rad.getApstrakt());
 
@@ -153,6 +153,8 @@ public class RadServiceImpl implements RadService {
         HighlightBuilder highlightBuilder = new HighlightBuilder();
         Iterable<RadElastic> radovi = new ArrayList<>();
 
+        BoolQueryBuilder query = QueryBuilders.boolQuery();
+
 
         if(element.getValue() != null && element.getValue().charAt(0) == '"' && element.getValue().charAt(element.getValue().length()-1) == '"'){
 
@@ -160,62 +162,20 @@ public class RadServiceImpl implements RadService {
 
             element.setValue(element.getValue().substring(1, element.getValue().length()-1));
 
-            NativeSearchQuery query = new NativeSearchQueryBuilder()
-                    .withQuery(matchPhraseQuery(element.getField(), element.getValue()))
-                    .withHighlightBuilder(highlightBuilder)
-                    .build();
+            query = QueryBuilders.boolQuery();
+            query.must(matchPhraseQuery(element.getField(),element.getValue()).analyzer("serbian"));
+            highlightBuilder.field(element.getField());
 
             radovi = radElasticRepository.search(query);
-
-
-            /*SearchHits<RadElastic> searchHits = operations.search(query,
-                    RadElastic.class,
-                    IndexCoordinates.of("naucni-radovi"));
-
-            for(SearchHit<RadElastic> hit : searchHits.getSearchHits()){
-                Map<String, List<String>> highlightMap = hit.getHighlightFields();
-                for(String field : highlightMap.keySet()) {
-                    List<String> highlights = highlightMap.get(field);
-                    System.out.println("-------------HIGHLIGHTS " + field + "-------------------");
-                    for (String s : highlights) {
-                        System.out.println("-------------HIGHLIGHT: " + s);
-                    }
-                }
-            }*/
         }else{
 
             System.out.println("SIMPLE");
 
-            switch (element.getField()){
-                case "naslov":{
-                    radovi = radElasticRepository.findAllByNaslov(element.getValue());
-                }break;
+            query = QueryBuilders.boolQuery();
+            query.must(matchQuery(element.getField(),element.getValue()).analyzer("serbian"));
+            highlightBuilder.field(element.getField());
 
-                case "apstrakt":{
-                    radovi = radElasticRepository.findAllByApstrakt(element.getValue());
-                }break;
-
-                case "kljucneReci":{
-                    radovi = radElasticRepository.findAllByKljucneReci(element.getValue());
-                }break;
-
-                case "sadrzaj":{
-                    radovi = radElasticRepository.findAllBySadrzaj(element.getValue());
-                }break;
-
-                case "autor":{
-                    radovi = radElasticRepository.findAllByAutor(element.getValue());
-                }break;
-
-                case "naucnaOblast":{
-                    radovi = radElasticRepository.findAllByNaucnaOblast(element.getValue());
-                }break;
-
-                case "nazivCasopisa":{
-                    radovi = radElasticRepository.findAllByNazivCasopsa(element.getValue());
-                }break;
-            }
-
+            radovi = radElasticRepository.search(query);
         }
 
         for (RadElastic rad:radovi) {
@@ -226,11 +186,47 @@ public class RadServiceImpl implements RadService {
             dto.setKljucneReci(rad.getKljucneReci());
             dto.setNaucnaOblast(rad.getNaucnaOblast());
             dto.setSadrzaj(rad.getSadrzaj());
-            dto.setApstrakt(rad.getApstrakt());
+            dto.setAutor(rad.getAutor());
             dto.setId(rad.getId());
-            dto.setNazivCasopisa(rad.getNazivCasopsa());
+            dto.setNazivCasopisa(rad.getNazivCasopisa());
 
             ret.add(dto);
+        }
+
+        NativeSearchQuery searchQuery = new NativeSearchQueryBuilder()
+                .withQuery(query)
+                .withHighlightBuilder(highlightBuilder)
+                .build();
+
+        SearchHits<RadElastic> searchHits = operations.search(searchQuery,
+                RadElastic.class,
+                IndexCoordinates.of("naucni-radovi"));
+
+        for(SearchHit<RadElastic> hit : searchHits.getSearchHits()) {
+
+            String sazetak = "";
+
+            Map<String, List<String>> highlightMap = hit.getHighlightFields();
+            for (String field : highlightMap.keySet()) {
+                List<String> highlights = highlightMap.get(field);
+                System.out.println("-------------HIGHLIGHTS " + field + "-------------------");
+                for (String s : highlights) {
+                    System.out.println("-------------HIGHLIGHT: " + s);
+                    sazetak = sazetak + "..." + s;
+                }
+            }
+            sazetak = sazetak + "...";
+
+            for(RadFoundDTO radFoundDTO : ret){
+                if(hit.getId().equals(radFoundDTO.getId())){
+
+                    sazetak = sazetak.replace("<em>","<b>");
+                    sazetak = sazetak.replace("</em>","</b>");
+
+                    radFoundDTO.setSazetak(sazetak);
+                    break;
+                }
+            }
         }
 
         return ret;
@@ -239,18 +235,43 @@ public class RadServiceImpl implements RadService {
 
     @Override
     public List<RadFoundDTO> boolQuery(List<ElementDTO> elements){
-
         BoolQueryBuilder query = QueryBuilders.boolQuery();
 
         HighlightBuilder highlightBuilder = new HighlightBuilder();
 
         for (ElementDTO element:elements) {
             if(element.getOperator().equals("MUST")){
-                query.must(matchQuery(element.getField(),element.getValue()).operator(Operator.AND));
-                highlightBuilder.field(element.getField());
+                if(element.getValue() != null && element.getValue().charAt(0) == '"' && element.getValue().charAt(element.getValue().length()-1) == '"'){
+                    System.out.println("PHRASE MUST");
+
+                    element.setValue(element.getValue().substring(1, element.getValue().length() - 1));
+
+                    query.must(matchPhraseQuery(element.getField(),element.getValue()).analyzer("serbian"));
+                    highlightBuilder.field(element.getField());
+
+                }else{
+
+                    System.out.println("TERMS MUST");
+
+                    query.must(matchQuery(element.getField(),element.getValue()).operator(Operator.AND).analyzer("serbian"));
+                    highlightBuilder.field(element.getField());
+                }
             }else if(element.getOperator().equals("SHOULD")){
-                query.should(matchQuery(element.getField(),element.getValue()).operator(Operator.AND));
-                highlightBuilder.field(element.getField());
+
+                if(element.getValue() != null && element.getValue().charAt(0) == '"' && element.getValue().charAt(element.getValue().length()-1) == '"'){
+                    System.out.println("PHRASE SHOULD");
+
+                    element.setValue(element.getValue().substring(1, element.getValue().length() - 1));
+
+                    query.should(matchPhraseQuery(element.getField(),element.getValue()).analyzer("serbian"));
+                    highlightBuilder.field(element.getField());
+
+                }else{
+                    System.out.println("TERMS SHOULD");
+
+                    query.should(matchQuery(element.getField(),element.getValue()).operator(Operator.AND).analyzer("serbian"));
+                    highlightBuilder.field(element.getField());
+                }
             }
         }
 
@@ -267,9 +288,9 @@ public class RadServiceImpl implements RadService {
             dto.setKljucneReci(rad.getKljucneReci());
             dto.setNaucnaOblast(rad.getNaucnaOblast());
             dto.setSadrzaj(rad.getSadrzaj());
-            dto.setApstrakt(rad.getApstrakt());
+            dto.setAutor(rad.getAutor());
             dto.setId(rad.getId());
-            dto.setNazivCasopisa(rad.getNazivCasopsa());
+            dto.setNazivCasopisa(rad.getNazivCasopisa());
 
             ret.add(dto);
         }
@@ -300,6 +321,10 @@ public class RadServiceImpl implements RadService {
 
             for(RadFoundDTO radFoundDTO : ret){
                 if(hit.getId().equals(radFoundDTO.getId())){
+
+                    sazetak = sazetak.replace("<em>","<b>");
+                    sazetak = sazetak.replace("</em>","</b>");
+
                     radFoundDTO.setSazetak(sazetak);
                     break;
                 }

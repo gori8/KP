@@ -11,6 +11,6 @@ public interface RadElasticRepository extends ElasticsearchRepository<RadElastic
     public Iterable<RadElastic> findAllByAutor(String autor);
     public Iterable<RadElastic> findAllByNaucnaOblast(String naucnaOblast);
     public Iterable<RadElastic> findAllBySadrzaj(String sadrzaj);
-    public Iterable<RadElastic> findAllByNazivCasopsa(String nazivCasopisa);
+    public Iterable<RadElastic> findAllByNazivCasopisa(String nazivCasopisa);
 
 }
