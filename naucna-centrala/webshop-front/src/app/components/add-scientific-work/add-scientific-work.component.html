@@ -1,0 +1,46 @@
+<div class="darkbackground"> 
+  <div class="container">
+      <div class="row ml-auto mr-auto">
+          <div class="col col-md-3"></div>
+          <div class="col col-md-6 mt-3">
+          
+              <!--FORM-->
+              <form #form="ngForm" ngNativeValidate (ngSubmit)="onSubmit(form)">
+                <h2 class="mb-3 text-light mt-3">Dodavanje naučnog rada</h2>
+                
+                <div class="form-group">
+                    <label class="text-light" for="naslov">Naslov</label>
+                    <input name="naslov" [(ngModel)]="rad.naslov" id="naslov" type="text" class="form-control" required/>
+                </div>
+                
+                <div class="form-group">
+                  <label class="text-light" for="kljucneReci">Kljucne Reči</label>
+                  <input name="kljucneReci" [(ngModel)]="rad.kljucneReci" id="kljucneReci" type="text" class="form-control" required/>
+                </div>
+                <div class="form-group">
+                  <label class="text-light" for="apstrakt">Apstrakt</label>
+                  <input name="apstrakt" [(ngModel)]="rad.apstrakt" id="apstrakt" type="text" class="form-control" required/>
+                </div>
+                <div class="form-group">
+                  <label class="text-light" for="naucnaOblast">Naučna Oblast</label>
+                  <select name="naucnaOblast" [(ngModel)]="rad.naucnaOblast" id="naucnaOblast" class="form-control" required>
+                    <option *ngFor="let oblast of naucneOblasti" value="{{oblast.id}}">
+                      {{oblast.naziv}}
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="text-light" for="sadrzaj">Sadržaj</label>                    
+                  <input class="form-control-file" name="sadrzaj" id="sadrzaj" type="file" (change)="handleFileInput($event.target.files)" placeholder="Upload file" accept=".pdf,.doc,.docx" required>
+                </div>
+      
+                <!--BUTTON-->
+                <button type="submit" [hidden]="hidden" class="btn btn-primary mt-3 mb-4" >Potvrdi</button>
+                <div [hidden]="!hidden" class="lds-roller mt-3"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+              </form>
+
+          </div>
+          <div class="col col-md-3"></div>
+      </div>
+  </div>    
+</div>

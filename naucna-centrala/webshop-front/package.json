@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --port 4500 --ssl true --ssl-cert ../../ssl/frontOnPN.crt --ssl-key ../../ssl/frontOnPN.key",
+    "start": "ng serve --port 4400",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

@@ -24,6 +24,8 @@ import { PaymentResponseComponent } from './components/payment-response/payment-
 import { KupljeniPredmetiComponent } from './components/kupljeni-predmeti/kupljeni-predmeti.component';
 import { AddPlansComponent } from './components/add-plans/add-plans.component';
 import { SelectPlanComponent } from './components/select-plan/select-plan.component';
+import { AddScientificWorkComponent } from './components/add-scientific-work/add-scientific-work.component';
+import { RadoviComponent } from './components/radovi/radovi.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -86,6 +88,8 @@ const customNotifierOptions: NotifierOptions = {
     KupljeniPredmetiComponent,
     AddPlansComponent,
     SelectPlanComponent,
+    AddScientificWorkComponent,
+    RadoviComponent
   ],
   imports: [
     BrowserModule,

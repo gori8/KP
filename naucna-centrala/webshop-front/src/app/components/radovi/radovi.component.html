@@ -1,0 +1,265 @@
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col sm-4">
+          <label class="text-dark" for="naziv">Naslov</label>
+          <div class="row">
+            <div class="col sm-9">
+              <input name="naslov" [(ngModel)]="query.naslov" id="naslov" type="text" class="form-control"/>
+            </div>
+            <div class="col sm-3">
+              <button (click)="searchByField('naslov',query.naslov)" class="btn btn-success"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="col sm-4">
+          <label class="text-dark" for="kljucneReci">Ključne reči</label>
+          <div class="row">
+            <div class="col sm-9">
+              <input name="kljucneReci" [(ngModel)]="query.kljucneReci" id="kljucneReci" type="text" class="form-control"/>
+            </div>
+            <div class="col sm-3">
+              <button (click)="searchByField('kljucneReci',query.kljucneReci)" class="btn btn-success"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="col sm-4">
+          <label class="text-dark" for="apstrakt">Apstrakt</label>
+          <div class="row">
+            <div class="col sm-9">
+              <input name="apstrakt" [(ngModel)]="query.apstrakt" id="apstrakt" type="text" class="form-control"/>
+            </div>
+            <div class="col sm-3">
+              <button (click)="searchByField('apstrakt',query.apstrakt)" class="btn btn-success"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col sm-4">
+          <label class="text-dark" for="naucnaOblast">Naučna oblast</label>
+          <div class="row">
+            <div class="col sm-9">
+              <input name="naucnaOblast" [(ngModel)]="query.naucnaOblast" id="naucnaOblast" type="text" class="form-control"/>
+            </div>
+            <div class="col sm-3">
+              <button (click)="searchByField('naucnaOblast',query.naucnaOblast)" class="btn btn-success"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="col sm-4">
+          <label class="text-dark" for="sadrzaj">Sadržaj</label>
+          <div class="row">
+            <div class="col sm-9">
+              <input name="sadrzaj" [(ngModel)]="query.sadrzaj" id="sadrzaj" type="text" class="form-control"/>
+            </div>
+            <div class="col sm-3">
+              <button (click)="searchByField('sadrzaj',query.sadrzaj)" class="btn btn-success"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="col sm-4">
+          <label class="text-dark" for="autor">Autor</label>
+          <div class="row">
+            <div class="col sm-9">
+              <input name="autor" [(ngModel)]="query.autor" id="autor" type="text" class="form-control"/>
+            </div>
+            <div class="col sm-3">
+              <button (click)="searchByField('autor',query.autor)" class="btn btn-success"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col sm-4">
+          <label class="text-dark" for="nazivCasopisa">Naziv časopisa</label>
+          <div class="row">
+            <div class="col sm-9">
+              <input name="nazivCasopisa" [(ngModel)]="query.nazivCasopisa" id="nazivCasopisa" type="text" class="form-control"/>
+            </div>
+            <div class="col sm-3">
+              <button (click)="searchByField('nazivCasopisa',query.nazivCasopisa)" class="btn btn-success"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="col sm-4">
+        </div>
+        <div class="col sm-4">
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col sm-12">
+          <div class="row">
+            <div class="col sm-12">
+              <label class="text-dark" for="boolQuery">Bulov upit</label>
+            </div>
+          </div>
+         <!-- <button (click)=addGroup() name="boolQuery" id="boolQuery" class="btn btn-dark">Dodaj grupu</button>
+          <button (click)=removeGroup() name="boolQuery" id="boolQuery" class="btn btn-danger ml-3">Izbriši grupu</button>-->
+          
+    
+          <div class="card">
+            <div class="card-header">
+              <button (click)="addElement()" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i></button>
+              <button (click)="removeElement()" class="btn btn-danger ml-3"><i class="fa fa-minus" aria-hidden="true"></i></button>
+            </div>
+            <div class="card-body">
+    
+              <ng-container *ngFor="let element of boolQuery; let i = index">
+    
+                <div class="row mt-3">
+                  <div class="col sm-4">
+                    <div>
+                      <label *ngIf="i==0" class="text-dark" for="operator">Operator</label>
+                      <select name="operator" id="operator" [(ngModel)]="element.operator" class="selectpicker form-control">
+                        <option value="MUST">
+                          MUST
+                        </option>
+                        <option value="SHOULD">
+                          SHOULD
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col sm-4">
+                    <label *ngIf="i==0" class="text-dark" for="field">Polje</label>
+                    <select class="form-control" [(ngModel)]="element.field" name="field" id="field">
+                      <option value="naslov">
+                        NASLOV
+                      </option>
+                      <option value="apstrakt">
+                        APSTRAKT
+                      </option>
+                      <option value="kljucneReci">
+                        KLJUČNE REČI
+                      </option>
+                      <option value="naucnaOblast">
+                        NAUČNA OBLAST
+                      </option>
+                      <option value="sadrzaj">
+                        SADRŽAJ
+                      </option>
+                      <option value="autor">
+                        AUTOR
+                      </option>
+                    </select>
+                  </div>
+                  <div class="col sm-4">
+                    <label *ngIf="i==0" class="text-dark" for="value">Vrednost</label>
+                    <input name="value" [(ngModel)]="element.value" id="value" type="text" class="form-control"/>
+                  </div>
+                </div>
+              </ng-container>
+
+              <div class="row">
+                <div  class="col sm-12">
+                  <button *ngIf="boolQuery.length != 0" (click)="executeBool()" class="btn btn-dark mt-2"><i class="fa fa-search" aria-hidden="true"></i></button>
+                </div>
+                
+              </div>
+    
+            </div>
+    </div>
+  
+  </div>
+  
+    </div>
+  </div>
+</div>
+  
+      
+
+
+
+      
+      <!--<ng-container *ngFor="let group of boolQueryGroups; let i = index">
+
+        <div class="operator">
+          <select *ngIf="i!=0" [(ngModel)]="boolQueryOperators[i-1]" class="selectpicker form-control">
+            <option value="AND">
+              AND
+            </option>
+            <option value="OR">
+              OR
+            </option>
+          </select>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <button (click)="addElement(group)" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i></button>
+            <button (click)="removeElement(group)" class="btn btn-danger ml-3"><i class="fa fa-minus" aria-hidden="true"></i></button>
+          </div>
+          <div class="card-body">
+
+            <ng-container *ngFor="let element of group.elements; let j = index">
+
+              <div class="operator">
+                <select *ngIf="j!=0" [(ngModel)]="group.operators[j-1]" class="selectpicker form-control">
+                  <option value="AND">
+                    AND
+                  </option>
+                  <option value="OR">
+                    OR
+                  </option>
+                </select>
+              </div>
+
+              <div class="row">
+                <div class="col sm-6">
+                  <label *ngIf="j==0" class="text-dark" for="field">Polje</label>
+                  <select class="form-control" [(ngModel)]="element.field" name="field" id="field">
+                    <option value="naslov">
+                      NASLOV
+                    </option>
+                    <option value="apstrakt">
+                      APSTRAKT
+                    </option>
+                    <option value="kljucneReci">
+                      KLJUČNE REČI
+                    </option>
+                    <option value="naucnaOblast">
+                      NAUČNA OBLAST
+                    </option>
+                    <option value="sadrzaj">
+                      SADRŽAJ
+                    </option>
+                    <option value="autor">
+                      AUTOR
+                    </option>
+                  </select>
+                </div>
+                <div class="col sm-6">
+                  <label *ngIf="j==0" class="text-dark" for="value">Vrednost</label>
+                  <input name="value" [(ngModel)]="element.value" id="value" type="text" class="form-control"/>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+
+      </ng-container>-->
+
+<div class="headerbg bg-light">
+  <h3 class="text-dark mt-5" *ngIf="radovi.length!=0">Rezultati pregrage:</h3>
+</div>
+
+<div class="row mt-5" *ngFor="let item of radovi">  
+  <div class="col sm-12">
+      
+    <div class="card">
+      <div class="card-header">
+        <h4 class="text-primary">{{item.naslov}}</h4>
+        <p class="text-primary">{{item.autor}}</p>    
+      </div>
+      <div class="card-body">
+        <button class="btn btn-dark mr-auto">PDF</button>
+        <p class="ml-3 mr-3 mt-3 mb-3">{{item.sazetak}}</p>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+

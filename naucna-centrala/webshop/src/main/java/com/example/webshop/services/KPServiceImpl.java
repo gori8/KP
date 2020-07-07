@@ -75,7 +75,7 @@ public class KPServiceImpl implements KPService {
         HttpEntity<ItemDTO> entity = new HttpEntity<ItemDTO>(dto, headers);
         ResponseEntity<ReturnLinksDTO> response=null;
 
-        try {
+       /* try {
             response =
                     restTemplate.postForEntity(UrlClass.USER_AND_PAYMENT_URL + "add", entity, ReturnLinksDTO.class);
             System.out.println("STATUS CODE: " + response.getStatusCodeValue());
@@ -130,7 +130,7 @@ public class KPServiceImpl implements KPService {
                 plan.getCasopis().getLinkovi().add(link);
             }
         }
-
+*/
         casopisRepository.save(plan.getCasopis());
     }
 
@@ -190,13 +190,13 @@ public class KPServiceImpl implements KPService {
 
         String json="";
 
-        try {
+       /* try {
             json = mapper.writeValueAsString(mc);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
-        }
+        }*/
 
-        HttpHeaders headers = new HttpHeaders();
+       /* HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
         HttpEntity<String> entity = new HttpEntity<String>(json, headers);
@@ -204,15 +204,15 @@ public class KPServiceImpl implements KPService {
         ResponseEntity<String> response
                 = restTemplate.postForEntity(UrlClass.DOBAVI_KP_FRONT_URL_SA_NACINIMA_PLACANJA_FROM_PAYMENT_INFO,entity,String.class);
 
-        JSONObject actualObj=null;
+        JSONObject actualObj=null;*/
         String ret = "";
 
-        try {
+       /* try {
             actualObj = new JSONObject(response.getBody());
             ret = actualObj.getString("url");
         } catch (JSONException e) {
             e.printStackTrace();
-        }
+        }*/
 
         return ret;
     }

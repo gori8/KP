@@ -7,7 +7,7 @@
   </div>
   <div class="row ml-auto mr-auto">
     <div class="col col-md-3 mb-5 mr-5" *ngFor="let item of casopis.izdanja">
-      <div class="card bg-dark text-light" style="height: 28rem;width: 20rem;">
+      <div class="card bg-dark text-light" style="height: 29rem;width: 20rem;">
         <div class="card-img-top">
           <div class="text-center">
             <span class="fa-stack fa-5x">
@@ -34,6 +34,9 @@
           <ng-container *ngIf="currentUser$ | async as user">
             <button (click)="pay(item.uuid)" class="btn btn-outline-light ml-3" *ngIf="user.role=='Registrovani korisnik' && item.kupljen==false">Kupi izdanje</button>
             <label class="text-light ml-3" *ngIf="user.role=='Registrovani korisnik' && item.kupljen==true">Kupljen</label>
+          </ng-container>
+          <ng-container *ngIf="currentUser$ | async as user">
+            <button routerLink="/addScientificWork/{{item.id}}" class="btn btn-outline-light mt-2 ml-3">Dodaj naucni rad</button>
           </ng-container>
         </div>
       </div>

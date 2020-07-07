@@ -39,6 +39,9 @@ public class Izdanje {
     @ManyToOne(fetch = FetchType.EAGER)
     protected Casopis casopis;
 
+    @OneToMany(mappedBy = "izdanje")
+    private List<Rad> radovi = new ArrayList<>();
+
     @ManyToMany
     @JsonIgnore
     @JoinTable(

@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-const BASE_URL = "https://192.168.43.161:9000/webshop";
+const BASE_URL = "http://localhost:9000/webshop";
+const SW_URL = 'http://localhost:9000/scientific-work';
+
 
 @Injectable({
   providedIn: 'root'
@@ -67,6 +69,14 @@ export class EndpointsService {
 
   submitIzdanje(izdanje): Observable<any>{
     return this.http.post(`${BASE_URL}/numbers`, izdanje,{
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      })
+    });
+  }
+
+  submitRad(rad): Observable<any>{
+    return this.http.post(`${BASE_URL}/scientificWorks`, rad,{
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
       })
@@ -180,6 +190,34 @@ export class EndpointsService {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'responseType': 'text'
+      })
+    });
+  }
+
+  public addScientificWork(dto): Observable<any>{
+    return this.http.post(SW_URL,dto,{
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      })
+    });
+  }
+
+  public getNaucneOblastiByIzdanjeId(izdanjeId): Observable<any>{
+    return this.http.get(`${SW_URL}/naucneOblasti/${izdanjeId}`);
+  }
+
+  public searchByField(dto): Observable<any>{
+    return this.http.post(`${SW_URL}/simple`,dto,{
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      })
+    });
+  }
+
+  public searchByBool(dto): Observable<any>{
+    return this.http.post(`${SW_URL}/bool`,dto,{
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
       })
     });
   }

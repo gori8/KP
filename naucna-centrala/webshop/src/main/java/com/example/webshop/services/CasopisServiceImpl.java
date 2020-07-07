@@ -97,7 +97,7 @@ public class CasopisServiceImpl implements CasopisService {
             izdanjeDTO.setId(izdanje.getId());
             izdanjeDTO.setNaziv(izdanje.getNaziv());
             izdanjeDTO.setDatumIzdanja(izdanje.getDatumIzdanja());
-            izdanjeDTO.setUuid(izdanje.getUuid().toString());
+//            izdanjeDTO.setUuid(izdanje.getUuid().toString());
 
             dto.getIzdanja().add(izdanjeDTO);
         }

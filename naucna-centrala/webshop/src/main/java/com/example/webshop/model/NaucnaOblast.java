@@ -23,4 +23,7 @@ public class NaucnaOblast {
 
     @ManyToMany(mappedBy = "naucneOblasti")
     private List<Casopis> casopisi = new ArrayList<>();
+
+    @OneToMany(mappedBy = "naucnaOblast")
+    private List<Rad> radovi = new ArrayList<>();
 }

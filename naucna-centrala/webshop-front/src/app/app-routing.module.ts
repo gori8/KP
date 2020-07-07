@@ -17,6 +17,9 @@ import { PaymentResponseComponent } from './components/payment-response/payment-
 import { KupljeniPredmetiComponent } from './components/kupljeni-predmeti/kupljeni-predmeti.component';
 import { AddPlansComponent } from './components/add-plans/add-plans.component';
 import { SelectPlanComponent } from './components/select-plan/select-plan.component';
+import { AddScientificWorkComponent } from './components/add-scientific-work/add-scientific-work.component';
+import { RadoviComponent } from './components/radovi/radovi.component';
+
 
 const routes: Routes = [
   { path : "", component : HomeComponent },
@@ -36,6 +39,8 @@ const routes: Routes = [
   { path : "bought", component : KupljeniPredmetiComponent, canActivate:[AuthGuard] },
   { path : "addPlans/:id", component : AddPlansComponent, canActivate:[AuthGuard] },
   { path : "subscription/:casopisId/:type", component : SelectPlanComponent, canActivate:[AuthGuard] },
+  { path : "addScientificWork/:id", component : AddScientificWorkComponent, canActivate:[AuthGuard] },
+  { path : "scientificWork", component : RadoviComponent },
 ];
 
 @NgModule({

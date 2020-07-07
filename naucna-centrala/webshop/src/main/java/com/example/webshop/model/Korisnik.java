@@ -67,11 +67,17 @@ public class Korisnik implements UserDetails {
     @OneToMany(mappedBy = "glavniUrednik")
     protected List<Casopis> casopisiGlavni = new ArrayList<>();
 
+    @OneToMany(mappedBy = "autor")
+    private List<Rad> radovi = new ArrayList<>();
+
     @OneToMany(mappedBy = "pretplatnik")
     protected List<Pretplata> pretplate = new ArrayList<>();
 
     @ManyToMany(mappedBy = "urednici")
     private List<Casopis> casopisiUrednik = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "recenzenti")
+    private List<Rad> radoviRecenzent = new ArrayList<>();
 
     @ManyToMany(mappedBy = "recenzenti")
     private List<Casopis> casopisiRecenzent = new ArrayList<>();
