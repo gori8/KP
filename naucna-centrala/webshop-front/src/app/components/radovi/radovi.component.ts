@@ -1,6 +1,8 @@
 import { Component, OnInit, ɵNOT_FOUND_CHECK_ONLY_ELEMENT_INJECTOR } from '@angular/core';
 import { EndpointsService } from 'src/app/services/endpoints.service';
 import { NotifierService } from 'angular-notifier';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FileUploadService } from 'src/app/services/file-upload.service';
 
 @Component({
   selector: 'app-radovi',
@@ -18,6 +20,8 @@ export class RadoviComponent implements OnInit {
     autor:null,
     nazivCasopisa:null
   }
+  
+  src=null;
 
   boolQueryGroups:any = []
   boolQueryOperators:any =[]
@@ -27,7 +31,7 @@ export class RadoviComponent implements OnInit {
 
   private readonly notifier: NotifierService;
 
-  constructor(private endpoints:EndpointsService,notifierService: NotifierService) { 
+  constructor(private endpoints:EndpointsService,notifierService: NotifierService, private modalService : NgbModal, private fileUploadService : FileUploadService) { 
     this.notifier = notifierService;
   }
 
@@ -110,11 +114,27 @@ export class RadoviComponent implements OnInit {
   }
 
 
-  /*open(content) {
+  open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title',windowClass : "myCustomModalClass"}).result.then((result) => {
       console.log(result);
     }, (reason) => {
       console.log(reason);
     });
-  }*/
+  }
+
+
+  getPdf(content,path) {
+    this.fileUploadService.getPdf(path).subscribe(
+      res => {
+        console.log(res);
+        this.src=res;
+
+        this.open(content);
+      },
+      err => {
+        console.log(err);
+        this.notifier.notify("error", err);
+      }
+    )
+  }
 }

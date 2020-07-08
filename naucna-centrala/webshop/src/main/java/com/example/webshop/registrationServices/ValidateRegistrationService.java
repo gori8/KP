@@ -3,8 +3,10 @@ package com.example.webshop.registrationServices;
 import com.example.webshop.dto.FormSubmissionDto;
 import com.example.webshop.model.Authority;
 import com.example.webshop.model.Korisnik;
+import com.example.webshop.model.KorisnikElastic;
 import com.example.webshop.model.NaucnaOblast;
 import com.example.webshop.repository.AuthorityRepository;
+import com.example.webshop.repository.KorisnikElasticRepository;
 import com.example.webshop.repository.KorisnikRepository;
 import com.example.webshop.repository.NaucnaOblastRepository;
 import org.camunda.bpm.engine.IdentityService;
@@ -13,6 +15,8 @@ import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.camunda.bpm.engine.identity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.elasticsearch.core.geo.GeoPoint;
+import org.springframework.data.geo.Point;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -39,6 +43,9 @@ public class ValidateRegistrationService implements JavaDelegate {
     @Autowired
     PasswordEncoder passwordEncoder;
 
+    @Autowired
+    KorisnikElasticRepository korisnikElasticRepository;
+
 
     public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
@@ -55,6 +62,11 @@ public class ValidateRegistrationService implements JavaDelegate {
 
         User user = null;
 
+        float longitude = 0;
+        float latitude = 0;
+
+        KorisnikElastic korisnikElastic = new KorisnikElastic();
+
         for (FormSubmissionDto formField : registracionaForma) {
             if(formField.getFieldId().equals("ime")) {
                 if(formField.getFieldValue()==null || formField.getFieldValue().trim()==""){
@@ -63,6 +75,7 @@ public class ValidateRegistrationService implements JavaDelegate {
                 }
                 else {
                     korisnik.setIme(formField.getFieldValue());
+                    korisnikElastic.setIme(formField.getFieldValue());
                 }
             }
             if(formField.getFieldId().equals("prezime")) {
@@ -72,6 +85,7 @@ public class ValidateRegistrationService implements JavaDelegate {
                 }
                 else {
                     korisnik.setPrezime(formField.getFieldValue());
+                    korisnikElastic.setPrezime(formField.getFieldValue());
                 }
             }
             if(formField.getFieldId().equals("grad")) {
@@ -141,6 +155,13 @@ public class ValidateRegistrationService implements JavaDelegate {
                 }
                 else {
                     korisnik.setRecenzent(Boolean.valueOf(formField.getFieldValue()));
+
+                    if(Boolean.valueOf(formField.getFieldValue())){
+                        korisnikElastic.setTip("recenzent");
+                    }else {
+                        korisnikElastic.setTip("korisnik");
+                    }
+
                 }
             }
             if(formField.getFieldId().contains("naucnaOblast")){
@@ -155,6 +176,14 @@ public class ValidateRegistrationService implements JavaDelegate {
                     naucnaOblastRepository.save(naucnaOblast);
                 }
             }
+            if(formField.getFieldId().equals("longitude")){
+                korisnik.setLongitude(Float.parseFloat(formField.getFieldValue()));
+                longitude = Float.parseFloat(formField.getFieldValue());
+            }
+            if(formField.getFieldId().equals("latitude")){
+                korisnik.setLatitude(Float.parseFloat(formField.getFieldValue()));
+                latitude = Float.parseFloat(formField.getFieldValue());
+            }
         }
 
         if(korisnik.getNaucneOblasti().size()==0){
@@ -166,6 +195,8 @@ public class ValidateRegistrationService implements JavaDelegate {
             return;
         }
 
+        korisnikElastic.setLokacija(new GeoPoint(latitude,longitude));
+
         Authority authority = authorityRepository.findOneByName("ROLE_USER");
         List<Authority> authorities = new ArrayList<>();
         authorities.add(authority);
@@ -173,6 +204,9 @@ public class ValidateRegistrationService implements JavaDelegate {
 
         korisnik = korisnikRepository.save(korisnik);
         identityService.saveUser(user);
+
+        korisnikElastic.setId(korisnik.getId().toString());
+        korisnikElasticRepository.save(korisnikElastic);
 
         execution.setVariable("validacija", true);
         execution.setVariable("id", korisnik.getId());

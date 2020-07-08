@@ -26,6 +26,9 @@ import { AddPlansComponent } from './components/add-plans/add-plans.component';
 import { SelectPlanComponent } from './components/select-plan/select-plan.component';
 import { AddScientificWorkComponent } from './components/add-scientific-work/add-scientific-work.component';
 import { RadoviComponent } from './components/radovi/radovi.component';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RadRecenzentiComponent } from './components/rad-recenzenti/rad-recenzenti.component';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -89,7 +92,8 @@ const customNotifierOptions: NotifierOptions = {
     AddPlansComponent,
     SelectPlanComponent,
     AddScientificWorkComponent,
-    RadoviComponent
+    RadoviComponent,
+    RadRecenzentiComponent
   ],
   imports: [
     BrowserModule,
@@ -97,6 +101,8 @@ const customNotifierOptions: NotifierOptions = {
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    NgbModule,
+    NgxExtendedPdfViewerModule,
     NotifierModule.withConfig(customNotifierOptions)
   ],
   providers: [

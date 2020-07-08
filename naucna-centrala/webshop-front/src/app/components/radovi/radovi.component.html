@@ -1,3 +1,17 @@
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">PDF</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <ngx-extended-pdf-viewer [src]="src" useBrowserLocale="true" height="70vh"></ngx-extended-pdf-viewer>
+  </div>
+</ng-template>
+
+
 <div class="container">
   <div class="card">
     <div class="card-body">
@@ -172,74 +186,6 @@
 
 
 
-      
-      <!--<ng-container *ngFor="let group of boolQueryGroups; let i = index">
-
-        <div class="operator">
-          <select *ngIf="i!=0" [(ngModel)]="boolQueryOperators[i-1]" class="selectpicker form-control">
-            <option value="AND">
-              AND
-            </option>
-            <option value="OR">
-              OR
-            </option>
-          </select>
-        </div>
-        <div class="card">
-          <div class="card-header">
-            <button (click)="addElement(group)" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i></button>
-            <button (click)="removeElement(group)" class="btn btn-danger ml-3"><i class="fa fa-minus" aria-hidden="true"></i></button>
-          </div>
-          <div class="card-body">
-
-            <ng-container *ngFor="let element of group.elements; let j = index">
-
-              <div class="operator">
-                <select *ngIf="j!=0" [(ngModel)]="group.operators[j-1]" class="selectpicker form-control">
-                  <option value="AND">
-                    AND
-                  </option>
-                  <option value="OR">
-                    OR
-                  </option>
-                </select>
-              </div>
-
-              <div class="row">
-                <div class="col sm-6">
-                  <label *ngIf="j==0" class="text-dark" for="field">Polje</label>
-                  <select class="form-control" [(ngModel)]="element.field" name="field" id="field">
-                    <option value="naslov">
-                      NASLOV
-                    </option>
-                    <option value="apstrakt">
-                      APSTRAKT
-                    </option>
-                    <option value="kljucneReci">
-                      KLJUČNE REČI
-                    </option>
-                    <option value="naucnaOblast">
-                      NAUČNA OBLAST
-                    </option>
-                    <option value="sadrzaj">
-                      SADRŽAJ
-                    </option>
-                    <option value="autor">
-                      AUTOR
-                    </option>
-                  </select>
-                </div>
-                <div class="col sm-6">
-                  <label *ngIf="j==0" class="text-dark" for="value">Vrednost</label>
-                  <input name="value" [(ngModel)]="element.value" id="value" type="text" class="form-control"/>
-                </div>
-              </div>
-            </ng-container>
-          </div>
-        </div>
-
-      </ng-container>-->
-
 <div class="headerbg bg-light">
   <h3 class="text-dark mt-5" *ngIf="radovi.length!=0">Rezultati pretrage:</h3>
 </div>
@@ -253,13 +199,10 @@
         <p class="text-primary">{{item.autor}}</p>    
       </div>
       <div class="card-body">
-        <button class="btn btn-dark mr-auto">PDF</button>
+        <button class="btn btn-dark mr-auto" (click)="getPdf(content,item.path)">PDF</button>
         <p class="ml-3 mr-3 mt-3 mb-3" [innerHTML]="item.sazetak"></p>
       </div>
-      
     </div>
   </div>
 </div>
-
 </div>
-

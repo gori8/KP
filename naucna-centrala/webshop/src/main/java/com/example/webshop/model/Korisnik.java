@@ -86,6 +86,10 @@ public class Korisnik implements UserDetails {
     @ManyToMany(mappedBy = "kupci")
     private List<Izdanje> casopisiKupci = new ArrayList<>();
 
+    private float longitude;
+
+    private float latitude;
+
     @Override
     public boolean isEnabled() {
         return aktiviran;

@@ -221,4 +221,24 @@ export class EndpointsService {
       })
     });
   }
+
+  public getRecByNaucnaOblast(id): Observable<any>{
+    return this.http.get(`${SW_URL}/recenzenti/${id}`);
+  }
+
+  public finishAddingScientificWork(dto): Observable<any>{
+    return this.http.put(SW_URL,dto,{
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      })
+    });
+  }
+
+  public geoSearch(radId): Observable<any>{
+    return this.http.get(`${SW_URL}/geo/${radId}`);
+  }
+
+  public moreLikeThis(radId): Observable<any>{
+    return this.http.get(`${SW_URL}/moreLikeThis/${radId}`);
+  }
 }

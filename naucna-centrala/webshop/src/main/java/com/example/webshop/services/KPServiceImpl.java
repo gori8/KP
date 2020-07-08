@@ -162,7 +162,7 @@ public class KPServiceImpl implements KPService {
             itemDTO.getNaciniPlacanja().add(np.getId());
         }
 
-        HttpHeaders headers = new HttpHeaders();
+        /*HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
         HttpEntity<ItemDTO> entity = new HttpEntity<ItemDTO>(itemDTO, headers);
@@ -170,10 +170,10 @@ public class KPServiceImpl implements KPService {
         ResponseEntity<ReturnLinksDTO> response =
                 restTemplate.postForEntity(UrlClass.USER_AND_PAYMENT_URL+"add",entity,ReturnLinksDTO.class);
 
-        ReturnLinksDTO responseBody = response.getBody();
+        ReturnLinksDTO responseBody = response.getBody();*/
 
         izdanje.setDatumIzdanja(new Date());
-        izdanje.setUuid(UUID.fromString(responseBody.getUuid()));
+        //izdanje.setUuid(UUID.fromString(responseBody.getUuid()));
 
         izdanje = izdanjeRepository.save(izdanje);
         casopisRepository.save(casopis);

@@ -2,14 +2,20 @@ package com.example.webshop.newPaperServices;
 
 import com.example.webshop.dto.PotvrdaRecenzentaDTO;
 import com.example.webshop.dto.UredniciRecenzentiDTO;
-import com.example.webshop.model.Casopis;
-import com.example.webshop.model.Korisnik;
+import com.example.webshop.model.*;
 import com.example.webshop.repository.CasopisRepository;
+import com.example.webshop.repository.KorisnikElasticRepository;
 import com.example.webshop.repository.KorisnikRepository;
 import org.camunda.bpm.engine.IdentityService;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
+import org.elasticsearch.action.update.UpdateRequest;
+import org.elasticsearch.action.update.UpdateResponse;
+import org.elasticsearch.common.xcontent.XContentFactory;
+import org.elasticsearch.index.query.QueryBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.elasticsearch.core.geo.GeoPoint;
+import org.springframework.data.elasticsearch.core.query.UpdateQuery;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -58,6 +64,6 @@ public class UredniciRecenzentiService implements JavaDelegate {
         }
         casopis.setRecenzenti(recenzenti);
 
-        casopisRepository.save(casopis);
+        casopis = casopisRepository.save(casopis);
     }
 }

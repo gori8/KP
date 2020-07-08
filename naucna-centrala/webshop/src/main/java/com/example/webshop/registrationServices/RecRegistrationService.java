@@ -2,7 +2,9 @@ package com.example.webshop.registrationServices;
 
 import com.example.webshop.model.Authority;
 import com.example.webshop.model.Korisnik;
+import com.example.webshop.model.KorisnikElastic;
 import com.example.webshop.repository.AuthorityRepository;
+import com.example.webshop.repository.KorisnikElasticRepository;
 import com.example.webshop.repository.KorisnikRepository;
 import org.camunda.bpm.engine.IdentityService;
 import org.camunda.bpm.engine.delegate.DelegateExecution;

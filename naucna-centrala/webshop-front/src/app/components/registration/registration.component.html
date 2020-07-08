@@ -53,6 +53,16 @@
                   <input name="recenzent" [(ngModel)]="formModel[8].fieldValue" id="recenzent" type="checkbox" class="form-control"/>
                 </div>
 
+                <div class="form-group">
+                  <label class="text-light" for="longitude">Longitude</label>
+                  <input name="longitude" [(ngModel)]="formModel[9].fieldValue" id="longitude" type="text" class="form-control" required/>
+                </div>
+
+                <div class="form-group">
+                  <label class="text-light" for="latitude">Latitude</label>
+                  <input name="latitude" [(ngModel)]="formModel[10].fieldValue" id="latitude" type="text" class="form-control" required/>
+                </div>
+
                 <div class="card">
                   <div class="card-header">
                     Naučne oblasti
@@ -63,7 +73,7 @@
                     <button *ngIf="oblasti.length == 1" class="btn btn-danger mb-3" type="button" disabled><i class="fa fa-minus"></i></button>
                     <div class="form-group" *ngFor="let o of oblasti; let i = index">
                       <label class="text-dark" for="recenzent">{{o}}</label>
-                      <select name="naucnaOblast{{i}}" [(ngModel)]="formModel[i+9].fieldValue" class="form-control" required>
+                      <select name="naucnaOblast{{i}}" [(ngModel)]="formModel[i+11].fieldValue" class="form-control" required>
                         <option *ngFor="let item of listaOblasti" value="{{item.id}}">
                           {{item.naziv}}
                         </option>

@@ -64,8 +64,8 @@ export class AddScientificWorkComponent implements OnInit {
   addScientificWork(dto){
     this.endpoints.addScientificWork(dto).subscribe(
       res => {
-        this.notifier.notify("success", `Novi naučni rad je uspešno dodato.`);
-        this.router.navigate(['']);       
+        this.notifier.notify("success", `Izaberite recenzente.`);
+        this.router.navigate(['/scientificWork/recenzenti/'+res]);       
       },
       error => {
         console.log(error); 

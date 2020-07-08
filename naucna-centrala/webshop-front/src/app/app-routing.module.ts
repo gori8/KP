@@ -19,6 +19,7 @@ import { AddPlansComponent } from './components/add-plans/add-plans.component';
 import { SelectPlanComponent } from './components/select-plan/select-plan.component';
 import { AddScientificWorkComponent } from './components/add-scientific-work/add-scientific-work.component';
 import { RadoviComponent } from './components/radovi/radovi.component';
+import { RadRecenzentiComponent } from './components/rad-recenzenti/rad-recenzenti.component';
 
 
 const routes: Routes = [
@@ -41,6 +42,7 @@ const routes: Routes = [
   { path : "subscription/:casopisId/:type", component : SelectPlanComponent, canActivate:[AuthGuard] },
   { path : "addScientificWork/:id", component : AddScientificWorkComponent, canActivate:[AuthGuard] },
   { path : "scientificWork", component : RadoviComponent },
+  { path : "scientificWork/recenzenti/:id", component : RadRecenzentiComponent, canActivate:[AuthGuard] }
 ];
 
 @NgModule({

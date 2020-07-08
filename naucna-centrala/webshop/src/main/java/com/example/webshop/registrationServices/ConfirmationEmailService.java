@@ -28,7 +28,7 @@ public class ConfirmationEmailService implements JavaDelegate {
 
         String processInstanceId = execution.getProcessInstanceId();
 
-        String link = "https://localhost:4500/activate/"+processInstanceId;
+        String link = "http://localhost:4400/activate/"+processInstanceId;
 
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
         MimeMessageHelper mail  = new MimeMessageHelper(mimeMessage,true);

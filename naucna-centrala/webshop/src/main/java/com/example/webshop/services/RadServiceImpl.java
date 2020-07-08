@@ -1,24 +1,24 @@
 package com.example.webshop.services;
 
-import com.example.webshop.dto.ElementDTO;
-import com.example.webshop.dto.NaucnaOblastDTO;
-import com.example.webshop.dto.RadDTO;
-import com.example.webshop.dto.RadFoundDTO;
+import com.example.webshop.dto.*;
 import com.example.webshop.model.*;
 import com.example.webshop.repository.*;
 import com.example.webshop.util.storage.StorageService;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
-import org.elasticsearch.index.query.BoolQueryBuilder;
-import org.elasticsearch.index.query.Operator;
-import org.elasticsearch.index.query.QueryBuilder;
-import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.common.unit.DistanceUnit;
+import org.elasticsearch.index.query.*;
 import org.elasticsearch.search.fetch.subphase.highlight.HighlightBuilder;
+import org.elasticsearch.search.sort.SortBuilders;
+import org.elasticsearch.search.sort.SortOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
 import org.springframework.data.elasticsearch.core.SearchHit;
 import org.springframework.data.elasticsearch.core.SearchHits;
+import org.springframework.data.elasticsearch.core.geo.GeoPoint;
 import org.springframework.data.elasticsearch.core.mapping.IndexCoordinates;
+import org.springframework.data.elasticsearch.core.query.Criteria;
+import org.springframework.data.elasticsearch.core.query.CriteriaQuery;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQuery;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -57,6 +57,9 @@ public class RadServiceImpl implements RadService {
     @Autowired
     ElasticsearchRestTemplate operations;
 
+    @Autowired
+    KorisnikElasticRepository korisnikElasticRepository;
+
     @Override
     public List<NaucnaOblastDTO> getNaucneOblastiByIzdanjeId(Long izdanjeId){
         Izdanje izdanje = izdanjeRepository.getOne(izdanjeId);
@@ -84,8 +87,6 @@ public class RadServiceImpl implements RadService {
 
         Korisnik autor = korisnikRepository.findOneByUsername(username);
 
-        List<Korisnik> recenzenti = izdanje.getCasopis().getRecenzenti();
-
         Rad rad = new Rad();
 
         rad.setNaslov(dto.getNaslov());
@@ -96,17 +97,9 @@ public class RadServiceImpl implements RadService {
         rad.setNaucnaOblast(naucnaOblast);
         rad.setIzdanje(izdanje);
         rad.setAutor(autor);
-        rad.setRecenzenti(new ArrayList<>());
 
         rad = radRepository.save(rad);
-
-        for (Korisnik rec:recenzenti) {
-            rad.getRecenzenti().add(rec);
-            rec.getRadoviRecenzent().add(rad);
-
-            radRepository.save(rad);
-            korisnikRepository.save(rec);
-        }
+        radRepository.save(rad);
 
         izdanje.getRadovi().add(rad);
         izdanjeRepository.save(izdanje);
@@ -118,7 +111,7 @@ public class RadServiceImpl implements RadService {
         naucnaOblastRepository.save(naucnaOblast);
 
 
-        RadElastic radElastic = new RadElastic();
+        /*RadElastic radElastic = new RadElastic();
 
         radElastic.setId(rad.getId().toString());
         radElastic.setNaucnaOblast(naucnaOblast.getNaziv());
@@ -142,9 +135,54 @@ public class RadServiceImpl implements RadService {
             e.printStackTrace();
         }
 
-        radElasticRepository.save(radElastic);
+        radElasticRepository.save(radElastic);*/
 
         return rad.getId();
+    }
+
+    @Override
+    public Long finsihAddingScientificWork(FinishAddingRadDTO dto){
+
+        Rad rad = radRepository.getOne(dto.getRadId());
+
+        for (Long recId : dto.getRecIds()) {
+            Korisnik recenzent = korisnikRepository.getOne(recId);
+
+            rad.getRecenzenti().add(recenzent);
+            recenzent.getRadoviRecenzent().add(rad);
+
+            korisnikRepository.save(recenzent);
+        }
+
+        radRepository.save(rad);
+
+        RadElastic radElastic = new RadElastic();
+
+        radElastic.setId(rad.getId().toString());
+        radElastic.setNaucnaOblast(rad.getNaucnaOblast().getNaziv());
+        radElastic.setAutor(rad.getAutor().getIme()+" "+rad.getAutor().getPrezime());
+        radElastic.setKljucneReci(rad.getKljucneReci());
+        radElastic.setNazivCasopisa(rad.getIzdanje().getCasopis().getNaziv());
+        radElastic.setNaslov(rad.getNaslov());
+        radElastic.setApstrakt(rad.getApstrakt());
+
+
+        try {
+            File f = storageService.loadAsResource("/home/milan/Desktop/Projects/KP/naucna-centrala/webshop/src/main/resources/pdf/"+rad.getSadrzaj()).getFile();
+
+            PDDocument pdDoc = PDDocument.load(f);
+            String parsedText = new PDFTextStripper().getText(pdDoc);
+
+            parsedText = parsedText.replace("\n"," ");
+
+            radElastic.setSadrzaj(parsedText);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        radElasticRepository.save(radElastic);
+
+        return dto.getRadId();
     }
 
     @Override
@@ -189,6 +227,8 @@ public class RadServiceImpl implements RadService {
             dto.setAutor(rad.getAutor());
             dto.setId(rad.getId());
             dto.setNazivCasopisa(rad.getNazivCasopisa());
+
+            dto.setPath(radRepository.getOne(Long.parseLong(rad.getId())).getSadrzaj());
 
             ret.add(dto);
         }
@@ -292,6 +332,8 @@ public class RadServiceImpl implements RadService {
             dto.setId(rad.getId());
             dto.setNazivCasopisa(rad.getNazivCasopisa());
 
+            dto.setPath(radRepository.getOne(Long.parseLong(rad.getId())).getSadrzaj());
+
             ret.add(dto);
         }
 
@@ -334,4 +376,139 @@ public class RadServiceImpl implements RadService {
         return ret;
     }
 
+
+    @Override
+    public List<RecenzentDTO> getRecenzenteForNaucnaOblast(Long id){
+        Rad rad = radRepository.getOne(id);
+
+        List<Korisnik> recenzentiCasopisa = rad.getIzdanje().getCasopis().getRecenzenti();
+
+        List<RecenzentDTO> ret = new ArrayList<>();
+
+        for(Korisnik rec : recenzentiCasopisa){
+            if(containsNaucnaOblast(rec.getNaucneOblasti(),rad.getNaucnaOblast().getId())){
+                RecenzentDTO dto = new RecenzentDTO();
+
+                dto.setId(rec.getId());
+                dto.setIme(rec.getIme());
+                dto.setPrezime(rec.getPrezime());
+
+                ret.add(dto);
+            }
+        }
+
+        return ret;
+    }
+
+    public boolean containsNaucnaOblast(final List<NaucnaOblast> list, final Long id){
+        return list.stream().filter(o -> o.getId().equals(id)).findFirst().isPresent();
+    }
+
+    @Override
+    public List<RecenzentDTO> geoSearch(Long radId){
+        Rad rad = radRepository.getOne(radId);
+
+        System.out.println("GEO SEARCH");
+
+        Korisnik autor = rad.getAutor();
+
+        GeoDistanceQueryBuilder filter = QueryBuilders
+                .geoDistanceQuery("lokacija")
+                .point(autor.getLatitude(),autor.getLongitude())
+                .distance(100, DistanceUnit.KILOMETERS);
+
+
+
+        BoolQueryBuilder query = QueryBuilders.boolQuery();
+        query.mustNot(filter);
+        query.must(matchQuery("tip","recenzent"));
+
+
+        Iterable<KorisnikElastic> recElasticList = korisnikElasticRepository.search(query);
+
+        List<RecenzentDTO> ret = new ArrayList<>();
+
+        for(KorisnikElastic korisnikElastic : recElasticList){
+
+            System.out.println("----USER FOUND BY GEO SEARCH----");
+            System.out.println(korisnikElastic.getIme()+" "+korisnikElastic.getPrezime());
+            if(containsRecenzent(rad.getIzdanje().getCasopis().getRecenzenti(),Long.parseLong(korisnikElastic.getId()))){
+                RecenzentDTO recenzentDTO = new RecenzentDTO();
+
+                recenzentDTO.setId(Long.parseLong(korisnikElastic.getId()));
+                recenzentDTO.setIme(korisnikElastic.getIme());
+                recenzentDTO.setPrezime(korisnikElastic.getPrezime());
+
+                ret.add(recenzentDTO);
+            }
+        }
+
+        return ret;
+    }
+
+    public boolean containsRecenzent(final List<Korisnik> list, final Long id){
+        return list.stream().filter(o -> o.getId().equals(id)).findFirst().isPresent();
+    }
+
+    @Override
+    public List<RecenzentDTO> moreLikeThis(Long radId){
+
+        Rad rad = radRepository.getOne(radId);
+
+        String sadrzaj = "";
+
+        try {
+            File f = storageService.loadAsResource("/home/milan/Desktop/Projects/KP/naucna-centrala/webshop/src/main/resources/pdf/"+rad.getSadrzaj()).getFile();
+
+            PDDocument pdDoc = PDDocument.load(f);
+            String parsedText = new PDFTextStripper().getText(pdDoc);
+
+            sadrzaj = parsedText.replace("\n"," ");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        MoreLikeThisQueryBuilder moreLikeThisQueryBuilder = QueryBuilders.moreLikeThisQuery(
+                new String[]{"naslov","sadrzaj","apstrakt","autor","nazivCasopisa","kljucneReci","naucnaOblast"},
+                new String []{
+                        rad.getNaslov(),
+                        rad.getApstrakt(),
+                        rad.getKljucneReci(),
+                        rad.getNaucnaOblast().getNaziv(),
+                        rad.getAutor().getIme()+ " " +rad.getAutor().getPrezime(),
+                        rad.getIzdanje().getCasopis().getNaziv(),
+                        sadrzaj
+                },
+                null)
+                .minTermFreq(2)
+                .minDocFreq(1);
+
+        Iterable<RadElastic> radElasticList = radElasticRepository.search(moreLikeThisQueryBuilder);
+
+        List<RecenzentDTO> ret = new ArrayList<>();
+
+        for(RadElastic radElastic : radElasticList){
+
+            Rad foundRad = radRepository.getOne(Long.parseLong(radElastic.getId()));
+
+            for (Korisnik rec:foundRad.getRecenzenti()) {
+                if(!containsRecenzentDTO(ret,rec.getId())){
+                    RecenzentDTO recenzentDTO = new RecenzentDTO();
+                    recenzentDTO.setId(rec.getId());
+                    recenzentDTO.setIme(rec.getIme());
+                    recenzentDTO.setPrezime(rec.getPrezime());
+
+                    ret.add(recenzentDTO);
+                }
+            }
+        }
+
+        return ret;
+    }
+
+    public boolean containsRecenzentDTO(final List<RecenzentDTO> list, final Long id){
+        return list.stream().filter(o -> o.getId().equals(id)).findFirst().isPresent();
+    }
 }

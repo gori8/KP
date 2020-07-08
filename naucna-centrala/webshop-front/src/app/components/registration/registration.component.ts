@@ -48,6 +48,14 @@ export class RegistrationComponent implements OnInit {
       fieldValue:false
     },
     {
+      fieldId:"longitude",
+      fieldValue:""
+    },
+    {
+      fieldId:"latitude",
+      fieldValue:""
+    },
+    {
       fieldId:"naucnaOblast1",
       fieldValue:null
     }
@@ -91,7 +99,7 @@ export class RegistrationComponent implements OnInit {
 
   addOblast(){
 
-    var index = this.formModel.length - 8;
+    var index = this.formModel.length - 10;
 
     var oblast = {
       fieldId:"naucnaOblast"+index,

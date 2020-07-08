@@ -8,6 +8,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class FileUploadService {
 
   private endpoint = 'http://localhost:9000/scientific-work';
+  private headers = new HttpHeaders();
 
   constructor(private http: HttpClient) { }
 
@@ -20,5 +21,11 @@ export class FileUploadService {
         'responseType': 'text'
       })
     });
+  }
+
+  getPdf(filename): Observable<any>{
+    this.headers = this.headers.set('Content-Type', 'application/pdf');
+    return this.http.get(`${this.endpoint}/pdf/`+filename,{headers: this.headers,
+    responseType: 'blob'});
   }
 }
